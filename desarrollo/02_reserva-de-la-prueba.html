@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Reserva del conjunto de prueba &#8212; Proyecto final · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'desarrollo/02_reserva-de-la-prueba';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="3. Análisis exploratorio de datos" href="03_analisis-exploratorio.html" />
+    <link rel="prev" title="1. Base de datos" href="01_base-de-datos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../portada.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../portada.html">
+                    Proyecto final · Segundo entregable: Bank Marketing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte I · El dashboard y la interpretación de sus resultados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../dashboard/01_contexto.html">Pestaña 1 · Contexto y diseño experimental</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboard/02_maestra.html">Pestaña 2 · Tabla maestra y balanceo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboard/03_optimizacion.html">Pestaña 3 · Optimización de hiperparámetros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboard/04_prueba.html">Pestaña 4 · Evaluación en el conjunto de prueba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboard/05_estadistica.html">Pestaña 5 · Comparación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboard/06_interpretabilidad.html">Pestaña 6 · Interpretabilidad y costo computacional</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte II · Desarrollo completo</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_introduccion.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_base-de-datos.html">1. Base de datos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Reserva del conjunto de prueba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_analisis-exploratorio.html">3. Análisis exploratorio de datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_diseno-experimental.html">4. Diseño experimental del segundo entregable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_optimizacion-de-hiperparametros.html">5. Optimización de hiperparámetros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_optimizacion-computacional.html">6. Optimización computacional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_evaluacion-de-modelos.html">7. Evaluación de modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_comparacion-estadistica.html">8. Comparación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_conclusiones-y-limitaciones.html">9. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_referencias.html">10. Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/desarrollo/02_reserva-de-la-prueba.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. Reserva del conjunto de prueba</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reserva-del-conjunto-de-prueba">
+<h1>2. Reserva del conjunto de prueba<a class="headerlink" href="#reserva-del-conjunto-de-prueba" title="Link to this heading">#</a></h1>
+<p>Antes de cualquier decisión que se use en el modelado (imputación, transformaciones, selección de variables, umbrales de atípicos o hiperparámetros), se reserva el conjunto de prueba. Primero se eliminan los duplicados exactos detectados en la sección 1.6.3; es una limpieza estructural que no usa estadísticas de los datos y conserva el orden de las filas.</p>
+<p><strong>Partición cronológica 80/20.</strong> El entrenamiento es el primer 80 % de los registros en orden temporal y la prueba, el último 20 %. La decisión responde a la estructura de los datos y al propósito del modelo:</p>
+<ul class="simple">
+<li><p>Las filas están ordenadas por fecha (sección 1.5) y el enunciado exige una partición cronológica cuando hay tiempo.</p></li>
+<li><p>El modelo debe decidir a quién llamar en <strong>campañas futuras</strong>, así que la prueba debe simular ese uso: ajustar con el pasado y evaluar con periodos posteriores que el modelo no vio.</p></li>
+<li><p>La sección 3.6 confirma, solo con datos de entrenamiento, que una validación aleatoria inflaría el desempeño (<strong>fuga temporal</strong>): un modelo que únicamente reconoce el periodo alcanza casi el mismo AUC que el modelo completo, y la validación temporal da un resultado mucho menor.</p></li>
+</ul>
+<p>La partición no se estratifica: la prevalencia de la clase positiva cambia entre periodos y se reporta tal como es, porque forzarla a ser igual ocultaría justamente el cambio que el modelo enfrentará en la práctica. Desde aquí, <strong>todo el análisis exploratorio y todas las decisiones se calculan solo con el conjunto de entrenamiento</strong>. El conjunto de prueba se usa una única vez, en la evaluación final de la sección 4.4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_limpio</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s2">"first"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">df_limpio</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_monotonic_increasing</span>  <span class="c1"># se conserva el orden temporal del archivo</span>
+<span class="n">y_todo</span> <span class="o">=</span> <span class="n">df_limpio</span><span class="p">[</span><span class="n">OBJETIVO</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">X_todo</span> <span class="o">=</span> <span class="n">df_limpio</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">OBJETIVO</span><span class="p">)</span>
+
+<span class="n">n_prueba</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.20</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_todo</span><span class="p">)))</span>
+<span class="n">n_entrena</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_todo</span><span class="p">)</span> <span class="o">-</span> <span class="n">n_prueba</span>
+<span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span> <span class="o">=</span> <span class="n">X_todo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">n_entrena</span><span class="p">],</span> <span class="n">X_todo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">n_entrena</span><span class="p">:]</span>
+<span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span> <span class="o">=</span> <span class="n">y_todo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">n_entrena</span><span class="p">],</span> <span class="n">y_todo</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">n_entrena</span><span class="p">:]</span>
+<span class="n">anio_tr</span><span class="p">,</span> <span class="n">anio_te</span> <span class="o">=</span> <span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_tr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"anio"</span><span class="p">],</span> <span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_te</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"anio"</span><span class="p">]</span>
+<span class="n">periodo_tr</span><span class="p">,</span> <span class="n">periodo_te</span> <span class="o">=</span> <span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_tr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"periodo"</span><span class="p">],</span> <span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_te</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"periodo"</span><span class="p">]</span>
+<span class="n">dia_tr</span><span class="p">,</span> <span class="n">dia_te</span> <span class="o">=</span> <span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_tr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"dia"</span><span class="p">],</span> <span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_te</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"dia"</span><span class="p">]</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">X_tr</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y_tr</span><span class="p">)</span>  <span class="c1"># copia de trabajo para el EDA (solo entrenamiento)</span>
+<span class="n">periodo_corte</span> <span class="o">=</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">dias_compartidos</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dia_tr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">dia_te</span><span class="p">))</span>
+
+<span class="n">particion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"Filas"</span><span class="p">:</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">df_limpio</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_tr</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_te</span><span class="p">)],</span>
+    <span class="s2">"Desde"</span><span class="p">:</span> <span class="p">[</span><span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_todo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"periodo"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="s2">"Hasta"</span><span class="p">:</span> <span class="p">[</span><span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_todo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"periodo"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+    <span class="s2">"Positivos (suscribe)"</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">y_todo</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">sum</span><span class="p">())],</span>
+    <span class="s2">"% positivos"</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span> <span class="o">*</span> <span class="n">y_todo</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">y_te</span><span class="o">.</span><span class="n">mean</span><span class="p">()],</span>
+    <span class="s2">"</span><span class="si">% d</span><span class="s2">e 2008"</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_todo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"anio"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2008</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">anio_tr</span> <span class="o">==</span> <span class="mi">2008</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+                  <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">anio_te</span> <span class="o">==</span> <span class="mi">2008</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()],</span>
+    <span class="s2">"</span><span class="si">% d</span><span class="s2">e 2009"</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_todo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"anio"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2009</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">anio_tr</span> <span class="o">==</span> <span class="mi">2009</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+                  <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">anio_te</span> <span class="o">==</span> <span class="mi">2009</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()],</span>
+    <span class="s2">"</span><span class="si">% d</span><span class="s2">e 2010"</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_todo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">"anio"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">anio_tr</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+                  <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">anio_te</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()]},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Total sin duplicados exactos"</span><span class="p">,</span> <span class="s2">"Entrenamiento (primer 80 %)"</span><span class="p">,</span> <span class="s2">"Prueba (último 20 %)"</span><span class="p">])</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">particion</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">interpretar</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Tras eliminar </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">df_limpio</span><span class="p">)</span><span class="si">}</span><span class="s2"> duplicados exactos quedan </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_limpio</span><span class="p">))</span><span class="si">}</span><span class="s2"> registros. El "</span>
+    <span class="sa">f</span><span class="s2">"entrenamiento tiene </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_tr</span><span class="p">))</span><span class="si">}</span><span class="s2"> registros, de </span><span class="si">{</span><span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> a </span><span class="si">{</span><span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, y la prueba "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_te</span><span class="p">))</span><span class="si">}</span><span class="s2">, de </span><span class="si">{</span><span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> a </span><span class="si">{</span><span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">. Suscribe el </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> en "</span>
+    <span class="sa">f</span><span class="s2">"entrenamiento y el </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> en prueba, </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2"> veces más. El "</span>
+    <span class="sa">f</span><span class="s2">"entrenamiento es en un </span><span class="si">{</span><span class="n">pct</span><span class="p">((</span><span class="n">anio_tr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2008</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> de 2008, mientras que la prueba es en un "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pct</span><span class="p">((</span><span class="n">anio_te</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2010</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> de 2010 y no tiene registros de 2008. El corte cae dentro de </span><span class="si">{</span><span class="n">periodo_corte</span><span class="si">}</span><span class="s2">, "</span>
+    <span class="sa">f</span><span class="s2">"único mes presente en ambos conjuntos"</span>
+    <span class="o">+</span> <span class="p">(</span><span class="sa">f</span><span class="s2">" (comparten </span><span class="si">{</span><span class="n">dias_compartidos</span><span class="si">}</span><span class="s2"> día de contacto)."</span> <span class="k">if</span> <span class="n">dias_compartidos</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span>
+       <span class="p">(</span><span class="sa">f</span><span class="s2">" (comparten </span><span class="si">{</span><span class="n">dias_compartidos</span><span class="si">}</span><span class="s2"> días de contacto)."</span> <span class="k">if</span> <span class="n">dias_compartidos</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">"."</span><span class="p">)),</span>
+    <span class="s2">"De esta forma, la prueba mide lo que importa para el uso real: el desempeño en periodos posteriores a los del "</span>
+    <span class="s2">"ajuste. El cambio de prevalencia es un desplazamiento de la clase (*prior shift*) que el modelo no observa "</span>
+    <span class="sa">f</span><span class="s2">"durante el ajuste: las probabilidades aprendidas con una tasa base del </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> tenderán a subestimar "</span>
+    <span class="s2">"la de prueba, y un umbral elegido en entrenamiento puede no servir en prueba. También cambia la línea base: el "</span>
+    <span class="sa">f</span><span class="s2">"Dummy, que siempre predice </span><span class="se">\"</span><span class="s2">no suscribe</span><span class="se">\"</span><span class="s2">, acierta en prueba el </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_te</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> y no el "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> que lograría en entrenamiento."</span><span class="p">,</span>
+    <span class="s2">"Por tanto, corresponde validar dentro de entrenamiento con un esquema temporal (sección 3), evaluar con métricas "</span>
+    <span class="s2">"que no dependan del umbral (AUC) junto con AUC-PR, recall, F1 y calibración, y analizar en la sección 4 el efecto "</span>
+    <span class="s2">"del cambio de prevalencia sobre el umbral y la calibración."</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_959cb">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_959cb_level0_col0" class="col_heading level0 col0" >Filas</th>
+      <th id="T_959cb_level0_col1" class="col_heading level0 col1" >Desde</th>
+      <th id="T_959cb_level0_col2" class="col_heading level0 col2" >Hasta</th>
+      <th id="T_959cb_level0_col3" class="col_heading level0 col3" >Positivos (suscribe)</th>
+      <th id="T_959cb_level0_col4" class="col_heading level0 col4" >% positivos</th>
+      <th id="T_959cb_level0_col5" class="col_heading level0 col5" >% de 2008</th>
+      <th id="T_959cb_level0_col6" class="col_heading level0 col6" >% de 2009</th>
+      <th id="T_959cb_level0_col7" class="col_heading level0 col7" >% de 2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_959cb_level0_row0" class="row_heading level0 row0" >Total sin duplicados exactos</th>
+      <td id="T_959cb_row0_col0" class="data row0 col0" >41 176</td>
+      <td id="T_959cb_row0_col1" class="data row0 col1" >2008-05</td>
+      <td id="T_959cb_row0_col2" class="data row0 col2" >2010-11</td>
+      <td id="T_959cb_row0_col3" class="data row0 col3" >4 639</td>
+      <td id="T_959cb_row0_col4" class="data row0 col4" >11,27</td>
+      <td id="T_959cb_row0_col5" class="data row0 col5" >67,23</td>
+      <td id="T_959cb_row0_col6" class="data row0 col6" >27,77</td>
+      <td id="T_959cb_row0_col7" class="data row0 col7" >5,00</td>
+    </tr>
+    <tr>
+      <th id="T_959cb_level0_row1" class="row_heading level0 row1" >Entrenamiento (primer 80 %)</th>
+      <td id="T_959cb_row1_col0" class="data row1 col0" >32 940</td>
+      <td id="T_959cb_row1_col1" class="data row1 col1" >2008-05</td>
+      <td id="T_959cb_row1_col2" class="data row1 col2" >2009-05</td>
+      <td id="T_959cb_row1_col3" class="data row1 col3" >2 100</td>
+      <td id="T_959cb_row1_col4" class="data row1 col4" >6,38</td>
+      <td id="T_959cb_row1_col5" class="data row1 col5" >84,04</td>
+      <td id="T_959cb_row1_col6" class="data row1 col6" >15,96</td>
+      <td id="T_959cb_row1_col7" class="data row1 col7" >0,00</td>
+    </tr>
+    <tr>
+      <th id="T_959cb_level0_row2" class="row_heading level0 row2" >Prueba (último 20 %)</th>
+      <td id="T_959cb_row2_col0" class="data row2 col0" >8 236</td>
+      <td id="T_959cb_row2_col1" class="data row2 col1" >2009-05</td>
+      <td id="T_959cb_row2_col2" class="data row2 col2" >2010-11</td>
+      <td id="T_959cb_row2_col3" class="data row2 col3" >2 539</td>
+      <td id="T_959cb_row2_col4" class="data row2 col4" >30,83</td>
+      <td id="T_959cb_row2_col5" class="data row2 col5" >0,00</td>
+      <td id="T_959cb_row2_col6" class="data row2 col6" >75,01</td>
+      <td id="T_959cb_row2_col7" class="data row2 col7" >24,99</td>
+    </tr>
+  </tbody>
+</table>
+</div><p><strong>Interpretación.</strong> Tras eliminar 12 duplicados exactos quedan 41 176 registros. El entrenamiento tiene 32 940 registros, de 2008-05 a 2009-05, y la prueba 8 236, de 2009-05 a 2010-11. Suscribe el 6,4 % en entrenamiento y el 30,8 % en prueba, 4,8 veces más. El entrenamiento es en un 84,0 % de 2008, mientras que la prueba es en un 25,0 % de 2010 y no tiene registros de 2008. El corte cae dentro de 2009-05, único mes presente en ambos conjuntos (comparten 1 día de contacto).</p>
+<p>De esta forma, la prueba mide lo que importa para el uso real: el desempeño en periodos posteriores a los del ajuste. El cambio de prevalencia es un desplazamiento de la clase (<em>prior shift</em>) que el modelo no observa durante el ajuste: las probabilidades aprendidas con una tasa base del 6,4 % tenderán a subestimar la de prueba, y un umbral elegido en entrenamiento puede no servir en prueba. También cambia la línea base: el Dummy, que siempre predice «no suscribe», acierta en prueba el 69,2 % y no el 93,6 % que lograría en entrenamiento.</p>
+<p>Por tanto, corresponde validar dentro de entrenamiento con un esquema temporal (sección 3), evaluar con métricas que no dependan del umbral (AUC) junto con AUC-PR, recall, F1 y calibración, y analizar en la sección 4 el efecto del cambio de prevalencia sobre el umbral y la calibración.</p>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./desarrollo"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_base-de-datos.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">1. Base de datos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_analisis-exploratorio.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">3. Análisis exploratorio de datos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
