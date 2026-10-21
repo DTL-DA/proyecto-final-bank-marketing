@@ -1,0 +1,105 @@
+{
+  "modelo": "naive_bayes",
+  "nombre": "Naive Bayes",
+  "balanceo": "class_weight",
+  "optimizador": "bayes",
+  "semilla": 42,
+  "hiperparametros": {
+    "modelo__var_smoothing": 0.03251039834325532
+  },
+  "salida": "predict_proba",
+  "platt": null,
+  "umbral": "0,5 sobre la probabilidad",
+  "versiones": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "imblearn": "0.14.2",
+    "xgboost": "3.4.1",
+    "joblib": "1.6.0",
+    "scipy": "1.18.1"
+  },
+  "columnas_entrada": [
+    "age",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "duration",
+    "campaign",
+    "pdays",
+    "previous",
+    "poutcome",
+    "emp.var.rate",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "euribor3m",
+    "nr.employed"
+  ],
+  "variables_usadas": [
+    "age",
+    "campaign",
+    "pdays",
+    "previous",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "nr.employed",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "poutcome"
+  ],
+  "esquema": "data/esquema.json",
+  "metricas_bucle_externo": {
+    "auc_pr": {
+      "media": 0.10275449250387365,
+      "de": 0.10808513609862269
+    },
+    "auc": {
+      "media": 0.5368053340745371,
+      "de": 0.10187812493606012
+    },
+    "f1": {
+      "media": 0.14426891125345176,
+      "de": 0.1031633797820712
+    },
+    "recall": {
+      "media": 0.8498429351778867,
+      "de": 0.13307027257917373
+    },
+    "precision": {
+      "media": 0.08318893161365377,
+      "de": 0.06949424397946362
+    },
+    "accuracy": {
+      "media": 0.23741347905282334,
+      "de": 0.1971091602682182
+    },
+    "brier": {
+      "media": 0.5865639487452639,
+      "de": 0.19318814570492407
+    }
+  },
+  "metricas_prueba": {
+    "auc_pr": 0.5342730435221402,
+    "auc": 0.7142736553576735,
+    "f1": 0.5207620908646801,
+    "recall": 0.8397006695549429,
+    "precision": 0.37741193131527706,
+    "accuracy": 0.5235551238465275
+  },
+  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 16 combinaciones de Naive Bayes",
+  "entrenamiento": "Reentrenado con todo el conjunto de entrenamiento (2008-05 a 2009-05) con los hiperparámetros del mismo optimizador; prueba (2009-05 a 2010-11) usada una sola vez."
+}

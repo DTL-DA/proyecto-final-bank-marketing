@@ -1,0 +1,20 @@
+{
+  "registros": 41188,
+  "registros_sin_duplicados": 41176,
+  "entrenamiento": 32940,
+  "prueba": 8236,
+  "tasa_total": 0.11265417111780131,
+  "tasa_entrenamiento": 0.06375227686703097,
+  "tasa_prueba": 0.3082807187955318,
+  "periodo_inicio": "2008-05",
+  "periodo_fin": "2010-11",
+  "periodos": 26,
+  "euribor_inicio": 4.857,
+  "euribor_2009_05": 1.327,
+  "combinaciones": 165,
+  "evaluaciones": 15595,
+  "horas_cpu": 34.88666468238878,
+  "mejor_global": "Naive Bayes · class_weight · Bayesiana (Optuna TPE)",
+  "actualizado": "2026-10-21",
+  "version": "1.0"
+}
