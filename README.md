@@ -1,6 +1,6 @@
-# Proyecto final · Segundo entregable · Bank Marketing (UCI)
+# Proyecto final · Tercer entregable · Bank Marketing (UCI)
 
-Jupyter Book del segundo entregable del proyecto final de Machine Learning. El objetivo es predecir qué clientes suscribirán un depósito a término con la información disponible antes de la llamada y, como rama de regresión, estimar la duración de la llamada. Para ello se comparan 165 combinaciones de modelos, técnicas de balanceo y optimizadores de hiperparámetros, con validación anidada cronológica, análisis de costo computacional y comparación estadística.
+Jupyter Book del tercer entregable del proyecto final de Machine Learning. El objetivo es predecir qué clientes suscribirán un depósito a término con la información disponible antes de la llamada y, como rama de regresión, estimar la duración de la llamada. Para ello se comparan 165 combinaciones de modelos, técnicas de balanceo y optimizadores de hiperparámetros, con validación anidada cronológica, análisis de costo computacional y comparación estadística.
 
 **Libro en línea:** https://dtl-da.github.io/proyecto-final-bank-marketing/
 

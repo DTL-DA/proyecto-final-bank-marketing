@@ -67,7 +67,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="4. Diseño experimental del segundo entregable" href="04_diseno-experimental.html" />
+    <link rel="next" title="4. Diseño experimental del tercer entregable" href="04_diseno-experimental.html" />
     <link rel="prev" title="2. Reserva del conjunto de prueba" href="02_reserva-de-la-prueba.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="es"/>
@@ -212,7 +212,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../portada.html">
-                    Proyecto final · Segundo entregable: Bank Marketing
+                    Proyecto final · Tercer entregable: Bank Marketing
                 </a>
             </li>
         </ul>
@@ -231,7 +231,7 @@
 <li class="toctree-l1"><a class="reference internal" href="01_base-de-datos.html">1. Base de datos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_reserva-de-la-prueba.html">2. Reserva del conjunto de prueba</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Análisis exploratorio de datos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_diseno-experimental.html">4. Diseño experimental del segundo entregable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_diseno-experimental.html">4. Diseño experimental del tercer entregable</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_optimizacion-de-hiperparametros.html">5. Optimización de hiperparámetros</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_optimizacion-computacional.html">6. Optimización computacional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_evaluacion-de-modelos.html">7. Evaluación de modelos</a></li>
@@ -420,10 +420,10 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento-enunciado-seccion-2-9">3.7 Preprocesamiento (enunciado, sección 2.9)</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-del-segundo-entregable">Módulos del segundo entregable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-del-tercer-entregable">Módulos del tercer entregable</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nuevos-hallazgos-para-el-segundo-entregable">3.8 Nuevos hallazgos para el segundo entregable</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nuevos-hallazgos-para-el-tercer-entregable">3.8 Nuevos hallazgos para el tercer entregable</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-objetivo-de-la-rama-de-regresion-log1p-duration">3.8.1 Variable objetivo de la rama de regresión: <code class="docutils literal notranslate"><span class="pre">log1p(duration)</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desbalance-dentro-de-los-pliegues-de-la-validacion-anidada">3.8.2 Desbalance dentro de los pliegues de la validación anidada</a></li>
 </ul>
@@ -4710,8 +4710,8 @@ Mediana de pdays (sin 999) aprendida en entrenamiento: 5 días
 <p>Por lo anterior, conviene usar este <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> como base del modelo de la sección 4, con el hiperparámetro de regularización elegido por validación cruzada.</p>
 </div>
 </div>
-<section id="modulos-del-segundo-entregable">
-<h3>Módulos del segundo entregable<a class="headerlink" href="#modulos-del-segundo-entregable" title="Link to this heading">#</a></h3>
+<section id="modulos-del-tercer-entregable">
+<h3>Módulos del tercer entregable<a class="headerlink" href="#modulos-del-tercer-entregable" title="Link to this heading">#</a></h3>
 <p>A partir de aquí se cargan el paquete del proyecto (<code class="docutils literal notranslate"><span class="pre">src/bm</span></code>) y las librerías nuevas de este entregable. La celda va después del EDA heredado para que ninguna variable de las secciones 1 a 3 oculte las funciones del paquete.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4856,8 +4856,8 @@ Mediana de pdays (sin 999) aprendida en entrenamiento: 5 días
 </div>
 </section>
 </section>
-<section id="nuevos-hallazgos-para-el-segundo-entregable">
-<h2>3.8 Nuevos hallazgos para el segundo entregable<a class="headerlink" href="#nuevos-hallazgos-para-el-segundo-entregable" title="Link to this heading">#</a></h2>
+<section id="nuevos-hallazgos-para-el-tercer-entregable">
+<h2>3.8 Nuevos hallazgos para el tercer entregable<a class="headerlink" href="#nuevos-hallazgos-para-el-tercer-entregable" title="Link to this heading">#</a></h2>
 <p>El desarrollo de este entregable exige dos análisis que el EDA anterior no cubría: la variable continua de la rama de regresión, que la guía pide aunque <em>Bank Marketing</em> sea un problema de clasificación, y el desbalance dentro de los pliegues de la validación anidada, que condiciona la viabilidad de SMOTE y ADASYN. Ambos se calculan solo con el conjunto de entrenamiento.</p>
 <section id="variable-objetivo-de-la-rama-de-regresion-log1p-duration">
 <h3>3.8.1 Variable objetivo de la rama de regresión: <code class="docutils literal notranslate"><span class="pre">log1p(duration)</span></code><a class="headerlink" href="#variable-objetivo-de-la-rama-de-regresion-log1p-duration" title="Link to this heading">#</a></h3>
@@ -5191,7 +5191,7 @@ Mediana de pdays (sin 999) aprendida en entrenamiento: 5 días
        title="siguiente página">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">4. Diseño experimental del segundo entregable</p>
+        <p class="prev-next-title">4. Diseño experimental del tercer entregable</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -5250,10 +5250,10 @@ Mediana de pdays (sin 999) aprendida en entrenamiento: 5 días
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento-enunciado-seccion-2-9">3.7 Preprocesamiento (enunciado, sección 2.9)</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-del-segundo-entregable">Módulos del segundo entregable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulos-del-tercer-entregable">Módulos del tercer entregable</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nuevos-hallazgos-para-el-segundo-entregable">3.8 Nuevos hallazgos para el segundo entregable</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nuevos-hallazgos-para-el-tercer-entregable">3.8 Nuevos hallazgos para el tercer entregable</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-objetivo-de-la-rama-de-regresion-log1p-duration">3.8.1 Variable objetivo de la rama de regresión: <code class="docutils literal notranslate"><span class="pre">log1p(duration)</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desbalance-dentro-de-los-pliegues-de-la-validacion-anidada">3.8.2 Desbalance dentro de los pliegues de la validación anidada</a></li>
 </ul>

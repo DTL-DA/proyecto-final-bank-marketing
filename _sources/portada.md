@@ -1,4 +1,4 @@
-# Proyecto final · Segundo entregable: Bank Marketing
+# Proyecto final · Tercer entregable: Bank Marketing
 
 **Modelos de Machine Learning para clasificación y regresión con optimización de hiperparámetros, optimización computacional y validación estadística**
 
