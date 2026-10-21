@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: proyecto-ml-final-bank-marketing
+    name: proyecto-final-bank-marketing
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt

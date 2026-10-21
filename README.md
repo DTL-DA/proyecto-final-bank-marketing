@@ -1,8 +1,8 @@
-# Dashboard predictivo · Bank Marketing (UCI)
+# Proyecto final · Tercer entregable · Bank Marketing (UCI)
 
-Proyecto final de Machine Learning, tercer entregable. Aplicación en Dash Plotly que permite comprender el problema, explorar los datos y usar los mejores modelos para predecir si un cliente suscribirá un depósito a término, con la explicación SHAP de cada predicción. Los modelos provienen de la comparación de 165 combinaciones (7 modelos, 4 técnicas de balanceo y 5 optimizadores de hiperparámetros) con validación anidada cronológica.
+Proyecto final de Machine Learning. Este repositorio contiene el dashboard predictivo en Dash Plotly, que permite comprender el problema, explorar los datos y usar los mejores modelos para predecir si un cliente suscribirá un depósito a término, con la explicación SHAP de cada predicción. Los modelos provienen de la comparación de 165 combinaciones (7 modelos, 4 técnicas de balanceo y 5 optimizadores de hiperparámetros) con validación anidada cronológica.
 
-- **Jupyter Book del proyecto:** https://dtl-da.github.io/proyecto-final-bank-marketing/
+- **Jupyter Book del proyecto:** https://dtl-da.github.io/proyecto-final-bank-marketing/ (versión compilada en la rama `gh-pages`)
 - **Autor:** Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
 
 ## Secciones
@@ -51,7 +51,7 @@ python -m pytest                # 26 pruebas
 
 ## Despliegue en Render
 
-`render.yaml` define un servicio web gratuito que instala `requirements.txt` y arranca con `gunicorn app:server`, con Python 3.12. En Render: **New → Blueprint**, elegir este repositorio y aplicar. El primer acceso tras un periodo de inactividad puede tardar alrededor de un minuto.
+`render.yaml` define un servicio web gratuito que instala `requirements.txt` y arranca con `gunicorn app:server`, con Python 3.12 (también fijado en `.python-version`). En Render: **New → Blueprint**, elegir este repositorio y aplicar. El primer acceso tras un periodo de inactividad puede tardar alrededor de un minuto.
 
 Los artefactos se regeneran desde el proyecto del cuaderno con `scripts/exportar_dashboard.py`.
 
