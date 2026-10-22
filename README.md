@@ -52,7 +52,7 @@ python -m pytest                # 26 pruebas
 
 ## Despliegue en Render
 
-`render.yaml` define un servicio web gratuito que instala `requirements.txt` y arranca con `gunicorn app:server`, con Python 3.12 (también fijado en `.python-version`). En Render: **New → Blueprint**, elegir este repositorio y aplicar. El primer acceso tras un periodo de inactividad puede tardar alrededor de un minuto.
+`render.yaml` define un servicio web gratuito que instala `requirements.txt` y arranca con `gunicorn app:server`, con Python 3.12 (también fijado en `.python-version`). En Render: **New → Blueprint**, elegir este repositorio y aplicar. El plan gratuito suspende el servicio tras 15 minutos sin visitas: el primer acceso después tarda cerca de un minuto y medio (93 s medidos el 21/10/2026) y los siguientes responden de inmediato.
 
 Los artefactos se regeneran desde el proyecto del cuaderno con `scripts/exportar_dashboard.py`.
 
