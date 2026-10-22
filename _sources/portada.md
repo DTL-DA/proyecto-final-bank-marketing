@@ -1,5 +1,10 @@
 # Proyecto final · Tercer entregable: Bank Marketing
 
+```{image} imagenes/portada.jpg
+:alt: Portada del proyecto final, tercer entregable: Bank Marketing
+:width: 100%
+```
+
 **Modelos de Machine Learning para clasificación y regresión con optimización de hiperparámetros, optimización computacional y validación estadística**
 
 - **Autor:** Donny Torres
@@ -7,12 +12,13 @@
 - **Asignatura:** Machine Learning
 - **Fecha:** octubre de 2026
 - **Conjunto de datos:** *Bank Marketing* con contexto social y económico (`bank-additional-full.csv`), UCI Machine Learning Repository: <https://archive.ics.uci.edu/dataset/222/bank+marketing> (licencia CC BY 4.0)
+- **Dashboard predictivo en línea:** <https://proyecto-final-bank-marketing.onrender.com> (páginas Contexto, EDA y Modelos, con predicción en vivo y su explicación SHAP; está en el plan gratuito de Render, así que la primera carga tras 15 minutos sin visitas tarda cerca de un minuto y medio)
 
 ## Contenido
 
 El proyecto predice, con información disponible antes de la llamada, si un cliente contactado por el telemercadeo de un banco portugués suscribirá un depósito a término, y explora como rama de regresión la duración de la llamada. Sobre el modelo base del Entregable 2 se construye el *pipeline* combinatorio que pide la guía: 7 modelos × 4 técnicas de balanceo × 4 métodos de optimización en clasificación (112), 7 modelos × 4 métodos en regresión (28) y, como extensión propia, GOAT iterativo en los modelos con tres o más hiperparámetros (25): **165 combinaciones** evaluadas con validación cruzada anidada y cronológica.
 
-**Parte I. El dashboard y la interpretación de sus resultados.** Un capítulo por pestaña del dashboard, con las mismas figuras interactivas y una interpretación de cada resultado:
+**Parte I. El dashboard y la interpretación de sus resultados.** Un capítulo por cada una de las seis pestañas del dashboard de análisis, con sus mismas figuras interactivas y una interpretación de cada resultado:
 
 1. **Contexto y diseño experimental:** partición, explosión combinatoria y validación anidada.
 2. **Tabla maestra y balanceo:** las 165 combinaciones y el efecto de SMOTE, ADASYN y `class_weight`.
@@ -25,7 +31,7 @@ El proyecto predice, con información disponible antes de la llamada, si un clie
 
 ## Cómo leer las interpretaciones
 
-Cada interpretación tiene tres párrafos: primero lo que muestra el resultado, con las cifras reales; luego lo que significa para el problema o el modelo; y al final la decisión que se toma. Las cifras se calculan en la misma ejecución que genera el texto, y el dashboard, la Parte I y la Parte II leen los mismos resultados, de modo que coinciden.
+Cada interpretación tiene tres párrafos: primero lo que muestra el resultado, con las cifras reales; luego lo que significa para el problema o el modelo; y al final la decisión que se toma. Las cifras se calculan en la misma ejecución que genera el texto, y el dashboard de análisis, la Parte I y la Parte II leen los mismos resultados, de modo que coinciden.
 
 ## Reproducibilidad
 

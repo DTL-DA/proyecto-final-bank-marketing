@@ -400,6 +400,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="proyecto-final-tercer-entregable-bank-marketing">
 <h1>Proyecto final · Tercer entregable: Bank Marketing<a class="headerlink" href="#proyecto-final-tercer-entregable-bank-marketing" title="Link to this heading">#</a></h1>
+<a class="reference internal image-reference" href="_images/portada.jpg"><img alt="Portada del proyecto final, tercer entregable: Bank Marketing" src="_images/portada.jpg" style="width: 100%;" />
+</a>
 <p><strong>Modelos de Machine Learning para clasificación y regresión con optimización de hiperparámetros, optimización computacional y validación estadística</strong></p>
 <ul class="simple">
 <li><p><strong>Autor:</strong> Donny Torres</p></li>
@@ -407,11 +409,12 @@
 <li><p><strong>Asignatura:</strong> Machine Learning</p></li>
 <li><p><strong>Fecha:</strong> octubre de 2026</p></li>
 <li><p><strong>Conjunto de datos:</strong> <em>Bank Marketing</em> con contexto social y económico (<code class="docutils literal notranslate"><span class="pre">bank-additional-full.csv</span></code>), UCI Machine Learning Repository: <a class="reference external" href="https://archive.ics.uci.edu/dataset/222/bank+marketing">https://archive.ics.uci.edu/dataset/222/bank+marketing</a> (licencia CC BY 4.0)</p></li>
+<li><p><strong>Dashboard predictivo en línea:</strong> <a class="reference external" href="https://proyecto-final-bank-marketing.onrender.com">https://proyecto-final-bank-marketing.onrender.com</a> (páginas Contexto, EDA y Modelos, con predicción en vivo y su explicación SHAP; está en el plan gratuito de Render, así que la primera carga tras 15 minutos sin visitas tarda cerca de un minuto y medio)</p></li>
 </ul>
 <section id="contenido">
 <h2>Contenido<a class="headerlink" href="#contenido" title="Link to this heading">#</a></h2>
 <p>El proyecto predice, con información disponible antes de la llamada, si un cliente contactado por el telemercadeo de un banco portugués suscribirá un depósito a término, y explora como rama de regresión la duración de la llamada. Sobre el modelo base del Entregable 2 se construye el <em>pipeline</em> combinatorio que pide la guía: 7 modelos × 4 técnicas de balanceo × 4 métodos de optimización en clasificación (112), 7 modelos × 4 métodos en regresión (28) y, como extensión propia, GOAT iterativo en los modelos con tres o más hiperparámetros (25): <strong>165 combinaciones</strong> evaluadas con validación cruzada anidada y cronológica.</p>
-<p><strong>Parte I. El dashboard y la interpretación de sus resultados.</strong> Un capítulo por pestaña del dashboard, con las mismas figuras interactivas y una interpretación de cada resultado:</p>
+<p><strong>Parte I. El dashboard y la interpretación de sus resultados.</strong> Un capítulo por cada una de las seis pestañas del dashboard de análisis, con sus mismas figuras interactivas y una interpretación de cada resultado:</p>
 <ol class="arabic simple">
 <li><p><strong>Contexto y diseño experimental:</strong> partición, explosión combinatoria y validación anidada.</p></li>
 <li><p><strong>Tabla maestra y balanceo:</strong> las 165 combinaciones y el efecto de SMOTE, ADASYN y <code class="docutils literal notranslate"><span class="pre">class_weight</span></code>.</p></li>
@@ -424,7 +427,7 @@
 </section>
 <section id="como-leer-las-interpretaciones">
 <h2>Cómo leer las interpretaciones<a class="headerlink" href="#como-leer-las-interpretaciones" title="Link to this heading">#</a></h2>
-<p>Cada interpretación tiene tres párrafos: primero lo que muestra el resultado, con las cifras reales; luego lo que significa para el problema o el modelo; y al final la decisión que se toma. Las cifras se calculan en la misma ejecución que genera el texto, y el dashboard, la Parte I y la Parte II leen los mismos resultados, de modo que coinciden.</p>
+<p>Cada interpretación tiene tres párrafos: primero lo que muestra el resultado, con las cifras reales; luego lo que significa para el problema o el modelo; y al final la decisión que se toma. Las cifras se calculan en la misma ejecución que genera el texto, y el dashboard de análisis, la Parte I y la Parte II leen los mismos resultados, de modo que coinciden.</p>
 </section>
 <section id="reproducibilidad">
 <h2>Reproducibilidad<a class="headerlink" href="#reproducibilidad" title="Link to this heading">#</a></h2>
