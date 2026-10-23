@@ -1,18 +1,18 @@
 {
   "modelo": "svm",
   "nombre": "SVM (Nyström + LinearSVC)",
-  "balanceo": "ninguno",
-  "optimizador": "goat",
+  "balanceo": "class_weight",
+  "optimizador": "grid",
   "semilla": 42,
   "hiperparametros": {
-    "nys__gamma": 0.005623413251903492,
-    "nys__n_components": 475,
-    "modelo__C": 0.010000000000000004
+    "nys__gamma": 0.003,
+    "nys__n_components": 500,
+    "modelo__C": 0.1
   },
   "salida": "decision_function",
   "platt": {
-    "a": 6.505177407136651,
-    "b": 2.8400864666532524,
+    "a": 2.728675707628899,
+    "b": -2.6505971475284738,
     "nota": "Escalado de Platt ajustado con los puntajes de entrenamiento del modelo final"
   },
   "umbral": "0 sobre la función de decisión",
@@ -70,28 +70,28 @@
   "esquema": "data/esquema.json",
   "metricas_bucle_externo": {
     "auc_pr": {
-      "media": 0.09450554092398822,
-      "de": 0.09065797676900682
+      "media": 0.09231935739522774,
+      "de": 0.0914249632307142
     },
     "auc": {
-      "media": 0.5205763397439565,
-      "de": 0.08545258356699428
+      "media": 0.5123290100888773,
+      "de": 0.09827396948425621
     },
     "f1": {
-      "media": 0.06160092807424594,
-      "de": 0.13774386265108915
+      "media": 0.11804169003950833,
+      "de": 0.08092727167723877
     },
     "recall": {
-      "media": 0.13792207792207792,
-      "de": 0.3084031418317892
+      "media": 0.5839738561755251,
+      "de": 0.4016282748907909
     },
     "precision": {
-      "media": 0.03965646004480956,
-      "de": 0.08867454040719853
+      "media": 0.06695364982677003,
+      "de": 0.04590980511419776
     },
     "accuracy": {
-      "media": 0.8704918032786886,
-      "de": 0.17077437740036755
+      "media": 0.4270309653916211,
+      "de": 0.3069913818786265
     },
     "brier": {
       "media": NaN,
@@ -99,13 +99,13 @@
     }
   },
   "metricas_prueba": {
-    "auc_pr": 0.5350017604342606,
-    "auc": 0.7135440507061233,
-    "f1": 0.0,
-    "recall": 0.0,
-    "precision": 0.0,
-    "accuracy": 0.6917192812044682
+    "auc_pr": 0.5384017946229137,
+    "auc": 0.7239434490199336,
+    "f1": 0.4954204829308909,
+    "recall": 0.9373769200472627,
+    "precision": 0.3366812844815391,
+    "accuracy": 0.4113647401651287
   },
-  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 20 combinaciones de SVM (Nyström + LinearSVC)",
+  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 16 combinaciones de SVM (Nyström + LinearSVC)",
   "entrenamiento": "Reentrenado con todo el conjunto de entrenamiento (2008-05 a 2009-05) con los hiperparámetros del mismo optimizador; prueba (2009-05 a 2010-11) usada una sola vez."
 }

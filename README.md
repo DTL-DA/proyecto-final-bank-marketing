@@ -1,6 +1,6 @@
 # Proyecto final · Tercer entregable · Bank Marketing (UCI)
 
-Proyecto final de Machine Learning. Este repositorio contiene el dashboard predictivo en Dash Plotly, que permite comprender el problema, explorar los datos y usar los mejores modelos para predecir si un cliente suscribirá un depósito a término, con la explicación SHAP de cada predicción. Los modelos provienen de la comparación de 165 combinaciones (7 modelos, 4 técnicas de balanceo y 5 optimizadores de hiperparámetros) con validación anidada cronológica.
+Proyecto final de Machine Learning. Este repositorio contiene el dashboard predictivo en Dash Plotly, que permite comprender el problema, explorar los datos y usar los mejores modelos para predecir si un cliente suscribirá un depósito a término, con la explicación SHAP de cada predicción. Los modelos provienen de la comparación de 140 combinaciones (7 modelos, 4 técnicas de balanceo y 4 optimizadores de hiperparámetros) con validación anidada cronológica.
 
 - **Dashboard en línea:** https://proyecto-final-bank-marketing.onrender.com
 - **Jupyter Book del proyecto:** https://dtl-da.github.io/proyecto-final-bank-marketing/ (versión compilada en la rama `gh-pages`)

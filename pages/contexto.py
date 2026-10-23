@@ -37,7 +37,7 @@ PASOS = [("bi-database", "ETL", "Limpieza, códigos especiales y auditoría de f
          ("bi-bar-chart", "EDA", "Distribuciones, deriva y cambio de régimen"),
          ("bi-diagram-3", "7 modelos", "KNN, Naive Bayes, logística, árbol, bosque, XGBoost y SVM"),
          ("bi-sliders", "4 balanceos", "Sin balanceo, SMOTE, ADASYN y class_weight"),
-         ("bi-search", "5 optimizadores", "Grid, Random, Bayesiana, Genético y GOAT"),
+         ("bi-search", "4 optimizadores", "Grid, Random, Bayesiana y Genético"),
          ("bi-layers", "Validación anidada", "5 pliegues externos y 3 internos, cronológicos"),
          ("bi-graph-up-arrow", "Comparación estadística", "Friedman, Nemenyi, DeLong y tamaño del efecto"),
          ("bi-lightbulb", "Modelo original", "Propuesta propia validada con las mismas reglas")]

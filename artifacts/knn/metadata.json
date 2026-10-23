@@ -102,6 +102,6 @@
     "precision": 0.3450212507589557,
     "accuracy": 0.4437833899951433
   },
-  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 20 combinaciones de KNN",
+  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 16 combinaciones de KNN",
   "entrenamiento": "Reentrenado con todo el conjunto de entrenamiento (2008-05 a 2009-05) con los hiperparámetros del mismo optimizador; prueba (2009-05 a 2010-11) usada una sola vez."
 }

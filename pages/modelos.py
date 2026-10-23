@@ -126,13 +126,13 @@ def layout():
     c = contexto()
     return html.Div([
         html.H1("Modelos", className="h3 mb-1"),
-        html.P("Mejor combinación de cada modelo de clasificación entre las 165 evaluadas con validación anidada "
+        html.P("Mejor combinación de cada modelo de clasificación entre las 140 evaluadas con validación anidada "
                "cronológica. Las métricas externas son la media y la desviación estándar de los 5 pliegues externos; las "
                "de prueba, una sola evaluación en 2009 y 2010.", className="text-muted"),
         tarjeta("Tabla de líderes", "Ordene con los encabezados o escriba en la fila de filtros. La fila resaltada es la "
                 "mejor combinación global por AUC-PR externo.", tabla_lideres(),
                 html.P(f"Mejor combinación global: {c['mejor_global']}. Criterio de selección: mayor AUC-PR medio del "
-                       "bucle externo dentro de cada modelo (incluye la extensión GOAT iterativo).", className="insight mt-3 mb-0")),
+                       "bucle externo dentro de cada modelo.", className="insight mt-3 mb-0")),
         dbc.Card(dbc.CardBody(dbc.Row([
             dbc.Col(html.Div([dbc.Label("Modelo seleccionado", html_for="mod-selector", className="h6 mb-1 d-block"),
                               html.P("Controla la predicción, el diagnóstico y la interpretabilidad de abajo.",

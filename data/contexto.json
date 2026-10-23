@@ -11,10 +11,10 @@
   "periodos": 26,
   "euribor_inicio": 4.857,
   "euribor_2009_05": 1.327,
-  "combinaciones": 165,
-  "evaluaciones": 15595,
-  "horas_cpu": 34.88666468238878,
+  "combinaciones": 140,
+  "evaluaciones": 13730,
+  "horas_cpu": 29.901631778666683,
   "mejor_global": "Naive Bayes · class_weight · Bayesiana (Optuna TPE)",
-  "actualizado": "2026-10-21",
+  "actualizado": "2026-10-22",
   "version": "1.0"
 }

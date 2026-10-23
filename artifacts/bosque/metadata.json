@@ -103,6 +103,6 @@
     "precision": 0.6666666666666666,
     "accuracy": 0.6918406993686256
   },
-  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 20 combinaciones de Random Forest",
+  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 16 combinaciones de Random Forest",
   "entrenamiento": "Reentrenado con todo el conjunto de entrenamiento (2008-05 a 2009-05) con los hiperparámetros del mismo optimizador; prueba (2009-05 a 2010-11) usada una sola vez."
 }

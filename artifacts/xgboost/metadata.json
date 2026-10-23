@@ -2,13 +2,13 @@
   "modelo": "xgboost",
   "nombre": "XGBoost",
   "balanceo": "class_weight",
-  "optimizador": "goat",
+  "optimizador": "genetico",
   "semilla": 42,
   "hiperparametros": {
-    "modelo__n_estimators": 275,
-    "modelo__learning_rate": 0.01,
-    "modelo__max_depth": 6,
-    "modelo__subsample": 0.875
+    "modelo__n_estimators": 109,
+    "modelo__learning_rate": 0.03370099918442937,
+    "modelo__max_depth": 10,
+    "modelo__subsample": 0.9607187263653514
   },
   "salida": "predict_proba",
   "platt": null,
@@ -67,42 +67,42 @@
   "esquema": "data/esquema.json",
   "metricas_bucle_externo": {
     "auc_pr": {
-      "media": 0.09176043007589191,
-      "de": 0.07902977880052757
+      "media": 0.09052485757483238,
+      "de": 0.07723864210009128
     },
     "auc": {
-      "media": 0.533626490606901,
-      "de": 0.06488371114927323
+      "media": 0.5252001687208517,
+      "de": 0.05425319310458439
     },
     "f1": {
-      "media": 0.13795742413418155,
-      "de": 0.09268817385272986
+      "media": 0.11840018757805185,
+      "de": 0.09665717263194847
     },
     "recall": {
-      "media": 0.512325851494755,
-      "de": 0.2249398943783819
+      "media": 0.18664022987147696,
+      "de": 0.18930262876557236
     },
     "precision": {
-      "media": 0.08178225048352587,
-      "de": 0.05981719330621166
+      "media": 0.0897447474969639,
+      "de": 0.0626310604953656
     },
     "accuracy": {
-      "media": 0.5448087431693989,
-      "de": 0.1754140918401733
+      "media": 0.8236429872495445,
+      "de": 0.10692193953353367
     },
     "brier": {
-      "media": 0.2571371227502823,
-      "de": 0.06613405416907177
+      "media": 0.13843224197626114,
+      "de": 0.06459159593799726
     }
   },
   "metricas_prueba": {
-    "auc_pr": 0.39161057369990515,
-    "auc": 0.5819644647587507,
-    "f1": 0.4370559818130151,
-    "recall": 0.6057502953918865,
-    "precision": 0.3418537452767282,
-    "accuracy": 0.5189412336085478
+    "auc_pr": 0.36931343654953086,
+    "auc": 0.5592193413433256,
+    "f1": 0.36666036666036667,
+    "recall": 0.38204017329657347,
+    "precision": 0.35247093023255816,
+    "accuracy": 0.5931277319086935
   },
-  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 20 combinaciones de XGBoost",
+  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 16 combinaciones de XGBoost",
   "entrenamiento": "Reentrenado con todo el conjunto de entrenamiento (2008-05 a 2009-05) con los hiperparámetros del mismo optimizador; prueba (2009-05 a 2010-11) usada una sola vez."
 }

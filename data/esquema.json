@@ -10,7 +10,7 @@
       "max": 98,
       "entero": true,
       "paso": 1,
-      "defecto": 36
+      "defecto": 36.0
     },
     {
       "variable": "campaign",
@@ -22,7 +22,7 @@
       "max": 56,
       "entero": true,
       "paso": 1,
-      "defecto": 2
+      "defecto": 2.0
     },
     {
       "variable": "pdays",
@@ -49,7 +49,7 @@
       "max": 7,
       "entero": true,
       "paso": 1,
-      "defecto": 0
+      "defecto": 0.0
     },
     {
       "variable": "cons.price.idx",
