@@ -87,7 +87,7 @@ def layout():
         "Pregunta de investigación y objetivos",
         html.P(html.B("¿Qué tan bien se puede anticipar, con información previa a la llamada, si un cliente suscribirá "
                       "un depósito a término, y qué combinación de modelo, balanceo y optimizador lo hace mejor?")),
-        html.Ol([html.Li("Comparar 7 modelos, 4 técnicas de balanceo y 5 optimizadores de hiperparámetros con validación "
+        html.Ol([html.Li("Comparar 7 modelos, 4 técnicas de balanceo y 4 optimizadores de hiperparámetros con validación "
                          "anidada cronológica."),
                  html.Li("Elegir la mejor combinación de cada modelo con criterios estadísticos, no visuales."),
                  html.Li("Poner los modelos a disposición para predecir y explicar cada predicción con SHAP."),
