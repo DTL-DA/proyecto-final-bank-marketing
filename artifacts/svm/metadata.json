@@ -1,0 +1,111 @@
+{
+  "modelo": "svm",
+  "nombre": "SVM (Nyström + LinearSVC)",
+  "balanceo": "class_weight",
+  "optimizador": "grid",
+  "semilla": 42,
+  "hiperparametros": {
+    "nys__gamma": 0.003,
+    "nys__n_components": 500,
+    "modelo__C": 0.1
+  },
+  "salida": "decision_function",
+  "platt": {
+    "a": 2.728675707628899,
+    "b": -2.6505971475284738,
+    "nota": "Escalado de Platt ajustado con los puntajes de entrenamiento del modelo final"
+  },
+  "umbral": "0 sobre la función de decisión",
+  "versiones": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "imblearn": "0.14.2",
+    "xgboost": "3.4.1",
+    "joblib": "1.6.0",
+    "scipy": "1.18.1"
+  },
+  "columnas_entrada": [
+    "age",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "duration",
+    "campaign",
+    "pdays",
+    "previous",
+    "poutcome",
+    "emp.var.rate",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "euribor3m",
+    "nr.employed"
+  ],
+  "variables_usadas": [
+    "age",
+    "campaign",
+    "pdays",
+    "previous",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "nr.employed",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "poutcome"
+  ],
+  "esquema": "data/esquema.json",
+  "metricas_bucle_externo": {
+    "auc_pr": {
+      "media": 0.09231935739522774,
+      "de": 0.0914249632307142
+    },
+    "auc": {
+      "media": 0.5123290100888773,
+      "de": 0.09827396948425621
+    },
+    "f1": {
+      "media": 0.11804169003950833,
+      "de": 0.08092727167723877
+    },
+    "recall": {
+      "media": 0.5839738561755251,
+      "de": 0.4016282748907909
+    },
+    "precision": {
+      "media": 0.06695364982677003,
+      "de": 0.04590980511419776
+    },
+    "accuracy": {
+      "media": 0.4270309653916211,
+      "de": 0.3069913818786265
+    },
+    "brier": {
+      "media": NaN,
+      "de": NaN
+    }
+  },
+  "metricas_prueba": {
+    "auc_pr": 0.5384017946229137,
+    "auc": 0.7239434490199336,
+    "f1": 0.4954204829308909,
+    "recall": 0.9373769200472627,
+    "precision": 0.3366812844815391,
+    "accuracy": 0.4113647401651287
+  },
+  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 16 combinaciones de SVM (Nyström + LinearSVC)",
+  "entrenamiento": "Reentrenado con todo el conjunto de entrenamiento (2008-05 a 2009-05) con los hiperparámetros del mismo optimizador; prueba (2009-05 a 2010-11) usada una sola vez."
+}

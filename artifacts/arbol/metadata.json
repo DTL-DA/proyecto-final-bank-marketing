@@ -1,0 +1,107 @@
+{
+  "modelo": "arbol",
+  "nombre": "Árbol de decisión",
+  "balanceo": "smote",
+  "optimizador": "bayes",
+  "semilla": 42,
+  "hiperparametros": {
+    "modelo__max_depth": 13,
+    "modelo__min_samples_leaf": 36,
+    "modelo__criterion": "gini"
+  },
+  "salida": "predict_proba",
+  "platt": null,
+  "umbral": "0,5 sobre la probabilidad",
+  "versiones": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "imblearn": "0.14.2",
+    "xgboost": "3.4.1",
+    "joblib": "1.6.0",
+    "scipy": "1.18.1"
+  },
+  "columnas_entrada": [
+    "age",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "duration",
+    "campaign",
+    "pdays",
+    "previous",
+    "poutcome",
+    "emp.var.rate",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "euribor3m",
+    "nr.employed"
+  ],
+  "variables_usadas": [
+    "age",
+    "campaign",
+    "pdays",
+    "previous",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "nr.employed",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "poutcome"
+  ],
+  "esquema": "data/esquema.json",
+  "metricas_bucle_externo": {
+    "auc_pr": {
+      "media": 0.0856130417093228,
+      "de": 0.07276835895196522
+    },
+    "auc": {
+      "media": 0.5295036138065722,
+      "de": 0.07343798457656793
+    },
+    "f1": {
+      "media": 0.10666338911964557,
+      "de": 0.1252608350098475
+    },
+    "recall": {
+      "media": 0.1744576689759995,
+      "de": 0.25351494680567865
+    },
+    "precision": {
+      "media": 0.08065204216372801,
+      "de": 0.08057100719503961
+    },
+    "accuracy": {
+      "media": 0.8322040072859747,
+      "de": 0.10849494021955439
+    },
+    "brier": {
+      "media": 0.12962317775479915,
+      "de": 0.08015941746369068
+    }
+  },
+  "metricas_prueba": {
+    "auc_pr": 0.3739158285057819,
+    "auc": 0.5669425316821668,
+    "f1": 0.3288782816229117,
+    "recall": 0.27136667979519496,
+    "precision": 0.41732283464566927,
+    "accuracy": 0.6585721223895095
+  },
+  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 16 combinaciones de Árbol de decisión",
+  "entrenamiento": "Reentrenado con todo el conjunto de entrenamiento (2008-05 a 2009-05) con los hiperparámetros del mismo optimizador; prueba (2009-05 a 2010-11) usada una sola vez."
+}

@@ -1,0 +1,107 @@
+{
+  "modelo": "knn",
+  "nombre": "KNN",
+  "balanceo": "class_weight",
+  "optimizador": "grid",
+  "semilla": 42,
+  "hiperparametros": {
+    "modelo__n_neighbors": 300,
+    "modelo__weights": "distance",
+    "modelo__p": 1
+  },
+  "salida": "predict_proba",
+  "platt": null,
+  "umbral": "0,5 sobre la probabilidad",
+  "versiones": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "imblearn": "0.14.2",
+    "xgboost": "3.4.1",
+    "joblib": "1.6.0",
+    "scipy": "1.18.1"
+  },
+  "columnas_entrada": [
+    "age",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "duration",
+    "campaign",
+    "pdays",
+    "previous",
+    "poutcome",
+    "emp.var.rate",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "euribor3m",
+    "nr.employed"
+  ],
+  "variables_usadas": [
+    "age",
+    "campaign",
+    "pdays",
+    "previous",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "nr.employed",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "poutcome"
+  ],
+  "esquema": "data/esquema.json",
+  "metricas_bucle_externo": {
+    "auc_pr": {
+      "media": 0.08420067156592555,
+      "de": 0.06738930891027857
+    },
+    "auc": {
+      "media": 0.5166936697829059,
+      "de": 0.06739608559294248
+    },
+    "f1": {
+      "media": 0.1338189276261116,
+      "de": 0.08585595628992314
+    },
+    "recall": {
+      "media": 0.6790134360778382,
+      "de": 0.14512218610194172
+    },
+    "precision": {
+      "media": 0.07886618820345145,
+      "de": 0.06153413358952208
+    },
+    "accuracy": {
+      "media": 0.3563570127504554,
+      "de": 0.17288904187616977
+    },
+    "brier": {
+      "media": 0.2926211927032852,
+      "de": 0.05894795091771579
+    }
+  },
+  "metricas_prueba": {
+    "auc_pr": 0.499761449424612,
+    "auc": 0.6879911229302433,
+    "f1": 0.49808261203023996,
+    "recall": 0.8952343442300118,
+    "precision": 0.3450212507589557,
+    "accuracy": 0.4437833899951433
+  },
+  "motivo_seleccion": "Mayor AUC-PR medio del bucle externo entre las 16 combinaciones de KNN",
+  "entrenamiento": "Reentrenado con todo el conjunto de entrenamiento (2008-05 a 2009-05) con los hiperparámetros del mismo optimizador; prueba (2009-05 a 2010-11) usada una sola vez."
+}

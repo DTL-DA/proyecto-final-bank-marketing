@@ -1,0 +1,15 @@
+# Dashboard predictivo del proyecto final (tercer entregable) - Bank Marketing (UCI) - Donny Torres
+# Python 3.12. Versiones exactas: los modelos de artifacts/ se serializaron con estas mismas versiones.
+# xgboost-cpu es la misma versión de xgboost sin las librerías de CUDA (más liviana para Render).
+dash==4.4.1
+dash-bootstrap-components==2.0.4
+plotly==7.1.0
+pandas==3.0.6
+numpy==2.5.4
+pyarrow==26.0.0
+scipy==1.18.1
+scikit-learn==1.9.1
+imbalanced-learn==0.14.2
+xgboost-cpu==3.4.1
+joblib==1.6.0
+gunicorn==23.0.0

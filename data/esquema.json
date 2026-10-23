@@ -1,0 +1,271 @@
+{
+  "variables": [
+    {
+      "variable": "age",
+      "etiqueta": "Edad",
+      "grupo": "Cliente",
+      "ayuda": "Años",
+      "tipo": "numerica",
+      "min": 17,
+      "max": 98,
+      "entero": true,
+      "paso": 1,
+      "defecto": 36.0
+    },
+    {
+      "variable": "campaign",
+      "etiqueta": "Contactos en esta campaña",
+      "grupo": "Contacto",
+      "ayuda": "Incluye el último",
+      "tipo": "numerica",
+      "min": 1,
+      "max": 56,
+      "entero": true,
+      "paso": 1,
+      "defecto": 2.0
+    },
+    {
+      "variable": "pdays",
+      "etiqueta": "Días desde el último contacto",
+      "grupo": "Historial",
+      "ayuda": "999 = sin contacto previo",
+      "tipo": "numerica",
+      "min": 0,
+      "max": 27,
+      "entero": true,
+      "paso": 1,
+      "defecto": 999,
+      "especiales": [
+        999
+      ]
+    },
+    {
+      "variable": "previous",
+      "etiqueta": "Contactos en campañas anteriores",
+      "grupo": "Historial",
+      "ayuda": "",
+      "tipo": "numerica",
+      "min": 0,
+      "max": 7,
+      "entero": true,
+      "paso": 1,
+      "defecto": 0.0
+    },
+    {
+      "variable": "cons.price.idx",
+      "etiqueta": "Índice de precios al consumidor",
+      "grupo": "Contexto económico",
+      "ayuda": "Mensual",
+      "tipo": "numerica",
+      "min": 92.201,
+      "max": 94.767,
+      "entero": false,
+      "paso": 0.001,
+      "defecto": 92.893
+    },
+    {
+      "variable": "cons.conf.idx",
+      "etiqueta": "Índice de confianza del consumidor",
+      "grupo": "Contexto económico",
+      "ayuda": "Mensual",
+      "tipo": "numerica",
+      "min": -50.8,
+      "max": -26.9,
+      "entero": false,
+      "paso": 0.1,
+      "defecto": -40.8
+    },
+    {
+      "variable": "nr.employed",
+      "etiqueta": "Número de empleados",
+      "grupo": "Contexto económico",
+      "ayuda": "Trimestral",
+      "tipo": "numerica",
+      "min": 4963.6,
+      "max": 5228.1,
+      "entero": false,
+      "paso": 0.1,
+      "defecto": 5076.2
+    },
+    {
+      "variable": "job",
+      "etiqueta": "Ocupación",
+      "grupo": "Cliente",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "admin.",
+        "blue-collar",
+        "technician",
+        "services",
+        "management",
+        "retired",
+        "entrepreneur",
+        "self-employed",
+        "housemaid",
+        "unemployed",
+        "student",
+        "unknown"
+      ],
+      "defecto": "admin."
+    },
+    {
+      "variable": "marital",
+      "etiqueta": "Estado civil",
+      "grupo": "Cliente",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "married",
+        "single",
+        "divorced",
+        "unknown"
+      ],
+      "defecto": "married"
+    },
+    {
+      "variable": "education",
+      "etiqueta": "Nivel educativo",
+      "grupo": "Cliente",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "university.degree",
+        "high.school",
+        "basic.9y",
+        "professional.course",
+        "basic.4y",
+        "basic.6y",
+        "unknown",
+        "illiterate"
+      ],
+      "defecto": "university.degree"
+    },
+    {
+      "variable": "default",
+      "etiqueta": "¿Crédito en mora?",
+      "grupo": "Cliente",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "no",
+        "unknown",
+        "yes"
+      ],
+      "defecto": "no"
+    },
+    {
+      "variable": "housing",
+      "etiqueta": "¿Crédito de vivienda?",
+      "grupo": "Cliente",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "defecto": "yes"
+    },
+    {
+      "variable": "loan",
+      "etiqueta": "¿Crédito personal?",
+      "grupo": "Cliente",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "no",
+        "yes",
+        "unknown"
+      ],
+      "defecto": "no"
+    },
+    {
+      "variable": "contact",
+      "etiqueta": "Canal de contacto",
+      "grupo": "Contacto",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "cellular",
+        "telephone"
+      ],
+      "defecto": "cellular"
+    },
+    {
+      "variable": "month",
+      "etiqueta": "Mes del contacto",
+      "grupo": "Contacto",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "may",
+        "jul",
+        "aug",
+        "jun",
+        "nov",
+        "apr",
+        "oct",
+        "sep",
+        "mar",
+        "dec"
+      ],
+      "defecto": "may"
+    },
+    {
+      "variable": "day_of_week",
+      "etiqueta": "Día de la semana",
+      "grupo": "Contacto",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "thu",
+        "mon",
+        "wed",
+        "tue",
+        "fri"
+      ],
+      "defecto": "tue"
+    },
+    {
+      "variable": "poutcome",
+      "etiqueta": "Resultado de la campaña anterior",
+      "grupo": "Historial",
+      "ayuda": "",
+      "tipo": "categorica",
+      "valores": [
+        "nonexistent",
+        "failure",
+        "success"
+      ],
+      "defecto": "nonexistent"
+    }
+  ],
+  "columnas_entrada": [
+    "age",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "duration",
+    "campaign",
+    "pdays",
+    "previous",
+    "poutcome",
+    "emp.var.rate",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "euribor3m",
+    "nr.employed"
+  ],
+  "no_usadas": {
+    "duration": 175.0,
+    "emp.var.rate": 1.1,
+    "euribor3m": 4.864
+  }
+}
