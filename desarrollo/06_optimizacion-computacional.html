@@ -436,105 +436,105 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_2a00d">
+<table id="T_c558a">
   <thead>
     <tr>
-      <th id="T_2a00d_level0_col0" class="col_heading level0 col0" >Modelo</th>
-      <th id="T_2a00d_level0_col1" class="col_heading level0 col1" >Entrenamiento</th>
-      <th id="T_2a00d_level0_col2" class="col_heading level0 col2" >Inferencia</th>
-      <th id="T_2a00d_level0_col3" class="col_heading level0 col3" >Implementación</th>
+      <th id="T_c558a_level0_col0" class="col_heading level0 col0" >Modelo</th>
+      <th id="T_c558a_level0_col1" class="col_heading level0 col1" >Entrenamiento</th>
+      <th id="T_c558a_level0_col2" class="col_heading level0 col2" >Inferencia</th>
+      <th id="T_c558a_level0_col3" class="col_heading level0 col3" >Implementación</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_2a00d_row0_col0" class="data row0 col0" >KNN (búsqueda exhaustiva)</td>
-      <td id="T_2a00d_row0_col1" class="data row0 col1" >O(1) (solo almacena)</td>
-      <td id="T_2a00d_row0_col2" class="data row0 col2" >O(n · p) por consulta</td>
-      <td id="T_2a00d_row0_col3" class="data row0 col3" >brute</td>
+      <td id="T_c558a_row0_col0" class="data row0 col0" >KNN (búsqueda exhaustiva)</td>
+      <td id="T_c558a_row0_col1" class="data row0 col1" >O(1) (solo almacena)</td>
+      <td id="T_c558a_row0_col2" class="data row0 col2" >O(n · p) por consulta</td>
+      <td id="T_c558a_row0_col3" class="data row0 col3" >brute</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row1_col0" class="data row1 col0" >KNN (KD-Tree / Ball Tree)</td>
-      <td id="T_2a00d_row1_col1" class="data row1 col1" >O(p · n log n)</td>
-      <td id="T_2a00d_row1_col2" class="data row1 col2" >O(log n) en baja dimensión; tiende a O(n · p) si p es alto</td>
-      <td id="T_2a00d_row1_col3" class="data row1 col3" >kd_tree / ball_tree</td>
+      <td id="T_c558a_row1_col0" class="data row1 col0" >KNN (KD-Tree / Ball Tree)</td>
+      <td id="T_c558a_row1_col1" class="data row1 col1" >O(p · n log n)</td>
+      <td id="T_c558a_row1_col2" class="data row1 col2" >O(log n) en baja dimensión; tiende a O(n · p) si p es alto</td>
+      <td id="T_c558a_row1_col3" class="data row1 col3" >kd_tree / ball_tree</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row2_col0" class="data row2 col0" >KNN aproximado (FAISS HNSW)</td>
-      <td id="T_2a00d_row2_col1" class="data row2 col1" >O(n log n · M)</td>
-      <td id="T_2a00d_row2_col2" class="data row2 col2" >≈ O(log n) por consulta, con pérdida de exactitud</td>
-      <td id="T_2a00d_row2_col3" class="data row2 col3" >IndexHNSWFlat</td>
+      <td id="T_c558a_row2_col0" class="data row2 col0" >KNN aproximado (FAISS HNSW)</td>
+      <td id="T_c558a_row2_col1" class="data row2 col1" >O(n log n · M)</td>
+      <td id="T_c558a_row2_col2" class="data row2 col2" >≈ O(log n) por consulta, con pérdida de exactitud</td>
+      <td id="T_c558a_row2_col3" class="data row2 col3" >IndexHNSWFlat</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row3_col0" class="data row3 col0" >Naive Bayes gaussiano</td>
-      <td id="T_2a00d_row3_col1" class="data row3 col1" >O(n · p)</td>
-      <td id="T_2a00d_row3_col2" class="data row3 col2" >O(p · c) por consulta</td>
-      <td id="T_2a00d_row3_col3" class="data row3 col3" >fit / partial_fit</td>
+      <td id="T_c558a_row3_col0" class="data row3 col0" >Naive Bayes gaussiano</td>
+      <td id="T_c558a_row3_col1" class="data row3 col1" >O(n · p)</td>
+      <td id="T_c558a_row3_col2" class="data row3 col2" >O(p · c) por consulta</td>
+      <td id="T_c558a_row3_col3" class="data row3 col3" >fit / partial_fit</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row4_col0" class="data row4 col0" >Regresión logística (SAGA)</td>
-      <td id="T_2a00d_row4_col1" class="data row4 col1" >O(n · p) por época</td>
-      <td id="T_2a00d_row4_col2" class="data row4 col2" >O(p) por consulta</td>
-      <td id="T_2a00d_row4_col3" class="data row4 col3" >solver saga</td>
+      <td id="T_c558a_row4_col0" class="data row4 col0" >Regresión logística (SAGA)</td>
+      <td id="T_c558a_row4_col1" class="data row4 col1" >O(n · p) por época</td>
+      <td id="T_c558a_row4_col2" class="data row4 col2" >O(p) por consulta</td>
+      <td id="T_c558a_row4_col3" class="data row4 col3" >solver saga</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row5_col0" class="data row5 col0" >Ridge (Cholesky)</td>
-      <td id="T_2a00d_row5_col1" class="data row5 col1" >O(n · p² + p³)</td>
-      <td id="T_2a00d_row5_col2" class="data row5 col2" >O(p)</td>
-      <td id="T_2a00d_row5_col3" class="data row5 col3" >cholesky</td>
+      <td id="T_c558a_row5_col0" class="data row5 col0" >Ridge (Cholesky)</td>
+      <td id="T_c558a_row5_col1" class="data row5 col1" >O(n · p² + p³)</td>
+      <td id="T_c558a_row5_col2" class="data row5 col2" >O(p)</td>
+      <td id="T_c558a_row5_col3" class="data row5 col3" >cholesky</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row6_col0" class="data row6 col0" >Ridge / Lasso (SAGA o SGD)</td>
-      <td id="T_2a00d_row6_col1" class="data row6 col1" >O(n · p) por época</td>
-      <td id="T_2a00d_row6_col2" class="data row6 col2" >O(p)</td>
-      <td id="T_2a00d_row6_col3" class="data row6 col3" >saga / SGD</td>
+      <td id="T_c558a_row6_col0" class="data row6 col0" >Ridge / Lasso (SAGA o SGD)</td>
+      <td id="T_c558a_row6_col1" class="data row6 col1" >O(n · p) por época</td>
+      <td id="T_c558a_row6_col2" class="data row6 col2" >O(p)</td>
+      <td id="T_c558a_row6_col3" class="data row6 col3" >saga / SGD</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row7_col0" class="data row7 col0" >Lasso (descenso por coordenadas)</td>
-      <td id="T_2a00d_row7_col1" class="data row7 col1" >O(n · p) por pasada</td>
-      <td id="T_2a00d_row7_col2" class="data row7 col2" >O(p)</td>
-      <td id="T_2a00d_row7_col3" class="data row7 col3" >cd</td>
+      <td id="T_c558a_row7_col0" class="data row7 col0" >Lasso (descenso por coordenadas)</td>
+      <td id="T_c558a_row7_col1" class="data row7 col1" >O(n · p) por pasada</td>
+      <td id="T_c558a_row7_col2" class="data row7 col2" >O(p)</td>
+      <td id="T_c558a_row7_col3" class="data row7 col3" >cd</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row8_col0" class="data row8 col0" >Árbol de decisión</td>
-      <td id="T_2a00d_row8_col1" class="data row8 col1" >O(p · n log n)</td>
-      <td id="T_2a00d_row8_col2" class="data row8 col2" >O(profundidad)</td>
-      <td id="T_2a00d_row8_col3" class="data row8 col3" >CART</td>
+      <td id="T_c558a_row8_col0" class="data row8 col0" >Árbol de decisión</td>
+      <td id="T_c558a_row8_col1" class="data row8 col1" >O(p · n log n)</td>
+      <td id="T_c558a_row8_col2" class="data row8 col2" >O(profundidad)</td>
+      <td id="T_c558a_row8_col3" class="data row8 col3" >CART</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row9_col0" class="data row9 col0" >Random Forest</td>
-      <td id="T_2a00d_row9_col1" class="data row9 col1" >O(B · p' · n log n)</td>
-      <td id="T_2a00d_row9_col2" class="data row9 col2" >O(B · profundidad)</td>
-      <td id="T_2a00d_row9_col3" class="data row9 col3" >B árboles, p' variables por división</td>
+      <td id="T_c558a_row9_col0" class="data row9 col0" >Random Forest</td>
+      <td id="T_c558a_row9_col1" class="data row9 col1" >O(B · p' · n log n)</td>
+      <td id="T_c558a_row9_col2" class="data row9 col2" >O(B · profundidad)</td>
+      <td id="T_c558a_row9_col3" class="data row9 col3" >B árboles, p' variables por división</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row10_col0" class="data row10 col0" >XGBoost (exacto)</td>
-      <td id="T_2a00d_row10_col1" class="data row10 col1" >O(B · p · n log n)</td>
-      <td id="T_2a00d_row10_col2" class="data row10 col2" >O(B · profundidad)</td>
-      <td id="T_2a00d_row10_col3" class="data row10 col3" >tree_method='exact'</td>
+      <td id="T_c558a_row10_col0" class="data row10 col0" >XGBoost (exacto)</td>
+      <td id="T_c558a_row10_col1" class="data row10 col1" >O(B · p · n log n)</td>
+      <td id="T_c558a_row10_col2" class="data row10 col2" >O(B · profundidad)</td>
+      <td id="T_c558a_row10_col3" class="data row10 col3" >tree_method='exact'</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row11_col0" class="data row11 col0" >XGBoost (histogramas)</td>
-      <td id="T_2a00d_row11_col1" class="data row11 col1" >O(B · p · n) tras discretizar en ≤ 256 bins</td>
-      <td id="T_2a00d_row11_col2" class="data row11 col2" >O(B · profundidad)</td>
-      <td id="T_2a00d_row11_col3" class="data row11 col3" >tree_method='hist'</td>
+      <td id="T_c558a_row11_col0" class="data row11 col0" >XGBoost (histogramas)</td>
+      <td id="T_c558a_row11_col1" class="data row11 col1" >O(B · p · n) tras discretizar en ≤ 256 bins</td>
+      <td id="T_c558a_row11_col2" class="data row11 col2" >O(B · profundidad)</td>
+      <td id="T_c558a_row11_col3" class="data row11 col3" >tree_method='hist'</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row12_col0" class="data row12 col0" >SVM con núcleo (SMO)</td>
-      <td id="T_2a00d_row12_col1" class="data row12 col1" >O(n²) a O(n³)</td>
-      <td id="T_2a00d_row12_col2" class="data row12 col2" >O(n_sv · p)</td>
-      <td id="T_2a00d_row12_col3" class="data row12 col3" >SVC(kernel='rbf')</td>
+      <td id="T_c558a_row12_col0" class="data row12 col0" >SVM con núcleo (SMO)</td>
+      <td id="T_c558a_row12_col1" class="data row12 col1" >O(n²) a O(n³)</td>
+      <td id="T_c558a_row12_col2" class="data row12 col2" >O(n_sv · p)</td>
+      <td id="T_c558a_row12_col3" class="data row12 col3" >SVC(kernel='rbf')</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row13_col0" class="data row13 col0" >SVM lineal (LinearSVC / SGD)</td>
-      <td id="T_2a00d_row13_col1" class="data row13 col1" >O(n · p) por época</td>
-      <td id="T_2a00d_row13_col2" class="data row13 col2" >O(p)</td>
-      <td id="T_2a00d_row13_col3" class="data row13 col3" >liblinear / SGD</td>
+      <td id="T_c558a_row13_col0" class="data row13 col0" >SVM lineal (LinearSVC / SGD)</td>
+      <td id="T_c558a_row13_col1" class="data row13 col1" >O(n · p) por época</td>
+      <td id="T_c558a_row13_col2" class="data row13 col2" >O(p)</td>
+      <td id="T_c558a_row13_col3" class="data row13 col3" >liblinear / SGD</td>
     </tr>
     <tr>
-      <td id="T_2a00d_row14_col0" class="data row14 col0" >Nyström + SVM lineal</td>
-      <td id="T_2a00d_row14_col1" class="data row14 col1" >O(n · m · p + m³)</td>
-      <td id="T_2a00d_row14_col2" class="data row14 col2" >O(m · p)</td>
-      <td id="T_2a00d_row14_col3" class="data row14 col3" >m componentes</td>
+      <td id="T_c558a_row14_col0" class="data row14 col0" >Nyström + SVM lineal</td>
+      <td id="T_c558a_row14_col1" class="data row14 col1" >O(n · m · p + m³)</td>
+      <td id="T_c558a_row14_col2" class="data row14 col2" >O(m · p)</td>
+      <td id="T_c558a_row14_col3" class="data row14 col3" >m componentes</td>
     </tr>
   </tbody>
 </table>
@@ -582,83 +582,83 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_25305">
+<table id="T_80c22">
   <thead>
     <tr>
-      <th id="T_25305_level0_col0" class="col_heading level0 col0" >Método</th>
-      <th id="T_25305_level0_col1" class="col_heading level0 col1" >Búsqueda</th>
-      <th id="T_25305_level0_col2" class="col_heading level0 col2" >Construcción (s)</th>
-      <th id="T_25305_level0_col3" class="col_heading level0 col3" >Consulta prueba (s)</th>
-      <th id="T_25305_level0_col4" class="col_heading level0 col4" >ms por consulta</th>
-      <th id="T_25305_level0_col5" class="col_heading level0 col5" >Recall@k vs exacta</th>
-      <th id="T_25305_level0_col6" class="col_heading level0 col6" >AUC-PR (prueba)</th>
+      <th id="T_80c22_level0_col0" class="col_heading level0 col0" >Método</th>
+      <th id="T_80c22_level0_col1" class="col_heading level0 col1" >Búsqueda</th>
+      <th id="T_80c22_level0_col2" class="col_heading level0 col2" >Construcción (s)</th>
+      <th id="T_80c22_level0_col3" class="col_heading level0 col3" >Consulta prueba (s)</th>
+      <th id="T_80c22_level0_col4" class="col_heading level0 col4" >ms por consulta</th>
+      <th id="T_80c22_level0_col5" class="col_heading level0 col5" >Recall@k vs exacta</th>
+      <th id="T_80c22_level0_col6" class="col_heading level0 col6" >AUC-PR (prueba)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_25305_row0_col0" class="data row0 col0" >sklearn brute</td>
-      <td id="T_25305_row0_col1" class="data row0 col1" >exacta</td>
-      <td id="T_25305_row0_col2" class="data row0 col2" >0,0025</td>
-      <td id="T_25305_row0_col3" class="data row0 col3" >3,0447</td>
-      <td id="T_25305_row0_col4" class="data row0 col4" >0,3697</td>
-      <td id="T_25305_row0_col5" class="data row0 col5" >1,0000</td>
-      <td id="T_25305_row0_col6" class="data row0 col6" >0,5060</td>
+      <td id="T_80c22_row0_col0" class="data row0 col0" >sklearn brute</td>
+      <td id="T_80c22_row0_col1" class="data row0 col1" >exacta</td>
+      <td id="T_80c22_row0_col2" class="data row0 col2" >0,0025</td>
+      <td id="T_80c22_row0_col3" class="data row0 col3" >3,0447</td>
+      <td id="T_80c22_row0_col4" class="data row0 col4" >0,3697</td>
+      <td id="T_80c22_row0_col5" class="data row0 col5" >1,0000</td>
+      <td id="T_80c22_row0_col6" class="data row0 col6" >0,5060</td>
     </tr>
     <tr>
-      <td id="T_25305_row1_col0" class="data row1 col0" >sklearn kd_tree</td>
-      <td id="T_25305_row1_col1" class="data row1 col1" >exacta</td>
-      <td id="T_25305_row1_col2" class="data row1 col2" >0,3809</td>
-      <td id="T_25305_row1_col3" class="data row1 col3" >7,6172</td>
-      <td id="T_25305_row1_col4" class="data row1 col4" >0,9249</td>
-      <td id="T_25305_row1_col5" class="data row1 col5" >0,9953</td>
-      <td id="T_25305_row1_col6" class="data row1 col6" >0,5055</td>
+      <td id="T_80c22_row1_col0" class="data row1 col0" >sklearn kd_tree</td>
+      <td id="T_80c22_row1_col1" class="data row1 col1" >exacta</td>
+      <td id="T_80c22_row1_col2" class="data row1 col2" >0,3809</td>
+      <td id="T_80c22_row1_col3" class="data row1 col3" >7,6172</td>
+      <td id="T_80c22_row1_col4" class="data row1 col4" >0,9249</td>
+      <td id="T_80c22_row1_col5" class="data row1 col5" >0,9953</td>
+      <td id="T_80c22_row1_col6" class="data row1 col6" >0,5055</td>
     </tr>
     <tr>
-      <td id="T_25305_row2_col0" class="data row2 col0" >sklearn ball_tree</td>
-      <td id="T_25305_row2_col1" class="data row2 col1" >exacta</td>
-      <td id="T_25305_row2_col2" class="data row2 col2" >0,2270</td>
-      <td id="T_25305_row2_col3" class="data row2 col3" >20,4339</td>
-      <td id="T_25305_row2_col4" class="data row2 col4" >2,4810</td>
-      <td id="T_25305_row2_col5" class="data row2 col5" >0,9957</td>
-      <td id="T_25305_row2_col6" class="data row2 col6" >0,5056</td>
+      <td id="T_80c22_row2_col0" class="data row2 col0" >sklearn ball_tree</td>
+      <td id="T_80c22_row2_col1" class="data row2 col1" >exacta</td>
+      <td id="T_80c22_row2_col2" class="data row2 col2" >0,2270</td>
+      <td id="T_80c22_row2_col3" class="data row2 col3" >20,4339</td>
+      <td id="T_80c22_row2_col4" class="data row2 col4" >2,4810</td>
+      <td id="T_80c22_row2_col5" class="data row2 col5" >0,9957</td>
+      <td id="T_80c22_row2_col6" class="data row2 col6" >0,5056</td>
     </tr>
     <tr>
-      <td id="T_25305_row3_col0" class="data row3 col0" >FAISS IndexFlatL2</td>
-      <td id="T_25305_row3_col1" class="data row3 col1" >exacta</td>
-      <td id="T_25305_row3_col2" class="data row3 col2" >0,0039</td>
-      <td id="T_25305_row3_col3" class="data row3 col3" >1,9328</td>
-      <td id="T_25305_row3_col4" class="data row3 col4" >0,2347</td>
-      <td id="T_25305_row3_col5" class="data row3 col5" >0,9945</td>
-      <td id="T_25305_row3_col6" class="data row3 col6" >0,5057</td>
+      <td id="T_80c22_row3_col0" class="data row3 col0" >FAISS IndexFlatL2</td>
+      <td id="T_80c22_row3_col1" class="data row3 col1" >exacta</td>
+      <td id="T_80c22_row3_col2" class="data row3 col2" >0,0039</td>
+      <td id="T_80c22_row3_col3" class="data row3 col3" >1,9328</td>
+      <td id="T_80c22_row3_col4" class="data row3 col4" >0,2347</td>
+      <td id="T_80c22_row3_col5" class="data row3 col5" >0,9945</td>
+      <td id="T_80c22_row3_col6" class="data row3 col6" >0,5057</td>
     </tr>
     <tr>
-      <td id="T_25305_row4_col0" class="data row4 col0" >FAISS IndexHNSWFlat (M = 32)</td>
-      <td id="T_25305_row4_col1" class="data row4 col1" >aproximada</td>
-      <td id="T_25305_row4_col2" class="data row4 col2" >1,8577</td>
-      <td id="T_25305_row4_col3" class="data row4 col3" >0,2637</td>
-      <td id="T_25305_row4_col4" class="data row4 col4" >0,0320</td>
-      <td id="T_25305_row4_col5" class="data row4 col5" >0,8901</td>
-      <td id="T_25305_row4_col6" class="data row4 col6" >0,4850</td>
+      <td id="T_80c22_row4_col0" class="data row4 col0" >FAISS IndexHNSWFlat (M = 32)</td>
+      <td id="T_80c22_row4_col1" class="data row4 col1" >aproximada</td>
+      <td id="T_80c22_row4_col2" class="data row4 col2" >1,8577</td>
+      <td id="T_80c22_row4_col3" class="data row4 col3" >0,2637</td>
+      <td id="T_80c22_row4_col4" class="data row4 col4" >0,0320</td>
+      <td id="T_80c22_row4_col5" class="data row4 col5" >0,8901</td>
+      <td id="T_80c22_row4_col6" class="data row4 col6" >0,4850</td>
     </tr>
     <tr>
-      <td id="T_25305_row5_col0" class="data row5 col0" >FAISS IndexIVFFlat (100 listas, nprobe = 8)</td>
-      <td id="T_25305_row5_col1" class="data row5 col1" >aproximada</td>
-      <td id="T_25305_row5_col2" class="data row5 col2" >0,2018</td>
-      <td id="T_25305_row5_col3" class="data row5 col3" >0,6198</td>
-      <td id="T_25305_row5_col4" class="data row5 col4" >0,0753</td>
-      <td id="T_25305_row5_col5" class="data row5 col5" >0,9911</td>
-      <td id="T_25305_row5_col6" class="data row5 col6" >0,5058</td>
+      <td id="T_80c22_row5_col0" class="data row5 col0" >FAISS IndexIVFFlat (100 listas, nprobe = 8)</td>
+      <td id="T_80c22_row5_col1" class="data row5 col1" >aproximada</td>
+      <td id="T_80c22_row5_col2" class="data row5 col2" >0,2018</td>
+      <td id="T_80c22_row5_col3" class="data row5 col3" >0,6198</td>
+      <td id="T_80c22_row5_col4" class="data row5 col4" >0,0753</td>
+      <td id="T_80c22_row5_col5" class="data row5 col5" >0,9911</td>
+      <td id="T_80c22_row5_col6" class="data row5 col6" >0,5058</td>
     </tr>
   </tbody>
 </table>
 </div><img alt="../_images/7c005e955e10be3251f10a69fefe7f13989dc4390e535eec97feaac96bbc1def.png" src="../_images/7c005e955e10be3251f10a69fefe7f13989dc4390e535eec97feaac96bbc1def.png" />
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_a2e50">
+<table id="T_34f1d">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_a2e50_level0_col0" class="col_heading level0 col0" >Exponente empírico</th>
+      <th id="T_34f1d_level0_col0" class="col_heading level0 col0" >Exponente empírico</th>
     </tr>
     <tr>
       <th class="index_name level0" >Método</th>
@@ -667,16 +667,16 @@
   </thead>
   <tbody>
     <tr>
-      <th id="T_a2e50_level0_row0" class="row_heading level0 row0" >FAISS HNSW</th>
-      <td id="T_a2e50_row0_col0" class="data row0 col0" >0,08</td>
+      <th id="T_34f1d_level0_row0" class="row_heading level0 row0" >FAISS HNSW</th>
+      <td id="T_34f1d_row0_col0" class="data row0 col0" >0,08</td>
     </tr>
     <tr>
-      <th id="T_a2e50_level0_row1" class="row_heading level0 row1" >brute</th>
-      <td id="T_a2e50_row1_col0" class="data row1 col0" >0,93</td>
+      <th id="T_34f1d_level0_row1" class="row_heading level0 row1" >brute</th>
+      <td id="T_34f1d_row1_col0" class="data row1 col0" >0,93</td>
     </tr>
     <tr>
-      <th id="T_a2e50_level0_row2" class="row_heading level0 row2" >kd_tree</th>
-      <td id="T_a2e50_row2_col0" class="data row2 col0" >0,94</td>
+      <th id="T_34f1d_level0_row2" class="row_heading level0 row2" >kd_tree</th>
+      <td id="T_34f1d_row2_col0" class="data row2 col0" >0,94</td>
     </tr>
   </tbody>
 </table>
@@ -720,108 +720,108 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_65b12">
+<table id="T_1e6ef">
   <thead>
     <tr>
-      <th id="T_65b12_level0_col0" class="col_heading level0 col0" >Modelo</th>
-      <th id="T_65b12_level0_col1" class="col_heading level0 col1" >Solucionador</th>
-      <th id="T_65b12_level0_col2" class="col_heading level0 col2" >Ajuste (s)</th>
-      <th id="T_65b12_level0_col3" class="col_heading level0 col3" >Desv. (s)</th>
-      <th id="T_65b12_level0_col4" class="col_heading level0 col4" >Métrica</th>
-      <th id="T_65b12_level0_col5" class="col_heading level0 col5" >Valor</th>
+      <th id="T_1e6ef_level0_col0" class="col_heading level0 col0" >Modelo</th>
+      <th id="T_1e6ef_level0_col1" class="col_heading level0 col1" >Solucionador</th>
+      <th id="T_1e6ef_level0_col2" class="col_heading level0 col2" >Ajuste (s)</th>
+      <th id="T_1e6ef_level0_col3" class="col_heading level0 col3" >Desv. (s)</th>
+      <th id="T_1e6ef_level0_col4" class="col_heading level0 col4" >Métrica</th>
+      <th id="T_1e6ef_level0_col5" class="col_heading level0 col5" >Valor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_65b12_row0_col0" class="data row0 col0" >Ridge</td>
-      <td id="T_65b12_row0_col1" class="data row0 col1" >cholesky</td>
-      <td id="T_65b12_row0_col2" class="data row0 col2" >0,0243</td>
-      <td id="T_65b12_row0_col3" class="data row0 col3" >0,0069</td>
-      <td id="T_65b12_row0_col4" class="data row0 col4" >RMSE</td>
-      <td id="T_65b12_row0_col5" class="data row0 col5" >1,0972</td>
+      <td id="T_1e6ef_row0_col0" class="data row0 col0" >Ridge</td>
+      <td id="T_1e6ef_row0_col1" class="data row0 col1" >cholesky</td>
+      <td id="T_1e6ef_row0_col2" class="data row0 col2" >0,0243</td>
+      <td id="T_1e6ef_row0_col3" class="data row0 col3" >0,0069</td>
+      <td id="T_1e6ef_row0_col4" class="data row0 col4" >RMSE</td>
+      <td id="T_1e6ef_row0_col5" class="data row0 col5" >1,0972</td>
     </tr>
     <tr>
-      <td id="T_65b12_row1_col0" class="data row1 col0" >Ridge</td>
-      <td id="T_65b12_row1_col1" class="data row1 col1" >svd</td>
-      <td id="T_65b12_row1_col2" class="data row1 col2" >0,1951</td>
-      <td id="T_65b12_row1_col3" class="data row1 col3" >0,0145</td>
-      <td id="T_65b12_row1_col4" class="data row1 col4" >RMSE</td>
-      <td id="T_65b12_row1_col5" class="data row1 col5" >1,0973</td>
+      <td id="T_1e6ef_row1_col0" class="data row1 col0" >Ridge</td>
+      <td id="T_1e6ef_row1_col1" class="data row1 col1" >svd</td>
+      <td id="T_1e6ef_row1_col2" class="data row1 col2" >0,1951</td>
+      <td id="T_1e6ef_row1_col3" class="data row1 col3" >0,0145</td>
+      <td id="T_1e6ef_row1_col4" class="data row1 col4" >RMSE</td>
+      <td id="T_1e6ef_row1_col5" class="data row1 col5" >1,0973</td>
     </tr>
     <tr>
-      <td id="T_65b12_row2_col0" class="data row2 col0" >Ridge</td>
-      <td id="T_65b12_row2_col1" class="data row2 col1" >sag</td>
-      <td id="T_65b12_row2_col2" class="data row2 col2" >7,2652</td>
-      <td id="T_65b12_row2_col3" class="data row2 col3" >0,6553</td>
-      <td id="T_65b12_row2_col4" class="data row2 col4" >RMSE</td>
-      <td id="T_65b12_row2_col5" class="data row2 col5" >1,0959</td>
+      <td id="T_1e6ef_row2_col0" class="data row2 col0" >Ridge</td>
+      <td id="T_1e6ef_row2_col1" class="data row2 col1" >sag</td>
+      <td id="T_1e6ef_row2_col2" class="data row2 col2" >7,2652</td>
+      <td id="T_1e6ef_row2_col3" class="data row2 col3" >0,6553</td>
+      <td id="T_1e6ef_row2_col4" class="data row2 col4" >RMSE</td>
+      <td id="T_1e6ef_row2_col5" class="data row2 col5" >1,0959</td>
     </tr>
     <tr>
-      <td id="T_65b12_row3_col0" class="data row3 col0" >Ridge</td>
-      <td id="T_65b12_row3_col1" class="data row3 col1" >saga</td>
-      <td id="T_65b12_row3_col2" class="data row3 col2" >14,0636</td>
-      <td id="T_65b12_row3_col3" class="data row3 col3" >0,5573</td>
-      <td id="T_65b12_row3_col4" class="data row3 col4" >RMSE</td>
-      <td id="T_65b12_row3_col5" class="data row3 col5" >1,0866</td>
+      <td id="T_1e6ef_row3_col0" class="data row3 col0" >Ridge</td>
+      <td id="T_1e6ef_row3_col1" class="data row3 col1" >saga</td>
+      <td id="T_1e6ef_row3_col2" class="data row3 col2" >14,0636</td>
+      <td id="T_1e6ef_row3_col3" class="data row3 col3" >0,5573</td>
+      <td id="T_1e6ef_row3_col4" class="data row3 col4" >RMSE</td>
+      <td id="T_1e6ef_row3_col5" class="data row3 col5" >1,0866</td>
     </tr>
     <tr>
-      <td id="T_65b12_row4_col0" class="data row4 col0" >Lasso</td>
-      <td id="T_65b12_row4_col1" class="data row4 col1" >descenso por coordenadas</td>
-      <td id="T_65b12_row4_col2" class="data row4 col2" >0,1041</td>
-      <td id="T_65b12_row4_col3" class="data row4 col3" >0,0085</td>
-      <td id="T_65b12_row4_col4" class="data row4 col4" >RMSE</td>
-      <td id="T_65b12_row4_col5" class="data row4 col5" >1,0173</td>
+      <td id="T_1e6ef_row4_col0" class="data row4 col0" >Lasso</td>
+      <td id="T_1e6ef_row4_col1" class="data row4 col1" >descenso por coordenadas</td>
+      <td id="T_1e6ef_row4_col2" class="data row4 col2" >0,1041</td>
+      <td id="T_1e6ef_row4_col3" class="data row4 col3" >0,0085</td>
+      <td id="T_1e6ef_row4_col4" class="data row4 col4" >RMSE</td>
+      <td id="T_1e6ef_row4_col5" class="data row4 col5" >1,0173</td>
     </tr>
     <tr>
-      <td id="T_65b12_row5_col0" class="data row5 col0" >Lasso</td>
-      <td id="T_65b12_row5_col1" class="data row5 col1" >SGD (L1)</td>
-      <td id="T_65b12_row5_col2" class="data row5 col2" >0,1967</td>
-      <td id="T_65b12_row5_col3" class="data row5 col3" >0,0079</td>
-      <td id="T_65b12_row5_col4" class="data row5 col4" >RMSE</td>
-      <td id="T_65b12_row5_col5" class="data row5 col5" >1,4410</td>
+      <td id="T_1e6ef_row5_col0" class="data row5 col0" >Lasso</td>
+      <td id="T_1e6ef_row5_col1" class="data row5 col1" >SGD (L1)</td>
+      <td id="T_1e6ef_row5_col2" class="data row5 col2" >0,1967</td>
+      <td id="T_1e6ef_row5_col3" class="data row5 col3" >0,0079</td>
+      <td id="T_1e6ef_row5_col4" class="data row5 col4" >RMSE</td>
+      <td id="T_1e6ef_row5_col5" class="data row5 col5" >1,4410</td>
     </tr>
     <tr>
-      <td id="T_65b12_row6_col0" class="data row6 col0" >Logística L2</td>
-      <td id="T_65b12_row6_col1" class="data row6 col1" >lbfgs</td>
-      <td id="T_65b12_row6_col2" class="data row6 col2" >0,0946</td>
-      <td id="T_65b12_row6_col3" class="data row6 col3" >0,0067</td>
-      <td id="T_65b12_row6_col4" class="data row6 col4" >AUC-PR</td>
-      <td id="T_65b12_row6_col5" class="data row6 col5" >0,5484</td>
+      <td id="T_1e6ef_row6_col0" class="data row6 col0" >Logística L2</td>
+      <td id="T_1e6ef_row6_col1" class="data row6 col1" >lbfgs</td>
+      <td id="T_1e6ef_row6_col2" class="data row6 col2" >0,0946</td>
+      <td id="T_1e6ef_row6_col3" class="data row6 col3" >0,0067</td>
+      <td id="T_1e6ef_row6_col4" class="data row6 col4" >AUC-PR</td>
+      <td id="T_1e6ef_row6_col5" class="data row6 col5" >0,5484</td>
     </tr>
     <tr>
-      <td id="T_65b12_row7_col0" class="data row7 col0" >Logística L2</td>
-      <td id="T_65b12_row7_col1" class="data row7 col1" >saga</td>
-      <td id="T_65b12_row7_col2" class="data row7 col2" >1,7024</td>
-      <td id="T_65b12_row7_col3" class="data row7 col3" >0,1525</td>
-      <td id="T_65b12_row7_col4" class="data row7 col4" >AUC-PR</td>
-      <td id="T_65b12_row7_col5" class="data row7 col5" >0,5497</td>
+      <td id="T_1e6ef_row7_col0" class="data row7 col0" >Logística L2</td>
+      <td id="T_1e6ef_row7_col1" class="data row7 col1" >saga</td>
+      <td id="T_1e6ef_row7_col2" class="data row7 col2" >1,7024</td>
+      <td id="T_1e6ef_row7_col3" class="data row7 col3" >0,1525</td>
+      <td id="T_1e6ef_row7_col4" class="data row7 col4" >AUC-PR</td>
+      <td id="T_1e6ef_row7_col5" class="data row7 col5" >0,5497</td>
     </tr>
     <tr>
-      <td id="T_65b12_row8_col0" class="data row8 col0" >Logística L1</td>
-      <td id="T_65b12_row8_col1" class="data row8 col1" >saga</td>
-      <td id="T_65b12_row8_col2" class="data row8 col2" >0,8945</td>
-      <td id="T_65b12_row8_col3" class="data row8 col3" >0,0169</td>
-      <td id="T_65b12_row8_col4" class="data row8 col4" >AUC-PR</td>
-      <td id="T_65b12_row8_col5" class="data row8 col5" >0,5406</td>
+      <td id="T_1e6ef_row8_col0" class="data row8 col0" >Logística L1</td>
+      <td id="T_1e6ef_row8_col1" class="data row8 col1" >saga</td>
+      <td id="T_1e6ef_row8_col2" class="data row8 col2" >0,8945</td>
+      <td id="T_1e6ef_row8_col3" class="data row8 col3" >0,0169</td>
+      <td id="T_1e6ef_row8_col4" class="data row8 col4" >AUC-PR</td>
+      <td id="T_1e6ef_row8_col5" class="data row8 col5" >0,5406</td>
     </tr>
     <tr>
-      <td id="T_65b12_row9_col0" class="data row9 col0" >Logística L1</td>
-      <td id="T_65b12_row9_col1" class="data row9 col1" >liblinear</td>
-      <td id="T_65b12_row9_col2" class="data row9 col2" >0,2062</td>
-      <td id="T_65b12_row9_col3" class="data row9 col3" >0,0313</td>
-      <td id="T_65b12_row9_col4" class="data row9 col4" >AUC-PR</td>
-      <td id="T_65b12_row9_col5" class="data row9 col5" >0,5719</td>
+      <td id="T_1e6ef_row9_col0" class="data row9 col0" >Logística L1</td>
+      <td id="T_1e6ef_row9_col1" class="data row9 col1" >liblinear</td>
+      <td id="T_1e6ef_row9_col2" class="data row9 col2" >0,2062</td>
+      <td id="T_1e6ef_row9_col3" class="data row9 col3" >0,0313</td>
+      <td id="T_1e6ef_row9_col4" class="data row9 col4" >AUC-PR</td>
+      <td id="T_1e6ef_row9_col5" class="data row9 col5" >0,5719</td>
     </tr>
   </tbody>
 </table>
 </div><img alt="../_images/2effa65893dd64f6a69b402047e748d312e5e717028af2e51b893ff742591884.png" src="../_images/2effa65893dd64f6a69b402047e748d312e5e717028af2e51b893ff742591884.png" />
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_506fc">
+<table id="T_809e4">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_506fc_level0_col0" class="col_heading level0 col0" >Exponente empírico</th>
+      <th id="T_809e4_level0_col0" class="col_heading level0 col0" >Exponente empírico</th>
     </tr>
     <tr>
       <th class="index_name level0" >Método</th>
@@ -830,16 +830,16 @@
   </thead>
   <tbody>
     <tr>
-      <th id="T_506fc_level0_row0" class="row_heading level0 row0" >Logística saga</th>
-      <td id="T_506fc_row0_col0" class="data row0 col0" >1,63</td>
+      <th id="T_809e4_level0_row0" class="row_heading level0 row0" >Logística saga</th>
+      <td id="T_809e4_row0_col0" class="data row0 col0" >1,63</td>
     </tr>
     <tr>
-      <th id="T_506fc_level0_row1" class="row_heading level0 row1" >Ridge cholesky</th>
-      <td id="T_506fc_row1_col0" class="data row1 col0" >0,93</td>
+      <th id="T_809e4_level0_row1" class="row_heading level0 row1" >Ridge cholesky</th>
+      <td id="T_809e4_row1_col0" class="data row1 col0" >0,93</td>
     </tr>
     <tr>
-      <th id="T_506fc_level0_row2" class="row_heading level0 row2" >Ridge saga</th>
-      <td id="T_506fc_row2_col0" class="data row2 col0" >2,26</td>
+      <th id="T_809e4_level0_row2" class="row_heading level0 row2" >Ridge saga</th>
+      <td id="T_809e4_row2_col0" class="data row2 col0" >2,26</td>
     </tr>
   </tbody>
 </table>
@@ -874,30 +874,30 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_57c07">
+<table id="T_24ca3">
   <thead>
     <tr>
-      <th id="T_57c07_level0_col0" class="col_heading level0 col0" >Modo</th>
-      <th id="T_57c07_level0_col1" class="col_heading level0 col1" >Tiempo (s)</th>
-      <th id="T_57c07_level0_col2" class="col_heading level0 col2" >Memoria pico (MB)</th>
-      <th id="T_57c07_level0_col3" class="col_heading level0 col3" >AUC-PR prueba</th>
-      <th id="T_57c07_level0_col4" class="col_heading level0 col4" >n_entrenamiento</th>
+      <th id="T_24ca3_level0_col0" class="col_heading level0 col0" >Modo</th>
+      <th id="T_24ca3_level0_col1" class="col_heading level0 col1" >Tiempo (s)</th>
+      <th id="T_24ca3_level0_col2" class="col_heading level0 col2" >Memoria pico (MB)</th>
+      <th id="T_24ca3_level0_col3" class="col_heading level0 col3" >AUC-PR prueba</th>
+      <th id="T_24ca3_level0_col4" class="col_heading level0 col4" >n_entrenamiento</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_57c07_row0_col0" class="data row0 col0" >fit (todo en memoria)</td>
-      <td id="T_57c07_row0_col1" class="data row0 col1" >1,3438</td>
-      <td id="T_57c07_row0_col2" class="data row0 col2" >35,5140</td>
-      <td id="T_57c07_row0_col3" class="data row0 col3" >0,4560</td>
-      <td id="T_57c07_row0_col4" class="data row0 col4" >32 940</td>
+      <td id="T_24ca3_row0_col0" class="data row0 col0" >fit (todo en memoria)</td>
+      <td id="T_24ca3_row0_col1" class="data row0 col1" >1,3438</td>
+      <td id="T_24ca3_row0_col2" class="data row0 col2" >35,5140</td>
+      <td id="T_24ca3_row0_col3" class="data row0 col3" >0,4560</td>
+      <td id="T_24ca3_row0_col4" class="data row0 col4" >32 940</td>
     </tr>
     <tr>
-      <td id="T_57c07_row1_col0" class="data row1 col0" >partial_fit (lotes de 2000 filas leídos del CSV)</td>
-      <td id="T_57c07_row1_col1" class="data row1 col1" >2,8373</td>
-      <td id="T_57c07_row1_col2" class="data row1 col2" >3,3825</td>
-      <td id="T_57c07_row1_col3" class="data row1 col3" >0,4569</td>
-      <td id="T_57c07_row1_col4" class="data row1 col4" >32 940</td>
+      <td id="T_24ca3_row1_col0" class="data row1 col0" >partial_fit (lotes de 2000 filas leídos del CSV)</td>
+      <td id="T_24ca3_row1_col1" class="data row1 col1" >2,8373</td>
+      <td id="T_24ca3_row1_col2" class="data row1 col2" >3,3825</td>
+      <td id="T_24ca3_row1_col3" class="data row1 col3" >0,4569</td>
+      <td id="T_24ca3_row1_col4" class="data row1 col4" >32 940</td>
     </tr>
   </tbody>
 </table>
@@ -956,78 +956,78 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_70686">
+<table id="T_0be3f">
   <thead>
     <tr>
-      <th id="T_70686_level0_col0" class="col_heading level0 col0" >Configuración</th>
-      <th id="T_70686_level0_col1" class="col_heading level0 col1" >Ajuste (s)</th>
-      <th id="T_70686_level0_col2" class="col_heading level0 col2" >Inferencia (s)</th>
-      <th id="T_70686_level0_col3" class="col_heading level0 col3" >AUC-PR prueba</th>
-      <th id="T_70686_level0_col4" class="col_heading level0 col4" >AUC prueba</th>
-      <th id="T_70686_level0_col5" class="col_heading level0 col5" >GPU</th>
+      <th id="T_0be3f_level0_col0" class="col_heading level0 col0" >Configuración</th>
+      <th id="T_0be3f_level0_col1" class="col_heading level0 col1" >Ajuste (s)</th>
+      <th id="T_0be3f_level0_col2" class="col_heading level0 col2" >Inferencia (s)</th>
+      <th id="T_0be3f_level0_col3" class="col_heading level0 col3" >AUC-PR prueba</th>
+      <th id="T_0be3f_level0_col4" class="col_heading level0 col4" >AUC prueba</th>
+      <th id="T_0be3f_level0_col5" class="col_heading level0 col5" >GPU</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_70686_row0_col0" class="data row0 col0" >tree_method='exact' (CPU, 1 hilo)</td>
-      <td id="T_70686_row0_col1" class="data row0 col1" >18,8640</td>
-      <td id="T_70686_row0_col2" class="data row0 col2" >0,0611</td>
-      <td id="T_70686_row0_col3" class="data row0 col3" >0,4022</td>
-      <td id="T_70686_row0_col4" class="data row0 col4" >0,5848</td>
-      <td id="T_70686_row0_col5" class="data row0 col5" >no disponible, porque no hay GPU NVIDIA (con device='cuda', XGBoost recurre a la CPU sin error)</td>
+      <td id="T_0be3f_row0_col0" class="data row0 col0" >tree_method='exact' (CPU, 1 hilo)</td>
+      <td id="T_0be3f_row0_col1" class="data row0 col1" >18,8640</td>
+      <td id="T_0be3f_row0_col2" class="data row0 col2" >0,0611</td>
+      <td id="T_0be3f_row0_col3" class="data row0 col3" >0,4022</td>
+      <td id="T_0be3f_row0_col4" class="data row0 col4" >0,5848</td>
+      <td id="T_0be3f_row0_col5" class="data row0 col5" >no disponible, porque no hay GPU NVIDIA (con device='cuda', XGBoost recurre a la CPU sin error)</td>
     </tr>
     <tr>
-      <td id="T_70686_row1_col0" class="data row1 col0" >tree_method='approx' (CPU, 1 hilo)</td>
-      <td id="T_70686_row1_col1" class="data row1 col1" >13,1762</td>
-      <td id="T_70686_row1_col2" class="data row1 col2" >0,0630</td>
-      <td id="T_70686_row1_col3" class="data row1 col3" >0,4022</td>
-      <td id="T_70686_row1_col4" class="data row1 col4" >0,5869</td>
-      <td id="T_70686_row1_col5" class="data row1 col5" >no disponible, porque no hay GPU NVIDIA (con device='cuda', XGBoost recurre a la CPU sin error)</td>
+      <td id="T_0be3f_row1_col0" class="data row1 col0" >tree_method='approx' (CPU, 1 hilo)</td>
+      <td id="T_0be3f_row1_col1" class="data row1 col1" >13,1762</td>
+      <td id="T_0be3f_row1_col2" class="data row1 col2" >0,0630</td>
+      <td id="T_0be3f_row1_col3" class="data row1 col3" >0,4022</td>
+      <td id="T_0be3f_row1_col4" class="data row1 col4" >0,5869</td>
+      <td id="T_0be3f_row1_col5" class="data row1 col5" >no disponible, porque no hay GPU NVIDIA (con device='cuda', XGBoost recurre a la CPU sin error)</td>
     </tr>
     <tr>
-      <td id="T_70686_row2_col0" class="data row2 col0" >tree_method='hist' (CPU, 1 hilo)</td>
-      <td id="T_70686_row2_col1" class="data row2 col1" >1,8721</td>
-      <td id="T_70686_row2_col2" class="data row2 col2" >0,0580</td>
-      <td id="T_70686_row2_col3" class="data row2 col3" >0,4022</td>
-      <td id="T_70686_row2_col4" class="data row2 col4" >0,5869</td>
-      <td id="T_70686_row2_col5" class="data row2 col5" >no disponible, porque no hay GPU NVIDIA (con device='cuda', XGBoost recurre a la CPU sin error)</td>
+      <td id="T_0be3f_row2_col0" class="data row2 col0" >tree_method='hist' (CPU, 1 hilo)</td>
+      <td id="T_0be3f_row2_col1" class="data row2 col1" >1,8721</td>
+      <td id="T_0be3f_row2_col2" class="data row2 col2" >0,0580</td>
+      <td id="T_0be3f_row2_col3" class="data row2 col3" >0,4022</td>
+      <td id="T_0be3f_row2_col4" class="data row2 col4" >0,5869</td>
+      <td id="T_0be3f_row2_col5" class="data row2 col5" >no disponible, porque no hay GPU NVIDIA (con device='cuda', XGBoost recurre a la CPU sin error)</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_html"><style type="text/css">
 </style>
-<table id="T_cc491">
+<table id="T_c45f6">
   <thead>
     <tr>
-      <th id="T_cc491_level0_col0" class="col_heading level0 col0" >Configuración</th>
-      <th id="T_cc491_level0_col1" class="col_heading level0 col1" >Árboles usados</th>
-      <th id="T_cc491_level0_col2" class="col_heading level0 col2" >Ajuste (s)</th>
-      <th id="T_cc491_level0_col3" class="col_heading level0 col3" >AUC-PR prueba</th>
+      <th id="T_c45f6_level0_col0" class="col_heading level0 col0" >Configuración</th>
+      <th id="T_c45f6_level0_col1" class="col_heading level0 col1" >Árboles usados</th>
+      <th id="T_c45f6_level0_col2" class="col_heading level0 col2" >Ajuste (s)</th>
+      <th id="T_c45f6_level0_col3" class="col_heading level0 col3" >AUC-PR prueba</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_cc491_row0_col0" class="data row0 col0" >Sin parada temprana (2000 árboles)</td>
-      <td id="T_cc491_row0_col1" class="data row0 col1" >2 000</td>
-      <td id="T_cc491_row0_col2" class="data row0 col2" >16,1139</td>
-      <td id="T_cc491_row0_col3" class="data row0 col3" >0,3650</td>
+      <td id="T_c45f6_row0_col0" class="data row0 col0" >Sin parada temprana (2000 árboles)</td>
+      <td id="T_c45f6_row0_col1" class="data row0 col1" >2 000</td>
+      <td id="T_c45f6_row0_col2" class="data row0 col2" >16,1139</td>
+      <td id="T_c45f6_row0_col3" class="data row0 col3" >0,3650</td>
     </tr>
     <tr>
-      <td id="T_cc491_row1_col0" class="data row1 col0" >Con parada temprana (paciencia 50)</td>
-      <td id="T_cc491_row1_col1" class="data row1 col1" >4</td>
-      <td id="T_cc491_row1_col2" class="data row1 col2" >0,5587</td>
-      <td id="T_cc491_row1_col3" class="data row1 col3" >0,3380</td>
+      <td id="T_c45f6_row1_col0" class="data row1 col0" >Con parada temprana (paciencia 50)</td>
+      <td id="T_c45f6_row1_col1" class="data row1 col1" >4</td>
+      <td id="T_c45f6_row1_col2" class="data row1 col2" >0,5587</td>
+      <td id="T_c45f6_row1_col3" class="data row1 col3" >0,3380</td>
     </tr>
   </tbody>
 </table>
 </div><img alt="../_images/105524a179125382de33c91a1595a1f3fbe4e3315fe2f085de070d46e4a738ce.png" src="../_images/105524a179125382de33c91a1595a1f3fbe4e3315fe2f085de070d46e4a738ce.png" />
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_d9947">
+<table id="T_d7fd0">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_d9947_level0_col0" class="col_heading level0 col0" >Exponente empírico</th>
+      <th id="T_d7fd0_level0_col0" class="col_heading level0 col0" >Exponente empírico</th>
     </tr>
     <tr>
       <th class="index_name level0" >Método</th>
@@ -1036,12 +1036,12 @@
   </thead>
   <tbody>
     <tr>
-      <th id="T_d9947_level0_row0" class="row_heading level0 row0" >exact</th>
-      <td id="T_d9947_row0_col0" class="data row0 col0" >0,94</td>
+      <th id="T_d7fd0_level0_row0" class="row_heading level0 row0" >exact</th>
+      <td id="T_d7fd0_row0_col0" class="data row0 col0" >0,94</td>
     </tr>
     <tr>
-      <th id="T_d9947_level0_row1" class="row_heading level0 row1" >hist</th>
-      <td id="T_d9947_row1_col0" class="data row1 col0" >0,51</td>
+      <th id="T_d7fd0_level0_row1" class="row_heading level0 row1" >hist</th>
+      <td id="T_d7fd0_row1_col0" class="data row1 col0" >0,51</td>
     </tr>
   </tbody>
 </table>
@@ -1093,188 +1093,188 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_32f9a">
+<table id="T_b9188">
   <thead>
     <tr>
-      <th id="T_32f9a_level0_col0" class="col_heading level0 col0" >Método</th>
-      <th id="T_32f9a_level0_col1" class="col_heading level0 col1" >n</th>
-      <th id="T_32f9a_level0_col2" class="col_heading level0 col2" >Ajuste (s)</th>
-      <th id="T_32f9a_level0_col3" class="col_heading level0 col3" >Inferencia (s)</th>
-      <th id="T_32f9a_level0_col4" class="col_heading level0 col4" >AUC prueba</th>
-      <th id="T_32f9a_level0_col5" class="col_heading level0 col5" >AUC-PR prueba</th>
+      <th id="T_b9188_level0_col0" class="col_heading level0 col0" >Método</th>
+      <th id="T_b9188_level0_col1" class="col_heading level0 col1" >n</th>
+      <th id="T_b9188_level0_col2" class="col_heading level0 col2" >Ajuste (s)</th>
+      <th id="T_b9188_level0_col3" class="col_heading level0 col3" >Inferencia (s)</th>
+      <th id="T_b9188_level0_col4" class="col_heading level0 col4" >AUC prueba</th>
+      <th id="T_b9188_level0_col5" class="col_heading level0 col5" >AUC-PR prueba</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_32f9a_row0_col0" class="data row0 col0" >SVC núcleo RBF (exacto)</td>
-      <td id="T_32f9a_row0_col1" class="data row0 col1" >1 000</td>
-      <td id="T_32f9a_row0_col2" class="data row0 col2" >0,0121</td>
-      <td id="T_32f9a_row0_col3" class="data row0 col3" >0,1150</td>
-      <td id="T_32f9a_row0_col4" class="data row0 col4" >0,6119</td>
-      <td id="T_32f9a_row0_col5" class="data row0 col5" >0,3837</td>
+      <td id="T_b9188_row0_col0" class="data row0 col0" >SVC núcleo RBF (exacto)</td>
+      <td id="T_b9188_row0_col1" class="data row0 col1" >1 000</td>
+      <td id="T_b9188_row0_col2" class="data row0 col2" >0,0121</td>
+      <td id="T_b9188_row0_col3" class="data row0 col3" >0,1150</td>
+      <td id="T_b9188_row0_col4" class="data row0 col4" >0,6119</td>
+      <td id="T_b9188_row0_col5" class="data row0 col5" >0,3837</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row1_col0" class="data row1 col0" >LinearSVC</td>
-      <td id="T_32f9a_row1_col1" class="data row1 col1" >1 000</td>
-      <td id="T_32f9a_row1_col2" class="data row1 col2" >0,0036</td>
-      <td id="T_32f9a_row1_col3" class="data row1 col3" >0,0016</td>
-      <td id="T_32f9a_row1_col4" class="data row1 col4" >0,4565</td>
-      <td id="T_32f9a_row1_col5" class="data row1 col5" >0,2948</td>
+      <td id="T_b9188_row1_col0" class="data row1 col0" >LinearSVC</td>
+      <td id="T_b9188_row1_col1" class="data row1 col1" >1 000</td>
+      <td id="T_b9188_row1_col2" class="data row1 col2" >0,0036</td>
+      <td id="T_b9188_row1_col3" class="data row1 col3" >0,0016</td>
+      <td id="T_b9188_row1_col4" class="data row1 col4" >0,4565</td>
+      <td id="T_b9188_row1_col5" class="data row1 col5" >0,2948</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row2_col0" class="data row2 col0" >SGD (bisagra)</td>
-      <td id="T_32f9a_row2_col1" class="data row2 col1" >1 000</td>
-      <td id="T_32f9a_row2_col2" class="data row2 col2" >0,0084</td>
-      <td id="T_32f9a_row2_col3" class="data row2 col3" >0,0007</td>
-      <td id="T_32f9a_row2_col4" class="data row2 col4" >0,5391</td>
-      <td id="T_32f9a_row2_col5" class="data row2 col5" >0,3330</td>
+      <td id="T_b9188_row2_col0" class="data row2 col0" >SGD (bisagra)</td>
+      <td id="T_b9188_row2_col1" class="data row2 col1" >1 000</td>
+      <td id="T_b9188_row2_col2" class="data row2 col2" >0,0084</td>
+      <td id="T_b9188_row2_col3" class="data row2 col3" >0,0007</td>
+      <td id="T_b9188_row2_col4" class="data row2 col4" >0,5391</td>
+      <td id="T_b9188_row2_col5" class="data row2 col5" >0,3330</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row3_col0" class="data row3 col0" >Nyström (300) + LinearSVC</td>
-      <td id="T_32f9a_row3_col1" class="data row3 col1" >1 000</td>
-      <td id="T_32f9a_row3_col2" class="data row3 col2" >0,0795</td>
-      <td id="T_32f9a_row3_col3" class="data row3 col3" >0,1759</td>
-      <td id="T_32f9a_row3_col4" class="data row3 col4" >0,6732</td>
-      <td id="T_32f9a_row3_col5" class="data row3 col5" >0,5008</td>
+      <td id="T_b9188_row3_col0" class="data row3 col0" >Nyström (300) + LinearSVC</td>
+      <td id="T_b9188_row3_col1" class="data row3 col1" >1 000</td>
+      <td id="T_b9188_row3_col2" class="data row3 col2" >0,0795</td>
+      <td id="T_b9188_row3_col3" class="data row3 col3" >0,1759</td>
+      <td id="T_b9188_row3_col4" class="data row3 col4" >0,6732</td>
+      <td id="T_b9188_row3_col5" class="data row3 col5" >0,5008</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row4_col0" class="data row4 col0" >SVC núcleo RBF (exacto)</td>
-      <td id="T_32f9a_row4_col1" class="data row4 col1" >2 000</td>
-      <td id="T_32f9a_row4_col2" class="data row4 col2" >0,0438</td>
-      <td id="T_32f9a_row4_col3" class="data row4 col3" >0,2452</td>
-      <td id="T_32f9a_row4_col4" class="data row4 col4" >0,6309</td>
-      <td id="T_32f9a_row4_col5" class="data row4 col5" >0,4012</td>
+      <td id="T_b9188_row4_col0" class="data row4 col0" >SVC núcleo RBF (exacto)</td>
+      <td id="T_b9188_row4_col1" class="data row4 col1" >2 000</td>
+      <td id="T_b9188_row4_col2" class="data row4 col2" >0,0438</td>
+      <td id="T_b9188_row4_col3" class="data row4 col3" >0,2452</td>
+      <td id="T_b9188_row4_col4" class="data row4 col4" >0,6309</td>
+      <td id="T_b9188_row4_col5" class="data row4 col5" >0,4012</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row5_col0" class="data row5 col0" >LinearSVC</td>
-      <td id="T_32f9a_row5_col1" class="data row5 col1" >2 000</td>
-      <td id="T_32f9a_row5_col2" class="data row5 col2" >0,0076</td>
-      <td id="T_32f9a_row5_col3" class="data row5 col3" >0,0016</td>
-      <td id="T_32f9a_row5_col4" class="data row5 col4" >0,4528</td>
-      <td id="T_32f9a_row5_col5" class="data row5 col5" >0,2953</td>
+      <td id="T_b9188_row5_col0" class="data row5 col0" >LinearSVC</td>
+      <td id="T_b9188_row5_col1" class="data row5 col1" >2 000</td>
+      <td id="T_b9188_row5_col2" class="data row5 col2" >0,0076</td>
+      <td id="T_b9188_row5_col3" class="data row5 col3" >0,0016</td>
+      <td id="T_b9188_row5_col4" class="data row5 col4" >0,4528</td>
+      <td id="T_b9188_row5_col5" class="data row5 col5" >0,2953</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row6_col0" class="data row6 col0" >SGD (bisagra)</td>
-      <td id="T_32f9a_row6_col1" class="data row6 col1" >2 000</td>
-      <td id="T_32f9a_row6_col2" class="data row6 col2" >0,0155</td>
-      <td id="T_32f9a_row6_col3" class="data row6 col3" >0,0008</td>
-      <td id="T_32f9a_row6_col4" class="data row6 col4" >0,5353</td>
-      <td id="T_32f9a_row6_col5" class="data row6 col5" >0,3350</td>
+      <td id="T_b9188_row6_col0" class="data row6 col0" >SGD (bisagra)</td>
+      <td id="T_b9188_row6_col1" class="data row6 col1" >2 000</td>
+      <td id="T_b9188_row6_col2" class="data row6 col2" >0,0155</td>
+      <td id="T_b9188_row6_col3" class="data row6 col3" >0,0008</td>
+      <td id="T_b9188_row6_col4" class="data row6 col4" >0,5353</td>
+      <td id="T_b9188_row6_col5" class="data row6 col5" >0,3350</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row7_col0" class="data row7 col0" >Nyström (300) + LinearSVC</td>
-      <td id="T_32f9a_row7_col1" class="data row7 col1" >2 000</td>
-      <td id="T_32f9a_row7_col2" class="data row7 col2" >0,1169</td>
-      <td id="T_32f9a_row7_col3" class="data row7 col3" >0,1190</td>
-      <td id="T_32f9a_row7_col4" class="data row7 col4" >0,6739</td>
-      <td id="T_32f9a_row7_col5" class="data row7 col5" >0,5012</td>
+      <td id="T_b9188_row7_col0" class="data row7 col0" >Nyström (300) + LinearSVC</td>
+      <td id="T_b9188_row7_col1" class="data row7 col1" >2 000</td>
+      <td id="T_b9188_row7_col2" class="data row7 col2" >0,1169</td>
+      <td id="T_b9188_row7_col3" class="data row7 col3" >0,1190</td>
+      <td id="T_b9188_row7_col4" class="data row7 col4" >0,6739</td>
+      <td id="T_b9188_row7_col5" class="data row7 col5" >0,5012</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row8_col0" class="data row8 col0" >SVC núcleo RBF (exacto)</td>
-      <td id="T_32f9a_row8_col1" class="data row8 col1" >4 000</td>
-      <td id="T_32f9a_row8_col2" class="data row8 col2" >0,2283</td>
-      <td id="T_32f9a_row8_col3" class="data row8 col3" >0,5992</td>
-      <td id="T_32f9a_row8_col4" class="data row8 col4" >0,5291</td>
-      <td id="T_32f9a_row8_col5" class="data row8 col5" >0,3096</td>
+      <td id="T_b9188_row8_col0" class="data row8 col0" >SVC núcleo RBF (exacto)</td>
+      <td id="T_b9188_row8_col1" class="data row8 col1" >4 000</td>
+      <td id="T_b9188_row8_col2" class="data row8 col2" >0,2283</td>
+      <td id="T_b9188_row8_col3" class="data row8 col3" >0,5992</td>
+      <td id="T_b9188_row8_col4" class="data row8 col4" >0,5291</td>
+      <td id="T_b9188_row8_col5" class="data row8 col5" >0,3096</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row9_col0" class="data row9 col0" >LinearSVC</td>
-      <td id="T_32f9a_row9_col1" class="data row9 col1" >4 000</td>
-      <td id="T_32f9a_row9_col2" class="data row9 col2" >0,0209</td>
-      <td id="T_32f9a_row9_col3" class="data row9 col3" >0,0020</td>
-      <td id="T_32f9a_row9_col4" class="data row9 col4" >0,4538</td>
-      <td id="T_32f9a_row9_col5" class="data row9 col5" >0,2967</td>
+      <td id="T_b9188_row9_col0" class="data row9 col0" >LinearSVC</td>
+      <td id="T_b9188_row9_col1" class="data row9 col1" >4 000</td>
+      <td id="T_b9188_row9_col2" class="data row9 col2" >0,0209</td>
+      <td id="T_b9188_row9_col3" class="data row9 col3" >0,0020</td>
+      <td id="T_b9188_row9_col4" class="data row9 col4" >0,4538</td>
+      <td id="T_b9188_row9_col5" class="data row9 col5" >0,2967</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row10_col0" class="data row10 col0" >SGD (bisagra)</td>
-      <td id="T_32f9a_row10_col1" class="data row10 col1" >4 000</td>
-      <td id="T_32f9a_row10_col2" class="data row10 col2" >0,0248</td>
-      <td id="T_32f9a_row10_col3" class="data row10 col3" >0,0008</td>
-      <td id="T_32f9a_row10_col4" class="data row10 col4" >0,5534</td>
-      <td id="T_32f9a_row10_col5" class="data row10 col5" >0,3422</td>
+      <td id="T_b9188_row10_col0" class="data row10 col0" >SGD (bisagra)</td>
+      <td id="T_b9188_row10_col1" class="data row10 col1" >4 000</td>
+      <td id="T_b9188_row10_col2" class="data row10 col2" >0,0248</td>
+      <td id="T_b9188_row10_col3" class="data row10 col3" >0,0008</td>
+      <td id="T_b9188_row10_col4" class="data row10 col4" >0,5534</td>
+      <td id="T_b9188_row10_col5" class="data row10 col5" >0,3422</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row11_col0" class="data row11 col0" >Nyström (300) + LinearSVC</td>
-      <td id="T_32f9a_row11_col1" class="data row11 col1" >4 000</td>
-      <td id="T_32f9a_row11_col2" class="data row11 col2" >0,2455</td>
-      <td id="T_32f9a_row11_col3" class="data row11 col3" >0,1550</td>
-      <td id="T_32f9a_row11_col4" class="data row11 col4" >0,6758</td>
-      <td id="T_32f9a_row11_col5" class="data row11 col5" >0,5016</td>
+      <td id="T_b9188_row11_col0" class="data row11 col0" >Nyström (300) + LinearSVC</td>
+      <td id="T_b9188_row11_col1" class="data row11 col1" >4 000</td>
+      <td id="T_b9188_row11_col2" class="data row11 col2" >0,2455</td>
+      <td id="T_b9188_row11_col3" class="data row11 col3" >0,1550</td>
+      <td id="T_b9188_row11_col4" class="data row11 col4" >0,6758</td>
+      <td id="T_b9188_row11_col5" class="data row11 col5" >0,5016</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row12_col0" class="data row12 col0" >SVC núcleo RBF (exacto)</td>
-      <td id="T_32f9a_row12_col1" class="data row12 col1" >8 000</td>
-      <td id="T_32f9a_row12_col2" class="data row12 col2" >1,2594</td>
-      <td id="T_32f9a_row12_col3" class="data row12 col3" >1,2485</td>
-      <td id="T_32f9a_row12_col4" class="data row12 col4" >0,4520</td>
-      <td id="T_32f9a_row12_col5" class="data row12 col5" >0,2745</td>
+      <td id="T_b9188_row12_col0" class="data row12 col0" >SVC núcleo RBF (exacto)</td>
+      <td id="T_b9188_row12_col1" class="data row12 col1" >8 000</td>
+      <td id="T_b9188_row12_col2" class="data row12 col2" >1,2594</td>
+      <td id="T_b9188_row12_col3" class="data row12 col3" >1,2485</td>
+      <td id="T_b9188_row12_col4" class="data row12 col4" >0,4520</td>
+      <td id="T_b9188_row12_col5" class="data row12 col5" >0,2745</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row13_col0" class="data row13 col0" >LinearSVC</td>
-      <td id="T_32f9a_row13_col1" class="data row13 col1" >8 000</td>
-      <td id="T_32f9a_row13_col2" class="data row13 col2" >0,0516</td>
-      <td id="T_32f9a_row13_col3" class="data row13 col3" >0,0024</td>
-      <td id="T_32f9a_row13_col4" class="data row13 col4" >0,5106</td>
-      <td id="T_32f9a_row13_col5" class="data row13 col5" >0,3454</td>
+      <td id="T_b9188_row13_col0" class="data row13 col0" >LinearSVC</td>
+      <td id="T_b9188_row13_col1" class="data row13 col1" >8 000</td>
+      <td id="T_b9188_row13_col2" class="data row13 col2" >0,0516</td>
+      <td id="T_b9188_row13_col3" class="data row13 col3" >0,0024</td>
+      <td id="T_b9188_row13_col4" class="data row13 col4" >0,5106</td>
+      <td id="T_b9188_row13_col5" class="data row13 col5" >0,3454</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row14_col0" class="data row14 col0" >SGD (bisagra)</td>
-      <td id="T_32f9a_row14_col1" class="data row14 col1" >8 000</td>
-      <td id="T_32f9a_row14_col2" class="data row14 col2" >0,0302</td>
-      <td id="T_32f9a_row14_col3" class="data row14 col3" >0,0008</td>
-      <td id="T_32f9a_row14_col4" class="data row14 col4" >0,4785</td>
-      <td id="T_32f9a_row14_col5" class="data row14 col5" >0,3143</td>
+      <td id="T_b9188_row14_col0" class="data row14 col0" >SGD (bisagra)</td>
+      <td id="T_b9188_row14_col1" class="data row14 col1" >8 000</td>
+      <td id="T_b9188_row14_col2" class="data row14 col2" >0,0302</td>
+      <td id="T_b9188_row14_col3" class="data row14 col3" >0,0008</td>
+      <td id="T_b9188_row14_col4" class="data row14 col4" >0,4785</td>
+      <td id="T_b9188_row14_col5" class="data row14 col5" >0,3143</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row15_col0" class="data row15 col0" >Nyström (300) + LinearSVC</td>
-      <td id="T_32f9a_row15_col1" class="data row15 col1" >8 000</td>
-      <td id="T_32f9a_row15_col2" class="data row15 col2" >0,4668</td>
-      <td id="T_32f9a_row15_col3" class="data row15 col3" >0,1231</td>
-      <td id="T_32f9a_row15_col4" class="data row15 col4" >0,6836</td>
-      <td id="T_32f9a_row15_col5" class="data row15 col5" >0,5059</td>
+      <td id="T_b9188_row15_col0" class="data row15 col0" >Nyström (300) + LinearSVC</td>
+      <td id="T_b9188_row15_col1" class="data row15 col1" >8 000</td>
+      <td id="T_b9188_row15_col2" class="data row15 col2" >0,4668</td>
+      <td id="T_b9188_row15_col3" class="data row15 col3" >0,1231</td>
+      <td id="T_b9188_row15_col4" class="data row15 col4" >0,6836</td>
+      <td id="T_b9188_row15_col5" class="data row15 col5" >0,5059</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row16_col0" class="data row16 col0" >SVC núcleo RBF (exacto)</td>
-      <td id="T_32f9a_row16_col1" class="data row16 col1" >16 000</td>
-      <td id="T_32f9a_row16_col2" class="data row16 col2" >7,4548</td>
-      <td id="T_32f9a_row16_col3" class="data row16 col3" >3,2224</td>
-      <td id="T_32f9a_row16_col4" class="data row16 col4" >0,4868</td>
-      <td id="T_32f9a_row16_col5" class="data row16 col5" >0,2866</td>
+      <td id="T_b9188_row16_col0" class="data row16 col0" >SVC núcleo RBF (exacto)</td>
+      <td id="T_b9188_row16_col1" class="data row16 col1" >16 000</td>
+      <td id="T_b9188_row16_col2" class="data row16 col2" >7,4548</td>
+      <td id="T_b9188_row16_col3" class="data row16 col3" >3,2224</td>
+      <td id="T_b9188_row16_col4" class="data row16 col4" >0,4868</td>
+      <td id="T_b9188_row16_col5" class="data row16 col5" >0,2866</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row17_col0" class="data row17 col0" >LinearSVC</td>
-      <td id="T_32f9a_row17_col1" class="data row17 col1" >16 000</td>
-      <td id="T_32f9a_row17_col2" class="data row17 col2" >0,0933</td>
-      <td id="T_32f9a_row17_col3" class="data row17 col3" >0,0024</td>
-      <td id="T_32f9a_row17_col4" class="data row17 col4" >0,6433</td>
-      <td id="T_32f9a_row17_col5" class="data row17 col5" >0,4826</td>
+      <td id="T_b9188_row17_col0" class="data row17 col0" >LinearSVC</td>
+      <td id="T_b9188_row17_col1" class="data row17 col1" >16 000</td>
+      <td id="T_b9188_row17_col2" class="data row17 col2" >0,0933</td>
+      <td id="T_b9188_row17_col3" class="data row17 col3" >0,0024</td>
+      <td id="T_b9188_row17_col4" class="data row17 col4" >0,6433</td>
+      <td id="T_b9188_row17_col5" class="data row17 col5" >0,4826</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row18_col0" class="data row18 col0" >SGD (bisagra)</td>
-      <td id="T_32f9a_row18_col1" class="data row18 col1" >16 000</td>
-      <td id="T_32f9a_row18_col2" class="data row18 col2" >0,0669</td>
-      <td id="T_32f9a_row18_col3" class="data row18 col3" >0,0009</td>
-      <td id="T_32f9a_row18_col4" class="data row18 col4" >0,3764</td>
-      <td id="T_32f9a_row18_col5" class="data row18 col5" >0,2924</td>
+      <td id="T_b9188_row18_col0" class="data row18 col0" >SGD (bisagra)</td>
+      <td id="T_b9188_row18_col1" class="data row18 col1" >16 000</td>
+      <td id="T_b9188_row18_col2" class="data row18 col2" >0,0669</td>
+      <td id="T_b9188_row18_col3" class="data row18 col3" >0,0009</td>
+      <td id="T_b9188_row18_col4" class="data row18 col4" >0,3764</td>
+      <td id="T_b9188_row18_col5" class="data row18 col5" >0,2924</td>
     </tr>
     <tr>
-      <td id="T_32f9a_row19_col0" class="data row19 col0" >Nyström (300) + LinearSVC</td>
-      <td id="T_32f9a_row19_col1" class="data row19 col1" >16 000</td>
-      <td id="T_32f9a_row19_col2" class="data row19 col2" >1,1919</td>
-      <td id="T_32f9a_row19_col3" class="data row19 col3" >0,1667</td>
-      <td id="T_32f9a_row19_col4" class="data row19 col4" >0,6939</td>
-      <td id="T_32f9a_row19_col5" class="data row19 col5" >0,5124</td>
+      <td id="T_b9188_row19_col0" class="data row19 col0" >Nyström (300) + LinearSVC</td>
+      <td id="T_b9188_row19_col1" class="data row19 col1" >16 000</td>
+      <td id="T_b9188_row19_col2" class="data row19 col2" >1,1919</td>
+      <td id="T_b9188_row19_col3" class="data row19 col3" >0,1667</td>
+      <td id="T_b9188_row19_col4" class="data row19 col4" >0,6939</td>
+      <td id="T_b9188_row19_col5" class="data row19 col5" >0,5124</td>
     </tr>
   </tbody>
 </table>
 </div><img alt="../_images/aa8fbc7f09d2bf311b476fe5988288fd793458af58629fdad2036729de7bb1ec.png" src="../_images/aa8fbc7f09d2bf311b476fe5988288fd793458af58629fdad2036729de7bb1ec.png" />
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_57bd7">
+<table id="T_6237a">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_57bd7_level0_col0" class="col_heading level0 col0" >Exponente empírico</th>
+      <th id="T_6237a_level0_col0" class="col_heading level0 col0" >Exponente empírico</th>
     </tr>
     <tr>
       <th class="index_name level0" >Método</th>
@@ -1283,20 +1283,20 @@
   </thead>
   <tbody>
     <tr>
-      <th id="T_57bd7_level0_row0" class="row_heading level0 row0" >LinearSVC</th>
-      <td id="T_57bd7_row0_col0" class="data row0 col0" >1,21</td>
+      <th id="T_6237a_level0_row0" class="row_heading level0 row0" >LinearSVC</th>
+      <td id="T_6237a_row0_col0" class="data row0 col0" >1,21</td>
     </tr>
     <tr>
-      <th id="T_57bd7_level0_row1" class="row_heading level0 row1" >Nyström (300) + LinearSVC</th>
-      <td id="T_57bd7_row1_col0" class="data row1 col0" >0,98</td>
+      <th id="T_6237a_level0_row1" class="row_heading level0 row1" >Nyström (300) + LinearSVC</th>
+      <td id="T_6237a_row1_col0" class="data row1 col0" >0,98</td>
     </tr>
     <tr>
-      <th id="T_57bd7_level0_row2" class="row_heading level0 row2" >SGD (bisagra)</th>
-      <td id="T_57bd7_row2_col0" class="data row2 col0" >0,70</td>
+      <th id="T_6237a_level0_row2" class="row_heading level0 row2" >SGD (bisagra)</th>
+      <td id="T_6237a_row2_col0" class="data row2 col0" >0,70</td>
     </tr>
     <tr>
-      <th id="T_57bd7_level0_row3" class="row_heading level0 row3" >SVC núcleo RBF (exacto)</th>
-      <td id="T_57bd7_row3_col0" class="data row3 col0" >2,34</td>
+      <th id="T_6237a_level0_row3" class="row_heading level0 row3" >SVC núcleo RBF (exacto)</th>
+      <td id="T_6237a_row3_col0" class="data row3 col0" >2,34</td>
     </tr>
   </tbody>
 </table>
@@ -1333,7 +1333,7 @@
              <span class="s2">"tareas de pocos segundos ese costo fijo anula la ganancia"</span>
              <span class="o">+</span> <span class="p">(</span><span class="s2">" (aquí `loky` entre pliegues fue incluso más lento que un solo núcleo)."</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">pa</span><span class="p">[(</span><span class="n">pa</span><span class="p">[</span><span class="s2">"Backend"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"loky"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pa</span><span class="p">[</span><span class="s2">"n_jobs"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)][</span><span class="s2">"Aceleración"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="s2">"."</span><span class="p">)),</span>
-    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Por tal motivo, se opta por"</span><span class="p">,</span> <span class="s2">"Paralelizar al nivel más grueso disponible, que en este proyecto son las 825 "</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Por tal motivo, se opta por"</span><span class="p">,</span> <span class="s2">"Paralelizar al nivel más grueso disponible, que en este proyecto son las 700 "</span>
              <span class="s2">"tareas (combinación × pliegue externo): 10 procesos independientes con un hilo cada uno, sin sobresuscribir "</span>
              <span class="s2">"los núcleos. Herramientas distribuidas como Dask o Ray no se justifican con 41 000 registros que caben en "</span>
              <span class="s2">"memoria y una sola máquina; serían la opción si el número de combinaciones o el tamaño de los datos "</span>
@@ -1344,120 +1344,120 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_bb369">
+<table id="T_275c3">
   <thead>
     <tr>
-      <th id="T_bb369_level0_col0" class="col_heading level0 col0" >Nivel</th>
-      <th id="T_bb369_level0_col1" class="col_heading level0 col1" >Backend</th>
-      <th id="T_bb369_level0_col2" class="col_heading level0 col2" >n_jobs</th>
-      <th id="T_bb369_level0_col3" class="col_heading level0 col3" >Tiempo (s)</th>
-      <th id="T_bb369_level0_col4" class="col_heading level0 col4" >Aceleración</th>
-      <th id="T_bb369_level0_col5" class="col_heading level0 col5" >Eficiencia</th>
+      <th id="T_275c3_level0_col0" class="col_heading level0 col0" >Nivel</th>
+      <th id="T_275c3_level0_col1" class="col_heading level0 col1" >Backend</th>
+      <th id="T_275c3_level0_col2" class="col_heading level0 col2" >n_jobs</th>
+      <th id="T_275c3_level0_col3" class="col_heading level0 col3" >Tiempo (s)</th>
+      <th id="T_275c3_level0_col4" class="col_heading level0 col4" >Aceleración</th>
+      <th id="T_275c3_level0_col5" class="col_heading level0 col5" >Eficiencia</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_bb369_row0_col0" class="data row0 col0" >entre pliegues (cross_validate)</td>
-      <td id="T_bb369_row0_col1" class="data row0 col1" >loky</td>
-      <td id="T_bb369_row0_col2" class="data row0 col2" >1</td>
-      <td id="T_bb369_row0_col3" class="data row0 col3" >7,97</td>
-      <td id="T_bb369_row0_col4" class="data row0 col4" >1,00</td>
-      <td id="T_bb369_row0_col5" class="data row0 col5" >1,00</td>
+      <td id="T_275c3_row0_col0" class="data row0 col0" >entre pliegues (cross_validate)</td>
+      <td id="T_275c3_row0_col1" class="data row0 col1" >loky</td>
+      <td id="T_275c3_row0_col2" class="data row0 col2" >1</td>
+      <td id="T_275c3_row0_col3" class="data row0 col3" >7,97</td>
+      <td id="T_275c3_row0_col4" class="data row0 col4" >1,00</td>
+      <td id="T_275c3_row0_col5" class="data row0 col5" >1,00</td>
     </tr>
     <tr>
-      <td id="T_bb369_row1_col0" class="data row1 col0" >entre pliegues (cross_validate)</td>
-      <td id="T_bb369_row1_col1" class="data row1 col1" >loky</td>
-      <td id="T_bb369_row1_col2" class="data row1 col2" >2</td>
-      <td id="T_bb369_row1_col3" class="data row1 col3" >9,20</td>
-      <td id="T_bb369_row1_col4" class="data row1 col4" >0,87</td>
-      <td id="T_bb369_row1_col5" class="data row1 col5" >0,43</td>
+      <td id="T_275c3_row1_col0" class="data row1 col0" >entre pliegues (cross_validate)</td>
+      <td id="T_275c3_row1_col1" class="data row1 col1" >loky</td>
+      <td id="T_275c3_row1_col2" class="data row1 col2" >2</td>
+      <td id="T_275c3_row1_col3" class="data row1 col3" >9,20</td>
+      <td id="T_275c3_row1_col4" class="data row1 col4" >0,87</td>
+      <td id="T_275c3_row1_col5" class="data row1 col5" >0,43</td>
     </tr>
     <tr>
-      <td id="T_bb369_row2_col0" class="data row2 col0" >entre pliegues (cross_validate)</td>
-      <td id="T_bb369_row2_col1" class="data row2 col1" >loky</td>
-      <td id="T_bb369_row2_col2" class="data row2 col2" >4</td>
-      <td id="T_bb369_row2_col3" class="data row2 col3" >8,22</td>
-      <td id="T_bb369_row2_col4" class="data row2 col4" >0,97</td>
-      <td id="T_bb369_row2_col5" class="data row2 col5" >0,24</td>
+      <td id="T_275c3_row2_col0" class="data row2 col0" >entre pliegues (cross_validate)</td>
+      <td id="T_275c3_row2_col1" class="data row2 col1" >loky</td>
+      <td id="T_275c3_row2_col2" class="data row2 col2" >4</td>
+      <td id="T_275c3_row2_col3" class="data row2 col3" >8,22</td>
+      <td id="T_275c3_row2_col4" class="data row2 col4" >0,97</td>
+      <td id="T_275c3_row2_col5" class="data row2 col5" >0,24</td>
     </tr>
     <tr>
-      <td id="T_bb369_row3_col0" class="data row3 col0" >entre pliegues (cross_validate)</td>
-      <td id="T_bb369_row3_col1" class="data row3 col1" >loky</td>
-      <td id="T_bb369_row3_col2" class="data row3 col2" >8</td>
-      <td id="T_bb369_row3_col3" class="data row3 col3" >9,84</td>
-      <td id="T_bb369_row3_col4" class="data row3 col4" >0,81</td>
-      <td id="T_bb369_row3_col5" class="data row3 col5" >0,10</td>
+      <td id="T_275c3_row3_col0" class="data row3 col0" >entre pliegues (cross_validate)</td>
+      <td id="T_275c3_row3_col1" class="data row3 col1" >loky</td>
+      <td id="T_275c3_row3_col2" class="data row3 col2" >8</td>
+      <td id="T_275c3_row3_col3" class="data row3 col3" >9,84</td>
+      <td id="T_275c3_row3_col4" class="data row3 col4" >0,81</td>
+      <td id="T_275c3_row3_col5" class="data row3 col5" >0,10</td>
     </tr>
     <tr>
-      <td id="T_bb369_row4_col0" class="data row4 col0" >entre pliegues (cross_validate)</td>
-      <td id="T_bb369_row4_col1" class="data row4 col1" >threading</td>
-      <td id="T_bb369_row4_col2" class="data row4 col2" >1</td>
-      <td id="T_bb369_row4_col3" class="data row4 col3" >7,34</td>
-      <td id="T_bb369_row4_col4" class="data row4 col4" >1,00</td>
-      <td id="T_bb369_row4_col5" class="data row4 col5" >1,00</td>
+      <td id="T_275c3_row4_col0" class="data row4 col0" >entre pliegues (cross_validate)</td>
+      <td id="T_275c3_row4_col1" class="data row4 col1" >threading</td>
+      <td id="T_275c3_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_275c3_row4_col3" class="data row4 col3" >7,34</td>
+      <td id="T_275c3_row4_col4" class="data row4 col4" >1,00</td>
+      <td id="T_275c3_row4_col5" class="data row4 col5" >1,00</td>
     </tr>
     <tr>
-      <td id="T_bb369_row5_col0" class="data row5 col0" >entre pliegues (cross_validate)</td>
-      <td id="T_bb369_row5_col1" class="data row5 col1" >threading</td>
-      <td id="T_bb369_row5_col2" class="data row5 col2" >2</td>
-      <td id="T_bb369_row5_col3" class="data row5 col3" >6,19</td>
-      <td id="T_bb369_row5_col4" class="data row5 col4" >1,18</td>
-      <td id="T_bb369_row5_col5" class="data row5 col5" >0,59</td>
+      <td id="T_275c3_row5_col0" class="data row5 col0" >entre pliegues (cross_validate)</td>
+      <td id="T_275c3_row5_col1" class="data row5 col1" >threading</td>
+      <td id="T_275c3_row5_col2" class="data row5 col2" >2</td>
+      <td id="T_275c3_row5_col3" class="data row5 col3" >6,19</td>
+      <td id="T_275c3_row5_col4" class="data row5 col4" >1,18</td>
+      <td id="T_275c3_row5_col5" class="data row5 col5" >0,59</td>
     </tr>
     <tr>
-      <td id="T_bb369_row6_col0" class="data row6 col0" >entre pliegues (cross_validate)</td>
-      <td id="T_bb369_row6_col1" class="data row6 col1" >threading</td>
-      <td id="T_bb369_row6_col2" class="data row6 col2" >4</td>
-      <td id="T_bb369_row6_col3" class="data row6 col3" >6,54</td>
-      <td id="T_bb369_row6_col4" class="data row6 col4" >1,12</td>
-      <td id="T_bb369_row6_col5" class="data row6 col5" >0,28</td>
+      <td id="T_275c3_row6_col0" class="data row6 col0" >entre pliegues (cross_validate)</td>
+      <td id="T_275c3_row6_col1" class="data row6 col1" >threading</td>
+      <td id="T_275c3_row6_col2" class="data row6 col2" >4</td>
+      <td id="T_275c3_row6_col3" class="data row6 col3" >6,54</td>
+      <td id="T_275c3_row6_col4" class="data row6 col4" >1,12</td>
+      <td id="T_275c3_row6_col5" class="data row6 col5" >0,28</td>
     </tr>
     <tr>
-      <td id="T_bb369_row7_col0" class="data row7 col0" >entre pliegues (cross_validate)</td>
-      <td id="T_bb369_row7_col1" class="data row7 col1" >threading</td>
-      <td id="T_bb369_row7_col2" class="data row7 col2" >8</td>
-      <td id="T_bb369_row7_col3" class="data row7 col3" >5,16</td>
-      <td id="T_bb369_row7_col4" class="data row7 col4" >1,42</td>
-      <td id="T_bb369_row7_col5" class="data row7 col5" >0,18</td>
+      <td id="T_275c3_row7_col0" class="data row7 col0" >entre pliegues (cross_validate)</td>
+      <td id="T_275c3_row7_col1" class="data row7 col1" >threading</td>
+      <td id="T_275c3_row7_col2" class="data row7 col2" >8</td>
+      <td id="T_275c3_row7_col3" class="data row7 col3" >5,16</td>
+      <td id="T_275c3_row7_col4" class="data row7 col4" >1,42</td>
+      <td id="T_275c3_row7_col5" class="data row7 col5" >0,18</td>
     </tr>
     <tr>
-      <td id="T_bb369_row8_col0" class="data row8 col0" >entre árboles (RandomForest n_jobs)</td>
-      <td id="T_bb369_row8_col1" class="data row8 col1" >threading (interno)</td>
-      <td id="T_bb369_row8_col2" class="data row8 col2" >1</td>
-      <td id="T_bb369_row8_col3" class="data row8 col3" >7,69</td>
-      <td id="T_bb369_row8_col4" class="data row8 col4" >1,00</td>
-      <td id="T_bb369_row8_col5" class="data row8 col5" >1,00</td>
+      <td id="T_275c3_row8_col0" class="data row8 col0" >entre árboles (RandomForest n_jobs)</td>
+      <td id="T_275c3_row8_col1" class="data row8 col1" >threading (interno)</td>
+      <td id="T_275c3_row8_col2" class="data row8 col2" >1</td>
+      <td id="T_275c3_row8_col3" class="data row8 col3" >7,69</td>
+      <td id="T_275c3_row8_col4" class="data row8 col4" >1,00</td>
+      <td id="T_275c3_row8_col5" class="data row8 col5" >1,00</td>
     </tr>
     <tr>
-      <td id="T_bb369_row9_col0" class="data row9 col0" >entre árboles (RandomForest n_jobs)</td>
-      <td id="T_bb369_row9_col1" class="data row9 col1" >threading (interno)</td>
-      <td id="T_bb369_row9_col2" class="data row9 col2" >2</td>
-      <td id="T_bb369_row9_col3" class="data row9 col3" >5,19</td>
-      <td id="T_bb369_row9_col4" class="data row9 col4" >1,48</td>
-      <td id="T_bb369_row9_col5" class="data row9 col5" >0,74</td>
+      <td id="T_275c3_row9_col0" class="data row9 col0" >entre árboles (RandomForest n_jobs)</td>
+      <td id="T_275c3_row9_col1" class="data row9 col1" >threading (interno)</td>
+      <td id="T_275c3_row9_col2" class="data row9 col2" >2</td>
+      <td id="T_275c3_row9_col3" class="data row9 col3" >5,19</td>
+      <td id="T_275c3_row9_col4" class="data row9 col4" >1,48</td>
+      <td id="T_275c3_row9_col5" class="data row9 col5" >0,74</td>
     </tr>
     <tr>
-      <td id="T_bb369_row10_col0" class="data row10 col0" >entre árboles (RandomForest n_jobs)</td>
-      <td id="T_bb369_row10_col1" class="data row10 col1" >threading (interno)</td>
-      <td id="T_bb369_row10_col2" class="data row10 col2" >4</td>
-      <td id="T_bb369_row10_col3" class="data row10 col3" >4,36</td>
-      <td id="T_bb369_row10_col4" class="data row10 col4" >1,76</td>
-      <td id="T_bb369_row10_col5" class="data row10 col5" >0,44</td>
+      <td id="T_275c3_row10_col0" class="data row10 col0" >entre árboles (RandomForest n_jobs)</td>
+      <td id="T_275c3_row10_col1" class="data row10 col1" >threading (interno)</td>
+      <td id="T_275c3_row10_col2" class="data row10 col2" >4</td>
+      <td id="T_275c3_row10_col3" class="data row10 col3" >4,36</td>
+      <td id="T_275c3_row10_col4" class="data row10 col4" >1,76</td>
+      <td id="T_275c3_row10_col5" class="data row10 col5" >0,44</td>
     </tr>
     <tr>
-      <td id="T_bb369_row11_col0" class="data row11 col0" >entre árboles (RandomForest n_jobs)</td>
-      <td id="T_bb369_row11_col1" class="data row11 col1" >threading (interno)</td>
-      <td id="T_bb369_row11_col2" class="data row11 col2" >8</td>
-      <td id="T_bb369_row11_col3" class="data row11 col3" >4,09</td>
-      <td id="T_bb369_row11_col4" class="data row11 col4" >1,88</td>
-      <td id="T_bb369_row11_col5" class="data row11 col5" >0,24</td>
+      <td id="T_275c3_row11_col0" class="data row11 col0" >entre árboles (RandomForest n_jobs)</td>
+      <td id="T_275c3_row11_col1" class="data row11 col1" >threading (interno)</td>
+      <td id="T_275c3_row11_col2" class="data row11 col2" >8</td>
+      <td id="T_275c3_row11_col3" class="data row11 col3" >4,09</td>
+      <td id="T_275c3_row11_col4" class="data row11 col4" >1,88</td>
+      <td id="T_275c3_row11_col5" class="data row11 col5" >0,24</td>
     </tr>
   </tbody>
 </table>
 </div><img alt="../_images/1d392d4e2044d9fa2c6638ba65cd1b20bead42deb87e6810ade9fe2e21d5f8f9.png" src="../_images/1d392d4e2044d9fa2c6638ba65cd1b20bead42deb87e6810ade9fe2e21d5f8f9.png" />
 <p><strong>Interpretación.</strong> La mayor aceleración es de 1,9 veces con 8 núcleos (entre árboles (RandomForest n_jobs), threading (interno)), una eficiencia del 24 %. Con 3 pliegues internos, paralelizar entre pliegues no puede superar una aceleración de 3, porque no hay más tareas que repartir.</p>
 <p>Es decir, la granularidad decide la escalabilidad: entre pliegues hay pocas tareas grandes y entre árboles hay muchas tareas pequeñas. Los hilos funcionan bien en scikit-learn y XGBoost porque el núcleo de cómputo libera el GIL; los procesos de <code class="docutils literal notranslate"><span class="pre">loky</span></code> pagan el arranque de cada trabajador y la copia de los datos, y con tareas de pocos segundos ese costo fijo anula la ganancia (aquí <code class="docutils literal notranslate"><span class="pre">loky</span></code> entre pliegues fue incluso más lento que un solo núcleo).</p>
-<p>Por tal motivo, se opta por paralelizar al nivel más grueso disponible, que en este proyecto son las 825 tareas (combinación × pliegue externo): 10 procesos independientes con un hilo cada uno, sin sobresuscribir los núcleos. Herramientas distribuidas como Dask o Ray no se justifican con 41 000 registros que caben en memoria y una sola máquina; serían la opción si el número de combinaciones o el tamaño de los datos exigiera varios nodos.</p>
+<p>Por tal motivo, se opta por paralelizar al nivel más grueso disponible, que en este proyecto son las 700 tareas (combinación × pliegue externo): 10 procesos independientes con un hilo cada uno, sin sobresuscribir los núcleos. Herramientas distribuidas como Dask o Ray no se justifican con 41 000 registros que caben en memoria y una sola máquina; serían la opción si el número de combinaciones o el tamaño de los datos exigiera varios nodos.</p>
 </div>
 </div>
 </section>
@@ -1492,44 +1492,44 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_1484e">
+<table id="T_4c109">
   <thead>
     <tr>
-      <th id="T_1484e_level0_col0" class="col_heading level0 col0" >Componente</th>
-      <th id="T_1484e_level0_col1" class="col_heading level0 col1" >Tiempo acumulado (s)</th>
-      <th id="T_1484e_level0_col2" class="col_heading level0 col2" >% del total</th>
+      <th id="T_4c109_level0_col0" class="col_heading level0 col0" >Componente</th>
+      <th id="T_4c109_level0_col1" class="col_heading level0 col1" >Tiempo acumulado (s)</th>
+      <th id="T_4c109_level0_col2" class="col_heading level0 col2" >% del total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_1484e_row0_col0" class="data row0 col0" >Ajuste de XGBoost (booster)</td>
-      <td id="T_1484e_row0_col1" class="data row0 col1" >116,81</td>
-      <td id="T_1484e_row0_col2" class="data row0 col2" >69,04</td>
+      <td id="T_4c109_row0_col0" class="data row0 col0" >Ajuste de XGBoost (booster)</td>
+      <td id="T_4c109_row0_col1" class="data row0 col1" >116,81</td>
+      <td id="T_4c109_row0_col2" class="data row0 col2" >69,04</td>
     </tr>
     <tr>
-      <td id="T_1484e_row1_col0" class="data row1 col0" >Preprocesamiento (ColumnTransformer)</td>
-      <td id="T_1484e_row1_col1" class="data row1 col1" >32,50</td>
-      <td id="T_1484e_row1_col2" class="data row1 col2" >19,21</td>
+      <td id="T_4c109_row1_col0" class="data row1 col0" >Preprocesamiento (ColumnTransformer)</td>
+      <td id="T_4c109_row1_col1" class="data row1 col1" >32,50</td>
+      <td id="T_4c109_row1_col2" class="data row1 col2" >19,21</td>
     </tr>
     <tr>
-      <td id="T_1484e_row2_col0" class="data row2 col0" >Cálculo de la métrica (scorer)</td>
-      <td id="T_1484e_row2_col1" class="data row2 col1" >6,42</td>
-      <td id="T_1484e_row2_col2" class="data row2 col2" >3,80</td>
+      <td id="T_4c109_row2_col0" class="data row2 col0" >Cálculo de la métrica (scorer)</td>
+      <td id="T_4c109_row2_col1" class="data row2 col1" >6,42</td>
+      <td id="T_4c109_row2_col2" class="data row2 col2" >3,80</td>
     </tr>
     <tr>
-      <td id="T_1484e_row3_col0" class="data row3 col0" >Predicción de XGBoost</td>
-      <td id="T_1484e_row3_col1" class="data row3 col1" >1,82</td>
-      <td id="T_1484e_row3_col2" class="data row3 col2" >1,07</td>
+      <td id="T_4c109_row3_col0" class="data row3 col0" >Predicción de XGBoost</td>
+      <td id="T_4c109_row3_col1" class="data row3 col1" >1,82</td>
+      <td id="T_4c109_row3_col2" class="data row3 col2" >1,07</td>
     </tr>
     <tr>
-      <td id="T_1484e_row4_col0" class="data row4 col0" >SMOTE (fit_resample)</td>
-      <td id="T_1484e_row4_col1" class="data row4 col1" >1,72</td>
-      <td id="T_1484e_row4_col2" class="data row4 col2" >1,01</td>
+      <td id="T_4c109_row4_col0" class="data row4 col0" >SMOTE (fit_resample)</td>
+      <td id="T_4c109_row4_col1" class="data row4 col1" >1,72</td>
+      <td id="T_4c109_row4_col2" class="data row4 col2" >1,01</td>
     </tr>
     <tr>
-      <td id="T_1484e_row5_col0" class="data row5 col0" >Muestreo TPE de Optuna</td>
-      <td id="T_1484e_row5_col1" class="data row5 col1" >0,00</td>
-      <td id="T_1484e_row5_col2" class="data row5 col2" >0,00</td>
+      <td id="T_4c109_row5_col0" class="data row5 col0" >Muestreo TPE de Optuna</td>
+      <td id="T_4c109_row5_col1" class="data row5 col1" >0,00</td>
+      <td id="T_4c109_row5_col2" class="data row5 col2" >0,00</td>
     </tr>
   </tbody>
 </table>
@@ -1576,108 +1576,108 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_e2a00">
+<table id="T_a09f9">
   <thead>
     <tr>
-      <th id="T_e2a00_level0_col0" class="col_heading level0 col0" >Modelo</th>
-      <th id="T_e2a00_level0_col1" class="col_heading level0 col1" >Versión</th>
-      <th id="T_e2a00_level0_col2" class="col_heading level0 col2" >Complejidad teórica</th>
-      <th id="T_e2a00_level0_col3" class="col_heading level0 col3" >Ajuste (s)</th>
-      <th id="T_e2a00_level0_col4" class="col_heading level0 col4" >Inferencia (s)</th>
-      <th id="T_e2a00_level0_col5" class="col_heading level0 col5" >Memoria pico del ajuste (MB)</th>
-      <th id="T_e2a00_level0_col6" class="col_heading level0 col6" >Métrica</th>
-      <th id="T_e2a00_level0_col7" class="col_heading level0 col7" >Valor</th>
-      <th id="T_e2a00_level0_col8" class="col_heading level0 col8" >Variación de la métrica</th>
+      <th id="T_a09f9_level0_col0" class="col_heading level0 col0" >Modelo</th>
+      <th id="T_a09f9_level0_col1" class="col_heading level0 col1" >Versión</th>
+      <th id="T_a09f9_level0_col2" class="col_heading level0 col2" >Complejidad teórica</th>
+      <th id="T_a09f9_level0_col3" class="col_heading level0 col3" >Ajuste (s)</th>
+      <th id="T_a09f9_level0_col4" class="col_heading level0 col4" >Inferencia (s)</th>
+      <th id="T_a09f9_level0_col5" class="col_heading level0 col5" >Memoria pico del ajuste (MB)</th>
+      <th id="T_a09f9_level0_col6" class="col_heading level0 col6" >Métrica</th>
+      <th id="T_a09f9_level0_col7" class="col_heading level0 col7" >Valor</th>
+      <th id="T_a09f9_level0_col8" class="col_heading level0 col8" >Variación de la métrica</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_e2a00_row0_col0" class="data row0 col0" >KNN (k = 40)</td>
-      <td id="T_e2a00_row0_col1" class="data row0 col1" >Estándar: búsqueda exhaustiva</td>
-      <td id="T_e2a00_row0_col2" class="data row0 col2" >O(n · p) por consulta</td>
-      <td id="T_e2a00_row0_col3" class="data row0 col3" >0,0013</td>
-      <td id="T_e2a00_row0_col4" class="data row0 col4" >3,2630</td>
-      <td id="T_e2a00_row0_col5" class="data row0 col5" >0,0030</td>
-      <td id="T_e2a00_row0_col6" class="data row0 col6" >AUC-PR</td>
-      <td id="T_e2a00_row0_col7" class="data row0 col7" >0,5060</td>
-      <td id="T_e2a00_row0_col8" class="data row0 col8" >0,0000</td>
+      <td id="T_a09f9_row0_col0" class="data row0 col0" >KNN (k = 40)</td>
+      <td id="T_a09f9_row0_col1" class="data row0 col1" >Estándar: búsqueda exhaustiva</td>
+      <td id="T_a09f9_row0_col2" class="data row0 col2" >O(n · p) por consulta</td>
+      <td id="T_a09f9_row0_col3" class="data row0 col3" >0,0013</td>
+      <td id="T_a09f9_row0_col4" class="data row0 col4" >3,2630</td>
+      <td id="T_a09f9_row0_col5" class="data row0 col5" >0,0030</td>
+      <td id="T_a09f9_row0_col6" class="data row0 col6" >AUC-PR</td>
+      <td id="T_a09f9_row0_col7" class="data row0 col7" >0,5060</td>
+      <td id="T_a09f9_row0_col8" class="data row0 col8" >0,0000</td>
     </tr>
     <tr>
-      <td id="T_e2a00_row1_col0" class="data row1 col0" >KNN (k = 40)</td>
-      <td id="T_e2a00_row1_col1" class="data row1 col1" >Optimizado: FAISS HNSW (aproximado)</td>
-      <td id="T_e2a00_row1_col2" class="data row1 col2" >≈ O(log n) por consulta</td>
-      <td id="T_e2a00_row1_col3" class="data row1 col3" >1,9673</td>
-      <td id="T_e2a00_row1_col4" class="data row1 col4" >0,2409</td>
-      <td id="T_e2a00_row1_col5" class="data row1 col5" >0,0008</td>
-      <td id="T_e2a00_row1_col6" class="data row1 col6" >AUC-PR</td>
-      <td id="T_e2a00_row1_col7" class="data row1 col7" >0,4850</td>
-      <td id="T_e2a00_row1_col8" class="data row1 col8" >-0,0210</td>
+      <td id="T_a09f9_row1_col0" class="data row1 col0" >KNN (k = 40)</td>
+      <td id="T_a09f9_row1_col1" class="data row1 col1" >Optimizado: FAISS HNSW (aproximado)</td>
+      <td id="T_a09f9_row1_col2" class="data row1 col2" >≈ O(log n) por consulta</td>
+      <td id="T_a09f9_row1_col3" class="data row1 col3" >1,9673</td>
+      <td id="T_a09f9_row1_col4" class="data row1 col4" >0,2409</td>
+      <td id="T_a09f9_row1_col5" class="data row1 col5" >0,0008</td>
+      <td id="T_a09f9_row1_col6" class="data row1 col6" >AUC-PR</td>
+      <td id="T_a09f9_row1_col7" class="data row1 col7" >0,4850</td>
+      <td id="T_a09f9_row1_col8" class="data row1 col8" >-0,0210</td>
     </tr>
     <tr>
-      <td id="T_e2a00_row2_col0" class="data row2 col0" >Ridge</td>
-      <td id="T_e2a00_row2_col1" class="data row2 col1" >Estándar: Cholesky</td>
-      <td id="T_e2a00_row2_col2" class="data row2 col2" >O(n · p² + p³)</td>
-      <td id="T_e2a00_row2_col3" class="data row2 col3" >0,0136</td>
-      <td id="T_e2a00_row2_col4" class="data row2 col4" >0,0006</td>
-      <td id="T_e2a00_row2_col5" class="data row2 col5" >6,3180</td>
-      <td id="T_e2a00_row2_col6" class="data row2 col6" >RMSE</td>
-      <td id="T_e2a00_row2_col7" class="data row2 col7" >1,0972</td>
-      <td id="T_e2a00_row2_col8" class="data row2 col8" >0,0000</td>
+      <td id="T_a09f9_row2_col0" class="data row2 col0" >Ridge</td>
+      <td id="T_a09f9_row2_col1" class="data row2 col1" >Estándar: Cholesky</td>
+      <td id="T_a09f9_row2_col2" class="data row2 col2" >O(n · p² + p³)</td>
+      <td id="T_a09f9_row2_col3" class="data row2 col3" >0,0136</td>
+      <td id="T_a09f9_row2_col4" class="data row2 col4" >0,0006</td>
+      <td id="T_a09f9_row2_col5" class="data row2 col5" >6,3180</td>
+      <td id="T_a09f9_row2_col6" class="data row2 col6" >RMSE</td>
+      <td id="T_a09f9_row2_col7" class="data row2 col7" >1,0972</td>
+      <td id="T_a09f9_row2_col8" class="data row2 col8" >0,0000</td>
     </tr>
     <tr>
-      <td id="T_e2a00_row3_col0" class="data row3 col0" >Ridge</td>
-      <td id="T_e2a00_row3_col1" class="data row3 col1" >Optimizado: SAGA</td>
-      <td id="T_e2a00_row3_col2" class="data row3 col2" >O(n · p) por época</td>
-      <td id="T_e2a00_row3_col3" class="data row3 col3" >11,7080</td>
-      <td id="T_e2a00_row3_col4" class="data row3 col4" >0,0007</td>
-      <td id="T_e2a00_row3_col5" class="data row3 col5" >6,9234</td>
-      <td id="T_e2a00_row3_col6" class="data row3 col6" >RMSE</td>
-      <td id="T_e2a00_row3_col7" class="data row3 col7" >1,0866</td>
-      <td id="T_e2a00_row3_col8" class="data row3 col8" >-0,0106</td>
+      <td id="T_a09f9_row3_col0" class="data row3 col0" >Ridge</td>
+      <td id="T_a09f9_row3_col1" class="data row3 col1" >Optimizado: SAGA</td>
+      <td id="T_a09f9_row3_col2" class="data row3 col2" >O(n · p) por época</td>
+      <td id="T_a09f9_row3_col3" class="data row3 col3" >11,7080</td>
+      <td id="T_a09f9_row3_col4" class="data row3 col4" >0,0007</td>
+      <td id="T_a09f9_row3_col5" class="data row3 col5" >6,9234</td>
+      <td id="T_a09f9_row3_col6" class="data row3 col6" >RMSE</td>
+      <td id="T_a09f9_row3_col7" class="data row3 col7" >1,0866</td>
+      <td id="T_a09f9_row3_col8" class="data row3 col8" >-0,0106</td>
     </tr>
     <tr>
-      <td id="T_e2a00_row4_col0" class="data row4 col0" >XGBoost (300 árboles)</td>
-      <td id="T_e2a00_row4_col1" class="data row4 col1" >Estándar: tree_method='exact'</td>
-      <td id="T_e2a00_row4_col2" class="data row4 col2" >O(B · p · n log n)</td>
-      <td id="T_e2a00_row4_col3" class="data row4 col3" >17,0442</td>
-      <td id="T_e2a00_row4_col4" class="data row4 col4" >0,0504</td>
-      <td id="T_e2a00_row4_col5" class="data row4 col5" >0,2567</td>
-      <td id="T_e2a00_row4_col6" class="data row4 col6" >AUC-PR</td>
-      <td id="T_e2a00_row4_col7" class="data row4 col7" >0,4022</td>
-      <td id="T_e2a00_row4_col8" class="data row4 col8" >0,0000</td>
+      <td id="T_a09f9_row4_col0" class="data row4 col0" >XGBoost (300 árboles)</td>
+      <td id="T_a09f9_row4_col1" class="data row4 col1" >Estándar: tree_method='exact'</td>
+      <td id="T_a09f9_row4_col2" class="data row4 col2" >O(B · p · n log n)</td>
+      <td id="T_a09f9_row4_col3" class="data row4 col3" >17,0442</td>
+      <td id="T_a09f9_row4_col4" class="data row4 col4" >0,0504</td>
+      <td id="T_a09f9_row4_col5" class="data row4 col5" >0,2567</td>
+      <td id="T_a09f9_row4_col6" class="data row4 col6" >AUC-PR</td>
+      <td id="T_a09f9_row4_col7" class="data row4 col7" >0,4022</td>
+      <td id="T_a09f9_row4_col8" class="data row4 col8" >0,0000</td>
     </tr>
     <tr>
-      <td id="T_e2a00_row5_col0" class="data row5 col0" >XGBoost (300 árboles)</td>
-      <td id="T_e2a00_row5_col1" class="data row5 col1" >Optimizado: tree_method='hist'</td>
-      <td id="T_e2a00_row5_col2" class="data row5 col2" >O(B · p · n)</td>
-      <td id="T_e2a00_row5_col3" class="data row5 col3" >1,7343</td>
-      <td id="T_e2a00_row5_col4" class="data row5 col4" >0,0506</td>
-      <td id="T_e2a00_row5_col5" class="data row5 col5" >0,2567</td>
-      <td id="T_e2a00_row5_col6" class="data row5 col6" >AUC-PR</td>
-      <td id="T_e2a00_row5_col7" class="data row5 col7" >0,4022</td>
-      <td id="T_e2a00_row5_col8" class="data row5 col8" >-0,0000</td>
+      <td id="T_a09f9_row5_col0" class="data row5 col0" >XGBoost (300 árboles)</td>
+      <td id="T_a09f9_row5_col1" class="data row5 col1" >Optimizado: tree_method='hist'</td>
+      <td id="T_a09f9_row5_col2" class="data row5 col2" >O(B · p · n)</td>
+      <td id="T_a09f9_row5_col3" class="data row5 col3" >1,7343</td>
+      <td id="T_a09f9_row5_col4" class="data row5 col4" >0,0506</td>
+      <td id="T_a09f9_row5_col5" class="data row5 col5" >0,2567</td>
+      <td id="T_a09f9_row5_col6" class="data row5 col6" >AUC-PR</td>
+      <td id="T_a09f9_row5_col7" class="data row5 col7" >0,4022</td>
+      <td id="T_a09f9_row5_col8" class="data row5 col8" >-0,0000</td>
     </tr>
     <tr>
-      <td id="T_e2a00_row6_col0" class="data row6 col0" >SVM RBF (n = 8000)</td>
-      <td id="T_e2a00_row6_col1" class="data row6 col1" >Estándar: SVC núcleo exacto</td>
-      <td id="T_e2a00_row6_col2" class="data row6 col2" >O(n²) a O(n³)</td>
-      <td id="T_e2a00_row6_col3" class="data row6 col3" >1,2283</td>
-      <td id="T_e2a00_row6_col4" class="data row6 col4" >1,2241</td>
-      <td id="T_e2a00_row6_col5" class="data row6 col5" >6,0471</td>
-      <td id="T_e2a00_row6_col6" class="data row6 col6" >AUC-PR</td>
-      <td id="T_e2a00_row6_col7" class="data row6 col7" >0,2745</td>
-      <td id="T_e2a00_row6_col8" class="data row6 col8" >0,0000</td>
+      <td id="T_a09f9_row6_col0" class="data row6 col0" >SVM RBF (n = 8000)</td>
+      <td id="T_a09f9_row6_col1" class="data row6 col1" >Estándar: SVC núcleo exacto</td>
+      <td id="T_a09f9_row6_col2" class="data row6 col2" >O(n²) a O(n³)</td>
+      <td id="T_a09f9_row6_col3" class="data row6 col3" >1,2283</td>
+      <td id="T_a09f9_row6_col4" class="data row6 col4" >1,2241</td>
+      <td id="T_a09f9_row6_col5" class="data row6 col5" >6,0471</td>
+      <td id="T_a09f9_row6_col6" class="data row6 col6" >AUC-PR</td>
+      <td id="T_a09f9_row6_col7" class="data row6 col7" >0,2745</td>
+      <td id="T_a09f9_row6_col8" class="data row6 col8" >0,0000</td>
     </tr>
     <tr>
-      <td id="T_e2a00_row7_col0" class="data row7 col0" >SVM RBF (n = 8000)</td>
-      <td id="T_e2a00_row7_col1" class="data row7 col1" >Optimizado: Nyström (300) + LinearSVC</td>
-      <td id="T_e2a00_row7_col2" class="data row7 col2" >O(n · m · p + m³)</td>
-      <td id="T_e2a00_row7_col3" class="data row7 col3" >0,4655</td>
-      <td id="T_e2a00_row7_col4" class="data row7 col4" >0,1342</td>
-      <td id="T_e2a00_row7_col5" class="data row7 col5" >28,1950</td>
-      <td id="T_e2a00_row7_col6" class="data row7 col6" >AUC-PR</td>
-      <td id="T_e2a00_row7_col7" class="data row7 col7" >0,5059</td>
-      <td id="T_e2a00_row7_col8" class="data row7 col8" >0,2314</td>
+      <td id="T_a09f9_row7_col0" class="data row7 col0" >SVM RBF (n = 8000)</td>
+      <td id="T_a09f9_row7_col1" class="data row7 col1" >Optimizado: Nyström (300) + LinearSVC</td>
+      <td id="T_a09f9_row7_col2" class="data row7 col2" >O(n · m · p + m³)</td>
+      <td id="T_a09f9_row7_col3" class="data row7 col3" >0,4655</td>
+      <td id="T_a09f9_row7_col4" class="data row7 col4" >0,1342</td>
+      <td id="T_a09f9_row7_col5" class="data row7 col5" >28,1950</td>
+      <td id="T_a09f9_row7_col6" class="data row7 col6" >AUC-PR</td>
+      <td id="T_a09f9_row7_col7" class="data row7 col7" >0,5059</td>
+      <td id="T_a09f9_row7_col8" class="data row7 col8" >0,2314</td>
     </tr>
   </tbody>
 </table>

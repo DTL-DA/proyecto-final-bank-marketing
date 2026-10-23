@@ -381,7 +381,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-investigacion-e-hipotesis">4.1 Preguntas de investigación e hipótesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-investigacion">4.1 Preguntas de investigación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explosion-combinatoria-cuantos-modelos-se-entrenan">4.2 Explosión combinatoria: cuántos modelos se entrenan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-cruzada-anidada">4.3 Validación cruzada anidada</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrica-de-validacion">4.4 Métrica de validación</a></li>
@@ -399,19 +399,14 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="diseno-experimental-del-tercer-entregable">
 <h1>4. Diseño experimental del tercer entregable<a class="headerlink" href="#diseno-experimental-del-tercer-entregable" title="Link to this heading">#</a></h1>
-<section id="preguntas-de-investigacion-e-hipotesis">
-<h2>4.1 Preguntas de investigación e hipótesis<a class="headerlink" href="#preguntas-de-investigacion-e-hipotesis" title="Link to this heading">#</a></h2>
+<section id="preguntas-de-investigacion">
+<h2>4.1 Preguntas de investigación<a class="headerlink" href="#preguntas-de-investigacion" title="Link to this heading">#</a></h2>
 <p>El problema principal sigue siendo el del Entregable 2: predecir, <strong>con la información disponible antes de la llamada</strong>, si el cliente suscribirá el depósito a término, para decidir a quién llamar primero. Este entregable lo amplía en tres direcciones, cada una con una pregunta:</p>
 <ol class="arabic simple">
 <li><p><strong>Modelos y balanceo.</strong> ¿Qué combinación de modelo, técnica de balanceo y optimizador discrimina mejor a los clientes que suscriben, medida en el bucle externo de la validación anidada, y supera de forma significativa al modelo base del Entregable 2?</p></li>
 <li><p><strong>Optimización.</strong> ¿Son la optimización bayesiana y la genética más eficientes que Grid Search y Random Search, es decir, alcanzan mejores soluciones por unidad de presupuesto computacional?</p></li>
 <li><p><strong>Regresión.</strong> ¿Permite la información previa a la llamada pronosticar su duración mejor que la media histórica?</p></li>
 </ol>
-<p>Hipótesis declaradas antes de ejecutar los experimentos, para la extensión con GOAT iterativo (sección 5.2):</p>
-<ul class="simple">
-<li><p><strong>H1.</strong> GOAT iterativo alcanza una métrica del bucle externo sin diferencia significativa frente a Optuna con igual o menor presupuesto, y llega antes a un buen valor en la curva <em>anytime</em>.</p></li>
-<li><p><strong>H2.</strong> GOAT pierde frente a Optuna en la SVM, porque el arreglo ortogonal estima efectos principales y la SVM con núcleo RBF tiene una interacción fuerte entre <code class="docutils literal notranslate"><span class="pre">C</span></code> y <code class="docutils literal notranslate"><span class="pre">gamma</span></code>.</p></li>
-</ul>
 </section>
 <section id="explosion-combinatoria-cuantos-modelos-se-entrenan">
 <h2>4.2 Explosión combinatoria: cuántos modelos se entrenan<a class="headerlink" href="#explosion-combinatoria-cuantos-modelos-se-entrenan" title="Link to this heading">#</a></h2>
@@ -439,7 +434,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Corridas leídas: 880 · combinaciones en la tabla maestra: 165 · modelos finales: 15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Corridas leídas: 755 · combinaciones en la tabla maestra: 140 · modelos finales: 15
 </pre></div>
 </div>
 </div>
@@ -450,22 +445,19 @@
 <span class="n">desglose</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
     <span class="p">(</span><span class="s2">"Clasificación (guía)"</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"7 × 4 × 4"</span><span class="p">,</span> <span class="mi">112</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"Regresión (guía)"</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"no aplica"</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"7 × 4"</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"GOAT iterativo en clasificación (extensión)"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"5 × 4 × 1"</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"GOAT iterativo en regresión (extensión)"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"no aplica"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"5 × 1"</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
 <span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Rama"</span><span class="p">,</span> <span class="s2">"Modelos"</span><span class="p">,</span> <span class="s2">"Balanceo"</span><span class="p">,</span> <span class="s2">"Optimizadores"</span><span class="p">,</span> <span class="s2">"Operación"</span><span class="p">,</span> <span class="s2">"Combinaciones"</span><span class="p">])</span>
 <span class="n">desglose</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">desglose</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Total"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">desglose</span><span class="p">[</span><span class="s2">"Combinaciones"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()]</span>
 <span class="n">tabla</span><span class="p">(</span><span class="n">desglose</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="n">conteo</span> <span class="o">=</span> <span class="n">combos</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"tarea"</span><span class="p">,</span> <span class="n">combos</span><span class="p">[</span><span class="s2">"optimizador"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"goat"</span><span class="p">)])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="k">assert</span> <span class="n">conteo</span><span class="p">[(</span><span class="s2">"clf"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)]</span> <span class="o">==</span> <span class="mi">112</span> <span class="ow">and</span> <span class="n">conteo</span><span class="p">[(</span><span class="s2">"reg"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)]</span> <span class="o">==</span> <span class="mi">28</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">combos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">165</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">maestra</span><span class="p">)</span>
+<span class="n">conteo</span> <span class="o">=</span> <span class="n">combos</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"tarea"</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">conteo</span><span class="p">[</span><span class="s2">"clf"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">112</span> <span class="ow">and</span> <span class="n">conteo</span><span class="p">[</span><span class="s2">"reg"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">28</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">combos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">140</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">maestra</span><span class="p">)</span>
 
 <span class="n">n_eval_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pliegues</span><span class="p">[</span><span class="s2">"n_eval"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="n">n_ajustes</span> <span class="o">=</span> <span class="n">n_eval_int</span> <span class="o">*</span> <span class="n">cfg</span><span class="o">.</span><span class="n">K_INTERNO</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">pliegues</span><span class="p">)</span>
 <span class="n">horas_cpu</span> <span class="o">=</span> <span class="n">pliegues</span><span class="p">[</span><span class="s2">"t_opt"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mi">3600</span>
 <span class="n">interpretar</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">"El diseño produce </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">combos</span><span class="p">)</span><span class="si">}</span><span class="s2"> combinaciones: </span><span class="si">{</span><span class="n">conteo</span><span class="p">[(</span><span class="s1">'clf'</span><span class="p">,</span><span class="w"> </span><span class="kc">False</span><span class="p">)]</span><span class="si">}</span><span class="s2"> de clasificación y "</span>
-    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">conteo</span><span class="p">[(</span><span class="s1">'reg'</span><span class="p">,</span><span class="w"> </span><span class="kc">False</span><span class="p">)]</span><span class="si">}</span><span class="s2"> de regresión exigidas por la guía, más </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">combos</span><span class="p">[</span><span class="s1">'optimizador'</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">'goat'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> de "</span>
-    <span class="sa">f</span><span class="s2">"GOAT iterativo. Cada una se evalúa en </span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">K_EXTERNO</span><span class="si">}</span><span class="s2"> pliegues externos con un presupuesto de "</span>
+    <span class="sa">f</span><span class="s2">"El diseño produce </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">combos</span><span class="p">)</span><span class="si">}</span><span class="s2"> combinaciones, las que exige la guía: </span><span class="si">{</span><span class="n">conteo</span><span class="p">[</span><span class="s1">'clf'</span><span class="p">]</span><span class="si">}</span><span class="s2"> de clasificación y "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">conteo</span><span class="p">[</span><span class="s1">'reg'</span><span class="p">]</span><span class="si">}</span><span class="s2"> de regresión. Cada una se evalúa en </span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">K_EXTERNO</span><span class="si">}</span><span class="s2"> pliegues externos con un presupuesto de "</span>
     <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">PRESUPUESTO</span><span class="si">}</span><span class="s2"> configuraciones por pliegue, lo que sumó </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">n_eval_int</span><span class="p">)</span><span class="si">}</span><span class="s2"> evaluaciones internas, "</span>
     <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">n_ajustes</span><span class="p">)</span><span class="si">}</span><span class="s2"> ajustes de modelos y </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">horas_cpu</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2"> horas de CPU de optimización."</span><span class="p">,</span>
     <span class="n">conectar</span><span class="p">(</span><span class="s2">"En ese sentido,"</span><span class="p">,</span> <span class="s2">"Entrenar modelo por modelo era inviable: el *pipeline* se programó como una función "</span>
@@ -489,61 +481,45 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_5ac9d">
+<table id="T_0d1f9">
   <thead>
     <tr>
-      <th id="T_5ac9d_level0_col0" class="col_heading level0 col0" >Rama</th>
-      <th id="T_5ac9d_level0_col1" class="col_heading level0 col1" >Modelos</th>
-      <th id="T_5ac9d_level0_col2" class="col_heading level0 col2" >Balanceo</th>
-      <th id="T_5ac9d_level0_col3" class="col_heading level0 col3" >Optimizadores</th>
-      <th id="T_5ac9d_level0_col4" class="col_heading level0 col4" >Operación</th>
-      <th id="T_5ac9d_level0_col5" class="col_heading level0 col5" >Combinaciones</th>
+      <th id="T_0d1f9_level0_col0" class="col_heading level0 col0" >Rama</th>
+      <th id="T_0d1f9_level0_col1" class="col_heading level0 col1" >Modelos</th>
+      <th id="T_0d1f9_level0_col2" class="col_heading level0 col2" >Balanceo</th>
+      <th id="T_0d1f9_level0_col3" class="col_heading level0 col3" >Optimizadores</th>
+      <th id="T_0d1f9_level0_col4" class="col_heading level0 col4" >Operación</th>
+      <th id="T_0d1f9_level0_col5" class="col_heading level0 col5" >Combinaciones</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_5ac9d_row0_col0" class="data row0 col0" >Clasificación (guía)</td>
-      <td id="T_5ac9d_row0_col1" class="data row0 col1" >7</td>
-      <td id="T_5ac9d_row0_col2" class="data row0 col2" >4</td>
-      <td id="T_5ac9d_row0_col3" class="data row0 col3" >4</td>
-      <td id="T_5ac9d_row0_col4" class="data row0 col4" >7 × 4 × 4</td>
-      <td id="T_5ac9d_row0_col5" class="data row0 col5" >112</td>
+      <td id="T_0d1f9_row0_col0" class="data row0 col0" >Clasificación (guía)</td>
+      <td id="T_0d1f9_row0_col1" class="data row0 col1" >7</td>
+      <td id="T_0d1f9_row0_col2" class="data row0 col2" >4</td>
+      <td id="T_0d1f9_row0_col3" class="data row0 col3" >4</td>
+      <td id="T_0d1f9_row0_col4" class="data row0 col4" >7 × 4 × 4</td>
+      <td id="T_0d1f9_row0_col5" class="data row0 col5" >112</td>
     </tr>
     <tr>
-      <td id="T_5ac9d_row1_col0" class="data row1 col0" >Regresión (guía)</td>
-      <td id="T_5ac9d_row1_col1" class="data row1 col1" >7</td>
-      <td id="T_5ac9d_row1_col2" class="data row1 col2" >no aplica</td>
-      <td id="T_5ac9d_row1_col3" class="data row1 col3" >4</td>
-      <td id="T_5ac9d_row1_col4" class="data row1 col4" >7 × 4</td>
-      <td id="T_5ac9d_row1_col5" class="data row1 col5" >28</td>
+      <td id="T_0d1f9_row1_col0" class="data row1 col0" >Regresión (guía)</td>
+      <td id="T_0d1f9_row1_col1" class="data row1 col1" >7</td>
+      <td id="T_0d1f9_row1_col2" class="data row1 col2" >no aplica</td>
+      <td id="T_0d1f9_row1_col3" class="data row1 col3" >4</td>
+      <td id="T_0d1f9_row1_col4" class="data row1 col4" >7 × 4</td>
+      <td id="T_0d1f9_row1_col5" class="data row1 col5" >28</td>
     </tr>
     <tr>
-      <td id="T_5ac9d_row2_col0" class="data row2 col0" >GOAT iterativo en clasificación (extensión)</td>
-      <td id="T_5ac9d_row2_col1" class="data row2 col1" >5</td>
-      <td id="T_5ac9d_row2_col2" class="data row2 col2" >4</td>
-      <td id="T_5ac9d_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_5ac9d_row2_col4" class="data row2 col4" >5 × 4 × 1</td>
-      <td id="T_5ac9d_row2_col5" class="data row2 col5" >20</td>
-    </tr>
-    <tr>
-      <td id="T_5ac9d_row3_col0" class="data row3 col0" >GOAT iterativo en regresión (extensión)</td>
-      <td id="T_5ac9d_row3_col1" class="data row3 col1" >5</td>
-      <td id="T_5ac9d_row3_col2" class="data row3 col2" >no aplica</td>
-      <td id="T_5ac9d_row3_col3" class="data row3 col3" >1</td>
-      <td id="T_5ac9d_row3_col4" class="data row3 col4" >5 × 1</td>
-      <td id="T_5ac9d_row3_col5" class="data row3 col5" >5</td>
-    </tr>
-    <tr>
-      <td id="T_5ac9d_row4_col0" class="data row4 col0" >Total</td>
-      <td id="T_5ac9d_row4_col1" class="data row4 col1" ></td>
-      <td id="T_5ac9d_row4_col2" class="data row4 col2" ></td>
-      <td id="T_5ac9d_row4_col3" class="data row4 col3" ></td>
-      <td id="T_5ac9d_row4_col4" class="data row4 col4" ></td>
-      <td id="T_5ac9d_row4_col5" class="data row4 col5" >165</td>
+      <td id="T_0d1f9_row2_col0" class="data row2 col0" >Total</td>
+      <td id="T_0d1f9_row2_col1" class="data row2 col1" ></td>
+      <td id="T_0d1f9_row2_col2" class="data row2 col2" ></td>
+      <td id="T_0d1f9_row2_col3" class="data row2 col3" ></td>
+      <td id="T_0d1f9_row2_col4" class="data row2 col4" ></td>
+      <td id="T_0d1f9_row2_col5" class="data row2 col5" >140</td>
     </tr>
   </tbody>
 </table>
-</div><p><strong>Interpretación.</strong> El diseño produce 165 combinaciones: 112 de clasificación y 28 de regresión exigidas por la guía, más 25 de GOAT iterativo. Cada una se evalúa en 5 pliegues externos con un presupuesto de 20 configuraciones por pliegue, lo que sumó 15 595 evaluaciones internas, 47 610 ajustes de modelos y 34,9 horas de CPU de optimización.</p>
+</div><p><strong>Interpretación.</strong> El diseño produce 140 combinaciones, las que exige la guía: 112 de clasificación y 28 de regresión. Cada una se evalúa en 5 pliegues externos con un presupuesto de 20 configuraciones por pliegue, lo que sumó 13 730 evaluaciones internas, 41 890 ajustes de modelos y 29,9 horas de CPU de optimización.</p>
 <p>En ese sentido, entrenar modelo por modelo era inviable: el <em>pipeline</em> se programó como una función parametrizada (modelo → balanceo → optimizador → pliegue) que se ejecuta en paralelo y guarda cada tarea en disco, de forma que una corrida interrumpida continúa donde quedó y cada resultado es trazable.</p>
 <p>Por ello, se decide registrar todas las combinaciones en una tabla maestra (sección 7.1) y reportar de forma exhaustiva las más informativas: el mejor representante de cada modelo, los contrastes de balanceo y los de optimizadores, sin descartar ninguna de la comparación estadística global de la sección 8.</p>
 </div>
@@ -613,18 +589,18 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_11174">
+<table id="T_d591b">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_11174_level0_col0" class="col_heading level0 col0" >Registros de ajuste</th>
-      <th id="T_11174_level0_col1" class="col_heading level0 col1" >Ajusta hasta</th>
-      <th id="T_11174_level0_col2" class="col_heading level0 col2" >Valida desde</th>
-      <th id="T_11174_level0_col3" class="col_heading level0 col3" >Valida hasta</th>
-      <th id="T_11174_level0_col4" class="col_heading level0 col4" >Registros de validación</th>
-      <th id="T_11174_level0_col5" class="col_heading level0 col5" >% positivos validación</th>
-      <th id="T_11174_level0_col6" class="col_heading level0 col6" >Ajuste interno (mín.–máx.)</th>
-      <th id="T_11174_level0_col7" class="col_heading level0 col7" >Validación interna</th>
+      <th id="T_d591b_level0_col0" class="col_heading level0 col0" >Registros de ajuste</th>
+      <th id="T_d591b_level0_col1" class="col_heading level0 col1" >Ajusta hasta</th>
+      <th id="T_d591b_level0_col2" class="col_heading level0 col2" >Valida desde</th>
+      <th id="T_d591b_level0_col3" class="col_heading level0 col3" >Valida hasta</th>
+      <th id="T_d591b_level0_col4" class="col_heading level0 col4" >Registros de validación</th>
+      <th id="T_d591b_level0_col5" class="col_heading level0 col5" >% positivos validación</th>
+      <th id="T_d591b_level0_col6" class="col_heading level0 col6" >Ajuste interno (mín.–máx.)</th>
+      <th id="T_d591b_level0_col7" class="col_heading level0 col7" >Validación interna</th>
     </tr>
     <tr>
       <th class="index_name level0" >Pliegue externo</th>
@@ -640,59 +616,59 @@
   </thead>
   <tbody>
     <tr>
-      <th id="T_11174_level0_row0" class="row_heading level0 row0" >1</th>
-      <td id="T_11174_row0_col0" class="data row0 col0" >4 983</td>
-      <td id="T_11174_row0_col1" class="data row0 col1" >2008-05</td>
-      <td id="T_11174_row0_col2" class="data row0 col2" >2008-05</td>
-      <td id="T_11174_row0_col3" class="data row0 col3" >2008-06</td>
-      <td id="T_11174_row0_col4" class="data row0 col4" >5 490</td>
-      <td id="T_11174_row0_col5" class="data row0 col5" >3,88</td>
-      <td id="T_11174_row0_col6" class="data row0 col6" >741–3 231</td>
-      <td id="T_11174_row0_col7" class="data row0 col7" >1 245</td>
+      <th id="T_d591b_level0_row0" class="row_heading level0 row0" >1</th>
+      <td id="T_d591b_row0_col0" class="data row0 col0" >4 983</td>
+      <td id="T_d591b_row0_col1" class="data row0 col1" >2008-05</td>
+      <td id="T_d591b_row0_col2" class="data row0 col2" >2008-05</td>
+      <td id="T_d591b_row0_col3" class="data row0 col3" >2008-06</td>
+      <td id="T_d591b_row0_col4" class="data row0 col4" >5 490</td>
+      <td id="T_d591b_row0_col5" class="data row0 col5" >3,88</td>
+      <td id="T_d591b_row0_col6" class="data row0 col6" >741–3 231</td>
+      <td id="T_d591b_row0_col7" class="data row0 col7" >1 245</td>
     </tr>
     <tr>
-      <th id="T_11174_level0_row1" class="row_heading level0 row1" >2</th>
-      <td id="T_11174_row1_col0" class="data row1 col0" >10 473</td>
-      <td id="T_11174_row1_col1" class="data row1 col1" >2008-06</td>
-      <td id="T_11174_row1_col2" class="data row1 col2" >2008-06</td>
-      <td id="T_11174_row1_col3" class="data row1 col3" >2008-07</td>
-      <td id="T_11174_row1_col4" class="data row1 col4" >5 490</td>
-      <td id="T_11174_row1_col5" class="data row1 col5" >6,05</td>
-      <td id="T_11174_row1_col6" class="data row1 col6" >2 112–7 348</td>
-      <td id="T_11174_row1_col7" class="data row1 col7" >2 618</td>
+      <th id="T_d591b_level0_row1" class="row_heading level0 row1" >2</th>
+      <td id="T_d591b_row1_col0" class="data row1 col0" >10 473</td>
+      <td id="T_d591b_row1_col1" class="data row1 col1" >2008-06</td>
+      <td id="T_d591b_row1_col2" class="data row1 col2" >2008-06</td>
+      <td id="T_d591b_row1_col3" class="data row1 col3" >2008-07</td>
+      <td id="T_d591b_row1_col4" class="data row1 col4" >5 490</td>
+      <td id="T_d591b_row1_col5" class="data row1 col5" >6,05</td>
+      <td id="T_d591b_row1_col6" class="data row1 col6" >2 112–7 348</td>
+      <td id="T_d591b_row1_col7" class="data row1 col7" >2 618</td>
     </tr>
     <tr>
-      <th id="T_11174_level0_row2" class="row_heading level0 row2" >3</th>
-      <td id="T_11174_row2_col0" class="data row2 col0" >15 963</td>
-      <td id="T_11174_row2_col1" class="data row2 col1" >2008-07</td>
-      <td id="T_11174_row2_col2" class="data row2 col2" >2008-07</td>
-      <td id="T_11174_row2_col3" class="data row2 col3" >2008-08</td>
-      <td id="T_11174_row2_col4" class="data row2 col4" >5 490</td>
-      <td id="T_11174_row2_col5" class="data row2 col5" >5,92</td>
-      <td id="T_11174_row2_col6" class="data row2 col6" >3 486–11 466</td>
-      <td id="T_11174_row2_col7" class="data row2 col7" >3 990</td>
+      <th id="T_d591b_level0_row2" class="row_heading level0 row2" >3</th>
+      <td id="T_d591b_row2_col0" class="data row2 col0" >15 963</td>
+      <td id="T_d591b_row2_col1" class="data row2 col1" >2008-07</td>
+      <td id="T_d591b_row2_col2" class="data row2 col2" >2008-07</td>
+      <td id="T_d591b_row2_col3" class="data row2 col3" >2008-08</td>
+      <td id="T_d591b_row2_col4" class="data row2 col4" >5 490</td>
+      <td id="T_d591b_row2_col5" class="data row2 col5" >5,92</td>
+      <td id="T_d591b_row2_col6" class="data row2 col6" >3 486–11 466</td>
+      <td id="T_d591b_row2_col7" class="data row2 col7" >3 990</td>
     </tr>
     <tr>
-      <th id="T_11174_level0_row3" class="row_heading level0 row3" >4</th>
-      <td id="T_11174_row3_col0" class="data row3 col0" >21 453</td>
-      <td id="T_11174_row3_col1" class="data row3 col1" >2008-08</td>
-      <td id="T_11174_row3_col2" class="data row3 col2" >2008-08</td>
-      <td id="T_11174_row3_col3" class="data row3 col3" >2008-11</td>
-      <td id="T_11174_row3_col4" class="data row3 col4" >5 490</td>
-      <td id="T_11174_row3_col5" class="data row3 col5" >5,45</td>
-      <td id="T_11174_row3_col6" class="data row3 col6" >4 857–15 583</td>
-      <td id="T_11174_row3_col7" class="data row3 col7" >5 363</td>
+      <th id="T_d591b_level0_row3" class="row_heading level0 row3" >4</th>
+      <td id="T_d591b_row3_col0" class="data row3 col0" >21 453</td>
+      <td id="T_d591b_row3_col1" class="data row3 col1" >2008-08</td>
+      <td id="T_d591b_row3_col2" class="data row3 col2" >2008-08</td>
+      <td id="T_d591b_row3_col3" class="data row3 col3" >2008-11</td>
+      <td id="T_d591b_row3_col4" class="data row3 col4" >5 490</td>
+      <td id="T_d591b_row3_col5" class="data row3 col5" >5,45</td>
+      <td id="T_d591b_row3_col6" class="data row3 col6" >4 857–15 583</td>
+      <td id="T_d591b_row3_col7" class="data row3 col7" >5 363</td>
     </tr>
     <tr>
-      <th id="T_11174_level0_row4" class="row_heading level0 row4" >5</th>
-      <td id="T_11174_row4_col0" class="data row4 col0" >26 943</td>
-      <td id="T_11174_row4_col1" class="data row4 col1" >2008-11</td>
-      <td id="T_11174_row4_col2" class="data row4 col2" >2008-11</td>
-      <td id="T_11174_row4_col3" class="data row4 col3" >2009-05</td>
-      <td id="T_11174_row4_col4" class="data row4 col4" >5 490</td>
-      <td id="T_11174_row4_col5" class="data row4 col5" >14,03</td>
-      <td id="T_11174_row4_col6" class="data row4 col6" >6 231–19 701</td>
-      <td id="T_11174_row4_col7" class="data row4 col7" >6 735</td>
+      <th id="T_d591b_level0_row4" class="row_heading level0 row4" >5</th>
+      <td id="T_d591b_row4_col0" class="data row4 col0" >26 943</td>
+      <td id="T_d591b_row4_col1" class="data row4 col1" >2008-11</td>
+      <td id="T_d591b_row4_col2" class="data row4 col2" >2008-11</td>
+      <td id="T_d591b_row4_col3" class="data row4 col3" >2009-05</td>
+      <td id="T_d591b_row4_col4" class="data row4 col4" >5 490</td>
+      <td id="T_d591b_row4_col5" class="data row4 col5" >14,03</td>
+      <td id="T_d591b_row4_col6" class="data row4 col6" >6 231–19 701</td>
+      <td id="T_d591b_row4_col7" class="data row4 col7" >6 735</td>
     </tr>
   </tbody>
 </table>
@@ -725,12 +701,12 @@
     <span class="p">(</span><span class="s2">"src/bm/preprocesamiento.py"</span><span class="p">,</span> <span class="s2">"ColumnTransformer del Entregable 2 (escalado, log1p, pdays = 999, one-hot)"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"src/bm/modelos.py"</span><span class="p">,</span> <span class="s2">"Pipelines de imblearn: preprocesamiento → balanceo → modelo; equivalentes de class_weight"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"src/bm/espacios.py"</span><span class="p">,</span> <span class="s2">"Espacios de búsqueda compartidos y rejillas de Grid Search"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"src/bm/optimizadores.py"</span><span class="p">,</span> <span class="s2">"Evaluador común con presupuesto y registro anytime; Grid, Random, Optuna, DEAP, GOAT"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"src/bm/optimizadores.py"</span><span class="p">,</span> <span class="s2">"Evaluador común con presupuesto y registro anytime; Grid, Random, Optuna y DEAP"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"src/bm/anidada.py"</span><span class="p">,</span> <span class="s2">"Validación anidada por tarea, Successive Halving, consolidación de la tabla maestra"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"src/bm/evaluacion.py"</span><span class="p">,</span> <span class="s2">"Finalistas en prueba, calibración (Platt, isotónica, mensual) y diagnóstico de residuos"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"src/bm/estadistica.py"</span><span class="p">,</span> <span class="s2">"Friedman, Nemenyi, DeLong, BCa, Cliff, MCS, GW, Clark-West, DM-HLN, SPA"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"src/bm/computacional.py"</span><span class="p">,</span> <span class="s2">"Complejidad, escalamiento, paralelización y perfilamiento"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"scripts/ejecutar_experimentos.py"</span><span class="p">,</span> <span class="s2">"Ejecución paralela y reanudable de las 825 tareas (165 combinaciones × 5 pliegues)"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"scripts/ejecutar_experimentos.py"</span><span class="p">,</span> <span class="s2">"Ejecución paralela y reanudable de las 700 tareas (140 combinaciones × 5 pliegues)"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"scripts/ejecutar_finales.py"</span><span class="p">,</span> <span class="s2">"Finalistas, recalibración, sensibilidad a semillas y experimentos computacionales"</span><span class="p">),</span>
 <span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Módulo"</span><span class="p">,</span> <span class="s2">"Responsabilidad"</span><span class="p">])</span>
 <span class="n">tabla</span><span class="p">(</span><span class="n">modulos</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -743,61 +719,61 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_45fc5">
+<table id="T_cb60c">
   <thead>
     <tr>
-      <th id="T_45fc5_level0_col0" class="col_heading level0 col0" >Módulo</th>
-      <th id="T_45fc5_level0_col1" class="col_heading level0 col1" >Responsabilidad</th>
+      <th id="T_cb60c_level0_col0" class="col_heading level0 col0" >Módulo</th>
+      <th id="T_cb60c_level0_col1" class="col_heading level0 col1" >Responsabilidad</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_45fc5_row0_col0" class="data row0 col0" >src/bm/config.py</td>
-      <td id="T_45fc5_row0_col1" class="data row0 col1" >Semilla global, rutas, variables, presupuesto y nombres de modelos, balanceos y optimizadores</td>
+      <td id="T_cb60c_row0_col0" class="data row0 col0" >src/bm/config.py</td>
+      <td id="T_cb60c_row0_col1" class="data row0 col1" >Semilla global, rutas, variables, presupuesto y nombres de modelos, balanceos y optimizadores</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row1_col0" class="data row1 col0" >src/bm/datos.py</td>
-      <td id="T_45fc5_row1_col1" class="data row1 col1" >Carga, reconstrucción del calendario, partición cronológica y esquemas de validación</td>
+      <td id="T_cb60c_row1_col0" class="data row1 col0" >src/bm/datos.py</td>
+      <td id="T_cb60c_row1_col1" class="data row1 col1" >Carga, reconstrucción del calendario, partición cronológica y esquemas de validación</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row2_col0" class="data row2 col0" >src/bm/preprocesamiento.py</td>
-      <td id="T_45fc5_row2_col1" class="data row2 col1" >ColumnTransformer del Entregable 2 (escalado, log1p, pdays = 999, one-hot)</td>
+      <td id="T_cb60c_row2_col0" class="data row2 col0" >src/bm/preprocesamiento.py</td>
+      <td id="T_cb60c_row2_col1" class="data row2 col1" >ColumnTransformer del Entregable 2 (escalado, log1p, pdays = 999, one-hot)</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row3_col0" class="data row3 col0" >src/bm/modelos.py</td>
-      <td id="T_45fc5_row3_col1" class="data row3 col1" >Pipelines de imblearn: preprocesamiento → balanceo → modelo; equivalentes de class_weight</td>
+      <td id="T_cb60c_row3_col0" class="data row3 col0" >src/bm/modelos.py</td>
+      <td id="T_cb60c_row3_col1" class="data row3 col1" >Pipelines de imblearn: preprocesamiento → balanceo → modelo; equivalentes de class_weight</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row4_col0" class="data row4 col0" >src/bm/espacios.py</td>
-      <td id="T_45fc5_row4_col1" class="data row4 col1" >Espacios de búsqueda compartidos y rejillas de Grid Search</td>
+      <td id="T_cb60c_row4_col0" class="data row4 col0" >src/bm/espacios.py</td>
+      <td id="T_cb60c_row4_col1" class="data row4 col1" >Espacios de búsqueda compartidos y rejillas de Grid Search</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row5_col0" class="data row5 col0" >src/bm/optimizadores.py</td>
-      <td id="T_45fc5_row5_col1" class="data row5 col1" >Evaluador común con presupuesto y registro anytime; Grid, Random, Optuna, DEAP, GOAT</td>
+      <td id="T_cb60c_row5_col0" class="data row5 col0" >src/bm/optimizadores.py</td>
+      <td id="T_cb60c_row5_col1" class="data row5 col1" >Evaluador común con presupuesto y registro anytime; Grid, Random, Optuna y DEAP</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row6_col0" class="data row6 col0" >src/bm/anidada.py</td>
-      <td id="T_45fc5_row6_col1" class="data row6 col1" >Validación anidada por tarea, Successive Halving, consolidación de la tabla maestra</td>
+      <td id="T_cb60c_row6_col0" class="data row6 col0" >src/bm/anidada.py</td>
+      <td id="T_cb60c_row6_col1" class="data row6 col1" >Validación anidada por tarea, Successive Halving, consolidación de la tabla maestra</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row7_col0" class="data row7 col0" >src/bm/evaluacion.py</td>
-      <td id="T_45fc5_row7_col1" class="data row7 col1" >Finalistas en prueba, calibración (Platt, isotónica, mensual) y diagnóstico de residuos</td>
+      <td id="T_cb60c_row7_col0" class="data row7 col0" >src/bm/evaluacion.py</td>
+      <td id="T_cb60c_row7_col1" class="data row7 col1" >Finalistas en prueba, calibración (Platt, isotónica, mensual) y diagnóstico de residuos</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row8_col0" class="data row8 col0" >src/bm/estadistica.py</td>
-      <td id="T_45fc5_row8_col1" class="data row8 col1" >Friedman, Nemenyi, DeLong, BCa, Cliff, MCS, GW, Clark-West, DM-HLN, SPA</td>
+      <td id="T_cb60c_row8_col0" class="data row8 col0" >src/bm/estadistica.py</td>
+      <td id="T_cb60c_row8_col1" class="data row8 col1" >Friedman, Nemenyi, DeLong, BCa, Cliff, MCS, GW, Clark-West, DM-HLN, SPA</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row9_col0" class="data row9 col0" >src/bm/computacional.py</td>
-      <td id="T_45fc5_row9_col1" class="data row9 col1" >Complejidad, escalamiento, paralelización y perfilamiento</td>
+      <td id="T_cb60c_row9_col0" class="data row9 col0" >src/bm/computacional.py</td>
+      <td id="T_cb60c_row9_col1" class="data row9 col1" >Complejidad, escalamiento, paralelización y perfilamiento</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row10_col0" class="data row10 col0" >scripts/ejecutar_experimentos.py</td>
-      <td id="T_45fc5_row10_col1" class="data row10 col1" >Ejecución paralela y reanudable de las 825 tareas (165 combinaciones × 5 pliegues)</td>
+      <td id="T_cb60c_row10_col0" class="data row10 col0" >scripts/ejecutar_experimentos.py</td>
+      <td id="T_cb60c_row10_col1" class="data row10 col1" >Ejecución paralela y reanudable de las 700 tareas (140 combinaciones × 5 pliegues)</td>
     </tr>
     <tr>
-      <td id="T_45fc5_row11_col0" class="data row11 col0" >scripts/ejecutar_finales.py</td>
-      <td id="T_45fc5_row11_col1" class="data row11 col1" >Finalistas, recalibración, sensibilidad a semillas y experimentos computacionales</td>
+      <td id="T_cb60c_row11_col0" class="data row11 col0" >scripts/ejecutar_finales.py</td>
+      <td id="T_cb60c_row11_col1" class="data row11 col1" >Finalistas, recalibración, sensibilidad a semillas y experimentos computacionales</td>
     </tr>
   </tbody>
 </table>
@@ -878,7 +854,7 @@ Semilla registrada en todas las combinaciones: [np.int64(42)]
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-investigacion-e-hipotesis">4.1 Preguntas de investigación e hipótesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-investigacion">4.1 Preguntas de investigación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explosion-combinatoria-cuantos-modelos-se-entrenan">4.2 Explosión combinatoria: cuántos modelos se entrenan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-cruzada-anidada">4.3 Validación cruzada anidada</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrica-de-validacion">4.4 Métrica de validación</a></li>

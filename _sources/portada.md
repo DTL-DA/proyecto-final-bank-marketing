@@ -16,13 +16,13 @@
 
 ## Contenido
 
-El proyecto predice, con información disponible antes de la llamada, si un cliente contactado por el telemercadeo de un banco portugués suscribirá un depósito a término, y explora como rama de regresión la duración de la llamada. Sobre el modelo base del Entregable 2 se construye el *pipeline* combinatorio que pide la guía: 7 modelos × 4 técnicas de balanceo × 4 métodos de optimización en clasificación (112), 7 modelos × 4 métodos en regresión (28) y, como extensión propia, GOAT iterativo en los modelos con tres o más hiperparámetros (25): **165 combinaciones** evaluadas con validación cruzada anidada y cronológica.
+El proyecto predice, con información disponible antes de la llamada, si un cliente contactado por el telemercadeo de un banco portugués suscribirá un depósito a término, y explora como rama de regresión la duración de la llamada. Sobre el modelo base del Entregable 2 se construye el *pipeline* combinatorio que pide la guía: 7 modelos × 4 técnicas de balanceo × 4 métodos de optimización en clasificación (112), 7 modelos × 4 métodos en regresión (28): **140 combinaciones** evaluadas con validación cruzada anidada y cronológica.
 
 **Parte I. El dashboard y la interpretación de sus resultados.** Un capítulo por cada una de las seis pestañas del dashboard de análisis, con sus mismas figuras interactivas y una interpretación de cada resultado:
 
 1. **Contexto y diseño experimental:** partición, explosión combinatoria y validación anidada.
-2. **Tabla maestra y balanceo:** las 165 combinaciones y el efecto de SMOTE, ADASYN y `class_weight`.
-3. **Optimización de hiperparámetros:** Grid, Random, Bayesiana, Genética, GOAT y Successive Halving; curvas *anytime* y eficiencia.
+2. **Tabla maestra y balanceo:** las 140 combinaciones y el efecto de SMOTE, ADASYN y `class_weight`.
+3. **Optimización de hiperparámetros:** Grid, Random, Bayesiana, Genética y Successive Halving; curvas *anytime* y eficiencia.
 4. **Evaluación en prueba:** métricas con intervalos, curvas ROC y PR, matrices de confusión, calibración y regresión.
 5. **Comparación estadística:** Friedman, Nemenyi, DeLong, Model Confidence Set, Giacomini-White, Clark-West y Diebold-Mariano.
 6. **Interpretabilidad y costo computacional:** SHAP, LIME, complejidad teórica, escalamiento, paralelización y perfilamiento.
@@ -35,4 +35,4 @@ Cada interpretación tiene tres párrafos: primero lo que muestra el resultado, 
 
 ## Reproducibilidad
 
-La partición es cronológica y, por tanto, determinista; todos los procedimientos aleatorios usan la semilla global `SEED = 42`. Las versiones de las librerías están en `requirements.txt` y cada una de las 165 combinaciones está registrada en la tabla maestra (`resultados/tabla_maestra.csv`) con sus hiperparámetros por pliegue, métricas, tiempos y semilla.
+La partición es cronológica y, por tanto, determinista; todos los procedimientos aleatorios usan la semilla global `SEED = 42`. Las versiones de las librerías están en `requirements.txt` y cada una de las 140 combinaciones está registrada en la tabla maestra (`resultados/tabla_maestra.csv`) con sus hiperparámetros por pliegue, métricas, tiempos y semilla.

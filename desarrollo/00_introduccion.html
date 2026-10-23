@@ -427,7 +427,7 @@
 </tbody>
 </table>
 </div>
-<p>Este cuaderno desarrolla el tercer entregable del proyecto final y continúa el trabajo del Entregable 2: mismo conjunto de datos, misma partición cronológica 80/20, mismo preprocesamiento y el mismo modelo base (regresión logística con C = 0,01) como referencia. Sobre esa base construye el <em>pipeline</em> combinatorio que pide la guía: 7 modelos de clasificación × 4 técnicas de balanceo × 4 métodos de optimización (112), 7 modelos de regresión × 4 métodos (28) y, como extensión propia, el método GOAT iterativo en los 5 modelos con tres o más hiperparámetros (25), para un total de <strong>165 combinaciones</strong> evaluadas con <strong>validación cruzada anidada</strong>.</p>
+<p>Este cuaderno desarrolla el tercer entregable del proyecto final y continúa el trabajo del Entregable 2: mismo conjunto de datos, misma partición cronológica 80/20, mismo preprocesamiento y el mismo modelo base (regresión logística con C = 0,01) como referencia. Sobre esa base construye el <em>pipeline</em> combinatorio que pide la guía: 7 modelos de clasificación × 4 técnicas de balanceo × 4 métodos de optimización (112) y 7 modelos de regresión × 4 métodos (28), para un total de <strong>140 combinaciones</strong> evaluadas con <strong>validación cruzada anidada</strong>.</p>
 <p><strong>Organización.</strong> Las secciones 1 a 3 conservan la descripción y la auditoría de calidad de la base de datos, la reserva del conjunto de prueba, el análisis exploratorio y el preprocesamiento del Entregable 2, que ya incorporan las correcciones de la primera entrega (componente temporal completo, regularización elegida por pérdida logarítmica, estabilidad de coeficientes y recalibración mensual del intercepto); la sección 3.8 agrega los hallazgos nuevos que motivan las decisiones de este entregable. Las referencias del tipo «enunciado, sección x» de esas secciones remiten a la guía del primer entregable. Las secciones nuevas siguen la guía técnica de este entregable (<em>Modelos de Machine Learning para Clasificación y Regresión</em>):</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -442,7 +442,7 @@
 <td><p>2, 3.2, 5.1.1 y 7.3</p></td>
 </tr>
 <tr class="row-odd"><td><p>5. Optimización de hiperparámetros</p></td>
-<td><p>Espacios de búsqueda, Grid, Random, Bayesiana, Genética, GOAT iterativo, multi-fidelidad, curvas <em>anytime</em> y semillas</p></td>
+<td><p>Espacios de búsqueda, Grid, Random, Bayesiana, Genética, multi-fidelidad, curvas <em>anytime</em> y semillas</p></td>
 <td><p>3</p></td>
 </tr>
 <tr class="row-even"><td><p>6. Optimización computacional</p></td>
@@ -464,7 +464,7 @@
 </tbody>
 </table>
 </div>
-<p><strong>Ejecución.</strong> Las 165 combinaciones con validación anidada implican más de 50 000 ajustes de modelos, así que se ejecutan con los <em>scripts</em> de la carpeta <code class="docutils literal notranslate"><span class="pre">scripts/</span></code> (en paralelo y con registro por tarea en <code class="docutils literal notranslate"><span class="pre">resultados/corridas/</span></code>) y este cuaderno lee sus resultados. Con <code class="docutils literal notranslate"><span class="pre">RECALCULAR</span> <span class="pre">=</span> <span class="pre">True</span></code> en la celda de configuración del proyecto el cuaderno vuelve a lanzar esos <em>scripts</em>. Todas las interpretaciones se generan con los valores calculados en la misma ejecución, de forma que las cifras del texto coinciden siempre con las salidas.</p>
+<p><strong>Ejecución.</strong> Las 140 combinaciones con validación anidada implican decenas de miles de ajustes de modelos, así que se ejecutan con los <em>scripts</em> de la carpeta <code class="docutils literal notranslate"><span class="pre">scripts/</span></code> (en paralelo y con registro por tarea en <code class="docutils literal notranslate"><span class="pre">resultados/corridas/</span></code>) y este cuaderno lee sus resultados. Con <code class="docutils literal notranslate"><span class="pre">RECALCULAR</span> <span class="pre">=</span> <span class="pre">True</span></code> en la celda de configuración del proyecto el cuaderno vuelve a lanzar esos <em>scripts</em>. Todas las interpretaciones se generan con los valores calculados en la misma ejecución, de forma que las cifras del texto coinciden siempre con las salidas.</p>
 <section id="configuracion-del-entorno-y-reproducibilidad">
 <h2>Configuración del entorno y reproducibilidad<a class="headerlink" href="#configuracion-del-entorno-y-reproducibilidad" title="Link to this heading">#</a></h2>
 <p>La partición entrenamiento-prueba es cronológica y, por tanto, determinista. Para todo procedimiento aleatorio se fija una <strong>semilla global única</strong> (<code class="docutils literal notranslate"><span class="pre">SEED</span> <span class="pre">=</span> <span class="pre">42</span></code>), definida en <code class="docutils literal notranslate"><span class="pre">src/bm/config.py</span></code> y propagada de forma explícita a <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, scikit-learn (<code class="docutils literal notranslate"><span class="pre">random_state</span></code> de cada estimador), XGBoost, SMOTE y ADASYN, Optuna (<code class="docutils literal notranslate"><span class="pre">TPESampler(seed=...)</span></code>) y DEAP (módulo <code class="docutils literal notranslate"><span class="pre">random</span></code>). El entorno es <code class="docutils literal notranslate"><span class="pre">bm_e3</span></code> (Python 3.12) y las versiones exactas de todas las librerías están congeladas en <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>; la tabla siguiente reporta las del análisis exploratorio, y la celda de módulos del tercer entregable (antes de la sección 3.8), las que se agregan en este entregable.</p>
@@ -621,49 +621,49 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_78443">
+<table id="T_ca4a7">
   <thead>
     <tr>
-      <th id="T_78443_level0_col0" class="col_heading level0 col0" >Componente</th>
-      <th id="T_78443_level0_col1" class="col_heading level0 col1" >Versión</th>
+      <th id="T_ca4a7_level0_col0" class="col_heading level0 col0" >Componente</th>
+      <th id="T_ca4a7_level0_col1" class="col_heading level0 col1" >Versión</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_78443_row0_col0" class="data row0 col0" >Python</td>
-      <td id="T_78443_row0_col1" class="data row0 col1" >3.12.14</td>
+      <td id="T_ca4a7_row0_col0" class="data row0 col0" >Python</td>
+      <td id="T_ca4a7_row0_col1" class="data row0 col1" >3.12.14</td>
     </tr>
     <tr>
-      <td id="T_78443_row1_col0" class="data row1 col0" >numpy</td>
-      <td id="T_78443_row1_col1" class="data row1 col1" >2.5.4</td>
+      <td id="T_ca4a7_row1_col0" class="data row1 col0" >numpy</td>
+      <td id="T_ca4a7_row1_col1" class="data row1 col1" >2.5.4</td>
     </tr>
     <tr>
-      <td id="T_78443_row2_col0" class="data row2 col0" >pandas</td>
-      <td id="T_78443_row2_col1" class="data row2 col1" >3.0.6</td>
+      <td id="T_ca4a7_row2_col0" class="data row2 col0" >pandas</td>
+      <td id="T_ca4a7_row2_col1" class="data row2 col1" >3.0.6</td>
     </tr>
     <tr>
-      <td id="T_78443_row3_col0" class="data row3 col0" >scipy</td>
-      <td id="T_78443_row3_col1" class="data row3 col1" >1.18.1</td>
+      <td id="T_ca4a7_row3_col0" class="data row3 col0" >scipy</td>
+      <td id="T_ca4a7_row3_col1" class="data row3 col1" >1.18.1</td>
     </tr>
     <tr>
-      <td id="T_78443_row4_col0" class="data row4 col0" >scikit-learn</td>
-      <td id="T_78443_row4_col1" class="data row4 col1" >1.9.1</td>
+      <td id="T_ca4a7_row4_col0" class="data row4 col0" >scikit-learn</td>
+      <td id="T_ca4a7_row4_col1" class="data row4 col1" >1.9.1</td>
     </tr>
     <tr>
-      <td id="T_78443_row5_col0" class="data row5 col0" >statsmodels</td>
-      <td id="T_78443_row5_col1" class="data row5 col1" >0.15.0</td>
+      <td id="T_ca4a7_row5_col0" class="data row5 col0" >statsmodels</td>
+      <td id="T_ca4a7_row5_col1" class="data row5 col1" >0.15.0</td>
     </tr>
     <tr>
-      <td id="T_78443_row6_col0" class="data row6 col0" >matplotlib</td>
-      <td id="T_78443_row6_col1" class="data row6 col1" >3.11.2</td>
+      <td id="T_ca4a7_row6_col0" class="data row6 col0" >matplotlib</td>
+      <td id="T_ca4a7_row6_col1" class="data row6 col1" >3.11.2</td>
     </tr>
     <tr>
-      <td id="T_78443_row7_col0" class="data row7 col0" >jinja2</td>
-      <td id="T_78443_row7_col1" class="data row7 col1" >3.1.6</td>
+      <td id="T_ca4a7_row7_col0" class="data row7 col0" >jinja2</td>
+      <td id="T_ca4a7_row7_col1" class="data row7 col1" >3.1.6</td>
     </tr>
     <tr>
-      <td id="T_78443_row8_col0" class="data row8 col0" >IPython</td>
-      <td id="T_78443_row8_col1" class="data row8 col1" >9.17.1</td>
+      <td id="T_ca4a7_row8_col0" class="data row8 col0" >IPython</td>
+      <td id="T_ca4a7_row8_col1" class="data row8 col1" >9.17.1</td>
     </tr>
   </tbody>
 </table>
