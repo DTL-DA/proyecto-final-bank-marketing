@@ -1,0 +1,96 @@
+{
+ "r3": {
+  "mejor": "naive_bayes",
+  "n_r3": 3,
+  "cliff": 0.15570934256055363,
+  "r3": true,
+  "c1": true,
+  "ext_l2e": 0.11065050045562744,
+  "ext_l2e_de": 0.11561695685109741,
+  "ext_mejor": 0.10275449250387365,
+  "ext_mejor_de": 0.1080851360986227,
+  "sig_meses": [
+   "Naive Bayes",
+   "XGBoost",
+   "Árbol de decisión"
+  ],
+  "n_benchmarks": 8,
+  "ganancia_ap": 0.06759393847139439,
+  "control_c2": {
+   "modelo": "Referencia E2",
+   "variante": "+ filtro de nivel C2",
+   "auc_pr": 0.5935053265022451,
+   "dif": 0.008361655491289532,
+   "p": 0.07
+  }
+ },
+ "friedman": {
+  "pliegues": {
+   "chi2": 7.133333333333326,
+   "p": 0.4151306501854955,
+   "k": 8,
+   "n": 5,
+   "cd": 4.695416703894232,
+   "rango_l2e": 2.4,
+   "puesto_l2e": 1,
+   "mejor": "L2E (modelo original)"
+  },
+  "meses_prueba": {
+   "chi2": 85.60000000000002,
+   "p": 3.623732932039601e-15,
+   "k": 9,
+   "n": 17,
+   "cd": 2.9135683261800116,
+   "rango_l2e": 3.5294117647058822,
+   "puesto_l2e": 4,
+   "mejor": "Logística L1/L2"
+  }
+ },
+ "hiperparametros": {
+  "lam": 63.77498741418533,
+  "q_nivel": 0.22939160381883092,
+  "q_pendiente": 2.3518705467308886e-05
+ },
+ "dia_prediccion": 489,
+ "periodo_vigente": "2010-11",
+ "n_coeficientes": 49,
+ "prob_media_prueba": 0.3081522331689301,
+ "tasa_prueba": 0.3082807187955318,
+ "auc_pr_prueba": 0.6018669819935346,
+ "auc_prueba": 0.7716228900419042,
+ "brier_prueba": 0.17078218592546807,
+ "referencia_e2": {
+  "auc_pr_prueba": 0.5484183588510495,
+  "auc_prueba": 0.7095392619388894
+ },
+ "literatura": {
+  "consultas": 40,
+  "bases": 4,
+  "revisados": 382,
+  "candidatos": 1,
+  "relevantes": 1,
+  "fallidas": 6
+ },
+ "pruebas_unitarias": {
+  "pasan": 25,
+  "total": 25
+ },
+ "robustez": {
+  "frac_q": 0.8367346938775511,
+  "retardo_1": 0.6018669819935346,
+  "retardo_40": 0.5779473631473014,
+  "sem_min": 0.592617961590873,
+  "sem_max": 0.6034921371089067,
+  "meses_gana_mejor": 15,
+  "meses": 17
+ },
+ "ablacion_sp": {
+  "dif": 0.004545968188363406,
+  "gana": 3,
+  "p_nb": 0.8552366800731648,
+  "p_rope": 0.59148,
+  "p_mejor": 0.20562
+ },
+ "pseudocodigo": "Algoritmo 1. Ajuste por moda posterior (fit)\nEntradas : X ∈ R^{n×p}, días t ∈ Z^n (no decrecientes), y ∈ {0,1}^n, hiperparámetros λ > 0, q_u > 0\nSalidas  : nivel suavizado û_1..û_T, pendientes β̂, estado (m, P) de (u_T, β) al cierre del entrenamiento\n 1. Días únicos d_1 < … < d_T; índice τ(i) ∈ {1..T}; Δ_k = d_k − d_{k−1}\n 2. u ← logit(ȳ)·1_T ;  β ← 0_p\n 3. repetir para iter = 1..max_iter\n 4.     η_i ← u_{τ(i)} + x_iᵀβ ;  π_i ← σ(η_i) ;  w_i ← π_i(1 − π_i)\n 5.     g_u, g_β ← gradientes de la ecuación (3)\n 6.     A ← diag(W_t) + D + εI (tridiagonal) ;  B ← Σ_i w_i e_{τ(i)} x_iᵀ ;  C ← XᵀWX + λI\n 7.     resolver A [Ã_B, ã_g] = [B, g_u] (tridiagonal, p + 1 lados derechos)\n 8.     S ← C − Bᵀ Ã_B ;  δ_β ← S⁻¹ (g_β − Bᵀ ã_g) (Cholesky) ;  δ_u ← ã_g − Ã_B δ_β\n 9.     λ²_N ← g_uᵀδ_u + g_βᵀδ_β                               (decremento de Newton)\n10.     si λ²_N / 2 ≤ tol: terminar (convergencia)\n11.     s ← 1 ; mientras J(u + sδ_u, β + sδ_β) < J(u, β) + 0,25·s·λ²_N : s ← s/2   (Armijo)\n12.     u ← u + sδ_u ;  β ← β + sδ_β\n13. m ← (u_T, β) ;  P ← covarianza de Laplace de la ecuación (6)\n\nAlgoritmo 2. Predicción precuencial con etiquetas diferidas (predict_proba_secuencial)\nEntradas : estado (m, P) y último día asimilado t*, registros nuevos (X, días, y), retardo L ≥ 1, q_u, q_β\nSalidas  : probabilidad p̂_i para cada registro; el estado del estimador no se modifica\n 1. pendientes ← cola vacía\n 2. para cada día d de los registros, en orden cronológico\n 3.     mientras pendientes ≠ ∅ y primero(pendientes) ≤ d − L          (solo días ya cerrados)\n 4.         d' ← extraer(pendientes) ;  P⁻ ← P + (d' − t*)·diag(q_u, q_β, …, q_β)\n 5.         (m, P) ← moda y curvatura de la ecuación (8) (Newton en 1 + p dimensiones) ;  t* ← d'\n 6.     P_d ← P + (d − t*)·diag(q_u, q_β, …, q_β)\n 7.     p̂_i ← σ(μ_i / sqrt(1 + π s²_i / 8)) para los registros del día d   (ecuación 9)\n 8.     agregar d a pendientes\nCriterio de parada: el algoritmo termina al recorrer el último día; cada actualización (paso 5) termina\ncuando el paso de Newton es menor que 1e−10 en norma infinito (a lo sumo 50 iteraciones).",
+ "mejoras": "Ninguna de las cinco mejoras evaluadas (splines, Bayes empírico, recencia, ensamble y semillas) supera la regla declarada de 0,004 en el AUC-PR externo, así que el L2E se conserva sin cambios."
+}

@@ -4,3 +4,8 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+
+# Registros de ejecución y compilaciones locales del libro
+*.log
+book/_build/
+.ipynb_checkpoints/

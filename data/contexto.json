@@ -15,6 +15,8 @@
   "evaluaciones": 13730,
   "horas_cpu": 29.901631778666683,
   "mejor_global": "Naive Bayes · class_weight · Bayesiana (Optuna TPE)",
-  "actualizado": "2026-10-22",
-  "version": "1.0"
+  "actualizado": "2026-10-24",
+  "version": "2.0",
+  "entrega": "Cuarto entregable",
+  "modelo_original": "L2E (logística de estado latente en dos escalas)"
 }

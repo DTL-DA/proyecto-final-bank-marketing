@@ -1,0 +1,12 @@
+format: jb-book
+root: 00_introduccion
+chapters:
+  - file: 01_correcciones
+  - file: 02_datos
+  - file: 03_benchmarks
+  - file: 04_literatura
+  - file: 05_modelo_original
+  - file: 06_validacion
+  - file: 07_dashboard
+  - file: 08_conclusiones
+  - file: 09_reproducibilidad

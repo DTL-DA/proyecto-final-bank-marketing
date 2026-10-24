@@ -1,0 +1,130 @@
+{
+  "modelo": "l2e",
+  "nombre": "L2E (modelo original)",
+  "clase": "src.original_model.LogisticaDosEscalas",
+  "balanceo": "ninguno",
+  "optimizador": "bayes",
+  "semilla": 42,
+  "hiperparametros": {
+    "lam": 63.77498741418533,
+    "q_nivel": 0.22939160381883092,
+    "q_pendiente": 2.3518705467308886e-05
+  },
+  "parametros_fijos": {
+    "retardo": 1,
+    "nivel_latente": true,
+    "actualizar_nivel": true,
+    "actualizar_pendientes": true,
+    "integrar_incertidumbre": true
+  },
+  "salida": "predict_proba",
+  "platt": null,
+  "umbral": "0,5 sobre la probabilidad",
+  "archivo": "modelo_vigente.joblib",
+  "dia_prediccion": 489,
+  "estado": {
+    "modelo.joblib": {
+      "ultimo_dia": 166,
+      "periodo": "2009-05",
+      "uso": "evaluado una sola vez en la prueba, de forma precuencial"
+    },
+    "modelo_vigente.joblib": {
+      "ultimo_dia": 488,
+      "periodo": "2010-11",
+      "uso": "predicción del día siguiente al último cerrado"
+    }
+  },
+  "versiones": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "imblearn": "0.14.2",
+    "xgboost": "3.4.1",
+    "joblib": "1.6.0",
+    "scipy": "1.18.1"
+  },
+  "columnas_entrada": [
+    "age",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "duration",
+    "campaign",
+    "pdays",
+    "previous",
+    "poutcome",
+    "emp.var.rate",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "euribor3m",
+    "nr.employed"
+  ],
+  "variables_usadas": [
+    "age",
+    "campaign",
+    "pdays",
+    "previous",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "nr.employed",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "poutcome"
+  ],
+  "esquema": "data/esquema.json",
+  "metricas_bucle_externo": {
+    "auc_pr": {
+      "media": 0.11065050045562744,
+      "de": 0.11561695685109741
+    },
+    "auc": {
+      "media": 0.5597558143234138,
+      "de": 0.10167387070582119
+    },
+    "f1": {
+      "media": 0.019797525309336334,
+      "de": 0.044268612377948595
+    },
+    "recall": {
+      "media": 0.011428571428571429,
+      "de": 0.025555062599997593
+    },
+    "precision": {
+      "media": 0.07394957983193277,
+      "de": 0.16535628741174915
+    },
+    "accuracy": {
+      "media": 0.9281967213114755,
+      "de": 0.04231306558960459
+    },
+    "brier": {
+      "media": 0.06548312351066812,
+      "de": 0.02711540903761179
+    }
+  },
+  "metricas_prueba": {
+    "auc_pr": 0.6018669819935346,
+    "auc": 0.7716228900419042,
+    "f1": 0.5041459369817579,
+    "recall": 0.41906262307995273,
+    "precision": 0.6325802615933412,
+    "accuracy": 0.7458717824186498,
+    "brier": 0.17078218592546807
+  },
+  "motivo_seleccion": "Modelo original del proyecto, validado con los mismos pliegues externos, la misma semilla y el mismo presupuesto de Optuna (20 configuraciones) que los 140 benchmarks",
+  "entrenamiento": "Ajustado con todo el entrenamiento (2008-05 a 2009-05); la prueba (2009-05 a 2010-11) se evaluó una sola vez, de forma precuencial y con un día de demora en las etiquetas."
+}

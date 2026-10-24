@@ -1,0 +1,12 @@
+{
+ "nivel": 0.8319221505419798,
+ "top3": [
+  "nr.employed",
+  "missingindicator_pdays",
+  "previous"
+ ],
+ "rho_ref": 0.7767034875866012,
+ "rho_nb": 0.7696861694818342,
+ "cambio_var": "contact_telephone",
+ "cambio": 0.4243834594596303
+}

@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from src import plots
-from src.data import banco, contexto
+from src.data import banco, contexto, resumen
 
 dash.register_page(__name__, path="/", name="Contexto", order=0, title="Contexto · Bank Marketing")
 
@@ -40,7 +40,7 @@ PASOS = [("bi-database", "ETL", "Limpieza, códigos especiales y auditoría de f
          ("bi-search", "4 optimizadores", "Grid, Random, Bayesiana y Genético"),
          ("bi-layers", "Validación anidada", "5 pliegues externos y 3 internos, cronológicos"),
          ("bi-graph-up-arrow", "Comparación estadística", "Friedman, Nemenyi, DeLong y tamaño del efecto"),
-         ("bi-lightbulb", "Modelo original", "Propuesta propia validada con las mismas reglas")]
+         ("bi-lightbulb", "Modelo original", "L2E: nivel diario latente y filtro de Laplace, con las mismas reglas")]
 
 
 def num(x, d=1):
@@ -57,11 +57,12 @@ def layout():
               (str(c["periodos"]), f"meses, de {c['periodo_inicio']} a {c['periodo_fin']}"),
               (str(c["combinaciones"]), "combinaciones evaluadas")]
     hero = html.Section([
-        html.P("Proyecto final · Tercer entregable · Machine Learning", className="eyebrow"),
+        html.P("Proyecto final · Cuarto entregable · Machine Learning", className="eyebrow"),
         html.H1("¿A quién llamar primero?", className="display-5 fw-bold"),
         html.P("Un banco portugués vende depósitos a término por teléfono. Este dashboard muestra qué tanto se puede "
                "anticipar, con la información disponible antes de la llamada, si un cliente suscribirá, y permite usar "
-               "los mejores modelos para predecir y explicar cada predicción.", className="lead"),
+               "los mejores modelos, incluido el modelo original L2E, para predecir y explicar cada predicción.",
+               className="lead"),
         dbc.Row([dbc.Col(html.Div([html.Div(v, className="cifra"), html.Div(t, className="cifra-texto")], className="stat"),
                          xs=6, lg=3) for v, t in cifras], className="g-3 mt-2"),
     ], className="hero mb-4")
@@ -83,15 +84,22 @@ def layout():
         html.P("La tasa de suscripción no es estable: cambia de régimen entre 2008 y 2009, y eso condiciona la "
                "validación y la lectura de las probabilidades.", className="insight"))
 
+    r = resumen("l2e_resumen")
     pregunta = tarjeta(
         "Pregunta de investigación y objetivos",
-        html.P(html.B("¿Qué tan bien se puede anticipar, con información previa a la llamada, si un cliente suscribirá "
-                      "un depósito a término, y qué combinación de modelo, balanceo y optimizador lo hace mejor?")),
+        html.P(html.B("¿Un modelo que sigue día a día la tasa de suscripción puede predecir, antes de la llamada, qué "
+                      "clientes suscribirán un depósito a término mejor que los clasificadores estáticos?")),
         html.Ol([html.Li("Comparar 7 modelos, 4 técnicas de balanceo y 4 optimizadores de hiperparámetros con validación "
-                         "anidada cronológica."),
+                         "anidada cronológica: los clasificadores estáticos, que asumen que la relación entre el cliente y "
+                         "la suscripción no cambia en el tiempo."),
                  html.Li("Elegir la mejor combinación de cada modelo con criterios estadísticos, no visuales."),
-                 html.Li("Poner los modelos a disposición para predecir y explicar cada predicción con SHAP."),
-                 html.Li("Proponer un modelo original y verificar si supera a los benchmarks con pruebas de hipótesis.")]),
+                 html.Li("Proponer un modelo original, el L2E, que sigue el nivel diario de conversión, y verificar con "
+                         "pruebas de hipótesis si supera a esas combinaciones."),
+                 html.Li("Poner los modelos a disposición para predecir y explicar cada predicción con SHAP.")]),
+        html.P([html.B("Respuesta: sí. "), f"El L2E obtiene un AUC-PR externo de {num(r['r3']['ext_l2e'], 3)} frente a "
+                f"{num(r['r3']['ext_mejor'], 3)} de la mejor combinación y de {num(r['auc_pr_prueba'], 3)} frente a "
+                f"{num(r['referencia_e2']['auc_pr_prueba'], 3)} en la prueba, con {r['r3']['n_r3']} de 4 pruebas de "
+                "hipótesis a favor (página Modelos)."], className="insight"),
         html.Hr(),
         html.H3("Los datos", className="h6"),
         html.Ul([html.Li(["Fuente: ", html.A("UCI Machine Learning Repository", href="https://archive.ics.uci.edu/dataset/222/bank+marketing",
@@ -111,7 +119,7 @@ def layout():
 
     pasos = []
     for i, (icono, titulo, texto) in enumerate(PASOS):
-        pendiente = titulo == "Modelo original"
+        pendiente = False
         pasos.append(html.Div([html.I(className=f"bi {icono} paso-icono"), html.Div(titulo, className="paso-titulo"),
                                html.Div(texto + (" (en desarrollo)" if pendiente else ""), className="paso-texto")],
                               className="paso paso-pendiente" if pendiente else "paso", role="listitem"))
@@ -122,13 +130,19 @@ def layout():
         html.Div(pasos, className="pipeline", role="list", lang="es", **{"aria-label": "Etapas del pipeline del proyecto"}),
         html.P(f"Cada combinación se evaluó en 5 pliegues externos con 20 configuraciones por optimizador: "
                f"{num(c['evaluaciones'], 0)} evaluaciones internas y {num(c['horas_cpu'])} horas de CPU. Las métricas de la "
-               "página de modelos vienen del bucle externo, nunca del valor óptimo del bucle interno.", className="insight mt-3"))
+               "página de modelos vienen del bucle externo, nunca del valor óptimo del bucle interno. El modelo original "
+               "pasó por exactamente el mismo protocolo: los mismos pliegues, la misma semilla y el mismo presupuesto.",
+               className="insight mt-3"))
 
     limites = tarjeta(
         "Limitaciones, ética y sesgo",
         html.Ul([
-            html.Li([html.B("Cambio de régimen. "), "Los modelos aprenden sobre todo de 2008 y se aplican a 2009 y 2010, con "
-                     "otra tasa de suscripción; sus probabilidades reflejan la tasa del entrenamiento."]),
+            html.Li([html.B("Cambio de régimen. "), "Los modelos estáticos aprenden sobre todo de 2008 y se aplican a 2009 y "
+                     "2010, con otra tasa de suscripción; sus probabilidades reflejan la tasa del entrenamiento. El L2E lo "
+                     "corrige siguiendo el nivel diario de conversión."]),
+            html.Li([html.B("Etiquetas diferidas. "), "El L2E necesita los resultados de los días ya cerrados; si llegan con "
+                     "semanas de demora, su ventaja se reduce. Con la información previa a la llamada, ningún modelo pasa "
+                     "de un AUC-PR cercano a 0,61 en la prueba."]),
             html.Li([html.B("Población. "), "Solo clientes que el banco eligió contactar, de una institución y un país; los "
                      "resultados no se generalizan a otros bancos o productos sin validación."]),
             html.Li([html.B("Información sensible y equidad. "), "default, housing y loan describen la situación financiera; "

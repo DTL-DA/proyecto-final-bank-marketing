@@ -1,0 +1,112 @@
+[
+ {
+  "clave": "moro2014",
+  "doi": "10.1016/j.dss.2014.03.001",
+  "verificada": true
+ },
+ {
+  "clave": "uci_bank",
+  "doi": "10.24432/C5K306",
+  "verificada": true
+ },
+ {
+  "clave": "mccormick2012",
+  "doi": "10.1111/j.1541-0420.2011.01645.x",
+  "verificada": true
+ },
+ {
+  "clave": "fahrmeir1992",
+  "doi": "10.1080/01621459.1992.10475232",
+  "verificada": true
+ },
+ {
+  "clave": "west1985",
+  "doi": "10.1080/01621459.1985.10477131",
+  "verificada": true
+ },
+ {
+  "clave": "saerens2002",
+  "doi": "10.1162/089976602753284446",
+  "verificada": true
+ },
+ {
+  "clave": "gama2014",
+  "doi": "10.1145/2523813",
+  "verificada": true
+ },
+ {
+  "clave": "grzenda2020",
+  "doi": "10.1007/s10618-019-00654-y",
+  "verificada": true
+ },
+ {
+  "clave": "mackay1992",
+  "doi": "10.1162/neco.1992.4.5.720",
+  "verificada": true
+ },
+ {
+  "clave": "durbin2012",
+  "doi": "10.1093/acprof:oso/9780199641178.001.0001",
+  "verificada": true
+ },
+ {
+  "clave": "chowdary2025",
+  "doi": "10.1109/icscsa66339.2025.11170856",
+  "verificada": true
+ },
+ {
+  "clave": "kalman1960",
+  "doi": "10.1115/1.3662552",
+  "verificada": true
+ },
+ {
+  "clave": "delong1988",
+  "doi": "10.2307/2531595",
+  "verificada": true
+ },
+ {
+  "clave": "nadeau2003",
+  "doi": "10.1023/A:1024068626366",
+  "verificada": true
+ },
+ {
+  "clave": "diebold1995",
+  "doi": "10.1080/07350015.1995.10524599",
+  "verificada": true
+ },
+ {
+  "clave": "harvey1997",
+  "doi": "10.1016/S0169-2070(96)00719-4",
+  "verificada": true
+ },
+ {
+  "clave": "politis1994",
+  "doi": "10.1080/01621459.1994.10476870",
+  "verificada": true
+ },
+ {
+  "clave": "akiba2019",
+  "doi": "10.1145/3292500.3330701",
+  "verificada": true
+ },
+ {
+  "clave": "cliff1993",
+  "doi": "10.1037/0033-2909.114.3.494",
+  "verificada": true
+ },
+ {
+  "clave": "zhang2008",
+  "doi": "10.1007/s10115-007-0095-1",
+  "verificada": true
+ },
+ {
+  "clave": "boyd2004",
+  "doi": "10.1017/CBO9780511804441",
+  "verificada": true
+ },
+ {
+  "clave": "varma2006",
+  "doi": "10.1186/1471-2105-7-91",
+  "verificada": true
+ }
+]

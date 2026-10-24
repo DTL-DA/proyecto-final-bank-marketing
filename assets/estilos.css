@@ -48,6 +48,9 @@ code { color: var(--tinta); background: #eef1f5; padding: .05rem .3rem; border-r
 
 .insight { color: #3b4658; border-left: 3px solid var(--azul); padding-left: .75rem; }
 .nota { color: #5f6672; font-size: .875rem; }
+.pseudocodigo { background: #f4f6f9; border: 1px solid #e3e7ed; border-radius: 8px; padding: .75rem; font-size: .78rem;
+  line-height: 1.45; color: var(--tinta); max-height: 420px; overflow: auto; white-space: pre; }
+.tabla-texto td, .tabla-texto th { font-size: .82rem; vertical-align: top; }
 
 .pipeline { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; }
 .paso { flex: 1 1 0; min-width: 104px; background: #f4f6f9; border: 1px solid #e3e7ed; border-radius: 12px; padding: .75rem; }

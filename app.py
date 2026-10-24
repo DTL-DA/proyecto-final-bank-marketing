@@ -1,4 +1,4 @@
-"""Punto de entrada del dashboard predictivo de Bank Marketing (proyecto final, tercer entregable).
+"""Punto de entrada del dashboard predictivo de Bank Marketing (proyecto final, cuarto entregable: modelo original).
 
 Local:   python app.py        →  http://127.0.0.1:8050
 Render:  gunicorn app:server
@@ -22,6 +22,7 @@ app = dash.Dash(__name__, use_pages=True, external_stylesheets=[dbc.themes.FLATL
                 meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"},
                            {"name": "description", "content": "Dashboard predictivo de suscripción a depósitos a término"}])
 server = app.server
+JBOOK = "https://dtl-da.github.io/proyecto-final-bank-marketing/cuarto-entregable/"
 
 # Datos y modelos se cargan una sola vez, al iniciar el servidor
 banco()
@@ -38,7 +39,7 @@ app.layout = html.Div([
     html.Footer(dbc.Container(html.Small([
         f"Donny Torres · Maestría en Analítica de Datos, Universidad del Norte · Versión {contexto()['version']} · "
         "Datos: UCI Machine Learning Repository (CC BY 4.0) · ",
-        html.A("Jupyter Book del proyecto", href="https://dtl-da.github.io/proyecto-final-bank-marketing/", target="_blank",
+        html.A("Jupyter Book del proyecto", href=JBOOK, target="_blank",
                rel="noopener noreferrer", className="enlace-pie")]), fluid="xl"), className="pie"),
 ])
 

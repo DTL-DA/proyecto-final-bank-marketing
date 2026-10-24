@@ -1,0 +1,35 @@
+# Proyecto final (cuarto entregable) - Bank Marketing (UCI) - Donny Torres
+# Entorno: conda create -n bm_e3 python=3.12 ; pip install -r requirements.txt
+# Python 3.12.14. Semilla global: SEED = 42 (src/bm/config.py)
+arch==8.0.0
+dash==4.4.1
+deap==1.4.4
+faiss-cpu==1.15.1
+imbalanced-learn==0.14.2
+ipykernel==7.4.0
+ipython==9.17.1
+Jinja2==3.1.6
+joblib==1.6.0
+lime==0.2.0.1
+matplotlib==3.11.2
+memory-profiler==0.61.0
+nbclient==0.11.0
+nbformat==5.11.1
+numpy==2.5.4
+optuna==5.0.0
+pandas==3.0.6
+patsy==1.0.3
+pillow==13.0.0
+plotly==7.1.0
+pyarrow==26.0.0
+pytest==8.4.2
+scikit-learn==1.9.1
+scikit-posthocs==0.17.1
+scipy==1.18.1
+shap==0.54.1
+statsmodels==0.15.0
+threadpoolctl==3.7.0
+xgboost==3.4.1
+
+# Compilación del Jupyter Book (entorno aparte, no necesario para ejecutar el cuaderno):
+# jupyter-book==1.0.4.post1 (MyST-NB 1.4.0)

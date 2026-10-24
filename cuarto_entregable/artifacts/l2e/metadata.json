@@ -1,0 +1,188 @@
+{
+ "modelo": "LogisticaDosEscalas (L2E)",
+ "clase": "bm.modelo_original.LogisticaDosEscalas",
+ "semilla": 42,
+ "versiones": {
+  "python": "3.12.14",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "scikit-learn": "1.9.1",
+  "pandas": "3.0.6",
+  "joblib": "1.6.0"
+ },
+ "hiperparametros": {
+  "lam": 63.77498741418533,
+  "q_nivel": 0.22939160381883092,
+  "q_pendiente": 2.3518705467308886e-05
+ },
+ "parametros_fijos": {
+  "retardo": 1,
+  "nivel_latente": true,
+  "actualizar_nivel": true,
+  "actualizar_pendientes": true,
+  "integrar_incertidumbre": true
+ },
+ "esquema_entrada": {
+  "age": {
+   "tipo": "numérica",
+   "min": 18.0,
+   "max": 95.0
+  },
+  "job": {
+   "tipo": "categórica",
+   "valores": [
+    "admin.",
+    "blue-collar",
+    "entrepreneur",
+    "housemaid",
+    "management",
+    "retired",
+    "self-employed",
+    "services",
+    "student",
+    "technician",
+    "unemployed",
+    "unknown"
+   ]
+  },
+  "marital": {
+   "tipo": "categórica",
+   "valores": [
+    "divorced",
+    "married",
+    "single",
+    "unknown"
+   ]
+  },
+  "education": {
+   "tipo": "categórica",
+   "valores": [
+    "basic.4y",
+    "basic.6y",
+    "basic.9y",
+    "high.school",
+    "illiterate",
+    "professional.course",
+    "university.degree",
+    "unknown"
+   ]
+  },
+  "default": {
+   "tipo": "categórica",
+   "valores": [
+    "no",
+    "unknown",
+    "yes"
+   ]
+  },
+  "housing": {
+   "tipo": "categórica",
+   "valores": [
+    "no",
+    "unknown",
+    "yes"
+   ]
+  },
+  "loan": {
+   "tipo": "categórica",
+   "valores": [
+    "no",
+    "unknown",
+    "yes"
+   ]
+  },
+  "contact": {
+   "tipo": "categórica",
+   "valores": [
+    "cellular",
+    "telephone"
+   ]
+  },
+  "month": {
+   "tipo": "categórica",
+   "valores": [
+    "apr",
+    "aug",
+    "dec",
+    "jul",
+    "jun",
+    "mar",
+    "may",
+    "nov",
+    "oct"
+   ]
+  },
+  "day_of_week": {
+   "tipo": "categórica",
+   "valores": [
+    "fri",
+    "mon",
+    "thu",
+    "tue",
+    "wed"
+   ]
+  },
+  "campaign": {
+   "tipo": "numérica",
+   "min": 1.0,
+   "max": 56.0
+  },
+  "pdays": {
+   "tipo": "numérica",
+   "min": 0.0,
+   "max": 999.0
+  },
+  "previous": {
+   "tipo": "numérica",
+   "min": 0.0,
+   "max": 3.0
+  },
+  "poutcome": {
+   "tipo": "categórica",
+   "valores": [
+    "failure",
+    "nonexistent",
+    "success"
+   ]
+  },
+  "cons.price.idx": {
+   "tipo": "numérica",
+   "min": 92.756,
+   "max": 94.465
+  },
+  "cons.conf.idx": {
+   "tipo": "numérica",
+   "min": -50.0,
+   "max": -36.1
+  },
+  "nr.employed": {
+   "tipo": "numérica",
+   "min": 5099.1,
+   "max": 5228.1
+  },
+  "dia": {
+   "tipo": "entero",
+   "descripcion": "día de contacto reconstruido (bm.datos.reconstruir_tiempo)"
+  }
+ },
+ "metricas_bucle_externo": {
+  "auc_pr_media": 0.11065050045562744,
+  "auc_pr_de": 0.11561695685109741,
+  "auc_media": 0.5597558143234138
+ },
+ "metricas_prueba": {
+  "auc_pr": 0.6018669819935346,
+  "auc": 0.7716228900419042,
+  "brier": 0.17078218592546807
+ },
+ "estado": {
+  "modelo.joblib": {
+   "ultimo_dia": 166,
+   "periodo": "2009-05"
+  },
+  "modelo_vigente.joblib": {
+   "ultimo_dia": 488,
+   "periodo": "2010-11"
+  }
+ }
+}

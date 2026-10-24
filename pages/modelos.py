@@ -1,4 +1,5 @@
-"""Sección 3 · Modelos: tabla de líderes, predicción en vivo con SHAP local, diagnóstico, SHAP global y comparación."""
+"""Sección 3 · Modelos: tabla de líderes, predicción en vivo con SHAP local, diagnóstico, SHAP global, comparación
+estadística y subsección del modelo original (L2E)."""
 import json
 
 import dash
@@ -9,7 +10,7 @@ from dash.dash_table.Format import Format, Scheme
 
 from src import plots
 from src.data import (banco, contexto, esquema, fila_entrada, fondo, modelos, opciones_modelo, percentil, predecir,
-                      probabilidad, puntaje_crudo, resultado)
+                      probabilidad, puntaje_crudo, resultado, resumen)
 from src.explicaciones import shap_permutaciones
 
 dash.register_page(__name__, path="/modelos", name="Modelos", order=2, title="Modelos · Bank Marketing")
@@ -39,6 +40,19 @@ def grafica(id_grafica, altura):
     # Altura explícita (nunca style=None: dcc.Graph lee style.height y un style nulo reinicia la página en bucle)
     return dcc.Loading(dcc.Graph(id=id_grafica, config=plots.CONFIG, responsive=True, style={"height": f"{altura}px"}),
                        type="dot", color=plots.AZUL)
+
+
+def pv(p) -> str:
+    """Valor p con coma decimal; por debajo de 0,001 se reporta como cota."""
+    return "<\u00a00,001" if p < 0.001 else num(p, 3)
+
+
+def tabla_simple(df, formatos=None, clase=""):
+    """Tabla de Bootstrap a partir de un DataFrame; ``formatos`` asigna a cada columna una función de formato."""
+    formatos = formatos or {}
+    cuerpo = [html.Tr([html.Td(formatos.get(c, str)(r[c])) for c in df.columns]) for _, r in df.iterrows()]
+    return dbc.Table([html.Thead(html.Tr([html.Th(c) for c in df.columns])), html.Tbody(cuerpo)], size="sm",
+                     striped=True, hover=True, responsive=True, className=f"mb-0 {clase}")
 
 
 def valor_legible(v) -> str:
@@ -101,15 +115,123 @@ def formulario():
     return dbc.Row(columnas, className="g-3")
 
 
+BLOQUES_CD = {"pliegues": "5 pliegues externos de la validación anidada (8 modelos)",
+              "meses_prueba": "17 meses de la prueba (9 modelos, con la Referencia E2)"}
+
+
 def friedman_texto():
-    fr = resultado("friedman")
-    glob, pl, me = fr.iloc[0], fr.iloc[1], fr.iloc[2]
-    return (f"Sobre las {int(glob['Modelos (k)'])} combinaciones de clasificación, Friedman da χ² = {num(glob['χ²_F'])} "
-            f"(p {glob['p (χ²)']}): al menos una difiere, sobre todo por las peores. Entre los 7 finalistas no hay "
-            f"evidencia de diferencias: p = {pl['p (χ²)']} con los pliegues como bloques y p = {me['p (χ²)']} con bloques "
-            f"mensuales, y todos quedan dentro de la diferencia crítica de {num(pl['Diferencia crítica de Nemenyi'], 2)} "
-            "rangos. Por eso la mejor combinación global pertenece al conjunto de finalistas, pero no se puede declarar "
-            "un ganador.")
+    fr = resumen("l2e_resumen")["friedman"]
+    pl, me = fr["pliegues"], fr["meses_prueba"]
+    nemenyi = resultado("l2e_pruebas").iloc[0]["p crudo"]
+    return (f"Con el modelo original incluido, en los {pl['n']} pliegues externos el L2E tiene el mejor rango promedio "
+            f"({num(pl['rango_l2e'], 2)}), pero Friedman no rechaza la igualdad (χ² = {num(pl['chi2'], 2)}, "
+            f"p = {pv(pl['p'])}): con cinco bloques la diferencia crítica es de {num(pl['cd'], 2)} rangos. En los "
+            f"{me['n']} meses de la prueba Friedman sí rechaza (χ² = {num(me['chi2'], 2)}, p {pv(me['p'])}), pero el L2E "
+            f"queda {me['puesto_l2e']}.º y Nemenyi no lo separa de Naive Bayes (p = {pv(nemenyi)}). Dentro de un mes el "
+            "nivel de conversión cambia poco, y la ventaja del L2E está en seguirlo entre días; por eso su superioridad "
+            "se verifica con las pruebas pareadas sobre el ordenamiento global de la prueba (subsección del modelo "
+            "original, abajo).")
+
+
+def modelo_original():
+    """Subsección del modelo original: idea, pseudocódigo, literatura, convergencia, pruebas y veredicto."""
+    r = resumen("l2e_resumen")
+    r3, rob, lit, sp = r["r3"], r["robustez"], r["literatura"], r["ablacion_sp"]
+    hp = r["hiperparametros"]
+    cifras = [(f"{num(r3['ext_l2e'], 3)} frente a {num(r3['ext_mejor'], 3)}",
+               "AUC-PR del bucle externo frente a la mejor combinación"),
+              (f"{num(r['auc_pr_prueba'], 3)} frente a {num(r['referencia_e2']['auc_pr_prueba'], 3)}",
+               "AUC-PR de prueba frente a la Referencia E2"),
+              (f"{r3['n_r3']} de 4", "pruebas declaradas con p de Holm < 0,05"),
+              (f"δ = {num(r3['cliff'], 3)}", "tamaño del efecto de Cliff (pequeño)")]
+    mantisa, exponente = f"{hp['q_pendiente']:.2e}".split("e")
+    q_b = f"{mantisa.replace('.', ',')} · 10{str(int(exponente)).translate(str.maketrans('-0123456789', '⁻⁰¹²³⁴⁵⁶⁷⁸⁹'))}"
+    idea = dcc.Markdown(
+        "El **L2E** (logística de estado latente en dos escalas) combina en el logit un **nivel diario de conversión**, "
+        "que se mueve rápido y se actualiza con las etiquetas de los días ya cerrados, y el **efecto de las variables del "
+        "cliente**, cuyas pendientes derivan despacio:\n\n"
+        r"$$P(y_i = 1) = \sigma\left(u_{t(i)} + x_i^\top \beta_{t(i)}\right)$$" "\n\n"
+        r"$$u_t = u_{t-1} + \varepsilon_t, \qquad \varepsilon_t \sim \mathcal{N}(0,\, q_u)$$" "\n\n"
+        r"$$\beta_t = \beta_{t-1} + \nu_t, \qquad \nu_t \sim \mathcal{N}(0,\, q_\beta I)$$" "\n\n"
+        "El ajuste maximiza una log-posterior estrictamente cóncava con Newton por bloques (el nivel se elimina con el "
+        "complemento de Schur sobre una matriz tridiagonal, en tiempo lineal en el número de días), y la predicción usa un "
+        "filtro de Laplace con un día de demora en las etiquetas. Está programado desde cero con numpy y scipy en "
+        f"`src/original_model.py`, con {r['pruebas_unitarias']['total']} pruebas unitarias. Hiperparámetros elegidos por "
+        rf"Optuna en la validación anidada: $\lambda$ = {num(hp['lam'], 1)}, $q_u$ = {num(hp['q_nivel'], 3)} y "
+        rf"$q_\beta$ = {q_b}.",
+        mathjax=True, className="mb-0")
+    pruebas = resultado("l2e_pruebas")[["Prueba", "H0", "Supuestos verificados", "Estadístico", "p crudo", "p ajustado",
+                                         "Efecto", "Conclusión"]]
+    conteo = resultado("l2e_conteo")
+    ablacion = resultado("l2e_ablacion")[["Variante", "AUC-PR externo", "DE externo", "AUC-PR prueba", "Brier prueba"]]
+    f3 = lambda x: num(x, 3)  # noqa: E731
+    sig = r3["sig_meses"]
+    veredicto = dbc.Alert([
+        html.H3([html.I(className="bi bi-check2-circle me-2 text-success"), "Veredicto: superior a los benchmarks"],
+                className="h6"),
+        html.P([html.B("R1. Novedad: "), f"revisión sistemática en {lit['bases']} bases con {lit['consultas']} consultas y "
+                f"{num(lit['revisados'], 0)} registros revisados; ningún estudio aplica este modelo al telemercadeo "
+                "bancario, y el trabajo más cercano usa árboles con actualización incremental, otra familia."],
+               className="mb-1"),
+        html.P([html.B("R2. Implementación propia: "), "clase compatible con scikit-learn (fit, predict, predict_proba) con "
+                "la función objetivo, el Newton por bloques y el filtro programados a mano; no es un import."],
+               className="mb-1"),
+        html.P([html.B("R3. Superioridad: "), f"mayor AUC-PR externo que los 7 finalistas ({num(r3['ext_l2e'], 3)} frente "
+                f"a {num(r3['ext_mejor'], 3)}), {r3['n_r3']} de las 4 pruebas declaradas rechazan la igualdad frente a la "
+                "mejor combinación con p ajustado por Holm < 0,05, y el efecto es pequeño pero no despreciable "
+                f"(δ de Cliff = {num(r3['cliff'], 3)} ≥ 0,147)."], className="mb-0"),
+    ], color="light", className="border border-success border-2 mb-3")
+    limites = html.Ul([
+        html.Li("Friedman y Nemenyi, que comparan rangos dentro de cada mes, no separan al L2E de Naive Bayes."),
+        html.Li(f"Dentro de cada mes de prueba es significativamente mejor que {', '.join(sig[:-1])} y {sig[-1]}, pero no "
+                "que la logística, Random Forest, la SVM, KNN ni la Referencia E2: su ventaja está en seguir el nivel "
+                "entre días, no en ordenar mejor a los clientes de un mismo día."),
+        html.Li("En los tres conjuntos de datos adicionales no es el mejor modelo: donde el nivel latente es débil, no "
+                "supera a los benchmarks."),
+        html.Li("Necesita las etiquetas de los días cerrados: con 40 días de demora el AUC-PR de prueba baja de "
+                f"{num(rob['retardo_1'], 3)} a {num(rob['retardo_40'], 3)}."),
+        html.Li("En la ablación, la variante sin actualizar las pendientes supera al L2E en el bucle externo por "
+                f"{num(sp['dif'], 4)}, una diferencia que no se distingue del ruido (t corregida de Nadeau-Bengio, "
+                f"p = {num(sp['p_nb'], 2)}); se conserva el modelo declarado y la prueba no interviene en esa decisión."),
+    ], className="mb-0")
+    return [
+        dbc.Row([dbc.Col(html.Div([html.Div(v, className="cifra-media"), html.Div(tx, className="cifra-texto")],
+                                  className="stat stat-claro h-100"), xs=6, lg=3) for v, tx in cifras],
+                className="g-3 mb-4"),
+        dbc.Row([dbc.Col([html.H3("Idea y formulación", className="h6"), idea], lg=6),
+                 dbc.Col([html.H3("Pseudocódigo", className="h6"),
+                          html.Pre(r["pseudocodigo"], className="pseudocodigo", tabIndex=0,
+                                   **{"aria-label": "Pseudocódigo de los algoritmos de ajuste y de predicción del L2E"})],
+                         lg=6)], className="g-4 mb-4"),
+        dcc.Graph(figure=plots.nivel_l2e(resultado("l2e_nivel")), config=plots.CONFIG, responsive=True,
+                  style={"height": "400px"}),
+        html.P("La línea es la probabilidad que el L2E asigna a un cliente promedio cada día; los puntos, la tasa real del "
+               "día (su tamaño crece con el número de llamadas). En la prueba el modelo solo conoce los días ya cerrados, y "
+               "aun así sigue el salto de 2009, que ningún modelo estático anticipa.", className="insight"),
+        dbc.Row([dbc.Col(dcc.Graph(figure=plots.convergencia(resultado("l2e_convergencia")), config=plots.CONFIG,
+                                   responsive=True, style={"height": "360px"}), lg=6),
+                 dbc.Col(dcc.Graph(figure=plots.aprendizaje(resultado("l2e_aprendizaje")), config=plots.CONFIG,
+                                   responsive=True, style={"height": "360px"}), lg=6)], className="g-3"),
+        html.P("Optuna encuentra su mejor configuración antes de agotar las 20 evaluaciones del presupuesto, el mismo de los "
+               "benchmarks. El L2E logra casi el mismo AUC-PR de prueba con el 25 % de los datos que con todos, mientras "
+               "que la logística de referencia necesita más historia: el nivel diario hace que el modelo dependa menos del "
+               "tamaño del entrenamiento.", className="insight"),
+        html.H3("Diferencias frente a la literatura", className="h6 mt-4"),
+        tabla_simple(resultado("l2e_literatura"), clase="tabla-texto"),
+        html.H3("Pruebas de hipótesis frente a la mejor combinación benchmark (Naive Bayes)", className="h6 mt-4"),
+        tabla_simple(pruebas, {"p crudo": pv, "p ajustado": pv}, clase="tabla-texto"),
+        html.P("p ajustado por Holm sobre las 8 comparaciones del L2E. Las cuatro primeras son las pruebas declaradas para "
+               "la condición R3; DeLong supone independencia, que no se cumple porque los clientes de un mismo día "
+               "comparten el nivel, y se reporta solo como contraste.", className="nota mt-2"),
+        html.H3("Pruebas declaradas frente a cada benchmark", className="h6 mt-4"),
+        tabla_simple(conteo, {"δ de Cliff (meses)": f3}),
+        html.H3("Estudio de ablación (cada variante reoptimizada con la misma validación anidada)", className="h6 mt-4"),
+        tabla_simple(ablacion, {c: f3 for c in ablacion.columns[1:]}),
+        html.Div(className="mb-4"),
+        veredicto,
+        html.H3("Dónde no es superior", className="h6"),
+        limites,
+    ]
 
 
 def tabla_delong():
@@ -124,15 +246,19 @@ def tabla_delong():
 
 def layout():
     c = contexto()
+    lb = resultado("leaderboard").set_index("modelo")
     return html.Div([
         html.H1("Modelos", className="h3 mb-1"),
         html.P("Mejor combinación de cada modelo de clasificación entre las 140 evaluadas con validación anidada "
-               "cronológica. Las métricas externas son la media y la desviación estándar de los 5 pliegues externos; las "
-               "de prueba, una sola evaluación en 2009 y 2010.", className="text-muted"),
-        tarjeta("Tabla de líderes", "Ordene con los encabezados o escriba en la fila de filtros. La fila resaltada es la "
-                "mejor combinación global por AUC-PR externo.", tabla_lideres(),
-                html.P(f"Mejor combinación global: {c['mejor_global']}. Criterio de selección: mayor AUC-PR medio del "
-                       "bucle externo dentro de cada modelo.", className="insight mt-3 mb-0")),
+               "cronológica, y el modelo original L2E, validado con los mismos pliegues, la misma semilla y el mismo "
+               "presupuesto de optimización. Las métricas externas son la media y la desviación estándar de los 5 "
+               "pliegues externos; las de prueba, una sola evaluación en 2009 y 2010.", className="text-muted"),
+        tarjeta("Tabla de líderes", "Ordene con los encabezados o escriba en la fila de filtros. La fila resaltada es el "
+                "modelo con mayor AUC-PR externo.", tabla_lideres(),
+                html.P(f"El modelo original L2E tiene el mayor AUC-PR externo ({num(lb.loc['l2e', 'auc_pr_media'], 3)}), "
+                       f"frente a {num(lb.loc['naive_bayes', 'auc_pr_media'], 3)} de la mejor combinación benchmark, "
+                       f"{c['mejor_global']}. Criterio de selección de cada benchmark: mayor AUC-PR medio del bucle externo "
+                       "dentro de cada modelo.", className="insight mt-3 mb-0")),
         dbc.Card(dbc.CardBody(dbc.Row([
             dbc.Col(html.Div([dbc.Label("Modelo seleccionado", html_for="mod-selector", className="h6 mb-1 d-block"),
                               html.P("Controla la predicción, el diagnóstico y la interpretabilidad de abajo.",
@@ -157,18 +283,18 @@ def layout():
         tarjeta("Interpretabilidad global (SHAP)", "Contribución media absoluta de cada variable original sobre una "
                 "muestra de la prueba, en puntos de probabilidad.", grafica("mod-shap-global", 420),
                 html.P(id="mod-shap-txt", className="insight mb-0")),
-        tarjeta("Comparación estadística", "Friedman y Nemenyi sobre los pliegues externos; DeLong sobre la prueba con "
-                "ajuste de Holm.",
-                dbc.Row([dbc.Col(dcc.Graph(figure=plots.diferencia_critica(resultado("cd").query("bloques == 'pliegues'")),
-                                           config=plots.CONFIG, responsive=True, style={"height": "420px"}), lg=7),
-                         dbc.Col([html.P(friedman_texto(), className="insight"), tabla_delong()], lg=5)], className="g-4")),
-        tarjeta("Modelo original", None,
-                dbc.Alert([html.I(className="bi bi-hourglass-split me-2"), html.B("En desarrollo. "),
-                           "Esta subsección mostrará la descripción y el pseudocódigo del modelo propio, sus diferencias "
-                           "frente a la literatura, la curva de convergencia, la tabla de pruebas de hipótesis con p-valores "
-                           "ajustados, el tamaño del efecto y el veredicto de superioridad. El modelo se valida con los "
-                           "mismos pliegues externos y la misma semilla que los benchmarks, y entra al diagrama de diferencia "
-                           "crítica como un competidor más."], color="info", className="mb-0"), id_="modelo-original"),
+        tarjeta("Comparación estadística", "Friedman y Nemenyi con el modelo original incluido; DeLong entre los "
+                "finalistas del tercer entregable, con ajuste de Holm.",
+                dbc.Row([dbc.Col([dbc.RadioItems(id="mod-cd-bloques", value="pliegues", inline=True, className="mb-2",
+                                                 options=[{"label": v, "value": k} for k, v in BLOQUES_CD.items()]),
+                                  grafica("mod-cd", 440)], lg=7),
+                         dbc.Col([html.P(friedman_texto(), className="insight"),
+                                  html.H3("DeLong entre los finalistas (prueba)", className="h6"), tabla_delong()], lg=5)],
+                        className="g-4")),
+        tarjeta("Modelo original: logística de estado latente en dos escalas (L2E)", "Idea, algoritmo, diferencias con la "
+                "literatura, convergencia, pruebas de hipótesis y veredicto. Todo se validó con los mismos pliegues "
+                "externos, la misma semilla y el mismo presupuesto que los benchmarks.", *modelo_original(),
+                id_="modelo-original"),
     ])
 
 
@@ -232,6 +358,12 @@ def predecir_cliente(_, m, __):
             "en la lista; para estimar cuántos suscribirán, hay que recalibrar con el último mes cerrado.")
     if meta["platt"]:
         nota += " En la SVM la probabilidad se obtiene con escalado de Platt sobre su función de decisión."
+    if m == "l2e":
+        r = resumen("l2e_resumen")
+        nota = (f"El L2E usa el nivel de conversión vigente al cierre de {r['periodo_vigente']} y predice como si el "
+                "cliente se llamara el día siguiente. Como ese nivel se actualiza con las etiquetas de los días cerrados, "
+                "su probabilidad sí sigue el régimen reciente: en la prueba, su probabilidad media fue del "
+                f"{num(r['prob_media_prueba'] * 100)} % frente a una tasa real del {num(r['tasa_prueba'] * 100)} %.")
     lugar = ("Supera a menos del 1 % de los clientes de prueba" if posicion < 0.01 else
              f"Supera al {num(posicion * 100, 0)} % de los clientes de prueba")
     resultado_ = html.Div([
@@ -264,7 +396,9 @@ def diagnostico(m):
            f"{num(lb['auc_pr_prueba'], 3)}, frente a {num(prev, 3)} de un modelo al azar. Con el umbral por defecto marca "
            f"como suscriptores al {num((conf['tp'] + conf['fp']) / total * 100)} % de los clientes y encuentra al "
            f"{num(recall * 100)} % de quienes suscriben. El ECE de {num(lb['ece_prueba'], 3)} mide cuánto se apartan sus "
-           "probabilidades de la frecuencia real: el cambio de prevalencia entre 2008 y 2009 las descalibra.")
+           "probabilidades de la frecuencia real: " + ("es bajo porque el nivel diario del modelo sigue el cambio de "
+                                                       "prevalencia entre 2008 y 2009." if m == "l2e" else
+                                                       "el cambio de prevalencia entre 2008 y 2009 las descalibra."))
     shap = resultado("shap_global").query("modelo == @m")
     imp = shap.groupby("variable")["phi"].agg(lambda s: s.abs().mean()).sort_values(ascending=False)
     txt_shap = (f"Las variables con mayor contribución media son {ETIQUETAS[imp.index[0]].lower()}, "
@@ -274,3 +408,9 @@ def diagnostico(m):
             plots.pr(curvas.query("tipo == 'pr'"), lb["auc_pr_prueba"], prev),
             plots.calibracion(cal, lb["brier_prueba"], lb["ece_prueba"]), txt,
             plots.shap_global(shap, ETIQUETAS), txt_shap)
+
+
+@callback(Output("mod-cd", "figure"), Input("mod-cd-bloques", "value"))
+def diagrama_cd(bloques):
+    rangos = resultado("cd").query("bloques == @bloques")
+    return plots.diferencia_critica(rangos, destacado="L2E (modelo original)", subtitulo=f"Bloques: {BLOQUES_CD[bloques]}")

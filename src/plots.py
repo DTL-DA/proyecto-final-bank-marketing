@@ -253,24 +253,83 @@ def shap_local(phi: np.ndarray, nombres: list, valores: list, base: float, fx: f
                              height=440, showlegend=False)
 
 
-def diferencia_critica(rangos: pd.DataFrame) -> go.Figure:
-    """Diagrama de diferencia crítica (Nemenyi): rango promedio de cada modelo y la barra de la CD."""
+def diferencia_critica(rangos: pd.DataFrame, destacado: str | None = None, subtitulo: str = "") -> go.Figure:
+    """Diagrama de diferencia crítica (Nemenyi): rango promedio de cada modelo y la barra de la CD.
+
+    ``destacado`` es el nombre del modelo que se resalta (el modelo original), siempre con el mismo color.
+    """
     r = rangos.sort_values("rango").reset_index(drop=True)
     cd = float(r["cd"].iloc[0])
     k = len(r)
+    colores = [NARANJA if m == destacado else AZUL for m in r["modelo"]]
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=[1, 1 + cd], y=[k + 1.2, k + 1.2], mode="lines+text", line=dict(color=NARANJA, width=6),
+    fig.add_trace(go.Scatter(x=[1, 1 + cd], y=[k + 1.2, k + 1.2], mode="lines+text", line=dict(color=TINTA_2, width=6),
                              text=["", f"  CD = {_num(cd, 2)}"], textposition="middle right", hoverinfo="skip",
                              showlegend=False))
     fig.add_trace(go.Scatter(x=[r["rango"].min(), r["rango"].max()], y=[0.3, 0.3], mode="lines",
                              line=dict(color=TINTA, width=6), hoverinfo="skip", showlegend=False))
     fig.add_trace(go.Scatter(x=r["rango"], y=np.arange(k, 0, -1), mode="markers+text",
-                             marker=dict(size=13, color=AZUL, line=dict(color="white", width=2)),
+                             marker=dict(size=13, color=colores, line=dict(color="white", width=2)),
                              text=[f"  {m} ({_num(v, 2)})" for m, v in zip(r["modelo"], r["rango"])],
                              textposition="middle right", hovertemplate="%{text}<extra></extra>", showlegend=False))
-    for v, y in zip(r["rango"], np.arange(k, 0, -1)):
-        fig.add_shape(type="line", x0=v, x1=v, y0=0.3, y1=y, line=dict(color=AZUL, width=1, dash="dot"))
+    for v, y, c in zip(r["rango"], np.arange(k, 0, -1), colores):
+        fig.add_shape(type="line", x0=v, x1=v, y0=0.3, y1=y, line=dict(color=c, width=1, dash="dot"))
     fig.update_xaxes(title_text="Rango promedio (1 = mejor)", range=[0.8, k + 0.4], dtick=1)
     fig.update_yaxes(visible=False, range=[0, k + 1.8])
-    return fig.update_layout(title="Diagrama de diferencia crítica (Nemenyi, α = 0,05)", height=420,
-                             margin=dict(l=10, r=10, t=56, b=50))
+    titulo = "Diagrama de diferencia crítica (Nemenyi, α = 0,05)" + (f"<br><sup>{subtitulo}</sup>" if subtitulo else "")
+    return fig.update_layout(title=titulo, height=440, margin=dict(l=10, r=10, t=70, b=50))
+
+
+# -------------------------------------------------------------------------------------------- modelo original
+def nivel_l2e(df: pd.DataFrame) -> go.Figure:
+    """Tasa diaria observada frente a la probabilidad del L2E para el cliente promedio (nivel del día + pendientes)."""
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=df["dia"], y=df["tasa"] * 100, mode="markers", name="Tasa observada del día",
+        marker=dict(size=np.clip(np.sqrt(df["n"]) * 0.9, 4, 14), color=GRIS, opacity=0.45, line=dict(width=0)),
+        customdata=np.c_[df["periodo"], df["n"]],
+        hovertemplate="Día %{x} (%{customdata[0]})<br>Tasa observada: %{y:.1f} %<br>%{customdata[1]:,} llamadas"
+                      "<extra></extra>"))
+    for conjunto, guion in (("Entrenamiento (suavizado)", "dot"), ("Prueba (filtrado, un día de demora)", "solid")):
+        s = df[df["conjunto"] == conjunto]
+        fig.add_trace(go.Scatter(x=s["dia"], y=s["prob"] * 100, mode="lines", name=f"L2E · {conjunto.lower()}",
+                                 line=dict(color=NARANJA, width=2, dash=guion), customdata=s["periodo"],
+                                 hovertemplate="Día %{x} (%{customdata})<br>L2E: %{y:.1f} %<extra></extra>"))
+    inicio = df.loc[df["conjunto"] != "Entrenamiento (suavizado)", "dia"].min()
+    fig.add_vline(x=inicio - 0.5, line=dict(color=TINTA_2, width=1, dash="dash"))
+    fig.add_annotation(x=inicio, y=0.98, yref="paper", text="  inicio de la prueba", showarrow=False, xanchor="left",
+                       yanchor="top", font=dict(size=12, color=TINTA_2))
+    fig.update_yaxes(title_text="Clientes que suscriben (%)", rangemode="tozero")
+    fig.update_xaxes(title_text="Día de contacto (orden temporal)")
+    return fig.update_layout(title="El nivel diario que sigue el L2E", height=400, hovermode="closest",
+                             margin=dict(l=10, r=10, t=84, b=10))
+
+
+def convergencia(df: pd.DataFrame) -> go.Figure:
+    """Puntaje de cada configuración evaluada por Optuna y mejor puntaje acumulado (curva de convergencia)."""
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=df["n"], y=df["puntaje"], mode="markers", name="Configuración evaluada",
+                             marker=dict(size=9, color=GRIS, line=dict(color="white", width=1.5)),
+                             hovertemplate="Evaluación %{x}: AUC-PR %{y:.4f}<extra></extra>"))
+    fig.add_trace(go.Scatter(x=df["n"], y=df["mejor"], mode="lines", name="Mejor hasta el momento",
+                             line=dict(color=NARANJA, width=2, shape="hv"),
+                             hovertemplate="Tras %{x} evaluaciones: %{y:.4f}<extra></extra>"))
+    fig.update_xaxes(title_text="Configuraciones evaluadas", dtick=2)
+    fig.update_yaxes(title_text="AUC-PR de la validación interna")
+    return fig.update_layout(title="Convergencia de la optimización (Optuna TPE, modelo final)", height=360,
+                             margin=dict(l=10, r=10, t=84, b=10))
+
+
+def aprendizaje(df: pd.DataFrame) -> go.Figure:
+    """AUC-PR de prueba según el tamaño del entrenamiento (los registros más recientes)."""
+    fig = go.Figure()
+    for modelo, color in (("L2E", NARANJA), ("Referencia E2", AZUL)):
+        s = df[df["modelo"] == modelo].sort_values("registros")
+        fig.add_trace(go.Scatter(x=s["registros"], y=s["auc_pr"], mode="lines+markers",
+                                 name="L2E (modelo original)" if modelo == "L2E" else "Referencia E2 (logística C = 0,01)",
+                                 line=dict(color=color, width=2), marker=dict(size=9, color=color,
+                                                                               line=dict(color="white", width=1.5)),
+                                 hovertemplate="%{x:,} registros: AUC-PR %{y:.3f}<extra></extra>"))
+    fig.update_xaxes(title_text="Registros de entrenamiento (los más recientes)", tickformat=",d")
+    fig.update_yaxes(title_text="AUC-PR en la prueba")
+    return fig.update_layout(title="Curva de aprendizaje", height=360, margin=dict(l=10, r=10, t=84, b=10))

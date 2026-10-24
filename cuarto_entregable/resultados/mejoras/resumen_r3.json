@@ -1,0 +1,25 @@
+{
+ "mejor": "naive_bayes",
+ "n_r3": 3,
+ "cliff": 0.15570934256055363,
+ "r3": true,
+ "c1": true,
+ "ext_l2e": 0.11065050045562744,
+ "ext_l2e_de": 0.11561695685109741,
+ "ext_mejor": 0.10275449250387365,
+ "ext_mejor_de": 0.1080851360986227,
+ "sig_meses": [
+  "Naive Bayes",
+  "XGBoost",
+  "Árbol de decisión"
+ ],
+ "n_benchmarks": 8,
+ "ganancia_ap": 0.06759393847139439,
+ "control_c2": {
+  "modelo": "Referencia E2",
+  "variante": "+ filtro de nivel C2",
+  "auc_pr": 0.5935053265022451,
+  "dif": 0.008361655491289532,
+  "p": 0.07
+ }
+}

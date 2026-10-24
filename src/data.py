@@ -49,25 +49,44 @@ def fondo() -> pd.DataFrame:
     return pd.read_parquet(DATOS / "fondo_shap.parquet")
 
 
+@lru_cache(maxsize=None)
+def resumen(nombre: str) -> dict:
+    """Resumen precalculado en JSON de ``data/resultados`` (cifras de la subsección del modelo original)."""
+    with open(DATOS / "resultados" / f"{nombre}.json", encoding="utf-8") as f:
+        return json.load(f)
+
+
 @lru_cache(maxsize=1)
 def modelos() -> dict:
-    """Pipelines serializados y sus metadatos, en el orden de la tabla de líderes."""
+    """Pipelines serializados y sus metadatos, en el orden de la tabla de líderes.
+
+    Cada modelo usa ``artifacts/<modelo>/modelo.joblib``, salvo que su ``metadata.json`` indique otro archivo: el L2E
+    carga ``modelo_vigente.joblib``, que ya asimiló las etiquetas de todos los días cerrados.
+    """
     salida = {}
     for m in resultado("leaderboard")["modelo"]:
         with open(ARTEFACTOS / m / "metadata.json", encoding="utf-8") as f:
             meta = json.load(f)
-        salida[m] = {"pipeline": joblib.load(ARTEFACTOS / m / "modelo.joblib"), "meta": meta}
+        salida[m] = {"pipeline": joblib.load(ARTEFACTOS / m / meta.get("archivo", "modelo.joblib")), "meta": meta}
     return salida
 
 
 def opciones_modelo() -> list[dict]:
     lb = resultado("leaderboard")
-    return [{"label": f"{r.nombre} · {r.balanceo} · {r.optimizador}", "value": r.modelo} for r in lb.itertuples()]
+    return [{"label": r.nombre if r.modelo == "l2e" else f"{r.nombre} · {r.balanceo} · {r.optimizador}",
+             "value": r.modelo} for r in lb.itertuples()]
+
+
+def entrada_modelo(m: str, X: pd.DataFrame) -> pd.DataFrame:
+    """Agrega las columnas propias de un modelo: el L2E necesita el día de contacto (el siguiente al último cerrado)."""
+    dia = modelos()[m]["meta"].get("dia_prediccion")
+    return X if dia is None or "dia" in X.columns else X.assign(dia=dia)
 
 
 def puntaje_crudo(m: str, X: pd.DataFrame) -> np.ndarray:
     """Probabilidad del modelo o, en la SVM lineal, su función de decisión."""
     pipe = modelos()[m]["pipeline"]
+    X = entrada_modelo(m, X)
     return pipe.predict_proba(X)[:, 1] if hasattr(pipe, "predict_proba") else pipe.decision_function(X)
 
 
@@ -79,7 +98,7 @@ def probabilidad(m: str, X: pd.DataFrame) -> np.ndarray:
 
 
 def predecir(m: str, X: pd.DataFrame) -> np.ndarray:
-    return modelos()[m]["pipeline"].predict(X)
+    return modelos()[m]["pipeline"].predict(entrada_modelo(m, X))
 
 
 def percentil(m: str, puntaje: float) -> float:

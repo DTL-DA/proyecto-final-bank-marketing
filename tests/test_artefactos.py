@@ -13,16 +13,21 @@ MODELOS = sorted(p.name for p in ARTEFACTOS.iterdir() if p.is_dir())
 IDA_VUELTA = pd.read_parquet(DATOS / "roundtrip.parquet")
 
 
-def test_estan_los_siete_modelos():
-    assert MODELOS == sorted(["arbol", "bosque", "knn", "logistica", "naive_bayes", "svm", "xgboost"])
+def test_estan_los_siete_finalistas_y_el_modelo_original():
+    assert MODELOS == sorted(["arbol", "bosque", "knn", "logistica", "naive_bayes", "svm", "xgboost", "l2e"])
 
 
 @pytest.mark.parametrize("modelo", MODELOS)
 def test_ida_y_vuelta(modelo):
-    """El modelo serializado reproduce, sobre 400 clientes fijos de la prueba, las predicciones del modelo exportado."""
-    pipe = joblib.load(ARTEFACTOS / modelo / "modelo.joblib")
+    """El modelo serializado reproduce, sobre 400 clientes fijos de la prueba, las predicciones del modelo exportado.
+
+    El L2E se evalúa con su artefacto vigente y el día de predicción de sus metadatos (el siguiente al último cerrado).
+    """
     meta = json.loads((ARTEFACTOS / modelo / "metadata.json").read_text(encoding="utf-8"))
+    pipe = joblib.load(ARTEFACTOS / modelo / meta.get("archivo", "modelo.joblib"))
     X = IDA_VUELTA[meta["columnas_entrada"]]
+    if "dia_prediccion" in meta:
+        X = X.assign(dia=meta["dia_prediccion"])
     puntaje = pipe.predict_proba(X)[:, 1] if hasattr(pipe, "predict_proba") else pipe.decision_function(X)
     np.testing.assert_allclose(puntaje, IDA_VUELTA[f"esperado__{modelo}"].to_numpy(), rtol=0, atol=1e-9)
     assert "bm" not in sys.modules, "los artefactos no deben depender del paquete del cuaderno"

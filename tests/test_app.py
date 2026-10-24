@@ -53,7 +53,7 @@ def _en_contexto(funcion, *args, salidas=None, estados=None):
     return copy_context().run(correr)
 
 
-def test_cliente_al_azar_y_prediccion_en_los_siete_modelos():
+def test_cliente_al_azar_y_prediccion_en_los_ocho_modelos():
     import dash_bootstrap_components as dbc
     from pages import modelos as pm
     from src.data import esquema, modelos
@@ -87,3 +87,22 @@ def test_diagnostico_de_cada_modelo():
     for m in modelos():
         figuras = pm.diagnostico(m)
         assert len(figuras) == 7
+
+
+def test_diagrama_de_diferencia_critica_con_el_modelo_original():
+    from pages import modelos as pm
+
+    for bloques in pm.BLOQUES_CD:
+        figura = pm.diagrama_cd(bloques)
+        etiquetas = " ".join(figura.data[2].text)
+        assert "L2E (modelo original)" in etiquetas, bloques
+
+
+def test_prediccion_del_l2e_usa_el_dia_siguiente_al_ultimo_cerrado():
+    from src.data import entrada_modelo, esquema, fila_entrada, modelos, probabilidad
+
+    X = fila_entrada({v["variable"]: v["defecto"] for v in esquema()["variables"]})
+    meta = modelos()["l2e"]["meta"]
+    assert entrada_modelo("l2e", X)["dia"].iloc[0] == meta["dia_prediccion"]
+    assert "dia" not in entrada_modelo("naive_bayes", X).columns
+    assert 0 < probabilidad("l2e", X)[0] < 1

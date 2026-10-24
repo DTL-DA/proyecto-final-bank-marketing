@@ -16,4 +16,4 @@ services:
       - key: MKL_NUM_THREADS
         value: "1"
       - key: JBOOK_URL
-        value: "https://dtl-da.github.io/proyecto-final-bank-marketing/"
+        value: "https://dtl-da.github.io/proyecto-final-bank-marketing/cuarto-entregable/"
