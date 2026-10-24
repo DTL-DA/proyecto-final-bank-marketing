@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8. Conclusiones y limitaciones &#8212; Proyecto final · Cuarto entregable · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '08_conclusiones';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="9. Reproducibilidad y bibliografía" href="09_reproducibilidad.html" />
+    <link rel="prev" title="7. Dashboard y despliegue" href="07_dashboard.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_introduccion.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Cuarto entregable · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_introduccion.html">
+                    Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_correcciones.html">1. Trazabilidad de correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_datos.html">2. Datos: ETL y EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_benchmarks.html">3. Modelos benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_literatura.html">4. Revisión de literatura y novedad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_modelo_original.html">5. Modelo original: logística de estado latente en dos escalas (L2E)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_validacion.html">6. Validación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dashboard.html">7. Dashboard y despliegue</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_reproducibilidad.html">9. Reproducibilidad y bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/08_conclusiones.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>8. Conclusiones y limitaciones</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conclusiones-y-limitaciones">
+<span id="sec-8"></span><h1>8. Conclusiones y limitaciones<a class="headerlink" href="#conclusiones-y-limitaciones" title="Link to this heading">#</a></h1>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ganancia_mejor</span> <span class="o">=</span> <span class="n">bt_ap</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"modelo"</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">MEJOR</span><span class="p">,</span> <span class="s2">"diferencia"</span><span class="p">]</span>
+<span class="n">equivalentes</span> <span class="o">=</span> <span class="p">[</span><span class="n">CORTO</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">COMP</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">CORTO</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sig_te</span><span class="p">]</span>
+<span class="n">adic_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">med</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s2">"bank marketing"</span><span class="p">]</span>
+<span class="n">n_ad_gana</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">r_l2e</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">adic_cols</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""## 8. Conclusiones y limitaciones</span>
+
+<span class="s2">### 8.1 Hallazgos</span>
+
+<span class="s2">1. **El límite de los 140 modelos del tercer entregable era temporal, no de flexibilidad.** La tasa diaria de suscripción es un nivel latente con memoria larga (autocorrelación de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">fac</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> al primer rezago en el entrenamiento), y un puntaje que solo conoce la tasa de los días cerrados alcanza en el bucle externo un AUC-PR de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">solo_nivel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">][</span><span class="s1">'Media'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, frente a </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">solo_nivel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">'Media'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> de la mejor de las 140 combinaciones. Ningún modelo estático puede representar esa estructura, y por eso los finalistas eran estadísticamente equivalentes.</span>
+<span class="s2">2. **El L2E convierte ese hallazgo en un modelo.** Separa un nivel diario que se mueve rápido de unas pendientes que derivan despacio, se ajusta con un Newton por bloques de costo lineal en el número de días y se actualiza con un filtro de Laplace que respeta la demora de las etiquetas. La recalibración mensual que sugirió el docente es un caso límite de su filtro (propiedad P5).</span>
+<span class="s2">3. **Desempeño.** En el bucle externo, el L2E obtiene </span><span class="si">{</span><span class="n">ms</span><span class="p">(</span><span class="n">ext</span><span class="p">[</span><span class="s1">'L2E'</span><span class="p">])</span><span class="si">}</span><span class="s2">, frente a </span><span class="si">{</span><span class="n">ms</span><span class="p">(</span><span class="n">ext</span><span class="p">[</span><span class="n">MEJOR</span><span class="p">])</span><span class="si">}</span><span class="s2"> de la mejor combinación; en la prueba, un AUC-PR de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">ap_te</span><span class="p">[</span><span class="s1">'L2E'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> y un AUC de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">auc_te</span><span class="p">[</span><span class="s1">'L2E'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, con una ganancia de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">ganancia_mejor</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> en AUC-PR sobre la mejor combinación y probabilidades calibradas sin recalibración aparte (Brier de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">resumen</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'Brier prueba'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">).</span>
+<span class="s2">4. **Dónde está la ventaja.** Dentro de cada mes de prueba, el L2E es significativamente mejor que </span><span class="si">{</span><span class="n">enumerar</span><span class="p">(</span><span class="n">sig_te</span><span class="p">)</span><span class="si">}</span><span class="s2">, y en el ordenamiento global de la prueba supera a todos los benchmarks. Frente a </span><span class="si">{</span><span class="n">enumerar</span><span class="p">(</span><span class="n">equivalentes</span><span class="p">)</span><span class="si">}</span><span class="s2"> no es superior dentro de cada mes: la ventaja viene de seguir el nivel de conversión entre días, no de ordenar mejor a los clientes de un mismo día.</span>
+<span class="s2">5. **El mecanismo es transferible.** El filtro de nivel aislado mejora a </span><span class="si">{</span><span class="n">c2_gana</span><span class="si">}</span><span class="s2"> de los </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">COMP</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> benchmarks cuando se les aplica como envoltorio y supera a la recalibración mensual en </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">c2_vs_mensual</span><span class="p">)</span><span class="si">}</span><span class="s2"> de </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">con_mensual</span><span class="p">)</span><span class="si">}</span><span class="s2"> modelos con probabilidades; el mejor de esos híbridos queda a </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">bt_c</span><span class="p">[</span><span class="s1">'diferencia'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> del L2E en AUC-PR de prueba (</span><span class="si">{</span><span class="n">p_txt</span><span class="p">(</span><span class="n">bt_c</span><span class="p">[</span><span class="s1">'p'</span><span class="p">])</span><span class="si">}</span><span class="s2">).</span>
+<span class="s2">6. **Límites de validez.** La ventaja se reduce con la demora de las etiquetas, y </span><span class="si">{</span><span class="s1">'en ninguno de los tres conjuntos adicionales el L2E es el mejor modelo'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">n_ad_gana</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="sa">f</span><span class="s1">'el L2E es el mejor modelo en </span><span class="si">{</span><span class="n">n_ad_gana</span><span class="si">}</span><span class="s1"> de los tres conjuntos adicionales'</span><span class="si">}</span><span class="s2">: donde el nivel latente es débil o lo explican las variables, no supera a los benchmarks. El modelo es una herramienta para problemas de propensión con un nivel persistente, como el telemercadeo bancario, no un clasificador general.</span>
+<span class="s2">7. **Mejoras evaluadas.** De los cinco ajustes para los árboles y las cinco mejoras del L2E (sección 6.13), </span><span class="si">{</span><span class="s1">'ninguna supera la regla de decisión declarada, así que el L2E se conserva sin cambios'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t_mej</span><span class="p">[</span><span class="s1">'Decisión'</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'Se adopta'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'se adopta '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">enumerar</span><span class="p">(</span><span class="n">t_mej</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">t_mej</span><span class="p">[</span><span class="s1">'Decisión'</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'Se adopta'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Mejora'</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span><span class="si">}</span><span class="s2">; los ajustes que más ayudan a los modelos de referencia son los que usan las etiquetas recientes, el mecanismo del modelo original.</span>
+
+<span class="s2">### 8.2 Veredicto sobre R1, R2 y R3</span>
+
+<span class="s2">R1 (novedad en la aplicación) y R2 (implementación algorítmica propia) se cumplen. R3 </span><span class="si">{</span><span class="s1">'se cumple'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">r3</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'no se cumple'</span><span class="si">}</span><span class="s2"> con la definición operativa de la guía: la media externa del L2E supera a la de los siete finalistas, </span><span class="si">{</span><span class="n">n_r3</span><span class="si">}</span><span class="s2"> pruebas distintas rechazan la igualdad frente a la mejor combinación benchmark con p ajustado &lt; 0,05 y el efecto es </span><span class="si">{</span><span class="n">st</span><span class="o">.</span><span class="n">magnitud_cliff</span><span class="p">(</span><span class="n">cliff_mejor</span><span class="p">)</span><span class="si">}</span><span class="s2"> (δ de Cliff = </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">cliff_mejor</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">). Por la regla de la guía (sección 12), el tope que corresponde es </span><span class="si">{</span><span class="s1">'5,0'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">r3</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'4,0'</span><span class="si">}</span><span class="s2">, sujeto a la evaluación del docente.</span>
+
+<span class="s2">### 8.3 Limitaciones</span>
+
+<span class="s2">- **La significancia depende de la unidad de análisis.** Con los cinco pliegues externos o con los meses de la validación externa ninguna prueba es significativa, porque en 2008 ningún modelo discrimina; la evidencia de superioridad viene de la prueba (2009-2010), que es el régimen de uso pero también un solo periodo.</span>
+<span class="s2">- **Sin ventaja dentro de cada periodo frente a las mejores logísticas.** El L2E no ordena mejor a los clientes de un mismo mes que una logística bien regularizada o la SVM, y la prueba bayesiana se inclina levemente a favor de ellas; su aporte es el nivel.</span>
+<span class="s2">- **Condición operativa.** El modelo necesita que las etiquetas de cada día estén disponibles poco después; con demoras de semanas pierde parte de su ventaja.</span>
+<span class="s2">- **Aproximaciones.** Las pendientes se toman constantes dentro de la ventana de entrenamiento, la posterior se aproxima por Laplace y la probabilidad predictiva por la aproximación probit; ninguna se evaluó frente a una inferencia exacta (por ejemplo, MCMC).</span>
+<span class="s2">- **Estabilidad de los coeficientes entre pliegues.** El L2E es menos estable que la logística con C = 0,01, porque la validación interna elige un λ distinto en cada pliegue (sección 1.2).</span>
+<span class="s2">- **Selección de hiperparámetros con pocos datos.** En el primer pliegue de *electricity* la validación interna eligió una dinámica que no existía; con ventanas de ajuste pequeñas, el modelo puede perseguir ruido.</span>
+<span class="s2">- **Revisión de literatura.** Se hizo con APIs públicas; Scopus y Web of Science no se consultaron por falta de acceso programático, y las búsquedas por relevancia no permiten intersecciones booleanas.</span>
+<span class="s2">- **Uso de la prueba durante el prototipado.** Durante el desarrollo se evaluaron algunas variantes exploratorias también en la prueba. Las decisiones finales están respaldadas por la evidencia del entrenamiento y del bucle externo (secciones 2.2, 5.8 y 5.9), pero esa consulta previa es una forma de filtración de la prueba hacia el diseño y se declara aquí.</span>
+
+<span class="s2">### 8.4 Trabajo futuro</span>
+
+<span class="s2">- Validar con datos posteriores a 2010 el ensamble del L2E con un Random Forest reentrenado cada mes (mejora M4), que sube el AUC-PR de la prueba pero no el del bucle externo, y por eso no se adoptó (sección 6.13).</span>
+<span class="s2">- Buscar una forma de elegir $q_u$ que funcione con ventanas de ajuste cortas: el Bayes empírico (mejora M2) aprende la dinámica del pasado y falla cuando el régimen cambia más de lo que cambiaba antes.</span>
+<span class="s2">- Extender el nivel a varios grupos (por canal de contacto o por campaña) con un modelo jerárquico, y combinar el filtro con un clasificador no lineal como término fijo, ya que el componente C2 es transferible.</span>
+<span class="s2">- Evaluar el modelo en datos posteriores a 2010 o en otros problemas de propensión con etiquetas diferidas (abandono de clientes, cobranza, conversión publicitaria).</span>
+
+<span class="s2">### 8.5 Declaración de autoría y uso de herramientas de inteligencia artificial</span>
+
+<span class="s2">Este trabajo es de autoría de Donny Torres. En su desarrollo se usó Claude (Anthropic) como asistente de programación, análisis y redacción: apoyo en la evaluación crítica del tercer entregable, en la formulación del modelo L2E y la derivación de su algoritmo, en la implementación del código, de las pruebas unitarias y de los *scripts* de experimentación, en la búsqueda y verificación bibliográfica, en la integración del modelo al dashboard, en el armado de este Jupyter Book y en la redacción de los textos. Todas las cifras se calculan con el código incluido y se reproducen con los comandos de la sección 9. El autor revisó el código, las derivaciones y los resultados, y es responsable de comprender, explicar y modificar cualquier parte del algoritmo y de las pruebas estadísticas, como exige la guía (secciones 5.4 y 13).</span>
+
+<span class="s2">**Firma:** Donny Torres · Maestría en Analítica de Datos, Universidad del Norte · Barranquilla, 24 de octubre de 2026."""</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<h2 class="rubric" id="hallazgos"><span id="sec-8-1"></span>8.1 Hallazgos</h2>
+<ol class="arabic simple">
+<li><p><strong>El límite de los 140 modelos del tercer entregable era temporal, no de flexibilidad.</strong> La tasa diaria de suscripción es un nivel latente con memoria larga (autocorrelación de 0,76 al primer rezago en el entrenamiento), y un puntaje que solo conoce la tasa de los días cerrados alcanza en el bucle externo un AUC-PR de 0,103, frente a 0,103 de la mejor de las 140 combinaciones. Ningún modelo estático puede representar esa estructura, y por eso los finalistas eran estadísticamente equivalentes.</p></li>
+<li><p><strong>El L2E convierte ese hallazgo en un modelo.</strong> Separa un nivel diario que se mueve rápido de unas pendientes que derivan despacio, se ajusta con un Newton por bloques de costo lineal en el número de días y se actualiza con un filtro de Laplace que respeta la demora de las etiquetas. La recalibración mensual que sugirió el docente es un caso límite de su filtro (propiedad P5).</p></li>
+<li><p><strong>Desempeño.</strong> En el bucle externo, el L2E obtiene 0,111 ± 0,116, frente a 0,103 ± 0,108 de la mejor combinación; en la prueba, un AUC-PR de 0,602 y un AUC de 0,772, con una ganancia de 0,068 en AUC-PR sobre la mejor combinación y probabilidades calibradas sin recalibración aparte (Brier de 0,171).</p></li>
+<li><p><strong>Dónde está la ventaja.</strong> Dentro de cada mes de prueba, el L2E es significativamente mejor que Naive Bayes, XGBoost y Árbol de decisión, y en el ordenamiento global de la prueba supera a todos los benchmarks. Frente a Logística L1/L2, Random Forest, SVM, KNN y Referencia E2 no es superior dentro de cada mes: la ventaja viene de seguir el nivel de conversión entre días, no de ordenar mejor a los clientes de un mismo día.</p></li>
+<li><p><strong>El mecanismo es transferible.</strong> El filtro de nivel aislado mejora a 6 de los 8 benchmarks cuando se les aplica como envoltorio y supera a la recalibración mensual en 5 de 7 modelos con probabilidades; el mejor de esos híbridos queda a 0,008 del L2E en AUC-PR de prueba (p = 0,070).</p></li>
+<li><p><strong>Límites de validez.</strong> La ventaja se reduce con la demora de las etiquetas, y en ninguno de los tres conjuntos adicionales el L2E es el mejor modelo: donde el nivel latente es débil o lo explican las variables, no supera a los benchmarks. El modelo es una herramienta para problemas de propensión con un nivel persistente, como el telemercadeo bancario, no un clasificador general.</p></li>
+<li><p><strong>Mejoras evaluadas.</strong> De los cinco ajustes para los árboles y las cinco mejoras del L2E (sección <a class="reference internal" href="06_validacion.html#sec-6-13"><span class="std std-ref">6.13</span></a>), ninguna supera la regla de decisión declarada, así que el L2E se conserva sin cambios; los ajustes que más ayudan a los modelos de referencia son los que usan las etiquetas recientes, el mecanismo del modelo original.</p></li>
+</ol>
+<h2 class="rubric" id="veredicto-sobre-r1-r2-y-r3"><span id="sec-8-2"></span>8.2 Veredicto sobre R1, R2 y R3</h2>
+<p>R1 (novedad en la aplicación) y R2 (implementación algorítmica propia) se cumplen. R3 se cumple con la definición operativa de la guía: la media externa del L2E supera a la de los siete finalistas, 3 pruebas distintas rechazan la igualdad frente a la mejor combinación benchmark con p ajustado &lt; 0,05 y el efecto es pequeño (δ de Cliff = 0,156). Por la regla de la guía (sección 12), el tope que corresponde es 5,0, sujeto a la evaluación del docente.</p>
+<h2 class="rubric" id="limitaciones"><span id="sec-8-3"></span>8.3 Limitaciones</h2>
+<ul class="simple">
+<li><p><strong>La significancia depende de la unidad de análisis.</strong> Con los cinco pliegues externos o con los meses de la validación externa ninguna prueba es significativa, porque en 2008 ningún modelo discrimina; la evidencia de superioridad viene de la prueba (2009-2010), que es el régimen de uso pero también un solo periodo.</p></li>
+<li><p><strong>Sin ventaja dentro de cada periodo frente a las mejores logísticas.</strong> El L2E no ordena mejor a los clientes de un mismo mes que una logística bien regularizada o la SVM, y la prueba bayesiana se inclina levemente a favor de ellas; su aporte es el nivel.</p></li>
+<li><p><strong>Condición operativa.</strong> El modelo necesita que las etiquetas de cada día estén disponibles poco después; con demoras de semanas pierde parte de su ventaja.</p></li>
+<li><p><strong>Aproximaciones.</strong> Las pendientes se toman constantes dentro de la ventana de entrenamiento, la posterior se aproxima por Laplace y la probabilidad predictiva por la aproximación probit; ninguna se evaluó frente a una inferencia exacta (por ejemplo, MCMC).</p></li>
+<li><p><strong>Estabilidad de los coeficientes entre pliegues.</strong> El L2E es menos estable que la logística con C = 0,01, porque la validación interna elige un λ distinto en cada pliegue (sección <a class="reference internal" href="01_correcciones.html#sec-1-2"><span class="std std-ref">1.2</span></a>).</p></li>
+<li><p><strong>Selección de hiperparámetros con pocos datos.</strong> En el primer pliegue de <em>electricity</em> la validación interna eligió una dinámica que no existía; con ventanas de ajuste pequeñas, el modelo puede perseguir ruido.</p></li>
+<li><p><strong>Revisión de literatura.</strong> Se hizo con APIs públicas; Scopus y Web of Science no se consultaron por falta de acceso programático, y las búsquedas por relevancia no permiten intersecciones booleanas.</p></li>
+<li><p><strong>Uso de la prueba durante el prototipado.</strong> Durante el desarrollo se evaluaron algunas variantes exploratorias también en la prueba. Las decisiones finales están respaldadas por la evidencia del entrenamiento y del bucle externo (secciones <a class="reference internal" href="02_datos.html#sec-2-2"><span class="std std-ref">2.2</span></a>, <a class="reference internal" href="05_modelo_original.html#sec-5-8"><span class="std std-ref">5.8</span></a> y <a class="reference internal" href="05_modelo_original.html#sec-5-9"><span class="std std-ref">5.9</span></a>), pero esa consulta previa es una forma de filtración de la prueba hacia el diseño y se declara aquí.</p></li>
+</ul>
+<h2 class="rubric" id="trabajo-futuro"><span id="sec-8-4"></span>8.4 Trabajo futuro</h2>
+<ul class="simple">
+<li><p>Validar con datos posteriores a 2010 el ensamble del L2E con un Random Forest reentrenado cada mes (mejora M4), que sube el AUC-PR de la prueba pero no el del bucle externo, y por eso no se adoptó (sección <a class="reference internal" href="06_validacion.html#sec-6-13"><span class="std std-ref">6.13</span></a>).</p></li>
+<li><p>Buscar una forma de elegir <span class="math notranslate nohighlight">\(q_u\)</span> que funcione con ventanas de ajuste cortas: el Bayes empírico (mejora M2) aprende la dinámica del pasado y falla cuando el régimen cambia más de lo que cambiaba antes.</p></li>
+<li><p>Extender el nivel a varios grupos (por canal de contacto o por campaña) con un modelo jerárquico, y combinar el filtro con un clasificador no lineal como término fijo, ya que el componente C2 es transferible.</p></li>
+<li><p>Evaluar el modelo en datos posteriores a 2010 o en otros problemas de propensión con etiquetas diferidas (abandono de clientes, cobranza, conversión publicitaria).</p></li>
+</ul>
+<h2 class="rubric" id="declaracion-de-autoria-y-uso-de-herramientas-de-inteligencia-artificial"><span id="sec-8-5"></span>8.5 Declaración de autoría y uso de herramientas de inteligencia artificial</h2>
+<p>Este trabajo es de autoría de Donny Torres. En su desarrollo se usó Claude (Anthropic) como asistente de programación, análisis y redacción: apoyo en la evaluación crítica del tercer entregable, en la formulación del modelo L2E y la derivación de su algoritmo, en la implementación del código, de las pruebas unitarias y de los <em>scripts</em> de experimentación, en la búsqueda y verificación bibliográfica, en la integración del modelo al dashboard, en el armado de este Jupyter Book y en la redacción de los textos. Todas las cifras se calculan con el código incluido y se reproducen con los comandos de la sección 9. El autor revisó el código, las derivaciones y los resultados, y es responsable de comprender, explicar y modificar cualquier parte del algoritmo y de las pruebas estadísticas, como exige la guía (secciones <a class="reference internal" href="05_modelo_original.html#sec-5-4"><span class="std std-ref">5.4</span></a> y 13).</p>
+<p><strong>Firma:</strong> Donny Torres · Maestría en Analítica de Datos, Universidad del Norte · Barranquilla, 24 de octubre de 2026.</p>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="07_dashboard.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">7. Dashboard y despliegue</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="09_reproducibilidad.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">9. Reproducibilidad y bibliografía</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

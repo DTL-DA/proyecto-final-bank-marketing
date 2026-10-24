@@ -1,0 +1,971 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9. Reproducibilidad y bibliografía &#8212; Proyecto final · Cuarto entregable · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '09_reproducibilidad';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="8. Conclusiones y limitaciones" href="08_conclusiones.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_introduccion.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Cuarto entregable · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_introduccion.html">
+                    Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_correcciones.html">1. Trazabilidad de correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_datos.html">2. Datos: ETL y EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_benchmarks.html">3. Modelos benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_literatura.html">4. Revisión de literatura y novedad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_modelo_original.html">5. Modelo original: logística de estado latente en dos escalas (L2E)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_validacion.html">6. Validación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dashboard.html">7. Dashboard y despliegue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_conclusiones.html">8. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Reproducibilidad y bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/09_reproducibilidad.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>9. Reproducibilidad y bibliografía</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entorno-semillas-y-ejecucion">9.1 Entorno, semillas y ejecución</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">9.3 Referencias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entradas-bibtex-citadas">Entradas BibTeX citadas</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reproducibilidad-y-bibliografia">
+<span id="sec-9"></span><h1>9. Reproducibilidad y bibliografía<a class="headerlink" href="#reproducibilidad-y-bibliografia" title="Link to this heading">#</a></h1>
+<section id="entorno-semillas-y-ejecucion">
+<span id="sec-9-1"></span><h2>9.1 Entorno, semillas y ejecución<a class="headerlink" href="#entorno-semillas-y-ejecucion" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Entorno:</strong> <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">bm_e3</span> <span class="pre">python=3.12</span></code>, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> y <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">ipykernel</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">--name</span> <span class="pre">bm_e3</span></code>. Semilla global <code class="docutils literal notranslate"><span class="pre">SEED</span> <span class="pre">=</span> <span class="pre">42</span></code> en <code class="docutils literal notranslate"><span class="pre">src/bm/config.py</span></code>; el L2E es determinista y la semilla solo afecta a Optuna.</p></li>
+<li><p><strong>Datos:</strong> <code class="docutils literal notranslate"><span class="pre">data/bank-additional-full.csv</span></code> (UCI, CC BY 4.0) y los tres conjuntos de OpenML (identificadores 1169, 151 y 1487), que <code class="docutils literal notranslate"><span class="pre">sklearn.datasets.fetch_openml</span></code> descarga en <code class="docutils literal notranslate"><span class="pre">data/adicionales/</span></code> la primera vez.</p></li>
+<li><p><strong>Orden de ejecución</strong> (desde la raíz del proyecto): <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/importar_e3.py</span></code> (resultados del tercer entregable), <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/ejecutar_original.py</span></code> (validación anidada, ablación, semillas y modelos finales; unos 6 minutos con 10 núcleos), <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/ejecutar_adicionales.py</span></code> (conjuntos adicionales; unos 25 minutos), <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/ejecutar_analisis.py</span></code> (sensibilidad, robustez, complejidad y SHAP), <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/revision_literatura.py</span></code> y <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/verificar_referencias.py</span></code> (revisión y bibliografía), <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">-q</span> <span class="pre">tests</span></code> y <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/construir_cuaderno.py</span> <span class="pre">--ejecutar</span></code>. Para el dashboard y el libro (en el repositorio, desde <code class="docutils literal notranslate"><span class="pre">cuarto_entregable/</span></code>): <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/exportar_dashboard_l2e.py</span> <span class="pre">--app</span> <span class="pre">..</span></code> (artefactos y resultados del L2E en el dashboard), <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/capturas_dashboard.py</span> <span class="pre">--url</span> <span class="pre">&lt;URL</span> <span class="pre">del</span> <span class="pre">dashboard&gt;</span></code> (capturas del capítulo 7) y <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/construir_libro.py</span> <span class="pre">--libro</span> <span class="pre">../book</span></code> (fuentes del Jupyter Book, que se compila con <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">book/</span></code>).</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"### 9.2 Tabla maestra de experimentos"</span><span class="p">))</span>
+<span class="n">m_e3</span> <span class="o">=</span> <span class="n">maestra</span><span class="p">[[</span><span class="s2">"tarea"</span><span class="p">,</span> <span class="s2">"modelo"</span><span class="p">,</span> <span class="s2">"balanceo"</span><span class="p">,</span> <span class="s2">"optimizador"</span><span class="p">,</span> <span class="s2">"auc_pr_media"</span><span class="p">,</span> <span class="s2">"auc_pr_de"</span><span class="p">,</span> <span class="s2">"auc_media"</span><span class="p">,</span> <span class="s2">"auc_de"</span><span class="p">,</span>
+                <span class="s2">"rmse_media"</span><span class="p">,</span> <span class="s2">"rmse_de"</span><span class="p">,</span> <span class="s2">"r2_media"</span><span class="p">,</span> <span class="s2">"t_opt_total"</span><span class="p">,</span> <span class="s2">"t_fit_medio"</span><span class="p">,</span> <span class="s2">"t_pred_medio"</span><span class="p">,</span> <span class="s2">"seed"</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">m_e3</span><span class="p">[</span><span class="s2">"origen"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Tercer entregable"</span>
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">VARIANTES</span><span class="p">:</span>
+    <span class="n">c_</span> <span class="o">=</span> <span class="n">corr</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"tarea"</span><span class="p">:</span> <span class="s2">"clf"</span><span class="p">,</span> <span class="s2">"modelo"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"l2e:</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"balanceo"</span><span class="p">:</span> <span class="s2">"ninguno"</span><span class="p">,</span> <span class="s2">"optimizador"</span><span class="p">:</span> <span class="s2">"bayes"</span><span class="p">,</span>
+                  <span class="s2">"auc_pr_media"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc_pr"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">]),</span> <span class="s2">"auc_pr_de"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc_pr"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                  <span class="s2">"auc_media"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">]),</span> <span class="s2">"auc_de"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                  <span class="s2">"t_opt_total"</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">"t_opt"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">),</span> <span class="s2">"t_fit_medio"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"t_fit"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">]),</span>
+                  <span class="s2">"t_pred_medio"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"t_pred"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">]),</span> <span class="s2">"seed"</span><span class="p">:</span> <span class="n">SEED</span><span class="p">,</span> <span class="s2">"origen"</span><span class="p">:</span> <span class="s2">"Modelo original"</span><span class="p">})</span>
+<span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">c_</span> <span class="ow">in</span> <span class="n">corr_sem</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"tarea"</span><span class="p">:</span> <span class="s2">"clf"</span><span class="p">,</span> <span class="s2">"modelo"</span><span class="p">:</span> <span class="s2">"l2e:l2e"</span><span class="p">,</span> <span class="s2">"balanceo"</span><span class="p">:</span> <span class="s2">"ninguno"</span><span class="p">,</span> <span class="s2">"optimizador"</span><span class="p">:</span> <span class="s2">"bayes"</span><span class="p">,</span>
+                  <span class="s2">"auc_pr_media"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc_pr"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">]),</span> <span class="s2">"auc_pr_de"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc_pr"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                  <span class="s2">"auc_media"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">]),</span> <span class="s2">"auc_de"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                  <span class="s2">"t_opt_total"</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">"t_opt"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">),</span> <span class="s2">"t_fit_medio"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"t_fit"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">]),</span>
+                  <span class="s2">"t_pred_medio"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"t_pred"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">c_</span><span class="p">]),</span> <span class="s2">"seed"</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s2">"origen"</span><span class="p">:</span> <span class="s2">"Modelo original (semilla)"</span><span class="p">})</span>
+<span class="n">maestra_e4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">m_e3</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">maestra_e4</span><span class="p">[</span><span class="s2">"prueba_auc_pr"</span><span class="p">]</span> <span class="o">=</span> <span class="n">maestra_e4</span><span class="p">[</span><span class="s2">"modelo"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">fin_l2e</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]][</span><span class="s2">"auc_pr"</span><span class="p">]</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"l2e:"</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">maestra_e4</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">maestra_e4</span><span class="p">[</span><span class="s2">"origen"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Modelo original (semilla)"</span><span class="p">,</span> <span class="s2">"prueba_auc_pr"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">fin_sem</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"auc_pr"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">corr_sem</span><span class="p">]</span>
+<span class="n">maestra_e4</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"tabla_maestra_e4.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">maestra_e4</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"tabla_maestra_e4.parquet"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">maestra_e4</span><span class="p">[</span><span class="n">maestra_e4</span><span class="p">[</span><span class="s2">"tarea"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"clf"</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"auc_pr_media"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="n">dec</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">n_e3</span> <span class="o">=</span> <span class="n">maestra_e4</span><span class="p">[</span><span class="s2">"origen"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"Tercer entregable"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tabla maestra: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">maestra_e4</span><span class="p">)</span><span class="si">}</span><span class="s2"> filas (</span><span class="si">{</span><span class="n">n_e3</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> combinaciones del tercer entregable, "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="p">(</span><span class="n">n_e3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">maestra_e4</span><span class="p">[</span><span class="s1">'tarea'</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">'clf'</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> de clasificación y </span><span class="si">{</span><span class="p">(</span><span class="n">n_e3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">maestra_e4</span><span class="p">[</span><span class="s1">'tarea'</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">'reg'</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> de "</span>
+      <span class="sa">f</span><span class="s2">"regresión, y </span><span class="si">{</span><span class="p">(</span><span class="o">~</span><span class="n">n_e3</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> corridas del modelo original) en resultados/tabla_maestra_e4.csv y .parquet"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">n_e3</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">140</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<h2 class="rubric" id="tabla-maestra-de-experimentos"><span id="sec-9-2"></span>9.2 Tabla maestra de experimentos</h2>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_45697">
+  <thead>
+    <tr>
+      <th id="T_45697_level0_col0" class="col_heading level0 col0" >tarea</th>
+      <th id="T_45697_level0_col1" class="col_heading level0 col1" >modelo</th>
+      <th id="T_45697_level0_col2" class="col_heading level0 col2" >balanceo</th>
+      <th id="T_45697_level0_col3" class="col_heading level0 col3" >optimizador</th>
+      <th id="T_45697_level0_col4" class="col_heading level0 col4" >auc_pr_media</th>
+      <th id="T_45697_level0_col5" class="col_heading level0 col5" >auc_pr_de</th>
+      <th id="T_45697_level0_col6" class="col_heading level0 col6" >auc_media</th>
+      <th id="T_45697_level0_col7" class="col_heading level0 col7" >auc_de</th>
+      <th id="T_45697_level0_col8" class="col_heading level0 col8" >rmse_media</th>
+      <th id="T_45697_level0_col9" class="col_heading level0 col9" >rmse_de</th>
+      <th id="T_45697_level0_col10" class="col_heading level0 col10" >r2_media</th>
+      <th id="T_45697_level0_col11" class="col_heading level0 col11" >t_opt_total</th>
+      <th id="T_45697_level0_col12" class="col_heading level0 col12" >t_fit_medio</th>
+      <th id="T_45697_level0_col13" class="col_heading level0 col13" >t_pred_medio</th>
+      <th id="T_45697_level0_col14" class="col_heading level0 col14" >seed</th>
+      <th id="T_45697_level0_col15" class="col_heading level0 col15" >origen</th>
+      <th id="T_45697_level0_col16" class="col_heading level0 col16" >prueba_auc_pr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_45697_row0_col0" class="data row0 col0" >clf</td>
+      <td id="T_45697_row0_col1" class="data row0 col1" >l2e:sin_pendientes</td>
+      <td id="T_45697_row0_col2" class="data row0 col2" >ninguno</td>
+      <td id="T_45697_row0_col3" class="data row0 col3" >bayes</td>
+      <td id="T_45697_row0_col4" class="data row0 col4" >0,1152</td>
+      <td id="T_45697_row0_col5" class="data row0 col5" >0,0974</td>
+      <td id="T_45697_row0_col6" class="data row0 col6" >0,5818</td>
+      <td id="T_45697_row0_col7" class="data row0 col7" >0,0837</td>
+      <td id="T_45697_row0_col8" class="data row0 col8" >—</td>
+      <td id="T_45697_row0_col9" class="data row0 col9" >—</td>
+      <td id="T_45697_row0_col10" class="data row0 col10" >—</td>
+      <td id="T_45697_row0_col11" class="data row0 col11" >188,5084</td>
+      <td id="T_45697_row0_col12" class="data row0 col12" >0,8676</td>
+      <td id="T_45697_row0_col13" class="data row0 col13" >0,2134</td>
+      <td id="T_45697_row0_col14" class="data row0 col14" >42</td>
+      <td id="T_45697_row0_col15" class="data row0 col15" >Modelo original</td>
+      <td id="T_45697_row0_col16" class="data row0 col16" >0,5713</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row1_col0" class="data row1 col0" >clf</td>
+      <td id="T_45697_row1_col1" class="data row1 col1" >l2e:l2e</td>
+      <td id="T_45697_row1_col2" class="data row1 col2" >ninguno</td>
+      <td id="T_45697_row1_col3" class="data row1 col3" >bayes</td>
+      <td id="T_45697_row1_col4" class="data row1 col4" >0,1107</td>
+      <td id="T_45697_row1_col5" class="data row1 col5" >0,1156</td>
+      <td id="T_45697_row1_col6" class="data row1 col6" >0,5598</td>
+      <td id="T_45697_row1_col7" class="data row1 col7" >0,1017</td>
+      <td id="T_45697_row1_col8" class="data row1 col8" >—</td>
+      <td id="T_45697_row1_col9" class="data row1 col9" >—</td>
+      <td id="T_45697_row1_col10" class="data row1 col10" >—</td>
+      <td id="T_45697_row1_col11" class="data row1 col11" >195,4794</td>
+      <td id="T_45697_row1_col12" class="data row1 col12" >0,9101</td>
+      <td id="T_45697_row1_col13" class="data row1 col13" >0,2541</td>
+      <td id="T_45697_row1_col14" class="data row1 col14" >42</td>
+      <td id="T_45697_row1_col15" class="data row1 col15" >Modelo original</td>
+      <td id="T_45697_row1_col16" class="data row1 col16" >0,6019</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row2_col0" class="data row2 col0" >clf</td>
+      <td id="T_45697_row2_col1" class="data row2 col1" >l2e:sin_nivel_latente</td>
+      <td id="T_45697_row2_col2" class="data row2 col2" >ninguno</td>
+      <td id="T_45697_row2_col3" class="data row2 col3" >bayes</td>
+      <td id="T_45697_row2_col4" class="data row2 col4" >0,1099</td>
+      <td id="T_45697_row2_col5" class="data row2 col5" >0,1203</td>
+      <td id="T_45697_row2_col6" class="data row2 col6" >0,5532</td>
+      <td id="T_45697_row2_col7" class="data row2 col7" >0,1076</td>
+      <td id="T_45697_row2_col8" class="data row2 col8" >—</td>
+      <td id="T_45697_row2_col9" class="data row2 col9" >—</td>
+      <td id="T_45697_row2_col10" class="data row2 col10" >—</td>
+      <td id="T_45697_row2_col11" class="data row2 col11" >193,3446</td>
+      <td id="T_45697_row2_col12" class="data row2 col12" >0,8529</td>
+      <td id="T_45697_row2_col13" class="data row2 col13" >0,2595</td>
+      <td id="T_45697_row2_col14" class="data row2 col14" >42</td>
+      <td id="T_45697_row2_col15" class="data row2 col15" >Modelo original</td>
+      <td id="T_45697_row2_col16" class="data row2 col16" >0,5968</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row3_col0" class="data row3 col0" >clf</td>
+      <td id="T_45697_row3_col1" class="data row3 col1" >l2e:l2e</td>
+      <td id="T_45697_row3_col2" class="data row3 col2" >ninguno</td>
+      <td id="T_45697_row3_col3" class="data row3 col3" >bayes</td>
+      <td id="T_45697_row3_col4" class="data row3 col4" >0,1091</td>
+      <td id="T_45697_row3_col5" class="data row3 col5" >0,1162</td>
+      <td id="T_45697_row3_col6" class="data row3 col6" >0,5568</td>
+      <td id="T_45697_row3_col7" class="data row3 col7" >0,1017</td>
+      <td id="T_45697_row3_col8" class="data row3 col8" >—</td>
+      <td id="T_45697_row3_col9" class="data row3 col9" >—</td>
+      <td id="T_45697_row3_col10" class="data row3 col10" >—</td>
+      <td id="T_45697_row3_col11" class="data row3 col11" >191,4051</td>
+      <td id="T_45697_row3_col12" class="data row3 col12" >0,8851</td>
+      <td id="T_45697_row3_col13" class="data row3 col13" >0,2893</td>
+      <td id="T_45697_row3_col14" class="data row3 col14" >1</td>
+      <td id="T_45697_row3_col15" class="data row3 col15" >Modelo original (semilla)</td>
+      <td id="T_45697_row3_col16" class="data row3 col16" >0,6035</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row4_col0" class="data row4 col0" >clf</td>
+      <td id="T_45697_row4_col1" class="data row4 col1" >l2e:l2e</td>
+      <td id="T_45697_row4_col2" class="data row4 col2" >ninguno</td>
+      <td id="T_45697_row4_col3" class="data row4 col3" >bayes</td>
+      <td id="T_45697_row4_col4" class="data row4 col4" >0,1083</td>
+      <td id="T_45697_row4_col5" class="data row4 col5" >0,1166</td>
+      <td id="T_45697_row4_col6" class="data row4 col6" >0,5565</td>
+      <td id="T_45697_row4_col7" class="data row4 col7" >0,1035</td>
+      <td id="T_45697_row4_col8" class="data row4 col8" >—</td>
+      <td id="T_45697_row4_col9" class="data row4 col9" >—</td>
+      <td id="T_45697_row4_col10" class="data row4 col10" >—</td>
+      <td id="T_45697_row4_col11" class="data row4 col11" >185,6307</td>
+      <td id="T_45697_row4_col12" class="data row4 col12" >0,8457</td>
+      <td id="T_45697_row4_col13" class="data row4 col13" >0,2579</td>
+      <td id="T_45697_row4_col14" class="data row4 col14" >2</td>
+      <td id="T_45697_row4_col15" class="data row4 col15" >Modelo original (semilla)</td>
+      <td id="T_45697_row4_col16" class="data row4 col16" >0,5966</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row5_col0" class="data row5 col0" >clf</td>
+      <td id="T_45697_row5_col1" class="data row5 col1" >l2e:l2e</td>
+      <td id="T_45697_row5_col2" class="data row5 col2" >ninguno</td>
+      <td id="T_45697_row5_col3" class="data row5 col3" >bayes</td>
+      <td id="T_45697_row5_col4" class="data row5 col4" >0,1068</td>
+      <td id="T_45697_row5_col5" class="data row5 col5" >0,1151</td>
+      <td id="T_45697_row5_col6" class="data row5 col6" >0,5538</td>
+      <td id="T_45697_row5_col7" class="data row5 col7" >0,1028</td>
+      <td id="T_45697_row5_col8" class="data row5 col8" >—</td>
+      <td id="T_45697_row5_col9" class="data row5 col9" >—</td>
+      <td id="T_45697_row5_col10" class="data row5 col10" >—</td>
+      <td id="T_45697_row5_col11" class="data row5 col11" >188,9591</td>
+      <td id="T_45697_row5_col12" class="data row5 col12" >0,8921</td>
+      <td id="T_45697_row5_col13" class="data row5 col13" >0,2768</td>
+      <td id="T_45697_row5_col14" class="data row5 col14" >3</td>
+      <td id="T_45697_row5_col15" class="data row5 col15" >Modelo original (semilla)</td>
+      <td id="T_45697_row5_col16" class="data row5 col16" >0,5926</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row6_col0" class="data row6 col0" >clf</td>
+      <td id="T_45697_row6_col1" class="data row6 col1" >l2e:sin_incertidumbre</td>
+      <td id="T_45697_row6_col2" class="data row6 col2" >ninguno</td>
+      <td id="T_45697_row6_col3" class="data row6 col3" >bayes</td>
+      <td id="T_45697_row6_col4" class="data row6 col4" >0,1060</td>
+      <td id="T_45697_row6_col5" class="data row6 col5" >0,1140</td>
+      <td id="T_45697_row6_col6" class="data row6 col6" >0,5597</td>
+      <td id="T_45697_row6_col7" class="data row6 col7" >0,1031</td>
+      <td id="T_45697_row6_col8" class="data row6 col8" >—</td>
+      <td id="T_45697_row6_col9" class="data row6 col9" >—</td>
+      <td id="T_45697_row6_col10" class="data row6 col10" >—</td>
+      <td id="T_45697_row6_col11" class="data row6 col11" >191,5351</td>
+      <td id="T_45697_row6_col12" class="data row6 col12" >0,8510</td>
+      <td id="T_45697_row6_col13" class="data row6 col13" >0,2199</td>
+      <td id="T_45697_row6_col14" class="data row6 col14" >42</td>
+      <td id="T_45697_row6_col15" class="data row6 col15" >Modelo original</td>
+      <td id="T_45697_row6_col16" class="data row6 col16" >0,5935</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row7_col0" class="data row7 col0" >clf</td>
+      <td id="T_45697_row7_col1" class="data row7 col1" >naive_bayes</td>
+      <td id="T_45697_row7_col2" class="data row7 col2" >class_weight</td>
+      <td id="T_45697_row7_col3" class="data row7 col3" >bayes</td>
+      <td id="T_45697_row7_col4" class="data row7 col4" >0,1028</td>
+      <td id="T_45697_row7_col5" class="data row7 col5" >0,1081</td>
+      <td id="T_45697_row7_col6" class="data row7 col6" >0,5368</td>
+      <td id="T_45697_row7_col7" class="data row7 col7" >0,1019</td>
+      <td id="T_45697_row7_col8" class="data row7 col8" >—</td>
+      <td id="T_45697_row7_col9" class="data row7 col9" >—</td>
+      <td id="T_45697_row7_col10" class="data row7 col10" >—</td>
+      <td id="T_45697_row7_col11" class="data row7 col11" >151,4339</td>
+      <td id="T_45697_row7_col12" class="data row7 col12" >0,6616</td>
+      <td id="T_45697_row7_col13" class="data row7 col13" >0,3423</td>
+      <td id="T_45697_row7_col14" class="data row7 col14" >42</td>
+      <td id="T_45697_row7_col15" class="data row7 col15" >Tercer entregable</td>
+      <td id="T_45697_row7_col16" class="data row7 col16" >—</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row8_col0" class="data row8 col0" >clf</td>
+      <td id="T_45697_row8_col1" class="data row8 col1" >naive_bayes</td>
+      <td id="T_45697_row8_col2" class="data row8 col2" >smote</td>
+      <td id="T_45697_row8_col3" class="data row8 col3" >genetico</td>
+      <td id="T_45697_row8_col4" class="data row8 col4" >0,0997</td>
+      <td id="T_45697_row8_col5" class="data row8 col5" >0,0955</td>
+      <td id="T_45697_row8_col6" class="data row8 col6" >0,5405</td>
+      <td id="T_45697_row8_col7" class="data row8 col7" >0,0771</td>
+      <td id="T_45697_row8_col8" class="data row8 col8" >—</td>
+      <td id="T_45697_row8_col9" class="data row8 col9" >—</td>
+      <td id="T_45697_row8_col10" class="data row8 col10" >—</td>
+      <td id="T_45697_row8_col11" class="data row8 col11" >167,7956</td>
+      <td id="T_45697_row8_col12" class="data row8 col12" >0,7896</td>
+      <td id="T_45697_row8_col13" class="data row8 col13" >0,3051</td>
+      <td id="T_45697_row8_col14" class="data row8 col14" >42</td>
+      <td id="T_45697_row8_col15" class="data row8 col15" >Tercer entregable</td>
+      <td id="T_45697_row8_col16" class="data row8 col16" >—</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row9_col0" class="data row9 col0" >clf</td>
+      <td id="T_45697_row9_col1" class="data row9 col1" >naive_bayes</td>
+      <td id="T_45697_row9_col2" class="data row9 col2" >smote</td>
+      <td id="T_45697_row9_col3" class="data row9 col3" >random</td>
+      <td id="T_45697_row9_col4" class="data row9 col4" >0,0997</td>
+      <td id="T_45697_row9_col5" class="data row9 col5" >0,0958</td>
+      <td id="T_45697_row9_col6" class="data row9 col6" >0,5405</td>
+      <td id="T_45697_row9_col7" class="data row9 col7" >0,0762</td>
+      <td id="T_45697_row9_col8" class="data row9 col8" >—</td>
+      <td id="T_45697_row9_col9" class="data row9 col9" >—</td>
+      <td id="T_45697_row9_col10" class="data row9 col10" >—</td>
+      <td id="T_45697_row9_col11" class="data row9 col11" >168,0762</td>
+      <td id="T_45697_row9_col12" class="data row9 col12" >0,8392</td>
+      <td id="T_45697_row9_col13" class="data row9 col13" >0,3538</td>
+      <td id="T_45697_row9_col14" class="data row9 col14" >42</td>
+      <td id="T_45697_row9_col15" class="data row9 col15" >Tercer entregable</td>
+      <td id="T_45697_row9_col16" class="data row9 col16" >—</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row10_col0" class="data row10 col0" >clf</td>
+      <td id="T_45697_row10_col1" class="data row10 col1" >naive_bayes</td>
+      <td id="T_45697_row10_col2" class="data row10 col2" >smote</td>
+      <td id="T_45697_row10_col3" class="data row10 col3" >bayes</td>
+      <td id="T_45697_row10_col4" class="data row10 col4" >0,0997</td>
+      <td id="T_45697_row10_col5" class="data row10 col5" >0,0953</td>
+      <td id="T_45697_row10_col6" class="data row10 col6" >0,5407</td>
+      <td id="T_45697_row10_col7" class="data row10 col7" >0,0772</td>
+      <td id="T_45697_row10_col8" class="data row10 col8" >—</td>
+      <td id="T_45697_row10_col9" class="data row10 col9" >—</td>
+      <td id="T_45697_row10_col10" class="data row10 col10" >—</td>
+      <td id="T_45697_row10_col11" class="data row10 col11" >168,1751</td>
+      <td id="T_45697_row10_col12" class="data row10 col12" >0,8886</td>
+      <td id="T_45697_row10_col13" class="data row10 col13" >0,3219</td>
+      <td id="T_45697_row10_col14" class="data row10 col14" >42</td>
+      <td id="T_45697_row10_col15" class="data row10 col15" >Tercer entregable</td>
+      <td id="T_45697_row10_col16" class="data row10 col16" >—</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row11_col0" class="data row11 col0" >clf</td>
+      <td id="T_45697_row11_col1" class="data row11 col1" >naive_bayes</td>
+      <td id="T_45697_row11_col2" class="data row11 col2" >ninguno</td>
+      <td id="T_45697_row11_col3" class="data row11 col3" >grid</td>
+      <td id="T_45697_row11_col4" class="data row11 col4" >0,0978</td>
+      <td id="T_45697_row11_col5" class="data row11 col5" >0,0932</td>
+      <td id="T_45697_row11_col6" class="data row11 col6" >0,5340</td>
+      <td id="T_45697_row11_col7" class="data row11 col7" >0,0897</td>
+      <td id="T_45697_row11_col8" class="data row11 col8" >—</td>
+      <td id="T_45697_row11_col9" class="data row11 col9" >—</td>
+      <td id="T_45697_row11_col10" class="data row11 col10" >—</td>
+      <td id="T_45697_row11_col11" class="data row11 col11" >161,6639</td>
+      <td id="T_45697_row11_col12" class="data row11 col12" >0,7263</td>
+      <td id="T_45697_row11_col13" class="data row11 col13" >0,3104</td>
+      <td id="T_45697_row11_col14" class="data row11 col14" >42</td>
+      <td id="T_45697_row11_col15" class="data row11 col15" >Tercer entregable</td>
+      <td id="T_45697_row11_col16" class="data row11 col16" >—</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row12_col0" class="data row12 col0" >clf</td>
+      <td id="T_45697_row12_col1" class="data row12 col1" >naive_bayes</td>
+      <td id="T_45697_row12_col2" class="data row12 col2" >class_weight</td>
+      <td id="T_45697_row12_col3" class="data row12 col3" >grid</td>
+      <td id="T_45697_row12_col4" class="data row12 col4" >0,0978</td>
+      <td id="T_45697_row12_col5" class="data row12 col5" >0,0933</td>
+      <td id="T_45697_row12_col6" class="data row12 col6" >0,5340</td>
+      <td id="T_45697_row12_col7" class="data row12 col7" >0,0897</td>
+      <td id="T_45697_row12_col8" class="data row12 col8" >—</td>
+      <td id="T_45697_row12_col9" class="data row12 col9" >—</td>
+      <td id="T_45697_row12_col10" class="data row12 col10" >—</td>
+      <td id="T_45697_row12_col11" class="data row12 col11" >151,2197</td>
+      <td id="T_45697_row12_col12" class="data row12 col12" >0,6408</td>
+      <td id="T_45697_row12_col13" class="data row12 col13" >0,3253</td>
+      <td id="T_45697_row12_col14" class="data row12 col14" >42</td>
+      <td id="T_45697_row12_col15" class="data row12 col15" >Tercer entregable</td>
+      <td id="T_45697_row12_col16" class="data row12 col16" >—</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row13_col0" class="data row13 col0" >clf</td>
+      <td id="T_45697_row13_col1" class="data row13 col1" >naive_bayes</td>
+      <td id="T_45697_row13_col2" class="data row13 col2" >ninguno</td>
+      <td id="T_45697_row13_col3" class="data row13 col3" >genetico</td>
+      <td id="T_45697_row13_col4" class="data row13 col4" >0,0976</td>
+      <td id="T_45697_row13_col5" class="data row13 col5" >0,0936</td>
+      <td id="T_45697_row13_col6" class="data row13 col6" >0,5321</td>
+      <td id="T_45697_row13_col7" class="data row13 col7" >0,0922</td>
+      <td id="T_45697_row13_col8" class="data row13 col8" >—</td>
+      <td id="T_45697_row13_col9" class="data row13 col9" >—</td>
+      <td id="T_45697_row13_col10" class="data row13 col10" >—</td>
+      <td id="T_45697_row13_col11" class="data row13 col11" >157,9508</td>
+      <td id="T_45697_row13_col12" class="data row13 col12" >0,7077</td>
+      <td id="T_45697_row13_col13" class="data row13 col13" >0,3561</td>
+      <td id="T_45697_row13_col14" class="data row13 col14" >42</td>
+      <td id="T_45697_row13_col15" class="data row13 col15" >Tercer entregable</td>
+      <td id="T_45697_row13_col16" class="data row13 col16" >—</td>
+    </tr>
+    <tr>
+      <td id="T_45697_row14_col0" class="data row14 col0" >clf</td>
+      <td id="T_45697_row14_col1" class="data row14 col1" >naive_bayes</td>
+      <td id="T_45697_row14_col2" class="data row14 col2" >class_weight</td>
+      <td id="T_45697_row14_col3" class="data row14 col3" >genetico</td>
+      <td id="T_45697_row14_col4" class="data row14 col4" >0,0973</td>
+      <td id="T_45697_row14_col5" class="data row14 col5" >0,0939</td>
+      <td id="T_45697_row14_col6" class="data row14 col6" >0,5312</td>
+      <td id="T_45697_row14_col7" class="data row14 col7" >0,0925</td>
+      <td id="T_45697_row14_col8" class="data row14 col8" >—</td>
+      <td id="T_45697_row14_col9" class="data row14 col9" >—</td>
+      <td id="T_45697_row14_col10" class="data row14 col10" >—</td>
+      <td id="T_45697_row14_col11" class="data row14 col11" >154,9708</td>
+      <td id="T_45697_row14_col12" class="data row14 col12" >0,7643</td>
+      <td id="T_45697_row14_col13" class="data row14 col13" >0,4153</td>
+      <td id="T_45697_row14_col14" class="data row14 col14" >42</td>
+      <td id="T_45697_row14_col15" class="data row14 col15" >Tercer entregable</td>
+      <td id="T_45697_row14_col16" class="data row14 col16" >—</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tabla maestra: 150 filas (140 combinaciones del tercer entregable, 112 de clasificación y 28 de regresión, y 10 corridas del modelo original) en resultados/tabla_maestra_e4.csv y .parquet
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="referencias">
+<span id="sec-9-3"></span><h2>9.3 Referencias<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
+<p>Las entradas en formato BibTeX están en <code class="docutils literal notranslate"><span class="pre">resultados/literatura/references.bib</span></code>; las que tienen DOI se generaron desde doi.org con <code class="docutils literal notranslate"><span class="pre">scripts/verificar_referencias.py</span></code>.</p>
+<ul class="simple">
+<li><p>Akiba, T., Sano, S., Yanase, T., Ohta, T. y Koyama, M. (2019). Optuna: A next-generation hyperparameter optimization framework. <em>Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>, 2623-2631. <a class="reference external" href="https://doi.org/10.1145/3292500.3330701">https://doi.org/10.1145/3292500.3330701</a></p></li>
+<li><p>Benavoli, A., Corani, G., Demšar, J. y Zaffalon, M. (2017). Time for a change: A tutorial for comparing multiple classifiers through Bayesian analysis. <em>Journal of Machine Learning Research</em>, 18(77), 1-36.</p></li>
+<li><p>Bergstra, J., Bardenet, R., Bengio, Y. y Kégl, B. (2011). Algorithms for hyper-parameter optimization. <em>Advances in Neural Information Processing Systems</em>, 24.</p></li>
+<li><p>Boyd, S. y Vandenberghe, L. (2004). <em>Convex optimization</em>. Cambridge University Press. <a class="reference external" href="https://doi.org/10.1017/CBO9780511804441">https://doi.org/10.1017/CBO9780511804441</a></p></li>
+<li><p>Cawley, G. C. y Talbot, N. L. C. (2010). On over-fitting in model selection and subsequent selection bias in performance evaluation. <em>Journal of Machine Learning Research</em>, 11, 2079-2107.</p></li>
+<li><p>Chowdary, B. V., Keerthi, K. L., Sandhya, D., Sunny, Ch. y Reddy, M. D. (2025). Advancing telemarketing success using ensemble-driven online machine learning. <em>2025 5th International Conference on Soft Computing for Security Applications (ICSCSA)</em>, 974-978. <a class="reference external" href="https://doi.org/10.1109/icscsa66339.2025.11170856">https://doi.org/10.1109/icscsa66339.2025.11170856</a></p></li>
+<li><p>Cliff, N. (1993). Dominance statistics: Ordinal analyses to answer ordinal questions. <em>Psychological Bulletin</em>, 114(3), 494-509. <a class="reference external" href="https://doi.org/10.1037/0033-2909.114.3.494">https://doi.org/10.1037/0033-2909.114.3.494</a></p></li>
+<li><p>DeLong, E. R., DeLong, D. M. y Clarke-Pearson, D. L. (1988). Comparing the areas under two or more correlated receiver operating characteristic curves: A nonparametric approach. <em>Biometrics</em>, 44(3), 837-845. <a class="reference external" href="https://doi.org/10.2307/2531595">https://doi.org/10.2307/2531595</a></p></li>
+<li><p>Demšar, J. (2006). Statistical comparisons of classifiers over multiple data sets. <em>Journal of Machine Learning Research</em>, 7, 1-30.</p></li>
+<li><p>Diebold, F. X. y Mariano, R. S. (1995). Comparing predictive accuracy. <em>Journal of Business &amp; Economic Statistics</em>, 13(3), 253-263. <a class="reference external" href="https://doi.org/10.1080/07350015.1995.10524599">https://doi.org/10.1080/07350015.1995.10524599</a></p></li>
+<li><p>Durbin, J. y Koopman, S. J. (2012). <em>Time series analysis by state space methods</em> (2.ª ed.). Oxford University Press. <a class="reference external" href="https://doi.org/10.1093/acprof:oso/9780199641178.001.0001">https://doi.org/10.1093/acprof:oso/9780199641178.001.0001</a></p></li>
+<li><p>Fahrmeir, L. (1992). Posterior mode estimation by extended Kalman filtering for multivariate dynamic generalized linear models. <em>Journal of the American Statistical Association</em>, 87(418), 501-509. <a class="reference external" href="https://doi.org/10.1080/01621459.1992.10475232">https://doi.org/10.1080/01621459.1992.10475232</a></p></li>
+<li><p>Gama, J., Žliobaitė, I., Bifet, A., Pechenizkiy, M. y Bouchachia, A. (2014). A survey on concept drift adaptation. <em>ACM Computing Surveys</em>, 46(4), 1-37. <a class="reference external" href="https://doi.org/10.1145/2523813">https://doi.org/10.1145/2523813</a></p></li>
+<li><p>Garg, S., Wu, Y., Balakrishnan, S. y Lipton, Z. C. (2020). A unified view of label shift estimation. <em>Advances in Neural Information Processing Systems</em>, 33.</p></li>
+<li><p>Grzenda, M., Gomes, H. M. y Bifet, A. (2020). Delayed labelling evaluation for data streams. <em>Data Mining and Knowledge Discovery</em>, 34(5), 1237-1266. <a class="reference external" href="https://doi.org/10.1007/s10618-019-00654-y">https://doi.org/10.1007/s10618-019-00654-y</a></p></li>
+<li><p>Harries, M. (1999). <em>SPLICE-2 comparative evaluation: Electricity pricing</em> [Informe técnico]. University of New South Wales.</p></li>
+<li><p>Harvey, D., Leybourne, S. y Newbold, P. (1997). Testing the equality of prediction mean squared errors. <em>International Journal of Forecasting</em>, 13(2), 281-291. <a class="reference external" href="https://doi.org/10.1016/S0169-2070(96)00719-4">https://doi.org/10.1016/S0169-2070(96)00719-4</a></p></li>
+<li><p>Holm, S. (1979). A simple sequentially rejective multiple test procedure. <em>Scandinavian Journal of Statistics</em>, 6(2), 65-70.</p></li>
+<li><p>Kalman, R. E. (1960). A new approach to linear filtering and prediction problems. <em>Journal of Basic Engineering</em>, 82(1), 35-45. <a class="reference external" href="https://doi.org/10.1115/1.3662552">https://doi.org/10.1115/1.3662552</a></p></li>
+<li><p>Lipton, Z. C., Wang, Y.-X. y Smola, A. J. (2018). Detecting and correcting for label shift with black box predictors. <em>Proceedings of the 35th International Conference on Machine Learning</em>, PMLR 80, 3122-3130.</p></li>
+<li><p>Lundberg, S. M. y Lee, S.-I. (2017). A unified approach to interpreting model predictions. <em>Advances in Neural Information Processing Systems</em>, 30.</p></li>
+<li><p>MacKay, D. J. C. (1992). The evidence framework applied to classification networks. <em>Neural Computation</em>, 4(5), 720-736. <a class="reference external" href="https://doi.org/10.1162/neco.1992.4.5.720">https://doi.org/10.1162/neco.1992.4.5.720</a></p></li>
+<li><p>McCormick, T. H., Raftery, A. E., Madigan, D. y Burd, R. S. (2012). Dynamic logistic regression and dynamic model averaging for binary classification. <em>Biometrics</em>, 68(1), 23-30. <a class="reference external" href="https://doi.org/10.1111/j.1541-0420.2011.01645.x">https://doi.org/10.1111/j.1541-0420.2011.01645.x</a></p></li>
+<li><p>Moro, S., Cortez, P. y Rita, P. (2014). A data-driven approach to predict the success of bank telemarketing. <em>Decision Support Systems</em>, 62, 22-31. <a class="reference external" href="https://doi.org/10.1016/j.dss.2014.03.001">https://doi.org/10.1016/j.dss.2014.03.001</a></p></li>
+<li><p>Nadeau, C. y Bengio, Y. (2003). Inference for the generalization error. <em>Machine Learning</em>, 52(3), 239-281. <a class="reference external" href="https://doi.org/10.1023/A:1024068626366">https://doi.org/10.1023/A:1024068626366</a></p></li>
+<li><p>Politis, D. N. y Romano, J. P. (1994). The stationary bootstrap. <em>Journal of the American Statistical Association</em>, 89(428), 1303-1313. <a class="reference external" href="https://doi.org/10.1080/01621459.1994.10476870">https://doi.org/10.1080/01621459.1994.10476870</a></p></li>
+<li><p>Romano, J., Kromrey, J. D., Coraggio, J. y Skowronek, J. (2006). Appropriate statistics for ordinal level data: Should we really be using t-test and Cohen’s d for evaluating group differences on the NSSE and other surveys? <em>Annual Meeting of the Florida Association of Institutional Research</em>.</p></li>
+<li><p>Saerens, M., Latinne, P. y Decaestecker, C. (2002). Adjusting the outputs of a classifier to new a priori probabilities: A simple procedure. <em>Neural Computation</em>, 14(1), 21-41. <a class="reference external" href="https://doi.org/10.1162/089976602753284446">https://doi.org/10.1162/089976602753284446</a></p></li>
+<li><p>Varma, S. y Simon, R. (2006). Bias in error estimation when using cross-validation for model selection. <em>BMC Bioinformatics</em>, 7, 91. <a class="reference external" href="https://doi.org/10.1186/1471-2105-7-91">https://doi.org/10.1186/1471-2105-7-91</a></p></li>
+<li><p>West, M., Harrison, P. J. y Migon, H. S. (1985). Dynamic generalized linear models and Bayesian forecasting. <em>Journal of the American Statistical Association</em>, 80(389), 73-83. <a class="reference external" href="https://doi.org/10.1080/01621459.1985.10477131">https://doi.org/10.1080/01621459.1985.10477131</a></p></li>
+<li><p>Zhang, K. y Fan, W. (2008). Forecasting skewed biased stochastic ozone days: Analyses, solutions and beyond. <em>Knowledge and Information Systems</em>, 14(3), 299-326. <a class="reference external" href="https://doi.org/10.1007/s10115-007-0095-1">https://doi.org/10.1007/s10115-007-0095-1</a></p></li>
+</ul>
+</section>
+<section id="entradas-bibtex-citadas">
+<h2>Entradas BibTeX citadas<a class="headerlink" href="#entradas-bibtex-citadas" title="Link to this heading">#</a></h2>
+<p>Las citas del libro enlazan a estas entradas de <code class="docutils literal notranslate"><span class="pre">references.bib</span></code>, generadas con <code class="docutils literal notranslate"><span class="pre">sphinxcontrib-bibtex</span></code>.</p>
+<div class="docutils container" id="id1">
+<div role="list" class="citation-list">
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BV04<span class="fn-bracket">]</span></span>
+<p>Stephen Boyd and Lieven Vandenberghe. <em>Convex Optimization</em>. Cambridge University Press, Mar 2004. ISBN 9780511804441. URL: <a class="reference external" href="http://dx.doi.org/10.1017/CBO9780511804441">http://dx.doi.org/10.1017/CBO9780511804441</a>, <a class="reference external" href="https://doi.org/10.1017/cbo9780511804441">doi:10.1017/cbo9780511804441</a>.</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>CKS+25<span class="fn-bracket">]</span></span>
+<p>B.V. Chowdary, K. Likitha Keerthi, D. Sandhya, Ch. Sunny, and M. Dilip Reddy. Advancing telemarketing success using ensemble-driven online machine learning. In <em>2025 5th International Conference on Soft Computing for Security Applications (ICSCSA)</em>, 974–978. IEEE, Aug 2025. URL: <a class="reference external" href="http://dx.doi.org/10.1109/icscsa66339.2025.11170856">http://dx.doi.org/10.1109/icscsa66339.2025.11170856</a>, <a class="reference external" href="https://doi.org/10.1109/icscsa66339.2025.11170856">doi:10.1109/icscsa66339.2025.11170856</a>.</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DK12<span class="fn-bracket">]</span></span>
+<p>James Durbin and Siem Jan Koopman. <em>Time Series Analysis by State Space Methods: Second Edition</em>. Oxford University Press, May 2012. ISBN 9780199641178. URL: <a class="reference external" href="http://dx.doi.org/10.1093/acprof:oso/9780199641178.001.0001">http://dx.doi.org/10.1093/acprof:oso/9780199641178.001.0001</a>, <a class="reference external" href="https://doi.org/10.1093/acprof:oso/9780199641178.001.0001">doi:10.1093/acprof:oso/9780199641178.001.0001</a>.</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Fah92<span class="fn-bracket">]</span></span>
+<p>Ludwig Fahrmeir. Posterior mode estimation by extended kalman filtering for multivariate dynamic generalized linear models. <em>Journal of the American Statistical Association</em>, 87(418):501–509, June 1992. URL: <a class="reference external" href="http://dx.doi.org/10.1080/01621459.1992.10475232">http://dx.doi.org/10.1080/01621459.1992.10475232</a>, <a class="reference external" href="https://doi.org/10.1080/01621459.1992.10475232">doi:10.1080/01621459.1992.10475232</a>.</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GZB+14<span class="fn-bracket">]</span></span>
+<p>João Gama, Indrė Žliobaitė, Albert Bifet, Mykola Pechenizkiy, and Abdelhamid Bouchachia. A survey on concept drift adaptation. <em>ACM Computing Surveys</em>, 46(4):1–37, Mar 2014. URL: <a class="reference external" href="http://dx.doi.org/10.1145/2523813">http://dx.doi.org/10.1145/2523813</a>, <a class="reference external" href="https://doi.org/10.1145/2523813">doi:10.1145/2523813</a>.</p>
+</div>
+<div class="citation" id="id28" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GWBL20<span class="fn-bracket">]</span></span>
+<p>Saurabh Garg, Yifan Wu, Sivaraman Balakrishnan, and Zachary C. Lipton. A unified view of label shift estimation. In <em>Advances in Neural Information Processing Systems</em>, volume 33. 2020. arXiv:2003.07554.</p>
+</div>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GGB20<span class="fn-bracket">]</span></span>
+<p>Maciej Grzenda, Heitor Murilo Gomes, and Albert Bifet. Delayed labelling evaluation for data streams. <em>Data Mining and Knowledge Discovery</em>, 34(5):1237–1266, Nov 2020. URL: <a class="reference external" href="http://dx.doi.org/10.1007/s10618-019-00654-y">http://dx.doi.org/10.1007/s10618-019-00654-y</a>, <a class="reference external" href="https://doi.org/10.1007/s10618-019-00654-y">doi:10.1007/s10618-019-00654-y</a>.</p>
+</div>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Kal60<span class="fn-bracket">]</span></span>
+<p>R. E. Kalman. A new approach to linear filtering and prediction problems. <em>Journal of Basic Engineering</em>, 82(1):35–45, Mar 1960. URL: <a class="reference external" href="http://dx.doi.org/10.1115/1.3662552">http://dx.doi.org/10.1115/1.3662552</a>, <a class="reference external" href="https://doi.org/10.1115/1.3662552">doi:10.1115/1.3662552</a>.</p>
+</div>
+<div class="citation" id="id27" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LWS18<span class="fn-bracket">]</span></span>
+<p>Zachary C. Lipton, Yu-Xiang Wang, and Alexander J. Smola. Detecting and correcting for label shift with black box predictors. In <em>Proceedings of the 35th International Conference on Machine Learning</em>, volume 80 of PMLR, 3122–3130. 2018. arXiv:1802.03916.</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Mac92<span class="fn-bracket">]</span></span>
+<p>David J. C. MacKay. The evidence framework applied to classification networks. <em>Neural Computation</em>, 4(5):720–736, Sept 1992. URL: <a class="reference external" href="http://dx.doi.org/10.1162/neco.1992.4.5.720">http://dx.doi.org/10.1162/neco.1992.4.5.720</a>, <a class="reference external" href="https://doi.org/10.1162/neco.1992.4.5.720">doi:10.1162/neco.1992.4.5.720</a>.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MRMB12<span class="fn-bracket">]</span></span>
+<p>Tyler H. McCormick, Adrian E. Raftery, David Madigan, and Randall S. Burd. Dynamic logistic regression and dynamic model averaging for binary classification. <em>Biometrics</em>, 68(1):23–30, Aug 2012. URL: <a class="reference external" href="http://dx.doi.org/10.1111/j.1541-0420.2011.01645.x">http://dx.doi.org/10.1111/j.1541-0420.2011.01645.x</a>, <a class="reference external" href="https://doi.org/10.1111/j.1541-0420.2011.01645.x">doi:10.1111/j.1541-0420.2011.01645.x</a>.</p>
+</div>
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MCR14<span class="fn-bracket">]</span></span>
+<p>Sérgio Moro, Paulo Cortez, and Paulo Rita. A data-driven approach to predict the success of bank telemarketing. <em>Decision Support Systems</em>, 62:22–31, June 2014. URL: <a class="reference external" href="http://dx.doi.org/10.1016/j.dss.2014.03.001">http://dx.doi.org/10.1016/j.dss.2014.03.001</a>, <a class="reference external" href="https://doi.org/10.1016/j.dss.2014.03.001">doi:10.1016/j.dss.2014.03.001</a>.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SLD02<span class="fn-bracket">]</span></span>
+<p>Marco Saerens, Patrice Latinne, and Christine Decaestecker. Adjusting the outputs of a classifier to new a &lt;i&gt;priori&lt;/i&gt; probabilities: a simple procedure. <em>Neural Computation</em>, 14(1):21–41, Jan 2002. URL: <a class="reference external" href="http://dx.doi.org/10.1162/089976602753284446">http://dx.doi.org/10.1162/089976602753284446</a>, <a class="reference external" href="https://doi.org/10.1162/089976602753284446">doi:10.1162/089976602753284446</a>.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WHM85<span class="fn-bracket">]</span></span>
+<p>Mike West, P. Jeff Harrison, and Helio S. Migon. Dynamic generalized linear models and bayesian forecasting. <em>Journal of the American Statistical Association</em>, 80(389):73–83, Mar 1985. URL: <a class="reference external" href="http://dx.doi.org/10.1080/01621459.1985.10477131">http://dx.doi.org/10.1080/01621459.1985.10477131</a>, <a class="reference external" href="https://doi.org/10.1080/01621459.1985.10477131">doi:10.1080/01621459.1985.10477131</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="08_conclusiones.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">8. Conclusiones y limitaciones</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entorno-semillas-y-ejecucion">9.1 Entorno, semillas y ejecución</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">9.3 Referencias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entradas-bibtex-citadas">Entradas BibTeX citadas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,933 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI) &#8212; Proyecto final · Cuarto entregable · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '00_introduccion';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="1. Trazabilidad de correcciones" href="01_correcciones.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Cuarto entregable · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_correcciones.html">1. Trazabilidad de correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_datos.html">2. Datos: ETL y EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_benchmarks.html">3. Modelos benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_literatura.html">4. Revisión de literatura y novedad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_modelo_original.html">5. Modelo original: logística de estado latente en dos escalas (L2E)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_validacion.html">6. Validación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dashboard.html">7. Dashboard y despliegue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_conclusiones.html">8. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_reproducibilidad.html">9. Reproducibilidad y bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/00_introduccion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">0. Introducción</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-del-entorno-y-reproducibilidad">0.1 Configuración del entorno y reproducibilidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carga-de-la-particion-y-de-los-resultados">0.2 Carga de la partición y de los resultados</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="proyecto-final-cuarto-entregable-modelo-original-para-predecir-la-suscripcion-a-depositos-a-termino-bank-marketing-uci">
+<h1>Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (<em>Bank Marketing</em>, UCI)<a class="headerlink" href="#proyecto-final-cuarto-entregable-modelo-original-para-predecir-la-suscripcion-a-depositos-a-termino-bank-marketing-uci" title="Link to this heading">#</a></h1>
+<p><strong>Logística de estado latente en dos escalas (L2E): diseño, implementación algorítmica y validación estadística frente a los modelos del tercer entregable</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Autor</strong></p></td>
+<td><p>Donny Torres</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Programa</strong></p></td>
+<td><p>Maestría en Analítica de Datos, Universidad del Norte (Barranquilla)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Asignatura</strong></p></td>
+<td><p>Machine Learning</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Fecha</strong></p></td>
+<td><p>Octubre de 2026</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Conjunto de datos</strong></p></td>
+<td><p><em>Bank Marketing</em> con contexto social y económico (<code class="docutils literal notranslate"><span class="pre">bank-additional-full.csv</span></code>) y tres conjuntos adicionales de OpenML</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Fuente</strong></p></td>
+<td><p>UCI Machine Learning Repository: <a class="reference external" href="https://archive.ics.uci.edu/dataset/222/bank+marketing">https://archive.ics.uci.edu/dataset/222/bank+marketing</a> (licencia CC BY 4.0)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tarea</strong></p></td>
+<td><p>Clasificación de <code class="docutils literal notranslate"><span class="pre">y</span></code> (suscribe o no) con información previa a la llamada y validación cronológica</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Guía</strong></p></td>
+<td><p><em>Proyecto Final: Dashboard Predictivo, Modelo Original e Informe Reproducible</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="introduccion">
+<span id="sec-0"></span><h2>0. Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>Este cuaderno desarrolla el componente de investigación del proyecto: <strong>un modelo propio</strong>, que no proviene de un <code class="docutils literal notranslate"><span class="pre">import</span></code>, se implementa algorítmicamente y se compara estadísticamente contra los modelos del tercer entregable. Mantiene las mismas condiciones de ese entregable, esto es, el mismo conjunto de datos, la misma partición cronológica 80/20, el mismo preprocesamiento, los mismos pliegues externos e internos de la validación anidada, la misma semilla y el mismo presupuesto de optimización, de modo que cualquier diferencia se debe al modelo y no al protocolo.</p>
+<p><strong>Pregunta de investigación.</strong> ¿Un modelo que sigue día a día la tasa de suscripción puede predecir, antes de la llamada, qué clientes suscribirán un depósito a término mejor que los clasificadores estáticos?</p>
+<p>Retoma la pregunta del Entregable 1 (sección <a class="reference internal" href="01_correcciones.html#sec-1-1"><span class="std std-ref">1.1</span></a>), que medía la capacidad de discriminación de una regresión logística con información previa a la llamada y su estabilidad en el orden temporal, y la lleva al modelo original. Los clasificadores estáticos son los siete modelos del tercer entregable (logística, Naive Bayes, KNN, árbol de decisión, Random Forest, XGBoost y SVM), que asumen que la relación entre el cliente y la suscripción no cambia en el tiempo.</p>
+<p><strong>Productos en línea.</strong></p>
+<ul class="simple">
+<li><p><strong>Dashboard predictivo:</strong> <a class="reference external" href="https://proyecto-final-bank-marketing.onrender.com">https://proyecto-final-bank-marketing.onrender.com</a> (páginas Contexto, EDA y Modelos, con el L2E integrado; en el plan gratuito de Render la primera carga tras 15 minutos sin visitas tarda cerca de un minuto).</p></li>
+<li><p><strong>Jupyter Book:</strong> <a class="reference external" href="https://dtl-da.github.io/proyecto-final-bank-marketing/cuarto-entregable/">https://dtl-da.github.io/proyecto-final-bank-marketing/cuarto-entregable/</a>.</p></li>
+<li><p><strong>Repositorio:</strong> <a class="github reference external" href="https://github.com/DTL-DA/proyecto-final-bank-marketing">DTL-DA/proyecto-final-bank-marketing</a>; este cuaderno, su código y sus resultados están en la carpeta <code class="docutils literal notranslate"><span class="pre">cuarto_entregable/</span></code>.</p></li>
+</ul>
+<p>El punto de partida es una evaluación crítica de lo que ya se hizo. Las 140 combinaciones del tercer entregable no se distinguen entre sí, dentro de 2008 ninguna discrimina mejor que el azar y la mejor mejora en la prueba no vino de un modelo más flexible sino de recalibrar el intercepto cada mes. Ese patrón tiene una explicación: la tasa de suscripción de cada día es un <strong>nivel latente persistente</strong> que los modelos estáticos no pueden seguir. Sobre ese diagnóstico se propone el modelo L2E, una regresión logística cuyo intercepto es un estado latente diario que se mueve en una escala rápida y cuyas pendientes derivan en una escala lenta, que se ajusta por máxima verosimilitud penalizada con un algoritmo de Newton por bloques y que, en producción, se actualiza con un filtro de Laplace a medida que se conocen las etiquetas de los días ya cerrados.</p>
+<p><strong>Organización.</strong> La numeración de las secciones sigue los capítulos del Jupyter Book que pide la guía (cuadro 4), así que cada sección del cuaderno es un capítulo del libro:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sección</p></th>
+<th class="head"><p>Contenido</p></th>
+<th class="head"><p>Bloque o sección de la guía</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0. Introducción</p></td>
+<td><p>Resumen ejecutivo, configuración y carga de resultados</p></td>
+<td><p>9.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1. Trazabilidad de correcciones</p></td>
+<td><p>Evaluación crítica del tercer entregable y tabla de correcciones</p></td>
+<td><p>Bloque A</p></td>
+</tr>
+<tr class="row-even"><td><p>2. Datos: ETL y EDA</p></td>
+<td><p>Partición heredada y nuevo hallazgo: el nivel diario latente</p></td>
+<td><p>9.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>3. Modelos benchmark</p></td>
+<td><p>Mejores combinaciones por modelo y mejor combinación global</p></td>
+<td><p>Bloque B</p></td>
+</tr>
+<tr class="row-even"><td><p>4. Revisión de literatura y novedad</p></td>
+<td><p>Protocolo, matriz de novedad, trabajos cercanos y declaración</p></td>
+<td><p>5.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>5. Modelo original</p></td>
+<td><p>Formulación, pseudocódigo, propiedades, código, pruebas unitarias, complejidad, optimización y ablación</p></td>
+<td><p>Bloque C, 5.3 y 5.4</p></td>
+</tr>
+<tr class="row-even"><td><p>6. Validación estadística</p></td>
+<td><p>Protocolo, pruebas de hipótesis, controles, robustez, conjuntos adicionales e interpretabilidad</p></td>
+<td><p>Bloque D y sección 6</p></td>
+</tr>
+<tr class="row-odd"><td><p>7. Dashboard y despliegue</p></td>
+<td><p>Artefacto del modelo original, prueba de ida y vuelta, predicción en vivo, arquitectura, decisiones de diseño, guía de despliegue, capturas y URL pública</p></td>
+<td><p>Bloques B, E y F</p></td>
+</tr>
+<tr class="row-even"><td><p>8. Conclusiones y limitaciones</p></td>
+<td><p>Hallazgos, veredicto sobre R1, R2 y R3, limitaciones, trabajo futuro y uso de IA</p></td>
+<td><p>9.1 y 13</p></td>
+</tr>
+<tr class="row-odd"><td><p>9. Reproducibilidad y bibliografía</p></td>
+<td><p>Entorno, semillas, tabla maestra de experimentos y referencias</p></td>
+<td><p>9.1 y 10</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Ejecución.</strong> La validación anidada del modelo original (7 variantes × 5 pliegues, con Optuna en el bucle interno), los modelos finales, los tres conjuntos adicionales, los análisis de sensibilidad y la revisión de literatura se ejecutan con los <em>scripts</em> de <code class="docutils literal notranslate"><span class="pre">scripts/</span></code> y quedan registrados en <code class="docutils literal notranslate"><span class="pre">resultados/</span></code>; este cuaderno los lee y calcula aquí todas las pruebas estadísticas. Con <code class="docutils literal notranslate"><span class="pre">RECALCULAR</span> <span class="pre">=</span> <span class="pre">True</span></code> en la celda de configuración se vuelven a lanzar los <em>scripts</em>. Todas las interpretaciones se generan con los valores calculados en la misma ejecución, de forma que las cifras del texto coinciden siempre con las salidas.</p>
+<section id="configuracion-del-entorno-y-reproducibilidad">
+<span id="sec-0-1"></span><h3>0.1 Configuración del entorno y reproducibilidad<a class="headerlink" href="#configuracion-del-entorno-y-reproducibilidad" title="Link to this heading">#</a></h3>
+<p>La semilla global es la misma del tercer entregable (<code class="docutils literal notranslate"><span class="pre">SEED</span> <span class="pre">=</span> <span class="pre">42</span></code>, en <code class="docutils literal notranslate"><span class="pre">src/bm/config.py</span></code>) y se propaga a <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, scikit-learn, SMOTE y ADASYN, XGBoost, Optuna y DEAP. El modelo L2E es determinista: su ajuste maximiza un objetivo estrictamente cóncavo con Newton, así que la semilla solo afecta al optimizador de hiperparámetros, cuya estabilidad se mide con tres semillas adicionales (sección <a class="reference internal" href="06_validacion.html#sec-6-9"><span class="std std-ref">6.9</span></a>). El entorno es <code class="docutils literal notranslate"><span class="pre">bm_e3</span></code> (Python 3.12) y las versiones exactas están en <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sklearn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">expit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">average_precision_score</span><span class="p">,</span> <span class="n">brier_score_loss</span><span class="p">,</span> <span class="n">log_loss</span><span class="p">,</span> <span class="n">precision_recall_curve</span><span class="p">,</span>
+                             <span class="n">roc_auc_score</span><span class="p">)</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"IProgress not found"</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">".*Pandas4Warning.*"</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"src"</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">optuna</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scikit_posthocs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">cfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm</span><span class="w"> </span><span class="kn">import</span> <span class="n">estadistica</span> <span class="k">as</span> <span class="n">st</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm</span><span class="w"> </span><span class="kn">import</span> <span class="n">estadistica_e4</span> <span class="k">as</span> <span class="n">st4</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluacion</span> <span class="k">as</span> <span class="n">evm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm.adicionales</span><span class="w"> </span><span class="kn">import</span> <span class="n">DESCRIPCION</span> <span class="k">as</span> <span class="n">DESC_ADIC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm.anidada</span><span class="w"> </span><span class="kn">import</span> <span class="n">particion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm.datos</span><span class="w"> </span><span class="kn">import</span> <span class="n">cv_externa</span><span class="p">,</span> <span class="n">cv_interna</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm.evaluacion</span><span class="w"> </span><span class="kn">import</span> <span class="n">elegir_finalistas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm.modelo_original</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticaDosEscalas</span><span class="p">,</span> <span class="n">filtrar_nivel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm.protocolo_original</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">NOMBRE_VARIANTE</span><span class="p">,</span> <span class="n">VARIANTES</span><span class="p">,</span> <span class="n">con_dia</span><span class="p">,</span> <span class="n">construir_pipeline_original</span><span class="p">,</span> <span class="n">em_por_dia</span><span class="p">,</span>
+                                   <span class="n">logit_seguro</span><span class="p">,</span> <span class="n">puntaje_secuencial</span><span class="p">)</span>
+
+<span class="n">SEED</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">SEED</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">"display.max_columns"</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">"display.width"</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+<span class="n">RECALCULAR</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># True: vuelve a ejecutar todos los scripts de resultados/ (cerca de 45 minutos con 10 núcleos)</span>
+<span class="k">if</span> <span class="n">RECALCULAR</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">script</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"importar_e3.py"</span><span class="p">,</span> <span class="s2">"ejecutar_original.py"</span><span class="p">,</span> <span class="s2">"ejecutar_adicionales.py"</span><span class="p">,</span> <span class="s2">"ejecutar_analisis.py"</span><span class="p">,</span>
+                   <span class="s2">"revision_literatura.py"</span><span class="p">,</span> <span class="s2">"verificar_referencias.py"</span><span class="p">):</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"scripts/</span><span class="si">{</span><span class="n">script</span><span class="si">}</span><span class="s2">"</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Paleta validada del proyecto: categórica en orden fijo, tinta y rejilla recesivas</span>
+<span class="n">AZUL</span><span class="p">,</span> <span class="n">NARANJA</span><span class="p">,</span> <span class="n">AGUAMARINA</span><span class="p">,</span> <span class="n">AMARILLO</span><span class="p">,</span> <span class="n">ROJO</span> <span class="o">=</span> <span class="s2">"#2a78d6"</span><span class="p">,</span> <span class="s2">"#eb6834"</span><span class="p">,</span> <span class="s2">"#1baf7a"</span><span class="p">,</span> <span class="s2">"#eda100"</span><span class="p">,</span> <span class="s2">"#e34948"</span>
+<span class="n">TINTA</span><span class="p">,</span> <span class="n">TINTA_2</span><span class="p">,</span> <span class="n">GRIS</span><span class="p">,</span> <span class="n">REJILLA</span><span class="p">,</span> <span class="n">FONDO</span> <span class="o">=</span> <span class="s2">"#0b0b0b"</span><span class="p">,</span> <span class="s2">"#52514e"</span><span class="p">,</span> <span class="s2">"#898781"</span><span class="p">,</span> <span class="s2">"#e1e0d9"</span><span class="p">,</span> <span class="s2">"#fcfcfb"</span>
+<span class="n">CAT</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"#2a78d6"</span><span class="p">,</span> <span class="s2">"#eb6834"</span><span class="p">,</span> <span class="s2">"#1baf7a"</span><span class="p">,</span> <span class="s2">"#eda100"</span><span class="p">,</span> <span class="s2">"#e87ba4"</span><span class="p">,</span> <span class="s2">"#008300"</span><span class="p">,</span> <span class="s2">"#6250d6"</span><span class="p">,</span> <span class="s2">"#e34948"</span><span class="p">]</span>
+<span class="n">CMAP_SEQ</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s2">"secuencial"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"#f0efec"</span><span class="p">,</span> <span class="s2">"#9ec5f4"</span><span class="p">,</span> <span class="s2">"#2a78d6"</span><span class="p">,</span> <span class="s2">"#0d366b"</span><span class="p">])</span>
+<span class="n">CMAP_DIV</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s2">"divergente"</span><span class="p">,</span> <span class="p">[</span><span class="n">AZUL</span><span class="p">,</span> <span class="s2">"#f0efec"</span><span class="p">,</span> <span class="n">ROJO</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s2">"figure.dpi"</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s2">"savefig.dpi"</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s2">"figure.facecolor"</span><span class="p">:</span> <span class="n">FONDO</span><span class="p">,</span> <span class="s2">"axes.facecolor"</span><span class="p">:</span> <span class="n">FONDO</span><span class="p">,</span>
+    <span class="s2">"axes.edgecolor"</span><span class="p">:</span> <span class="s2">"#c3c2b7"</span><span class="p">,</span> <span class="s2">"axes.labelcolor"</span><span class="p">:</span> <span class="n">TINTA_2</span><span class="p">,</span> <span class="s2">"axes.titlecolor"</span><span class="p">:</span> <span class="n">TINTA</span><span class="p">,</span> <span class="s2">"axes.titlesize"</span><span class="p">:</span> <span class="mf">10.5</span><span class="p">,</span>
+    <span class="s2">"axes.titleweight"</span><span class="p">:</span> <span class="s2">"bold"</span><span class="p">,</span> <span class="s2">"axes.labelsize"</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">"axes.spines.top"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"axes.spines.right"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"axes.grid"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"grid.color"</span><span class="p">:</span> <span class="n">REJILLA</span><span class="p">,</span> <span class="s2">"grid.linewidth"</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s2">"axes.axisbelow"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">"xtick.color"</span><span class="p">:</span> <span class="n">GRIS</span><span class="p">,</span> <span class="s2">"ytick.color"</span><span class="p">:</span> <span class="n">GRIS</span><span class="p">,</span> <span class="s2">"xtick.labelsize"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">"ytick.labelsize"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s2">"legend.frameon"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"legend.fontsize"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">"figure.titlesize"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"figure.titleweight"</span><span class="p">:</span> <span class="s2">"bold"</span><span class="p">,</span>
+    <span class="s2">"axes.prop_cycle"</span><span class="p">:</span> <span class="n">mpl</span><span class="o">.</span><span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">AZUL</span><span class="p">,</span> <span class="n">NARANJA</span><span class="p">,</span> <span class="n">AGUAMARINA</span><span class="p">,</span> <span class="n">AMARILLO</span><span class="p">]),</span> <span class="s2">"lines.linewidth"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">})</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">num</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Número con coma decimal y espacio de miles."""</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">,.</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"."</span><span class="p">,</span> <span class="s2">","</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">num_c</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Valor de un hiperparámetro sin ceros sobrantes (0,001; 0,1; 100)."""</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"."</span><span class="p">,</span> <span class="s2">","</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pct</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2"> %"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pval</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">"&lt; 0,001"</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mf">0.001</span> <span class="k">else</span> <span class="n">num</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">p_txt</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">"p &lt; 0,001"</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mf">0.001</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"p = </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">p_frase</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Valor p para insertar en una frase: «menor que 0,001» o «de 0,123»."""</span>
+    <span class="k">return</span> <span class="s2">"menor que 0,001"</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mf">0.001</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">interpretar</span><span class="p">(</span><span class="n">interpretacion</span><span class="p">,</span> <span class="n">implicacion</span><span class="p">,</span> <span class="n">accion</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"**Interpretación.** </span><span class="si">{</span><span class="n">interpretacion</span><span class="si">}</span><span class="se">\n\n</span><span class="si">{</span><span class="n">implicacion</span><span class="si">}</span><span class="se">\n\n</span><span class="si">{</span><span class="n">accion</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">conectar</span><span class="p">(</span><span class="n">conector</span><span class="p">,</span> <span class="n">texto</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Antepone un conector al texto y pasa a minúscula su primera letra."""</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">conector</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">texto</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}{</span><span class="n">texto</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">texto</span> <span class="k">else</span> <span class="n">texto</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tabla</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">sty</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">dec</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">thousands</span><span class="o">=</span><span class="s2">" "</span><span class="p">,</span> <span class="n">na_rep</span><span class="o">=</span><span class="s2">"—"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">indice</span><span class="p">:</span>
+        <span class="n">sty</span> <span class="o">=</span> <span class="n">sty</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"index"</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">sty</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">enumerar</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">codigo</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Une una lista en español: a, b y c."""</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"`</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">`"</span> <span class="k">if</span> <span class="n">codigo</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">""</span>
+    <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s2">" y "</span> <span class="o">+</span> <span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">para_guion</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Guarda una tabla o un diccionario para el guion de sustentación (mismas cifras que el cuaderno)."""</span>
+    <span class="n">destino</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"resultados"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"guion"</span>
+    <span class="n">destino</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">destino</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">.parquet"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">destino</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">.json"</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                                               <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ms</span><span class="p">(</span><span class="n">serie</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Media ± desviación estándar con coma decimal."""</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">serie</span><span class="p">),</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">serie</span><span class="p">,</span><span class="w"> </span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="n">versiones</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"Componente"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Python"</span><span class="p">,</span> <span class="s2">"numpy"</span><span class="p">,</span> <span class="s2">"pandas"</span><span class="p">,</span> <span class="s2">"scipy"</span><span class="p">,</span> <span class="s2">"scikit-learn"</span><span class="p">,</span> <span class="s2">"optuna"</span><span class="p">,</span> <span class="s2">"scikit-posthocs"</span><span class="p">,</span> <span class="s2">"matplotlib"</span><span class="p">],</span>
+    <span class="s2">"Versión"</span><span class="p">:</span> <span class="p">[</span><span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="n">scipy</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+                <span class="n">optuna</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="n">mpl</span><span class="o">.</span><span class="n">__version__</span><span class="p">]})</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">versiones</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Semilla global: SEED = </span><span class="si">{</span><span class="n">SEED</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_cdff7">
+  <thead>
+    <tr>
+      <th id="T_cdff7_level0_col0" class="col_heading level0 col0" >Componente</th>
+      <th id="T_cdff7_level0_col1" class="col_heading level0 col1" >Versión</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_cdff7_row0_col0" class="data row0 col0" >Python</td>
+      <td id="T_cdff7_row0_col1" class="data row0 col1" >3.12.14</td>
+    </tr>
+    <tr>
+      <td id="T_cdff7_row1_col0" class="data row1 col0" >numpy</td>
+      <td id="T_cdff7_row1_col1" class="data row1 col1" >2.5.4</td>
+    </tr>
+    <tr>
+      <td id="T_cdff7_row2_col0" class="data row2 col0" >pandas</td>
+      <td id="T_cdff7_row2_col1" class="data row2 col1" >3.0.6</td>
+    </tr>
+    <tr>
+      <td id="T_cdff7_row3_col0" class="data row3 col0" >scipy</td>
+      <td id="T_cdff7_row3_col1" class="data row3 col1" >1.18.1</td>
+    </tr>
+    <tr>
+      <td id="T_cdff7_row4_col0" class="data row4 col0" >scikit-learn</td>
+      <td id="T_cdff7_row4_col1" class="data row4 col1" >1.9.1</td>
+    </tr>
+    <tr>
+      <td id="T_cdff7_row5_col0" class="data row5 col0" >optuna</td>
+      <td id="T_cdff7_row5_col1" class="data row5 col1" >5.0.0</td>
+    </tr>
+    <tr>
+      <td id="T_cdff7_row6_col0" class="data row6 col0" >scikit-posthocs</td>
+      <td id="T_cdff7_row6_col1" class="data row6 col1" >0.17.1</td>
+    </tr>
+    <tr>
+      <td id="T_cdff7_row7_col0" class="data row7 col0" >matplotlib</td>
+      <td id="T_cdff7_row7_col1" class="data row7 col1" >3.11.2</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Semilla global: SEED = 42
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="carga-de-la-particion-y-de-los-resultados">
+<span id="sec-0-2"></span><h3>0.2 Carga de la partición y de los resultados<a class="headerlink" href="#carga-de-la-particion-y-de-los-resultados" title="Link to this heading">#</a></h3>
+<p>Se reconstruye la partición cronológica con el mismo código del tercer entregable (<code class="docutils literal notranslate"><span class="pre">bm.anidada.particion</span></code>) y se leen tres grupos de resultados: los del tercer entregable (<code class="docutils literal notranslate"><span class="pre">resultados/e3</span></code>, importados con <code class="docutils literal notranslate"><span class="pre">scripts/importar_e3.py</span></code>), los del modelo original (validación anidada, ablación, semillas y modelos finales) y los complementarios (conjuntos adicionales, sensibilidad, SHAP, complejidad y revisión de literatura).</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">part</span> <span class="o">=</span> <span class="n">particion</span><span class="p">()</span>
+<span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">part</span><span class="o">.</span><span class="n">X_te</span><span class="p">,</span> <span class="n">part</span><span class="o">.</span><span class="n">y_tr</span><span class="p">,</span> <span class="n">part</span><span class="o">.</span><span class="n">y_te</span>
+<span class="n">tiempo_tr</span><span class="p">,</span> <span class="n">tiempo_te</span><span class="p">,</span> <span class="n">GAP</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="n">tiempo_tr</span><span class="p">,</span> <span class="n">part</span><span class="o">.</span><span class="n">tiempo_te</span><span class="p">,</span> <span class="n">part</span><span class="o">.</span><span class="n">gap</span>
+<span class="n">periodo_tr</span><span class="p">,</span> <span class="n">periodo_te</span> <span class="o">=</span> <span class="n">tiempo_tr</span><span class="p">[</span><span class="s2">"periodo"</span><span class="p">],</span> <span class="n">tiempo_te</span><span class="p">[</span><span class="s2">"periodo"</span><span class="p">]</span>
+<span class="n">dia_tr</span><span class="p">,</span> <span class="n">dia_te</span> <span class="o">=</span> <span class="n">tiempo_tr</span><span class="p">[</span><span class="s2">"dia"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">tiempo_te</span><span class="p">[</span><span class="s2">"dia"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">tiempo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">tiempo_tr</span><span class="p">,</span> <span class="n">tiempo_te</span><span class="p">])</span>
+<span class="n">yte</span> <span class="o">=</span> <span class="n">y_te</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">RES</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">RUTA_RESULTADOS</span>
+<span class="n">E3</span> <span class="o">=</span> <span class="n">RES</span> <span class="o">/</span> <span class="s2">"e3"</span>
+<span class="n">maestra</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">E3</span> <span class="o">/</span> <span class="s2">"tabla_maestra.parquet"</span><span class="p">)</span>
+<span class="n">pliegues_e3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">E3</span> <span class="o">/</span> <span class="s2">"pliegues.parquet"</span><span class="p">)</span>
+<span class="n">oof_e3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">E3</span> <span class="o">/</span> <span class="s2">"oof_finalistas.parquet"</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">E3</span> <span class="o">/</span> <span class="s2">"finales_clf.pkl"</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">fin_e3</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">fin_ext</span> <span class="o">=</span> <span class="n">elegir_finalistas</span><span class="p">(</span><span class="n">maestra</span><span class="p">,</span> <span class="s2">"clf"</span><span class="p">)</span>
+<span class="n">MODELOS</span> <span class="o">=</span> <span class="n">fin_ext</span><span class="p">[</span><span class="s2">"modelo"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># ordenados por AUC-PR externo medio (el primero es el mejor global)</span>
+<span class="n">MEJOR</span> <span class="o">=</span> <span class="n">MODELOS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">leer</span><span class="p">(</span><span class="n">ruta</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ruta</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+
+<span class="n">corr</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="p">[</span><span class="n">leer</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"corridas_original"</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">.pkl"</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">K_EXTERNO</span><span class="p">)]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">VARIANTES</span><span class="p">}</span>
+<span class="n">corr_sem</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="p">[</span><span class="n">leer</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"corridas_original"</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"l2e_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">_s</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">.pkl"</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">K_EXTERNO</span><span class="p">)]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)}</span>
+<span class="n">fin_l2e</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">leer</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"finales_original"</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">.pkl"</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">VARIANTES</span><span class="p">}</span>
+<span class="n">fin_sem</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">leer</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"finales_original"</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"l2e_s</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">.pkl"</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)}</span>
+<span class="n">L2E</span> <span class="o">=</span> <span class="n">fin_l2e</span><span class="p">[</span><span class="s2">"l2e"</span><span class="p">]</span>
+<span class="n">adic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"adicionales.parquet"</span><span class="p">)</span>
+<span class="n">ANA</span> <span class="o">=</span> <span class="n">RES</span> <span class="o">/</span> <span class="s2">"analisis"</span>
+<span class="n">literatura</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">((</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"literatura"</span> <span class="o">/</span> <span class="s2">"consultas.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
+
+<span class="c1"># Nombres y colores: la identidad sigue a la entidad, nunca al rango</span>
+<span class="n">NOMBRE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"L2E"</span><span class="p">:</span> <span class="s2">"L2E (modelo original)"</span><span class="p">,</span> <span class="s2">"referencia_e2"</span><span class="p">:</span> <span class="s2">"Referencia E2 (logística C = 0,01)"</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">r_</span> <span class="ow">in</span> <span class="n">fin_ext</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+    <span class="n">NOMBRE</span><span class="p">[</span><span class="n">r_</span><span class="o">.</span><span class="n">modelo</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">NOMBRE_MODELO</span><span class="p">[</span><span class="n">r_</span><span class="o">.</span><span class="n">modelo</span><span class="p">]</span><span class="si">}</span><span class="s2"> · </span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">NOMBRE_BALANCEO</span><span class="p">[</span><span class="n">r_</span><span class="o">.</span><span class="n">balanceo</span><span class="p">]</span><span class="si">}</span><span class="s2"> · "</span> \
+                        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">NOMBRE_OPTIMIZADOR</span><span class="p">[</span><span class="n">r_</span><span class="o">.</span><span class="n">optimizador</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">CORTO</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"L2E"</span><span class="p">:</span> <span class="s2">"L2E"</span><span class="p">,</span> <span class="s2">"referencia_e2"</span><span class="p">:</span> <span class="s2">"Referencia E2"</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">m</span><span class="p">:</span> <span class="n">cfg</span><span class="o">.</span><span class="n">NOMBRE_MODELO</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MODELOS</span><span class="p">}}</span>
+<span class="n">COLOR</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"L2E"</span><span class="p">:</span> <span class="n">TINTA</span><span class="p">,</span> <span class="s2">"referencia_e2"</span><span class="p">:</span> <span class="n">GRIS</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">m</span><span class="p">:</span> <span class="n">CAT</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">MODELOS_CLF</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MODELOS</span><span class="p">}}</span>
+
+<span class="c1"># Puntajes de prueba de todos los modelos comparados (mismas 8 236 observaciones, mismo orden)</span>
+<span class="n">PUNTAJE_TE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"L2E"</span><span class="p">:</span> <span class="n">L2E</span><span class="p">[</span><span class="s2">"puntaje_te"</span><span class="p">],</span> <span class="o">**</span><span class="p">{</span><span class="n">m</span><span class="p">:</span> <span class="n">fin_e3</span><span class="p">[</span><span class="sa">f</span><span class="s2">"clf_</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">"</span><span class="p">][</span><span class="s2">"puntaje_te"</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MODELOS</span><span class="p">},</span>
+              <span class="s2">"referencia_e2"</span><span class="p">:</span> <span class="n">fin_e3</span><span class="p">[</span><span class="s2">"clf_referencia_e2"</span><span class="p">][</span><span class="s2">"puntaje_te"</span><span class="p">]}</span>
+<span class="n">ES_PROBA</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"L2E"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">m</span><span class="p">:</span> <span class="n">fin_e3</span><span class="p">[</span><span class="sa">f</span><span class="s2">"clf_</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">"</span><span class="p">][</span><span class="s2">"es_proba"</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MODELOS</span><span class="p">},</span> <span class="s2">"referencia_e2"</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+
+<span class="c1"># Predicciones fuera de muestra del bucle externo (mismos pliegues para todos)</span>
+<span class="n">oof_l2e</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"modelo"</span><span class="p">:</span> <span class="s2">"L2E"</span><span class="p">,</span> <span class="s2">"pliegue"</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">"pliegue"</span><span class="p">],</span> <span class="s2">"indice"</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">"oof"</span><span class="p">][</span><span class="s2">"indice"</span><span class="p">],</span>
+                                   <span class="s2">"y"</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">"oof"</span><span class="p">][</span><span class="s2">"y"</span><span class="p">],</span> <span class="s2">"puntaje"</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">"oof"</span><span class="p">][</span><span class="s2">"puntaje"</span><span class="p">]})</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">corr</span><span class="p">[</span><span class="s2">"l2e"</span><span class="p">]])</span>
+<span class="n">oof</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">oof_e3</span><span class="p">[[</span><span class="s2">"modelo"</span><span class="p">,</span> <span class="s2">"pliegue"</span><span class="p">,</span> <span class="s2">"indice"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"puntaje"</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s2">"modelo"</span><span class="p">:</span> <span class="nb">str</span><span class="p">}),</span> <span class="n">oof_l2e</span><span class="p">],</span>
+                <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">oof</span><span class="p">[</span><span class="s2">"periodo"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">oof</span><span class="p">[</span><span class="s2">"indice"</span><span class="p">],</span> <span class="s2">"periodo"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">oof</span><span class="p">[</span><span class="s2">"dia"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tiempo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">oof</span><span class="p">[</span><span class="s2">"indice"</span><span class="p">],</span> <span class="s2">"dia"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">oof</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"modelo"</span><span class="p">)[</span><span class="s2">"indice"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># mismas observaciones</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Partición: </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_tr</span><span class="p">))</span><span class="si">}</span><span class="s2"> registros de entrenamiento y </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_te</span><span class="p">))</span><span class="si">}</span><span class="s2"> de prueba · "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">maestra</span><span class="p">)</span><span class="si">}</span><span class="s2"> combinaciones del tercer entregable · </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">corr</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="si">}</span><span class="s2"> corridas anidadas "</span>
+      <span class="sa">f</span><span class="s2">"del modelo original (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">VARIANTES</span><span class="p">)</span><span class="si">}</span><span class="s2"> variantes) · </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">adic</span><span class="p">)</span><span class="si">}</span><span class="s2"> corridas en conjuntos adicionales"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Partición: 32 940 registros de entrenamiento y 8 236 de prueba · 140 combinaciones del tercer entregable · 35 corridas anidadas del modelo original (7 variantes) · 150 corridas en conjuntos adicionales
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ext_l2e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">"auc_pr"</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">corr</span><span class="p">[</span><span class="s2">"l2e"</span><span class="p">]])</span>
+<span class="n">ext_mejor</span> <span class="o">=</span> <span class="n">pliegues_e3</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">fin_ext</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]][[</span><span class="s2">"modelo"</span><span class="p">,</span> <span class="s2">"balanceo"</span><span class="p">,</span> <span class="s2">"optimizador"</span><span class="p">]])[</span><span class="s2">"auc_pr"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">ap_te</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">average_precision_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">PUNTAJE_TE</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">auc_te</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">PUNTAJE_TE</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">mejor_te</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ap_te</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s2">"L2E"</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">ap_te</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""### Resumen ejecutivo</span>
+
+<span class="s2">- **Problema.** Predecir, antes de la llamada, qué clientes suscribirán un depósito a término, en un periodo en que la tasa de suscripción pasa del </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> (entrenamiento, 2008-2009) al </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">}</span><span class="s2"> (prueba, 2009-2010).</span>
+<span class="s2">- **Pregunta de investigación.** ¿Un modelo que sigue día a día la tasa de suscripción puede predecir, antes de la llamada, qué clientes suscribirán un depósito a término mejor que los clasificadores estáticos?</span>
+<span class="s2">- **Diagnóstico del tercer entregable.** La mejor de las 140 combinaciones, </span><span class="si">{</span><span class="n">NOMBRE</span><span class="p">[</span><span class="n">MEJOR</span><span class="p">]</span><span class="si">}</span><span class="s2">, logra un AUC-PR externo de </span><span class="si">{</span><span class="n">ms</span><span class="p">(</span><span class="n">ext_mejor</span><span class="p">)</span><span class="si">}</span><span class="s2">; en los pliegues de 2008 ningún modelo supera de forma apreciable a la prevalencia, y en la prueba el mejor AUC-PR es el de </span><span class="si">{</span><span class="n">CORTO</span><span class="p">[</span><span class="n">mejor_te</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">ap_te</span><span class="p">[</span><span class="n">mejor_te</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">). La señal que falta es temporal: la tasa diaria de suscripción es un nivel latente persistente (sección 2.2).</span>
+<span class="s2">- **Modelo original.** L2E: regresión logística con un nivel diario latente en paseo aleatorio (escala rápida), pendientes que derivan lentamente (escala lenta), ajuste por moda posterior con Newton por bloques en O(T) y filtro de Laplace con etiquetas diferidas un día. Implementado desde cero con `numpy` y `scipy` (`src/bm/modelo_original.py`), con </span><span class="si">{</span><span class="nb">len</span><span class="p">([</span><span class="n">l</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="s1">'tests/test_modelo_original.py'</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'def test_'</span><span class="p">)])</span><span class="si">}</span><span class="s2"> funciones de prueba unitaria.</span>
+<span class="s2">- **Resultado.** En el bucle externo, L2E obtiene </span><span class="si">{</span><span class="n">ms</span><span class="p">(</span><span class="n">ext_l2e</span><span class="p">)</span><span class="si">}</span><span class="s2"> frente a </span><span class="si">{</span><span class="n">ms</span><span class="p">(</span><span class="n">ext_mejor</span><span class="p">)</span><span class="si">}</span><span class="s2"> de la mejor combinación benchmark; en la prueba, AUC-PR de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">ap_te</span><span class="p">[</span><span class="s1">'L2E'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> y AUC de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">auc_te</span><span class="p">[</span><span class="s1">'L2E'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, frente a </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">ap_te</span><span class="p">[</span><span class="n">mejor_te</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> y </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">auc_te</span><span class="o">.</span><span class="n">items</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">'L2E'</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> del mejor benchmark en cada métrica. La sección 6 verifica si la diferencia es significativa, con qué pruebas y de qué magnitud, y dónde el modelo no supera a los benchmarks."""</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<h3 class="rubric" id="resumen-ejecutivo">Resumen ejecutivo</h3>
+<ul class="simple">
+<li><p><strong>Problema.</strong> Predecir, antes de la llamada, qué clientes suscribirán un depósito a término, en un periodo en que la tasa de suscripción pasa del 6,4 % (entrenamiento, 2008-2009) al 30,8 % (prueba, 2009-2010).</p></li>
+<li><p><strong>Pregunta de investigación.</strong> ¿Un modelo que sigue día a día la tasa de suscripción puede predecir, antes de la llamada, qué clientes suscribirán un depósito a término mejor que los clasificadores estáticos?</p></li>
+<li><p><strong>Diagnóstico del tercer entregable.</strong> La mejor de las 140 combinaciones, Naive Bayes · class_weight · Bayesiana (Optuna TPE), logra un AUC-PR externo de 0,103 ± 0,108; en los pliegues de 2008 ningún modelo supera de forma apreciable a la prevalencia, y en la prueba el mejor AUC-PR es el de Referencia E2 (0,548). La señal que falta es temporal: la tasa diaria de suscripción es un nivel latente persistente (sección <a class="reference internal" href="02_datos.html#sec-2-2"><span class="std std-ref">2.2</span></a>).</p></li>
+<li><p><strong>Modelo original.</strong> L2E: regresión logística con un nivel diario latente en paseo aleatorio (escala rápida), pendientes que derivan lentamente (escala lenta), ajuste por moda posterior con Newton por bloques en O(T) y filtro de Laplace con etiquetas diferidas un día. Implementado desde cero con <code class="docutils literal notranslate"><span class="pre">numpy</span></code> y <code class="docutils literal notranslate"><span class="pre">scipy</span></code> (<code class="docutils literal notranslate"><span class="pre">src/bm/modelo_original.py</span></code>), con 18 funciones de prueba unitaria.</p></li>
+<li><p><strong>Resultado.</strong> En el bucle externo, L2E obtiene 0,111 ± 0,116 frente a 0,103 ± 0,108 de la mejor combinación benchmark; en la prueba, AUC-PR de 0,602 y AUC de 0,772, frente a 0,548 y 0,724 del mejor benchmark en cada métrica. La sección 6 verifica si la diferencia es significativa, con qué pruebas y de qué magnitud, y dónde el modelo no supera a los benchmarks.</p></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="01_correcciones.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">1. Trazabilidad de correcciones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">0. Introducción</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-del-entorno-y-reproducibilidad">0.1 Configuración del entorno y reproducibilidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carga-de-la-particion-y-de-los-resultados">0.2 Carga de la partición y de los resultados</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

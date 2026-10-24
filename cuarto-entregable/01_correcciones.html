@@ -1,0 +1,1236 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Trazabilidad de correcciones &#8212; Proyecto final · Cuarto entregable · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_correcciones';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="2. Datos: ETL y EDA" href="02_datos.html" />
+    <link rel="prev" title="Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)" href="00_introduccion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_introduccion.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Cuarto entregable · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_introduccion.html">
+                    Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Trazabilidad de correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_datos.html">2. Datos: ETL y EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_benchmarks.html">3. Modelos benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_literatura.html">4. Revisión de literatura y novedad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_modelo_original.html">5. Modelo original: logística de estado latente en dos escalas (L2E)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_validacion.html">6. Validación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dashboard.html">7. Dashboard y despliegue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_conclusiones.html">8. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_reproducibilidad.html">9. Reproducibilidad y bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/01_correcciones.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. Trazabilidad de correcciones</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-critica-del-tercer-entregable">1.1 Evaluación crítica del tercer entregable</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-ningun-modelo-mas-flexible-supera-a-la-logistica">¿Por qué ningún modelo más flexible supera a la logística?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-de-trazabilidad-de-correcciones">1.2 Tabla de trazabilidad de correcciones</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="trazabilidad-de-correcciones">
+<span id="sec-1"></span><h1>1. Trazabilidad de correcciones<a class="headerlink" href="#trazabilidad-de-correcciones" title="Link to this heading">#</a></h1>
+<section id="evaluacion-critica-del-tercer-entregable">
+<span id="sec-1-1"></span><h2>1.1 Evaluación crítica del tercer entregable<a class="headerlink" href="#evaluacion-critica-del-tercer-entregable" title="Link to this heading">#</a></h2>
+<p>Antes de proponer un modelo nuevo conviene preguntarse qué limitó a los 140 anteriores. La guía pide superar a los benchmarks, y eso solo tiene sentido si se entiende por qué ninguno de ellos se distinguió de los demás. Se revisan tres evidencias del tercer entregable: el desempeño por pliegue externo frente a la prevalencia de cada bloque (el AUC-PR de un clasificador aleatorio es igual a la prevalencia, así que su cociente, la <strong>mejora sobre el azar</strong>, es lo que mide la discriminación), el desempeño en la prueba y el efecto de la recalibración mensual del intercepto.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">esquema</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k_</span><span class="p">,</span> <span class="p">(</span><span class="n">i_e</span><span class="p">,</span> <span class="n">i_v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv_externa</span><span class="p">(</span><span class="n">GAP</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_tr</span><span class="p">)):</span>
+    <span class="n">esquema</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"Pliegue"</span><span class="p">:</span> <span class="n">k_</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Valida desde"</span><span class="p">:</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_v</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">"Valida hasta"</span><span class="p">:</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+                    <span class="s2">"Prevalencia"</span><span class="p">:</span> <span class="n">y_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_v</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()})</span>
+<span class="n">esquema</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">esquema</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Pliegue"</span><span class="p">)</span>
+<span class="n">pl_clf</span> <span class="o">=</span> <span class="n">pliegues_e3</span><span class="p">[</span><span class="n">pliegues_e3</span><span class="p">[</span><span class="s2">"tarea"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"clf"</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">pl_fin</span> <span class="o">=</span> <span class="n">pl_clf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">fin_ext</span><span class="p">[[</span><span class="s2">"modelo"</span><span class="p">,</span> <span class="s2">"balanceo"</span><span class="p">,</span> <span class="s2">"optimizador"</span><span class="p">]])</span>
+<span class="n">ap_fold</span> <span class="o">=</span> <span class="n">pl_fin</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"pliegue"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"modelo"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"auc_pr"</span><span class="p">)[</span><span class="n">MODELOS</span><span class="p">]</span>
+<span class="n">ap_fold</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">ap_fold</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">mejora</span> <span class="o">=</span> <span class="n">ap_fold</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">esquema</span><span class="p">[</span><span class="s2">"Prevalencia"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">diag</span> <span class="o">=</span> <span class="n">esquema</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s2">"Mejor AUC-PR (140 combinaciones)"</span><span class="p">:</span> <span class="n">pl_clf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"pliegue"</span><span class="p">)[</span><span class="s2">"auc_pr"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+                         <span class="s2">"Mejora sobre el azar (mediana de finalistas)"</span><span class="p">:</span> <span class="n">mejora</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                         <span class="s2">"AUC máx. (finalistas)"</span><span class="p">:</span> <span class="n">pl_fin</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"pliegue"</span><span class="p">)[</span><span class="s2">"auc"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()})</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">diag</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ult_mes</span> <span class="o">=</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">m_ult</span> <span class="o">=</span> <span class="p">(</span><span class="n">periodo_tr</span> <span class="o">==</span> <span class="n">ult_mes</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">MODELOS</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"referencia_e2"</span><span class="p">]:</span>
+    <span class="n">f_</span> <span class="o">=</span> <span class="n">fin_e3</span><span class="p">[</span><span class="sa">f</span><span class="s2">"clf_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
+    <span class="n">fila</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Modelo"</span><span class="p">:</span> <span class="n">NOMBRE</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="s2">"AUC-PR prueba"</span><span class="p">:</span> <span class="n">average_precision_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">f_</span><span class="p">[</span><span class="s2">"puntaje_te"</span><span class="p">]),</span>
+            <span class="s2">"AUC prueba"</span><span class="p">:</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">f_</span><span class="p">[</span><span class="s2">"puntaje_te"</span><span class="p">])}</span>
+    <span class="k">if</span> <span class="n">f_</span><span class="p">[</span><span class="s2">"es_proba"</span><span class="p">]:</span>
+        <span class="n">rec</span> <span class="o">=</span> <span class="n">evm</span><span class="o">.</span><span class="n">recalibracion_mensual</span><span class="p">(</span><span class="n">f_</span><span class="p">[</span><span class="s2">"puntaje_te"</span><span class="p">],</span> <span class="n">yte</span><span class="p">,</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">f_</span><span class="p">[</span><span class="s2">"puntaje_tr"</span><span class="p">][</span><span class="n">m_ult</span><span class="p">],</span>
+                                        <span class="n">y_tr</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">m_ult</span><span class="p">])</span>
+        <span class="n">fila</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">"AUC-PR con recalibración mensual"</span><span class="p">:</span> <span class="n">average_precision_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">rec</span><span class="p">),</span>
+                     <span class="s2">"AUC con recalibración mensual"</span><span class="p">:</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">rec</span><span class="p">)})</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
+<span class="n">diag_te</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">diag_te</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MODELOS</span><span class="p">:</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mejora</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">mejora</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLOR</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">CORTO</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GRIS</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">mejora</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">esquema</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s1">'Valida desde'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mejora</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Mejora del AUC-PR sobre el azar por pliegue externo (finalistas del E3)"</span><span class="p">,</span>
+           <span class="n">ylabel</span><span class="o">=</span><span class="s2">"AUC-PR / prevalencia del bloque"</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Pliegue externo (inicio del bloque de validación)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">d_</span> <span class="o">=</span> <span class="n">diag_te</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d_</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xx</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">d_</span><span class="p">[</span><span class="s2">"AUC-PR prueba"</span><span class="p">],</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">AZUL</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"sin recalibrar"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xx</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">d_</span><span class="p">[</span><span class="s2">"AUC-PR con recalibración mensual"</span><span class="p">],</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">NARANJA</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"recalibración mensual"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">yte</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="n">GRIS</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"prevalencia de prueba"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="p">[</span><span class="n">CORTO</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MODELOS</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"referencia_e2"</span><span class="p">]</span> <span class="k">if</span> <span class="n">fin_e3</span><span class="p">[</span><span class="sa">f</span><span class="s2">"clf_</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">"</span><span class="p">][</span><span class="s2">"es_proba"</span><span class="p">]]],</span>
+                  <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"AUC-PR en prueba sin recalibrar y con recalibración mensual"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"AUC-PR"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">n_sin_senal</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">diag</span><span class="p">[</span><span class="s2">"Mejora sobre el azar (mediana de finalistas)"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1.15</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">ganancia_rec</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_</span><span class="p">[</span><span class="s2">"AUC-PR con recalibración mensual"</span><span class="p">]</span> <span class="o">-</span> <span class="n">d_</span><span class="p">[</span><span class="s2">"AUC-PR prueba"</span><span class="p">])</span>
+<span class="n">interpretar</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"En </span><span class="si">{</span><span class="n">n_sin_senal</span><span class="si">}</span><span class="s2"> de los </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">diag</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> primeros pliegues externos (validación dentro de 2008) la mediana de los "</span>
+    <span class="sa">f</span><span class="s2">"finalistas apenas supera a la prevalencia (mejora sobre el azar entre "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">diag</span><span class="p">[</span><span class="s1">'Mejora sobre el azar (mediana de finalistas)'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> y "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">diag</span><span class="p">[</span><span class="s1">'Mejora sobre el azar (mediana de finalistas)'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">), con AUC máximo de "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">diag</span><span class="p">[</span><span class="s1">'AUC máx. (finalistas)'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">; solo el último pliegue, que valida de "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">esquema</span><span class="p">[</span><span class="s1">'Valida desde'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> a </span><span class="si">{</span><span class="n">esquema</span><span class="p">[</span><span class="s1">'Valida hasta'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, muestra señal (mejora mediana de "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">diag</span><span class="p">[</span><span class="s1">'Mejora sobre el azar (mediana de finalistas)'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">). En la prueba, el AUC-PR de los "</span>
+    <span class="sa">f</span><span class="s2">"finalistas va de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">diag_te</span><span class="p">[</span><span class="s1">'AUC-PR prueba'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> a </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">diag_te</span><span class="p">[</span><span class="s1">'AUC-PR prueba'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, y la "</span>
+    <span class="sa">f</span><span class="s2">"recalibración mensual del intercepto lo sube en </span><span class="si">{</span><span class="nb">int</span><span class="p">((</span><span class="n">ganancia_rec</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> de los </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ganancia_rec</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
+    <span class="sa">f</span><span class="s2">"modelos con probabilidades (mediana de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">ganancia_rec</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">)."</span><span class="p">,</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Esto significa que"</span><span class="p">,</span> <span class="s2">"El ordenamiento de las 140 combinaciones lo decide casi por completo un solo bloque "</span>
+             <span class="s2">"de validación, y que la mejora más grande del tercer entregable no vino de un modelo más flexible ni de "</span>
+             <span class="s2">"una mejor búsqueda de hiperparámetros, sino de ajustar el intercepto a la tasa del mes que acaba de "</span>
+             <span class="s2">"cerrar. Si desplazar un solo número por mes mejora el ordenamiento global más que cambiar de familia de "</span>
+             <span class="s2">"modelos, la información que falta no está en las variables del cliente: está en el **momento** de la "</span>
+             <span class="s2">"llamada, en un nivel de conversión que cambia con el tiempo y que un modelo estático no puede seguir."</span><span class="p">),</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Por tal motivo, se opta por"</span><span class="p">,</span> <span class="s2">"Dirigir el modelo original a ese vacío: en lugar de otro clasificador "</span>
+             <span class="s2">"estático, un modelo que trate el nivel de conversión como un estado latente y lo actualice con las "</span>
+             <span class="s2">"etiquetas que la operación genera cada día. La sección 2.2 verifica con el entrenamiento que ese nivel "</span>
+             <span class="s2">"existe y es persistente, y la sección 5 lo formaliza."</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_fe182">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_fe182_level0_col0" class="col_heading level0 col0" >Valida desde</th>
+      <th id="T_fe182_level0_col1" class="col_heading level0 col1" >Valida hasta</th>
+      <th id="T_fe182_level0_col2" class="col_heading level0 col2" >Prevalencia</th>
+      <th id="T_fe182_level0_col3" class="col_heading level0 col3" >Mejor AUC-PR (140 combinaciones)</th>
+      <th id="T_fe182_level0_col4" class="col_heading level0 col4" >Mejora sobre el azar (mediana de finalistas)</th>
+      <th id="T_fe182_level0_col5" class="col_heading level0 col5" >AUC máx. (finalistas)</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >Pliegue</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+      <th class="blank col2" >&nbsp;</th>
+      <th class="blank col3" >&nbsp;</th>
+      <th class="blank col4" >&nbsp;</th>
+      <th class="blank col5" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_fe182_level0_row0" class="row_heading level0 row0" >1</th>
+      <td id="T_fe182_row0_col0" class="data row0 col0" >2008-05</td>
+      <td id="T_fe182_row0_col1" class="data row0 col1" >2008-06</td>
+      <td id="T_fe182_row0_col2" class="data row0 col2" >0,039</td>
+      <td id="T_fe182_row0_col3" class="data row0 col3" >0,046</td>
+      <td id="T_fe182_row0_col4" class="data row0 col4" >1,043</td>
+      <td id="T_fe182_row0_col5" class="data row0 col5" >0,523</td>
+    </tr>
+    <tr>
+      <th id="T_fe182_level0_row1" class="row_heading level0 row1" >2</th>
+      <td id="T_fe182_row1_col0" class="data row1 col0" >2008-06</td>
+      <td id="T_fe182_row1_col1" class="data row1 col1" >2008-07</td>
+      <td id="T_fe182_row1_col2" class="data row1 col2" >0,060</td>
+      <td id="T_fe182_row1_col3" class="data row1 col3" >0,069</td>
+      <td id="T_fe182_row1_col4" class="data row1 col4" >1,020</td>
+      <td id="T_fe182_row1_col5" class="data row1 col5" >0,522</td>
+    </tr>
+    <tr>
+      <th id="T_fe182_level0_row2" class="row_heading level0 row2" >3</th>
+      <td id="T_fe182_row2_col0" class="data row2 col0" >2008-07</td>
+      <td id="T_fe182_row2_col1" class="data row2 col1" >2008-08</td>
+      <td id="T_fe182_row2_col2" class="data row2 col2" >0,059</td>
+      <td id="T_fe182_row2_col3" class="data row2 col3" >0,070</td>
+      <td id="T_fe182_row2_col4" class="data row2 col4" >1,050</td>
+      <td id="T_fe182_row2_col5" class="data row2 col5" >0,521</td>
+    </tr>
+    <tr>
+      <th id="T_fe182_level0_row3" class="row_heading level0 row3" >4</th>
+      <td id="T_fe182_row3_col0" class="data row3 col0" >2008-08</td>
+      <td id="T_fe182_row3_col1" class="data row3 col1" >2008-11</td>
+      <td id="T_fe182_row3_col2" class="data row3 col2" >0,054</td>
+      <td id="T_fe182_row3_col3" class="data row3 col3" >0,058</td>
+      <td id="T_fe182_row3_col4" class="data row3 col4" >0,950</td>
+      <td id="T_fe182_row3_col5" class="data row3 col5" >0,491</td>
+    </tr>
+    <tr>
+      <th id="T_fe182_level0_row4" class="row_heading level0 row4" >5</th>
+      <td id="T_fe182_row4_col0" class="data row4 col0" >2008-11</td>
+      <td id="T_fe182_row4_col1" class="data row4 col1" >2009-05</td>
+      <td id="T_fe182_row4_col2" class="data row4 col2" >0,140</td>
+      <td id="T_fe182_row4_col3" class="data row4 col3" >0,296</td>
+      <td id="T_fe182_row4_col4" class="data row4 col4" >1,815</td>
+      <td id="T_fe182_row4_col5" class="data row4 col5" >0,716</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"><style type="text/css">
+</style>
+<table id="T_b012f">
+  <thead>
+    <tr>
+      <th id="T_b012f_level0_col0" class="col_heading level0 col0" >Modelo</th>
+      <th id="T_b012f_level0_col1" class="col_heading level0 col1" >AUC-PR prueba</th>
+      <th id="T_b012f_level0_col2" class="col_heading level0 col2" >AUC prueba</th>
+      <th id="T_b012f_level0_col3" class="col_heading level0 col3" >AUC-PR con recalibración mensual</th>
+      <th id="T_b012f_level0_col4" class="col_heading level0 col4" >AUC con recalibración mensual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_b012f_row0_col0" class="data row0 col0" >Naive Bayes · class_weight · Bayesiana (Optuna TPE)</td>
+      <td id="T_b012f_row0_col1" class="data row0 col1" >0,534</td>
+      <td id="T_b012f_row0_col2" class="data row0 col2" >0,714</td>
+      <td id="T_b012f_row0_col3" class="data row0 col3" >0,478</td>
+      <td id="T_b012f_row0_col4" class="data row0 col4" >0,677</td>
+    </tr>
+    <tr>
+      <td id="T_b012f_row1_col0" class="data row1 col0" >Logística L1/L2 · SMOTE · Random Search</td>
+      <td id="T_b012f_row1_col1" class="data row1 col1" >0,530</td>
+      <td id="T_b012f_row1_col2" class="data row1 col2" >0,681</td>
+      <td id="T_b012f_row1_col3" class="data row1 col3" >0,584</td>
+      <td id="T_b012f_row1_col4" class="data row1 col4" >0,761</td>
+    </tr>
+    <tr>
+      <td id="T_b012f_row2_col0" class="data row2 col0" >Random Forest · Sin balanceo · Bayesiana (Optuna TPE)</td>
+      <td id="T_b012f_row2_col1" class="data row2 col1" >0,503</td>
+      <td id="T_b012f_row2_col2" class="data row2 col2" >0,720</td>
+      <td id="T_b012f_row2_col3" class="data row2 col3" >0,541</td>
+      <td id="T_b012f_row2_col4" class="data row2 col4" >0,742</td>
+    </tr>
+    <tr>
+      <td id="T_b012f_row3_col0" class="data row3 col0" >SVM · class_weight · Grid Search</td>
+      <td id="T_b012f_row3_col1" class="data row3 col1" >0,538</td>
+      <td id="T_b012f_row3_col2" class="data row3 col2" >0,724</td>
+      <td id="T_b012f_row3_col3" class="data row3 col3" >—</td>
+      <td id="T_b012f_row3_col4" class="data row3 col4" >—</td>
+    </tr>
+    <tr>
+      <td id="T_b012f_row4_col0" class="data row4 col0" >XGBoost · class_weight · Genético (DEAP)</td>
+      <td id="T_b012f_row4_col1" class="data row4 col1" >0,369</td>
+      <td id="T_b012f_row4_col2" class="data row4 col2" >0,559</td>
+      <td id="T_b012f_row4_col3" class="data row4 col3" >0,482</td>
+      <td id="T_b012f_row4_col4" class="data row4 col4" >0,721</td>
+    </tr>
+    <tr>
+      <td id="T_b012f_row5_col0" class="data row5 col0" >Árbol de decisión · SMOTE · Bayesiana (Optuna TPE)</td>
+      <td id="T_b012f_row5_col1" class="data row5 col1" >0,374</td>
+      <td id="T_b012f_row5_col2" class="data row5 col2" >0,567</td>
+      <td id="T_b012f_row5_col3" class="data row5 col3" >0,423</td>
+      <td id="T_b012f_row5_col4" class="data row5 col4" >0,615</td>
+    </tr>
+    <tr>
+      <td id="T_b012f_row6_col0" class="data row6 col0" >KNN · class_weight · Grid Search</td>
+      <td id="T_b012f_row6_col1" class="data row6 col1" >0,500</td>
+      <td id="T_b012f_row6_col2" class="data row6 col2" >0,688</td>
+      <td id="T_b012f_row6_col3" class="data row6 col3" >0,577</td>
+      <td id="T_b012f_row6_col4" class="data row6 col4" >0,756</td>
+    </tr>
+    <tr>
+      <td id="T_b012f_row7_col0" class="data row7 col0" >Referencia E2 (logística C = 0,01)</td>
+      <td id="T_b012f_row7_col1" class="data row7 col1" >0,548</td>
+      <td id="T_b012f_row7_col2" class="data row7 col2" >0,710</td>
+      <td id="T_b012f_row7_col3" class="data row7 col3" >0,579</td>
+      <td id="T_b012f_row7_col4" class="data row7 col4" >0,758</td>
+    </tr>
+  </tbody>
+</table>
+</div><img alt="_images/e34bbcd3b3c660ebd1aa50641f4478b76db2793e4b014b91546769a0e57f4350.png" src="_images/e34bbcd3b3c660ebd1aa50641f4478b76db2793e4b014b91546769a0e57f4350.png" />
+<p><strong>Interpretación.</strong> En 4 de los 4 primeros pliegues externos (validación dentro de 2008) la mediana de los finalistas apenas supera a la prevalencia (mejora sobre el azar entre 0,95 y 1,05), con AUC máximo de 0,523; solo el último pliegue, que valida de 2008-11 a 2009-05, muestra señal (mejora mediana de 1,81). En la prueba, el AUC-PR de los finalistas va de 0,369 a 0,548, y la recalibración mensual del intercepto lo sube en 6 de los 7 modelos con probabilidades (mediana de 0,049).</p>
+<p>Esto significa que el ordenamiento de las 140 combinaciones lo decide casi por completo un solo bloque de validación, y que la mejora más grande del tercer entregable no vino de un modelo más flexible ni de una mejor búsqueda de hiperparámetros, sino de ajustar el intercepto a la tasa del mes que acaba de cerrar. Si desplazar un solo número por mes mejora el ordenamiento global más que cambiar de familia de modelos, la información que falta no está en las variables del cliente: está en el <strong>momento</strong> de la llamada, en un nivel de conversión que cambia con el tiempo y que un modelo estático no puede seguir.</p>
+<p>Por tal motivo, se opta por dirigir el modelo original a ese vacío: en lugar de otro clasificador estático, un modelo que trate el nivel de conversión como un estado latente y lo actualice con las etiquetas que la operación genera cada día. La sección <a class="reference internal" href="02_datos.html#sec-2-2"><span class="std std-ref">2.2</span></a> verifica con el entrenamiento que ese nivel existe y es persistente, y la sección 5 lo formaliza.</p>
+</div>
+</div>
+<section id="por-que-ningun-modelo-mas-flexible-supera-a-la-logistica">
+<h3>¿Por qué ningún modelo más flexible supera a la logística?<a class="headerlink" href="#por-que-ningun-modelo-mas-flexible-supera-a-la-logistica" title="Link to this heading">#</a></h3>
+<p>En el Entregable 2 ningún modelo más flexible superó a la logística (sección 4.11) y en el tercero los finalistas de árboles quedaron por debajo de ella en la prueba. Un resultado así obliga a descartar un error del <em>pipeline</em> antes de interpretarlo. La prueba es simple: si el código estuviera mal, los modelos flexibles también perderían cuando no hay cambio de régimen. Se comparan la logística con C = 0,01, un Random Forest y un XGBoost con hiperparámetros fijos y razonables en tres escenarios: validación cruzada <strong>aleatoria</strong> dentro del entrenamiento (sin cambio de régimen), validación <strong>temporal</strong> (los cinco pliegues externos) y <strong>prueba</strong> (2009-2010). Además se mide qué parte de la prueba cae fuera del rango de las variables macroeconómicas vistas en el entrenamiento, porque un árbol no extrapola: fuera de ese rango su predicción es constante.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bm.modelos</span><span class="w"> </span><span class="kn">import</span> <span class="n">construir_pipeline</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">modelos_flexibles</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"Logística C = 0,01"</span><span class="p">:</span> <span class="n">construir_pipeline</span><span class="p">(</span><span class="s2">"clf"</span><span class="p">,</span> <span class="s2">"logistica"</span><span class="p">,</span> <span class="s2">"ninguno"</span><span class="p">)</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span>
+                <span class="n">modelo__C</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">modelo__l1_ratio</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">modelo__solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">,</span> <span class="n">modelo__max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">),</span>
+            <span class="s2">"Random Forest"</span><span class="p">:</span> <span class="n">construir_pipeline</span><span class="p">(</span><span class="s2">"clf"</span><span class="p">,</span> <span class="s2">"bosque"</span><span class="p">,</span> <span class="s2">"ninguno"</span><span class="p">)</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span>
+                <span class="n">modelo__n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">modelo__min_samples_leaf</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">modelo__n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+            <span class="s2">"XGBoost"</span><span class="p">:</span> <span class="n">construir_pipeline</span><span class="p">(</span><span class="s2">"clf"</span><span class="p">,</span> <span class="s2">"xgboost"</span><span class="p">,</span> <span class="s2">"ninguno"</span><span class="p">)</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span>
+                <span class="n">modelo__n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">modelo__learning_rate</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">modelo__max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">modelo__n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">)}</span>
+
+
+<span class="n">escenarios</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"aleatoria"</span><span class="p">:</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">SEED</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">),</span>
+              <span class="s2">"temporal"</span><span class="p">:</span> <span class="n">cv_externa</span><span class="p">(</span><span class="n">GAP</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_tr</span><span class="p">)}</span>
+<span class="n">escenarios</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">escenarios</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">nombre</span> <span class="ow">in</span> <span class="n">modelos_flexibles</span><span class="p">():</span>
+    <span class="n">fila</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Modelo"</span><span class="p">:</span> <span class="n">nombre</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">esc</span><span class="p">,</span> <span class="n">cortes</span> <span class="ow">in</span> <span class="n">escenarios</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">s_auc</span><span class="p">,</span> <span class="n">s_ap</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i_e</span><span class="p">,</span> <span class="n">i_v</span> <span class="ow">in</span> <span class="n">cortes</span><span class="p">:</span>
+            <span class="n">m_</span> <span class="o">=</span> <span class="n">modelos_flexibles</span><span class="p">()[</span><span class="n">nombre</span><span class="p">]</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_e</span><span class="p">],</span> <span class="n">y_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_e</span><span class="p">])</span>
+            <span class="n">s_</span> <span class="o">=</span> <span class="n">m_</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_v</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">s_auc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_v</span><span class="p">],</span> <span class="n">s_</span><span class="p">))</span>
+            <span class="n">s_ap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">average_precision_score</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_v</span><span class="p">],</span> <span class="n">s_</span><span class="p">))</span>
+        <span class="n">fila</span><span class="p">[</span><span class="sa">f</span><span class="s2">"AUC </span><span class="si">{</span><span class="n">esc</span><span class="si">}</span><span class="s2">"</span><span class="p">],</span> <span class="n">fila</span><span class="p">[</span><span class="sa">f</span><span class="s2">"AUC-PR </span><span class="si">{</span><span class="n">esc</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s_auc</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s_ap</span><span class="p">)</span>
+    <span class="n">s_</span> <span class="o">=</span> <span class="n">modelos_flexibles</span><span class="p">()[</span><span class="n">nombre</span><span class="p">]</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_te</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">fila</span><span class="p">[</span><span class="s2">"AUC prueba"</span><span class="p">],</span> <span class="n">fila</span><span class="p">[</span><span class="s2">"AUC-PR prueba"</span><span class="p">]</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">s_</span><span class="p">),</span> <span class="n">average_precision_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">s_</span><span class="p">)</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
+<span class="n">flex</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Modelo"</span><span class="p">)</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">flex</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">rango</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">"Variable"</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span> <span class="s2">"Mínimo entrenamiento"</span><span class="p">:</span> <span class="n">X_tr</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">"Máximo entrenamiento"</span><span class="p">:</span> <span class="n">X_tr</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+                       <span class="s2">"Mínimo prueba"</span><span class="p">:</span> <span class="n">X_te</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">"Máximo prueba"</span><span class="p">:</span> <span class="n">X_te</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+                       <span class="s2">"Prueba fuera del rango de entrenamiento"</span><span class="p">:</span> <span class="p">((</span><span class="n">X_te</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">X_tr</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">|</span> <span class="p">(</span><span class="n">X_te</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">X_tr</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span><span class="o">.</span><span class="n">mean</span><span class="p">()}</span>
+                      <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"nr.employed"</span><span class="p">,</span> <span class="s2">"cons.price.idx"</span><span class="p">,</span> <span class="s2">"cons.conf.idx"</span><span class="p">)])</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">rango</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"mejoras"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">flex</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"mejoras"</span> <span class="o">/</span> <span class="s2">"flexibles.parquet"</span><span class="p">)</span>
+<span class="n">rango</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">RES</span> <span class="o">/</span> <span class="s2">"mejoras"</span> <span class="o">/</span> <span class="s2">"rango_macro.parquet"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">base_f</span> <span class="o">=</span> <span class="n">flex</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"Logística C = 0,01"</span><span class="p">]</span>
+<span class="n">mejor_alea</span> <span class="o">=</span> <span class="n">flex</span><span class="p">[</span><span class="s2">"AUC-PR aleatoria"</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<span class="n">fuera_nr</span> <span class="o">=</span> <span class="n">rango</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Variable"</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"nr.employed"</span><span class="p">,</span> <span class="s2">"Prueba fuera del rango de entrenamiento"</span><span class="p">]</span>
+<span class="n">interpretar</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Con validación aleatoria, el mejor AUC-PR es el de </span><span class="si">{</span><span class="n">mejor_alea</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">flex</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mejor_alea</span><span class="p">,</span><span class="w"> </span><span class="s1">'AUC-PR aleatoria'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, "</span>
+    <span class="sa">f</span><span class="s2">"frente a </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">base_f</span><span class="p">[</span><span class="s1">'AUC-PR aleatoria'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> de la logística); con validación temporal, los tres modelos quedan "</span>
+    <span class="sa">f</span><span class="s2">"entre </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">flex</span><span class="p">[</span><span class="s1">'AUC temporal'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> y </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">flex</span><span class="p">[</span><span class="s1">'AUC temporal'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> de AUC, y en la prueba la logística "</span>
+    <span class="sa">f</span><span class="s2">"obtiene el mayor AUC-PR (</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">base_f</span><span class="p">[</span><span class="s1">'AUC-PR prueba'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, frente a </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">flex</span><span class="p">[</span><span class="s1">'AUC-PR prueba'</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">base_f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
+    <span class="sa">f</span><span class="s2">"del mejor modelo flexible). El </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">fuera_nr</span><span class="p">)</span><span class="si">}</span><span class="s2"> de los registros de prueba tiene un `nr.employed` por debajo del mínimo "</span>
+    <span class="sa">f</span><span class="s2">"visto en el entrenamiento (</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">X_tr</span><span class="p">[</span><span class="s1">'nr.employed'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">)."</span><span class="p">,</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Esto significa que"</span><span class="p">,</span> <span class="s2">"No hay un error en el *pipeline*: cuando el periodo de validación se parece al de "</span>
+             <span class="s2">"ajuste, los modelos flexibles aprovechan las interacciones y superan a la logística, como se espera. Pierden "</span>
+             <span class="s2">"su ventaja cuando el régimen cambia, porque aprendieron relaciones de 2008 que luego cambian (deriva de "</span>
+             <span class="s2">"concepto) y porque un árbol no extrapola: con la mayoría de la prueba fuera del rango macroeconómico del "</span>
+             <span class="s2">"entrenamiento, sus predicciones quedan planas donde la logística sigue la tendencia. El límite de este "</span>
+             <span class="s2">"problema no es la forma funcional del modelo sino el cambio de régimen en el tiempo."</span><span class="p">),</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Por lo anterior, conviene"</span><span class="p">,</span> <span class="s2">"Buscar la mejora en un modelo que trate el tiempo de forma explícita y no en "</span>
+             <span class="s2">"un clasificador más flexible, que es la decisión que guía el modelo original de este entregable."</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_f6334">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_f6334_level0_col0" class="col_heading level0 col0" >AUC aleatoria</th>
+      <th id="T_f6334_level0_col1" class="col_heading level0 col1" >AUC-PR aleatoria</th>
+      <th id="T_f6334_level0_col2" class="col_heading level0 col2" >AUC temporal</th>
+      <th id="T_f6334_level0_col3" class="col_heading level0 col3" >AUC-PR temporal</th>
+      <th id="T_f6334_level0_col4" class="col_heading level0 col4" >AUC prueba</th>
+      <th id="T_f6334_level0_col5" class="col_heading level0 col5" >AUC-PR prueba</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >Modelo</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+      <th class="blank col2" >&nbsp;</th>
+      <th class="blank col3" >&nbsp;</th>
+      <th class="blank col4" >&nbsp;</th>
+      <th class="blank col5" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_f6334_level0_row0" class="row_heading level0 row0" >Logística C = 0,01</th>
+      <td id="T_f6334_row0_col0" class="data row0 col0" >0,667</td>
+      <td id="T_f6334_row0_col1" class="data row0 col1" >0,190</td>
+      <td id="T_f6334_row0_col2" class="data row0 col2" >0,517</td>
+      <td id="T_f6334_row0_col3" class="data row0 col3" >0,098</td>
+      <td id="T_f6334_row0_col4" class="data row0 col4" >0,705</td>
+      <td id="T_f6334_row0_col5" class="data row0 col5" >0,543</td>
+    </tr>
+    <tr>
+      <th id="T_f6334_level0_row1" class="row_heading level0 row1" >Random Forest</th>
+      <td id="T_f6334_row1_col0" class="data row1 col0" >0,669</td>
+      <td id="T_f6334_row1_col1" class="data row1 col1" >0,207</td>
+      <td id="T_f6334_row1_col2" class="data row1 col2" >0,517</td>
+      <td id="T_f6334_row1_col3" class="data row1 col3" >0,087</td>
+      <td id="T_f6334_row1_col4" class="data row1 col4" >0,716</td>
+      <td id="T_f6334_row1_col5" class="data row1 col5" >0,497</td>
+    </tr>
+    <tr>
+      <th id="T_f6334_level0_row2" class="row_heading level0 row2" >XGBoost</th>
+      <td id="T_f6334_row2_col0" class="data row2 col0" >0,672</td>
+      <td id="T_f6334_row2_col1" class="data row2 col1" >0,203</td>
+      <td id="T_f6334_row2_col2" class="data row2 col2" >0,533</td>
+      <td id="T_f6334_row2_col3" class="data row2 col3" >0,090</td>
+      <td id="T_f6334_row2_col4" class="data row2 col4" >0,642</td>
+      <td id="T_f6334_row2_col5" class="data row2 col5" >0,449</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"><style type="text/css">
+</style>
+<table id="T_17b83">
+  <thead>
+    <tr>
+      <th id="T_17b83_level0_col0" class="col_heading level0 col0" >Variable</th>
+      <th id="T_17b83_level0_col1" class="col_heading level0 col1" >Mínimo entrenamiento</th>
+      <th id="T_17b83_level0_col2" class="col_heading level0 col2" >Máximo entrenamiento</th>
+      <th id="T_17b83_level0_col3" class="col_heading level0 col3" >Mínimo prueba</th>
+      <th id="T_17b83_level0_col4" class="col_heading level0 col4" >Máximo prueba</th>
+      <th id="T_17b83_level0_col5" class="col_heading level0 col5" >Prueba fuera del rango de entrenamiento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_17b83_row0_col0" class="data row0 col0" >nr.employed</td>
+      <td id="T_17b83_row0_col1" class="data row0 col1" >5 099,100</td>
+      <td id="T_17b83_row0_col2" class="data row0 col2" >5 228,100</td>
+      <td id="T_17b83_row0_col3" class="data row0 col3" >4 963,600</td>
+      <td id="T_17b83_row0_col4" class="data row0 col4" >5 099,100</td>
+      <td id="T_17b83_row0_col5" class="data row0 col5" >0,602</td>
+    </tr>
+    <tr>
+      <td id="T_17b83_row1_col0" class="data row1 col0" >cons.price.idx</td>
+      <td id="T_17b83_row1_col1" class="data row1 col1" >92,756</td>
+      <td id="T_17b83_row1_col2" class="data row1 col2" >94,465</td>
+      <td id="T_17b83_row1_col3" class="data row1 col3" >92,201</td>
+      <td id="T_17b83_row1_col4" class="data row1 col4" >94,767</td>
+      <td id="T_17b83_row1_col5" class="data row1 col5" >0,306</td>
+    </tr>
+    <tr>
+      <td id="T_17b83_row2_col0" class="data row2 col0" >cons.conf.idx</td>
+      <td id="T_17b83_row2_col1" class="data row2 col1" >-50,000</td>
+      <td id="T_17b83_row2_col2" class="data row2 col2" >-36,100</td>
+      <td id="T_17b83_row2_col3" class="data row2 col3" >-50,800</td>
+      <td id="T_17b83_row2_col4" class="data row2 col4" >-26,900</td>
+      <td id="T_17b83_row2_col5" class="data row2 col5" >0,335</td>
+    </tr>
+  </tbody>
+</table>
+</div><p><strong>Interpretación.</strong> Con validación aleatoria, el mejor AUC-PR es el de Random Forest (0,207, frente a 0,190 de la logística); con validación temporal, los tres modelos quedan entre 0,517 y 0,533 de AUC, y en la prueba la logística obtiene el mayor AUC-PR (0,543, frente a 0,497 del mejor modelo flexible). El 60,2 % de los registros de prueba tiene un <code class="docutils literal notranslate"><span class="pre">nr.employed</span></code> por debajo del mínimo visto en el entrenamiento (5 099,1).</p>
+<p>Esto significa que no hay un error en el <em>pipeline</em>: cuando el periodo de validación se parece al de ajuste, los modelos flexibles aprovechan las interacciones y superan a la logística, como se espera. Pierden su ventaja cuando el régimen cambia, porque aprendieron relaciones de 2008 que luego cambian (deriva de concepto) y porque un árbol no extrapola: con la mayoría de la prueba fuera del rango macroeconómico del entrenamiento, sus predicciones quedan planas donde la logística sigue la tendencia. El límite de este problema no es la forma funcional del modelo sino el cambio de régimen en el tiempo.</p>
+<p>Por lo anterior, conviene buscar la mejora en un modelo que trate el tiempo de forma explícita y no en un clasificador más flexible, que es la decisión que guía el modelo original de este entregable.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="tabla-de-trazabilidad-de-correcciones">
+<span id="sec-1-2"></span><h2>1.2 Tabla de trazabilidad de correcciones<a class="headerlink" href="#tabla-de-trazabilidad-de-correcciones" title="Link to this heading">#</a></h2>
+<p>La retroalimentación escrita del docente (nota de 4,8) señaló tres faltas y dos tareas para la siguiente entrega: <em>«Te resto porque no atendiste aún el cambio de prevalencia ni la inestabilidad de coeficientes con C = 100, y porque el componente temporal quedó parcial. Para la próxima entrega, recalibra el intercepto con datos recientes y compara modelos más flexibles.»</em> La columna «Antes» resume cómo estaba cada punto en la versión calificada del Entregable 1 (cuaderno <code class="docutils literal notranslate"><span class="pre">Entregable</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">Bank</span> <span class="pre">Marketing.ipynb</span></code>, incluido en esta carpeta). Las cinco quedaron resueltas desde el Entregable 2 (cuaderno <code class="docutils literal notranslate"><span class="pre">Entregable</span> <span class="pre">2</span> <span class="pre">-</span> <span class="pre">Bank</span> <span class="pre">Marketing.ipynb</span></code>, también incluido) y se mantienen en el tercero; este entregable las retoma como punto de partida del modelo original. Al valorar la interpretación, la misma retroalimentación anota además que <em>«el AUC de 0,677 es moderado, las probabilidades subestiman la prevalencia y el umbral elegido empeora en prueba»</em>; también quedaron resueltos en el Entregable 2, y la fila 6 documenta dónde y cómo se mantienen con el modelo de este entregable. La tabla separa cada observación en una fila, con la acción, la sección donde se resolvió y la evidencia que la respalda; la celda siguiente reproduce aquí la evidencia de las filas 1, 2 y 6. Al final se agregan los hallazgos de la evaluación crítica de la sección <a class="reference internal" href="#sec-1-1"><span class="std std-ref">1.1</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>N.º</p></th>
+<th class="head"><p>Observación del docente</p></th>
+<th class="head"><p>Antes: Entregable 1 (versión calificada con 4,8)</p></th>
+<th class="head"><p>Acción realizada</p></th>
+<th class="head"><p>Dónde se resolvió</p></th>
+<th class="head"><p>Ubicación en este cuaderno (capítulo del libro)</p></th>
+<th class="head"><p>Evidencia</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>No se atendió el cambio de prevalencia (6,4 % en entrenamiento frente a 30,8 % en prueba)</p></td>
+<td><p>Probabilidad media en prueba de 0,243 frente a una tasa real de 0,308; la recalibración solo se anuncia para el siguiente entregable (sección 4.7)</p></td>
+<td><p>Recalibración mensual del intercepto con los meses ya cerrados; en este entregable, el nivel de conversión se modela como estado latente y se filtra cada día</p></td>
+<td><p>Entregable 2, sección 4.7.1; tercer entregable, sección 7.4</p></td>
+<td><p>Secciones <a class="reference internal" href="#sec-1-1"><span class="std std-ref">1.1</span></a>, <a class="reference internal" href="#sec-1-2"><span class="std std-ref">1.2</span></a>, <a class="reference internal" href="05_modelo_original.html#sec-5-2"><span class="std std-ref">5.2</span></a> y <a class="reference internal" href="06_validacion.html#sec-6-6"><span class="std std-ref">6.6</span></a></p></td>
+<td><p>Entregable 2: la probabilidad media en prueba pasa de 0,167 a 0,300 (tasa de 0,308), el error mensual baja de 22,8 a 8,5 puntos y el Brier de 0,206 a 0,178. Aquí: tabla de calibración mensual de la celda siguiente y Diebold-Mariano (sección <a class="reference internal" href="06_validacion.html#sec-6-6"><span class="std std-ref">6.6</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Inestabilidad de los coeficientes con C = 100</p></td>
+<td><p>C = 100, elegido por el AUC de validación temporal (0,542), sin análisis de la estabilidad de los coeficientes (sección <a class="reference internal" href="04_literatura.html#sec-4-1"><span class="std std-ref">4.1</span></a>)</p></td>
+<td><p>C elegido por pérdida logarítmica en validación temporal (C = 0,01) y estabilidad <em>bootstrap</em> de los coeficientes según C; en el L2E, λ se optimiza dentro de la validación anidada</p></td>
+<td><p>Entregable 2, secciones 4.1 y 4.9.1; tercer entregable, modelo de referencia con C = 0,01</p></td>
+<td><p>Secciones <a class="reference internal" href="#sec-1-2"><span class="std std-ref">1.2</span></a>, <a class="reference internal" href="05_modelo_original.html#sec-5-8"><span class="std std-ref">5.8</span></a> y <a class="reference internal" href="06_validacion.html#sec-6-11"><span class="std std-ref">6.11</span></a></p></td>
+<td><p>Entregable 2: pérdida logarítmica de validación de 0,2510 con C = 0,01 frente a 0,4947 con C = 100, y desviación <em>bootstrap</em> media de los coeficientes de 0,250 a 0,053. Aquí: estabilidad por pliegue en la celda siguiente y trayectorias de las pendientes (sección <a class="reference internal" href="06_validacion.html#sec-6-11"><span class="std std-ref">6.11</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>El componente temporal quedó parcial</p></td>
+<td><p>Sección 3.6 marcada como de alcance parcial: solo contexto económico (3.6.1) y validación aleatoria frente a temporal (3.6.2), sin serie diaria, descomposición ni deriva de concepto</p></td>
+<td><p>Serie diaria, cambios de régimen, descomposición, estacionariedad, dependencia temporal y deriva de concepto; evaluación de las variables de calendario y diagnóstico temporal por año y por residuos; en este entregable, el nivel diario latente como componente del modelo</p></td>
+<td><p>Entregable 2, secciones 3.6.3, 3.6.4, 3.6.5, 4.9.2 y 4.10; tercer entregable, sección 3.6</p></td>
+<td><p>Secciones <a class="reference internal" href="02_datos.html#sec-2-2"><span class="std std-ref">2.2</span></a> y <a class="reference internal" href="05_modelo_original.html#sec-5-2"><span class="std std-ref">5.2</span></a></p></td>
+<td><p>Entregable 2: AUC de 0,667 con validación aleatoria frente a 0,514 con validación temporal, y residuos autocorrelacionados (Ljung-Box, p &lt; 0,001). Aquí: autocorrelación del logit diario y puntaje de solo nivel (sección <a class="reference internal" href="02_datos.html#sec-2-2"><span class="std std-ref">2.2</span></a>) y trayectoria del nivel latente (sección <a class="reference internal" href="06_validacion.html#sec-6-11"><span class="std std-ref">6.11</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Recalibrar el intercepto con datos recientes</p></td>
+<td><p>Sin recalibración: AUC de prueba de 0,677 y AUC-PR de 0,489 con probabilidades sin ajustar (secciones <a class="reference internal" href="04_literatura.html#sec-4-4"><span class="std std-ref">4.4</span></a> y 4.7)</p></td>
+<td><p>Recalibración mensual con el mes anterior cerrado, generalizada a todos los finalistas; en este entregable se demuestra que es un caso límite del filtro del L2E y se compara contra él</p></td>
+<td><p>Entregable 2, sección 4.7.1; tercer entregable, sección 7.4</p></td>
+<td><p>Secciones <a class="reference internal" href="#sec-1-1"><span class="std std-ref">1.1</span></a>, <a class="reference internal" href="05_modelo_original.html#sec-5-4"><span class="std std-ref">5.4</span></a> (propiedad P5) y 6.8</p></td>
+<td><p>Entregable 2: AUC de prueba de 0,710 a 0,752 con la recalibración mensual. Aquí: tabla de la sección <a class="reference internal" href="#sec-1-1"><span class="std std-ref">1.1</span></a>, demostración P5 y controles con igual información (sección <a class="reference internal" href="06_validacion.html#sec-6-8"><span class="std std-ref">6.8</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Comparar modelos más flexibles</p></td>
+<td><p>Solo la regresión logística frente al Dummy (secciones <a class="reference internal" href="04_literatura.html#sec-4-2"><span class="std std-ref">4.2</span></a> y <a class="reference internal" href="04_literatura.html#sec-4-4"><span class="std std-ref">4.4</span></a>)</p></td>
+<td><p>Splines, Random Forest y Gradient Boosting en el Entregable 2; 140 combinaciones (7 modelos, 4 balanceos y 4 optimizadores) en el tercer entregable; el L2E se compara contra los 7 finalistas</p></td>
+<td><p>Entregable 2, sección 4.11; tercer entregable, secciones 5 a 8</p></td>
+<td><p>Secciones <a class="reference internal" href="03_benchmarks.html#sec-3-1"><span class="std std-ref">3.1</span></a> y 6</p></td>
+<td><p>Entregable 2: con la misma recalibración, AUC de prueba de 0,752 del modelo base frente a 0,751 (splines), 0,735 (Random Forest) y 0,697 (Gradient Boosting). Aquí: tabla de finalistas (sección <a class="reference internal" href="03_benchmarks.html#sec-3-1"><span class="std std-ref">3.1</span></a>) y pruebas de la sección 6</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>AUC moderado, probabilidades que subestiman la prevalencia y umbral que empeora en prueba (anotados al valorar la interpretación)</p></td>
+<td><p>AUC de prueba de 0,677 y AUC-PR de 0,489; probabilidad media de 0,243 frente a 0,308; el umbral de 0,60, elegido con el pliegue más reciente, baja el F1 de prueba de 0,428 (umbral 0,5) a 0,383 (secciones <a class="reference internal" href="04_literatura.html#sec-4-3"><span class="std std-ref">4.3</span></a> y <a class="reference internal" href="04_literatura.html#sec-4-4"><span class="std std-ref">4.4</span></a>)</p></td>
+<td><p>Con C = 0,01 el umbral se vuelve a elegir con el pliegue más reciente y se recalcula sobre las probabilidades recalibradas; en este entregable, el L2E corrige el nivel cada día, de modo que sus probabilidades siguen la prevalencia y la misma regla de umbral del Entregable 1 (F1 máximo en el pliegue de validación más reciente, sin la prueba) se traslada a la prueba sin degradarse</p></td>
+<td><p>Entregable 2, secciones 4.3, 4.4 y 4.7.1</p></td>
+<td><p>Secciones <a class="reference internal" href="#sec-1-2"><span class="std std-ref">1.2</span></a>, <a class="reference internal" href="06_validacion.html#sec-6-2"><span class="std std-ref">6.2</span></a> y <a class="reference internal" href="06_validacion.html#sec-6-6"><span class="std std-ref">6.6</span></a></p></td>
+<td><p>Entregable 2: el umbral elegido (0,11) sube el F1 de prueba de 0,157 a 0,525; con la recalibración mensual, umbral de 0,13, F1 de 0,563 y AUC de 0,752, con probabilidad media de 0,300. Aquí: probabilidad media del L2E frente a la tasa observada y umbral elegido sin la prueba frente al óptimo a posteriori (celda siguiente); AUC de prueba en la tabla resumen (sección <a class="reference internal" href="06_validacion.html#sec-6-2"><span class="std std-ref">6.2</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Hallazgos de la evaluación crítica del tercer entregable</strong> (sección <a class="reference internal" href="#sec-1-1"><span class="std std-ref">1.1</span></a>), atendidos en este entregable:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>N.º</p></th>
+<th class="head"><p>Hallazgo</p></th>
+<th class="head"><p>Acción realizada</p></th>
+<th class="head"><p>Ubicación en este cuaderno</p></th>
+<th class="head"><p>Evidencia</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Friedman con cinco bloques no tiene potencia para separar modelos</p></td>
+<td><p>Pruebas sobre bloques mensuales y semanales en orden temporal, <em>bootstrap</em> estacionario y permutación por días</p></td>
+<td><p>Secciones <a class="reference internal" href="06_validacion.html#sec-6-3"><span class="std std-ref">6.3</span></a> a <a class="reference internal" href="06_validacion.html#sec-6-7"><span class="std std-ref">6.7</span></a></p></td>
+<td><p>Tablas de las secciones <a class="reference internal" href="06_validacion.html#sec-6-3"><span class="std std-ref">6.3</span></a> a <a class="reference internal" href="06_validacion.html#sec-6-7"><span class="std std-ref">6.7</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>DeLong supone independencia, pero los registros de un mismo día comparten el nivel de conversión</p></td>
+<td><p>DeLong se acompaña de <em>bootstrap</em> estacionario y permutación por días, y se verifica el supuesto</p></td>
+<td><p>Sección <a class="reference internal" href="06_validacion.html#sec-6-5"><span class="std std-ref">6.5</span></a></p></td>
+<td><p>ANOVA por día y prueba de Ljung-Box (sección <a class="reference internal" href="06_validacion.html#sec-6-5"><span class="std std-ref">6.5</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>En 2008 ningún modelo discrimina y el ranking lo decide un solo pliegue</p></td>
+<td><p>Se reporta el desempeño por pliegue y por mes, y se discute en qué periodos el modelo original no supera a los benchmarks</p></td>
+<td><p>Secciones <a class="reference internal" href="#sec-1-1"><span class="std std-ref">1.1</span></a>, <a class="reference internal" href="06_validacion.html#sec-6-9"><span class="std std-ref">6.9</span></a> y <a class="reference internal" href="08_conclusiones.html#sec-8-3"><span class="std std-ref">8.3</span></a></p></td>
+<td><p>Análisis de errores (sección <a class="reference internal" href="06_validacion.html#sec-6-9"><span class="std std-ref">6.9</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bm.modelos</span><span class="w"> </span><span class="kn">import</span> <span class="n">construir_pipeline</span>
+
+<span class="c1"># Evidencia de la observación 2: estabilidad de los coeficientes entre los cinco pliegues externos</span>
+<span class="n">coefs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Logística C = 100 (Entregable 1)"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"Logística C = 0,01 (corrección del Entregable 2)"</span><span class="p">:</span> <span class="p">[],</span>
+         <span class="s2">"L2E (λ optimizado en cada pliegue)"</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="k">for</span> <span class="n">k_</span><span class="p">,</span> <span class="p">(</span><span class="n">i_e</span><span class="p">,</span> <span class="n">i_v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv_externa</span><span class="p">(</span><span class="n">GAP</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_tr</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">C_</span> <span class="ow">in</span> <span class="p">((</span><span class="s2">"Logística C = 100 (Entregable 1)"</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">),</span>
+                       <span class="p">(</span><span class="s2">"Logística C = 0,01 (corrección del Entregable 2)"</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)):</span>
+        <span class="n">m_</span> <span class="o">=</span> <span class="n">construir_pipeline</span><span class="p">(</span><span class="s2">"clf"</span><span class="p">,</span> <span class="s2">"logistica"</span><span class="p">,</span> <span class="s2">"ninguno"</span><span class="p">)</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span>
+            <span class="n">modelo__C</span><span class="o">=</span><span class="n">C_</span><span class="p">,</span> <span class="n">modelo__l1_ratio</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">modelo__solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">,</span> <span class="n">modelo__max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">modelo__tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+        <span class="n">m_</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_e</span><span class="p">],</span> <span class="n">y_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_e</span><span class="p">])</span>
+        <span class="n">coefs</span><span class="p">[</span><span class="n">nombre</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"modelo"</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+                                       <span class="n">index</span><span class="o">=</span><span class="n">m_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"pre"</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()))</span>
+    <span class="n">p_</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"__"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">corr</span><span class="p">[</span><span class="s2">"l2e"</span><span class="p">][</span><span class="n">k_</span><span class="p">][</span><span class="s2">"params"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="n">m_</span> <span class="o">=</span> <span class="n">construir_pipeline_original</span><span class="p">(</span><span class="s2">"l2e"</span><span class="p">,</span> <span class="o">**</span><span class="n">p_</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">con_dia</span><span class="p">(</span><span class="n">X_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_e</span><span class="p">],</span> <span class="n">tiempo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_e</span><span class="p">]),</span> <span class="n">y_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_e</span><span class="p">])</span>
+    <span class="n">coefs</span><span class="p">[</span><span class="s2">"L2E (λ optimizado en cada pliegue)"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m_</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">m_</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">estab</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">lista</span> <span class="ow">in</span> <span class="n">coefs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">D_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">estab</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"Modelo"</span><span class="p">:</span> <span class="n">nombre</span><span class="p">,</span> <span class="s2">"Coeficientes comunes a los 5 pliegues"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">D_</span><span class="p">),</span>
+                  <span class="s2">"Desviación estándar mediana entre pliegues"</span><span class="p">:</span> <span class="n">D_</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span>
+                  <span class="s2">"Desviación estándar máxima"</span><span class="p">:</span> <span class="n">D_</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">"|Coeficiente| máximo"</span><span class="p">:</span> <span class="n">D_</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()})</span>
+<span class="n">estab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">estab</span><span class="p">)</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">estab</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Evidencia de la observación 1: probabilidad media frente a la tasa observada en cada mes de la prueba</span>
+<span class="n">ref_</span> <span class="o">=</span> <span class="n">fin_e3</span><span class="p">[</span><span class="s2">"clf_referencia_e2"</span><span class="p">]</span>
+<span class="n">m_ult</span> <span class="o">=</span> <span class="p">(</span><span class="n">periodo_tr</span> <span class="o">==</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">cal_mes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"periodo"</span><span class="p">:</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="s2">"y"</span><span class="p">:</span> <span class="n">yte</span><span class="p">,</span> <span class="s2">"Referencia E2 sin recalibrar"</span><span class="p">:</span> <span class="n">ref_</span><span class="p">[</span><span class="s2">"puntaje_te"</span><span class="p">],</span>
+                        <span class="s2">"Referencia E2 con recalibración mensual"</span><span class="p">:</span> <span class="n">evm</span><span class="o">.</span><span class="n">recalibracion_mensual</span><span class="p">(</span>
+                            <span class="n">ref_</span><span class="p">[</span><span class="s2">"puntaje_te"</span><span class="p">],</span> <span class="n">yte</span><span class="p">,</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">ref_</span><span class="p">[</span><span class="s2">"puntaje_tr"</span><span class="p">][</span><span class="n">m_ult</span><span class="p">],</span> <span class="n">y_tr</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">m_ult</span><span class="p">]),</span>
+                        <span class="s2">"L2E"</span><span class="p">:</span> <span class="n">PUNTAJE_TE</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]})</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"periodo"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">err_mes</span> <span class="o">=</span> <span class="n">cal_mes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"y"</span><span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">cal_mes</span><span class="p">[</span><span class="s2">"y"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+<span class="n">resumen_cal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"Error absoluto medio mensual (prob. media − tasa)"</span><span class="p">:</span> <span class="n">err_mes</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+                            <span class="s2">"Error máximo mensual"</span><span class="p">:</span> <span class="n">err_mes</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+                            <span class="s2">"Probabilidad media en prueba"</span><span class="p">:</span> <span class="n">cal_mes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"y"</span><span class="p">)</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span>
+                                <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">periodo_te</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">cal_mes</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">yte</span><span class="p">)})</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">resumen_cal</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tasa observada en prueba: </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">yte</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Evidencia de la observación 6: la regla de umbral del Entregable 1 (F1 máximo en el pliegue de validación más</span>
+<span class="c1"># reciente, sin la prueba) aplicada a las predicciones precuenciales del L2E</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">f1_score</span>
+
+<span class="n">oof_</span> <span class="o">=</span> <span class="n">corr</span><span class="p">[</span><span class="s2">"l2e"</span><span class="p">][</span><span class="n">cfg</span><span class="o">.</span><span class="n">K_EXTERNO</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="s2">"oof"</span><span class="p">]</span>
+<span class="n">rejilla_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.951</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">u_val</span> <span class="o">=</span> <span class="n">rejilla_u</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">([</span><span class="n">f1_score</span><span class="p">(</span><span class="n">oof_</span><span class="p">[</span><span class="s2">"y"</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">oof_</span><span class="p">[</span><span class="s2">"puntaje"</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">u</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">rejilla_u</span><span class="p">])]</span>
+<span class="n">f1_te</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span><span class="p">:</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">PUNTAJE_TE</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">u</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">rejilla_u</span><span class="p">}</span>
+<span class="n">u_opt</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f1_te</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">f1_te</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+<span class="n">umbrales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"Umbral"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">u_val</span><span class="p">,</span> <span class="n">u_opt</span><span class="p">],</span>
+                         <span class="s2">"F1 en prueba"</span><span class="p">:</span> <span class="p">[</span><span class="n">f1_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">PUNTAJE_TE</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">f1_te</span><span class="p">[</span><span class="n">u_val</span><span class="p">],</span> <span class="n">f1_te</span><span class="p">[</span><span class="n">u_opt</span><span class="p">]]},</span>
+                        <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Umbral fijo de 0,5"</span><span class="p">,</span> <span class="s2">"Elegido sin la prueba (regla del Entregable 1)"</span><span class="p">,</span>
+                               <span class="s2">"Óptimo a posteriori en la prueba (solo referencia)"</span><span class="p">])</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">umbrales</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">para_guion</span><span class="p">(</span><span class="s2">"correcciones"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">"de_c100"</span><span class="p">:</span> <span class="n">estab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"Desviación estándar mediana entre pliegues"</span><span class="p">],</span>
+    <span class="s2">"de_c001"</span><span class="p">:</span> <span class="n">estab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"Desviación estándar mediana entre pliegues"</span><span class="p">],</span>
+    <span class="s2">"de_l2e"</span><span class="p">:</span> <span class="n">estab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s2">"Desviación estándar mediana entre pliegues"</span><span class="p">],</span>
+    <span class="s2">"err_sin"</span><span class="p">:</span> <span class="n">resumen_cal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">"err_rec"</span><span class="p">:</span> <span class="n">resumen_cal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">"err_l2e"</span><span class="p">:</span> <span class="n">resumen_cal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s2">"prob_l2e"</span><span class="p">:</span> <span class="n">resumen_cal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"tasa"</span><span class="p">:</span> <span class="n">yte</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">"lam"</span><span class="p">:</span> <span class="n">L2E</span><span class="p">[</span><span class="s2">"params"</span><span class="p">][</span><span class="s2">"modelo__lam"</span><span class="p">],</span>
+    <span class="s2">"u_val"</span><span class="p">:</span> <span class="n">u_val</span><span class="p">,</span> <span class="s2">"f1_val"</span><span class="p">:</span> <span class="n">umbrales</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">"f1_05"</span><span class="p">:</span> <span class="n">umbrales</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">"u_opt"</span><span class="p">:</span> <span class="n">u_opt</span><span class="p">,</span>
+    <span class="s2">"f1_opt"</span><span class="p">:</span> <span class="n">umbrales</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+
+<span class="n">e_</span> <span class="o">=</span> <span class="n">estab</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Modelo"</span><span class="p">)[</span><span class="s2">"Desviación estándar mediana entre pliegues"</span><span class="p">]</span>
+<span class="n">interpretar</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Entre los cinco pliegues externos, la desviación estándar mediana de los coeficientes es de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">e_</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> con "</span>
+    <span class="sa">f</span><span class="s2">"C = 100 y de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">e_</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> con C = 0,01, es decir, </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">e_</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">e_</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2"> veces menor, y el "</span>
+    <span class="sa">f</span><span class="s2">"coeficiente más grande pasa de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">estab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'|Coeficiente| máximo'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> a "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">estab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">'|Coeficiente| máximo'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">; el L2E queda en </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">e_</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">. En la prueba, la probabilidad "</span>
+    <span class="sa">f</span><span class="s2">"media de la referencia sin recalibrar se aleja de la tasa de cada mes en </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">resumen_cal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> en promedio; "</span>
+    <span class="sa">f</span><span class="s2">"con la recalibración mensual, en </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">resumen_cal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, y con el L2E, en </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">resumen_cal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">. "</span>
+    <span class="s2">"La cifra de la recalibración difiere de los 8,5 puntos del Entregable 2 porque allí el desplazamiento se estima "</span>
+    <span class="s2">"con el mes anterior y, si tiene menos de 500 contactos, con los previos hasta reunirlos, mientras que aquí se usa "</span>
+    <span class="s2">"la versión del tercer entregable, que toma solo el mes inmediatamente anterior. La probabilidad media del L2E en "</span>
+    <span class="sa">f</span><span class="s2">"la prueba es de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">resumen_cal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, frente a una tasa observada de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">yte</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> (en el "</span>
+    <span class="s2">"Entregable 1 era de 0,243). Con la misma regla de umbral del Entregable 1, el pliegue externo más reciente elige "</span>
+    <span class="sa">f</span><span class="s2">"un umbral de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">u_val</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">, que en la prueba da un F1 de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">umbrales</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, frente a "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">umbrales</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> con 0,5 y </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">umbrales</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> con el óptimo a posteriori "</span>
+    <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">u_opt</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">); en el Entregable 1, el umbral elegido bajaba el F1 de 0,428 a 0,383, y desde el Entregable 2 "</span>
+    <span class="s2">"lo sube (de 0,157 a 0,525)."</span><span class="p">,</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Esto significa que"</span><span class="p">,</span> <span class="s2">"Las correcciones que pidió el docente se sostienen con los datos de "</span>
+             <span class="s2">"este entregable: la regularización elegida por pérdida logarítmica estabiliza los coeficientes, y la "</span>
+             <span class="s2">"recalibración con datos recientes reduce el desfase de prevalencia, que el L2E corrige además día a día. "</span>
+             <span class="s2">"Como las probabilidades del L2E siguen la prevalencia, un umbral elegido con el pasado conserva su sentido "</span>
+             <span class="s2">"en la prueba, que era lo que fallaba en el Entregable 1, donde el umbral se aprendía con una prevalencia "</span>
+             <span class="s2">"que ya no era la del periodo siguiente. Hay "</span>
+             <span class="s2">"que tener en cuenta que el L2E es menos estable que la logística con C = 0,01 entre pliegues, porque Optuna "</span>
+             <span class="s2">"elige un λ distinto en cada uno (sección 5.8) y en algunos la penalización es débil; el modelo final usa "</span>
+             <span class="sa">f</span><span class="s2">"λ = </span><span class="si">{</span><span class="n">num_c</span><span class="p">(</span><span class="n">L2E</span><span class="p">[</span><span class="s1">'params'</span><span class="p">][</span><span class="s1">'modelo__lam'</span><span class="p">])</span><span class="si">}</span><span class="s2">, del mismo orden que C = 0,01."</span><span class="p">),</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Por tal motivo, se opta por"</span><span class="p">,</span> <span class="s2">"Dar por resueltas las observaciones del docente, con la evidencia de "</span>
+             <span class="s2">"esta celda y de las secciones indicadas en la tabla, y declarar la menor estabilidad del L2E entre pliegues "</span>
+             <span class="s2">"como una limitación (sección 8.3)."</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_b5c5a">
+  <thead>
+    <tr>
+      <th id="T_b5c5a_level0_col0" class="col_heading level0 col0" >Modelo</th>
+      <th id="T_b5c5a_level0_col1" class="col_heading level0 col1" >Coeficientes comunes a los 5 pliegues</th>
+      <th id="T_b5c5a_level0_col2" class="col_heading level0 col2" >Desviación estándar mediana entre pliegues</th>
+      <th id="T_b5c5a_level0_col3" class="col_heading level0 col3" >Desviación estándar máxima</th>
+      <th id="T_b5c5a_level0_col4" class="col_heading level0 col4" >|Coeficiente| máximo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_b5c5a_row0_col0" class="data row0 col0" >Logística C = 100 (Entregable 1)</td>
+      <td id="T_b5c5a_row0_col1" class="data row0 col1" >37</td>
+      <td id="T_b5c5a_row0_col2" class="data row0 col2" >0,144</td>
+      <td id="T_b5c5a_row0_col3" class="data row0 col3" >0,635</td>
+      <td id="T_b5c5a_row0_col4" class="data row0 col4" >1,529</td>
+    </tr>
+    <tr>
+      <td id="T_b5c5a_row1_col0" class="data row1 col0" >Logística C = 0,01 (corrección del Entregable 2)</td>
+      <td id="T_b5c5a_row1_col1" class="data row1 col1" >37</td>
+      <td id="T_b5c5a_row1_col2" class="data row1 col2" >0,023</td>
+      <td id="T_b5c5a_row1_col3" class="data row1 col3" >0,063</td>
+      <td id="T_b5c5a_row1_col4" class="data row1 col4" >0,152</td>
+    </tr>
+    <tr>
+      <td id="T_b5c5a_row2_col0" class="data row2 col0" >L2E (λ optimizado en cada pliegue)</td>
+      <td id="T_b5c5a_row2_col1" class="data row2 col1" >37</td>
+      <td id="T_b5c5a_row2_col2" class="data row2 col2" >0,092</td>
+      <td id="T_b5c5a_row2_col3" class="data row2 col3" >0,364</td>
+      <td id="T_b5c5a_row2_col4" class="data row2 col4" >0,846</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"><style type="text/css">
+</style>
+<table id="T_cff51">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_cff51_level0_col0" class="col_heading level0 col0" >Error absoluto medio mensual (prob. media − tasa)</th>
+      <th id="T_cff51_level0_col1" class="col_heading level0 col1" >Error máximo mensual</th>
+      <th id="T_cff51_level0_col2" class="col_heading level0 col2" >Probabilidad media en prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_cff51_level0_row0" class="row_heading level0 row0" >Referencia E2 sin recalibrar</th>
+      <td id="T_cff51_row0_col0" class="data row0 col0" >0,228</td>
+      <td id="T_cff51_row0_col1" class="data row0 col1" >0,394</td>
+      <td id="T_cff51_row0_col2" class="data row0 col2" >0,167</td>
+    </tr>
+    <tr>
+      <th id="T_cff51_level0_row1" class="row_heading level0 row1" >Referencia E2 con recalibración mensual</th>
+      <td id="T_cff51_row1_col0" class="data row1 col0" >0,102</td>
+      <td id="T_cff51_row1_col1" class="data row1 col1" >0,217</td>
+      <td id="T_cff51_row1_col2" class="data row1 col2" >0,288</td>
+    </tr>
+    <tr>
+      <th id="T_cff51_level0_row2" class="row_heading level0 row2" >L2E</th>
+      <td id="T_cff51_row2_col0" class="data row2 col0" >0,015</td>
+      <td id="T_cff51_row2_col1" class="data row2 col1" >0,047</td>
+      <td id="T_cff51_row2_col2" class="data row2 col2" >0,308</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tasa observada en prueba: 0,308
+</pre></div>
+</div>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_ac107">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_ac107_level0_col0" class="col_heading level0 col0" >Umbral</th>
+      <th id="T_ac107_level0_col1" class="col_heading level0 col1" >F1 en prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_ac107_level0_row0" class="row_heading level0 row0" >Umbral fijo de 0,5</th>
+      <td id="T_ac107_row0_col0" class="data row0 col0" >0,500</td>
+      <td id="T_ac107_row0_col1" class="data row0 col1" >0,504</td>
+    </tr>
+    <tr>
+      <th id="T_ac107_level0_row1" class="row_heading level0 row1" >Elegido sin la prueba (regla del Entregable 1)</th>
+      <td id="T_ac107_row1_col0" class="data row1 col0" >0,230</td>
+      <td id="T_ac107_row1_col1" class="data row1 col1" >0,587</td>
+    </tr>
+    <tr>
+      <th id="T_ac107_level0_row2" class="row_heading level0 row2" >Óptimo a posteriori en la prueba (solo referencia)</th>
+      <td id="T_ac107_row2_col0" class="data row2 col0" >0,260</td>
+      <td id="T_ac107_row2_col1" class="data row2 col1" >0,588</td>
+    </tr>
+  </tbody>
+</table>
+</div><p><strong>Interpretación.</strong> Entre los cinco pliegues externos, la desviación estándar mediana de los coeficientes es de 0,144 con C = 100 y de 0,023 con C = 0,01, es decir, 6,3 veces menor, y el coeficiente más grande pasa de 1,53 a 0,15; el L2E queda en 0,092. En la prueba, la probabilidad media de la referencia sin recalibrar se aleja de la tasa de cada mes en 0,228 en promedio; con la recalibración mensual, en 0,102, y con el L2E, en 0,015. La cifra de la recalibración difiere de los 8,5 puntos del Entregable 2 porque allí el desplazamiento se estima con el mes anterior y, si tiene menos de 500 contactos, con los previos hasta reunirlos, mientras que aquí se usa la versión del tercer entregable, que toma solo el mes inmediatamente anterior. La probabilidad media del L2E en la prueba es de 0,308, frente a una tasa observada de 0,308 (en el Entregable 1 era de 0,243). Con la misma regla de umbral del Entregable 1, el pliegue externo más reciente elige un umbral de 0,23, que en la prueba da un F1 de 0,587, frente a 0,504 con 0,5 y 0,588 con el óptimo a posteriori (0,26); en el Entregable 1, el umbral elegido bajaba el F1 de 0,428 a 0,383, y desde el Entregable 2 lo sube (de 0,157 a 0,525).</p>
+<p>Esto significa que las correcciones que pidió el docente se sostienen con los datos de este entregable: la regularización elegida por pérdida logarítmica estabiliza los coeficientes, y la recalibración con datos recientes reduce el desfase de prevalencia, que el L2E corrige además día a día. Como las probabilidades del L2E siguen la prevalencia, un umbral elegido con el pasado conserva su sentido en la prueba, que era lo que fallaba en el Entregable 1, donde el umbral se aprendía con una prevalencia que ya no era la del periodo siguiente. Hay que tener en cuenta que el L2E es menos estable que la logística con C = 0,01 entre pliegues, porque Optuna elige un λ distinto en cada uno (sección <a class="reference internal" href="05_modelo_original.html#sec-5-8"><span class="std std-ref">5.8</span></a>) y en algunos la penalización es débil; el modelo final usa λ = 63,8, del mismo orden que C = 0,01.</p>
+<p>Por tal motivo, se opta por dar por resueltas las observaciones del docente, con la evidencia de esta celda y de las secciones indicadas en la tabla, y declarar la menor estabilidad del L2E entre pliegues como una limitación (sección <a class="reference internal" href="08_conclusiones.html#sec-8-3"><span class="std std-ref">8.3</span></a>).</p>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="00_introduccion.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (<em>Bank Marketing</em>, UCI)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_datos.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">2. Datos: ETL y EDA</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-critica-del-tercer-entregable">1.1 Evaluación crítica del tercer entregable</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-ningun-modelo-mas-flexible-supera-a-la-logistica">¿Por qué ningún modelo más flexible supera a la logística?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-de-trazabilidad-de-correcciones">1.2 Tabla de trazabilidad de correcciones</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

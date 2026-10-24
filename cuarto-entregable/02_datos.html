@@ -1,0 +1,737 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Datos: ETL y EDA &#8212; Proyecto final · Cuarto entregable · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_datos';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="3. Modelos benchmark" href="03_benchmarks.html" />
+    <link rel="prev" title="1. Trazabilidad de correcciones" href="01_correcciones.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_introduccion.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Cuarto entregable · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_introduccion.html">
+                    Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_correcciones.html">1. Trazabilidad de correcciones</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Datos: ETL y EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_benchmarks.html">3. Modelos benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_literatura.html">4. Revisión de literatura y novedad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_modelo_original.html">5. Modelo original: logística de estado latente en dos escalas (L2E)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_validacion.html">6. Validación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dashboard.html">7. Dashboard y despliegue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_conclusiones.html">8. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_reproducibilidad.html">9. Reproducibilidad y bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02_datos.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. Datos: ETL y EDA</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particion-y-protocolo-heredados">2.1 Partición y protocolo heredados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nuevo-hallazgo-la-tasa-diaria-de-suscripcion-es-un-nivel-latente-persistente">2.2 Nuevo hallazgo: la tasa diaria de suscripción es un nivel latente persistente</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="datos-etl-y-eda">
+<span id="sec-2"></span><h1>2. Datos: ETL y EDA<a class="headerlink" href="#datos-etl-y-eda" title="Link to this heading">#</a></h1>
+<p>El ETL, la auditoría de calidad, el EDA completo y el preprocesamiento son los del tercer entregable (secciones 1 a 3 de su cuaderno) y no cambian: se eliminan los duplicados exactos, se reconstruye el calendario a partir del orden del archivo (año, mes y día de contacto), se excluye <code class="docutils literal notranslate"><span class="pre">duration</span></code> por fuga, se retiran <code class="docutils literal notranslate"><span class="pre">euribor3m</span></code> y <code class="docutils literal notranslate"><span class="pre">emp.var.rate</span></code> por multicolinealidad, <code class="docutils literal notranslate"><span class="pre">pdays</span> <span class="pre">=</span> <span class="pre">999</span></code> se trata como faltante con indicador y las categóricas se codifican con <em>one-hot</em>. Esta sección resume la partición heredada y agrega el único análisis nuevo, que es el que motiva el modelo original.</p>
+<section id="particion-y-protocolo-heredados">
+<span id="sec-2-1"></span><h2>2.1 Partición y protocolo heredados<a class="headerlink" href="#particion-y-protocolo-heredados" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_dias_tr</span><span class="p">,</span> <span class="n">n_dias_te</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">dia_tr</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">dia_te</span><span class="p">))</span>
+<span class="n">resumen_part</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"Registros"</span><span class="p">:</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">X_tr</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_te</span><span class="p">)],</span> <span class="s2">"Desde"</span><span class="p">:</span> <span class="p">[</span><span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="s2">"Hasta"</span><span class="p">:</span> <span class="p">[</span><span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="s2">"Días de contacto"</span><span class="p">:</span> <span class="p">[</span><span class="n">n_dias_tr</span><span class="p">,</span> <span class="n">n_dias_te</span><span class="p">],</span>
+    <span class="s2">"Positivos"</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">sum</span><span class="p">())],</span> <span class="s2">"Prevalencia"</span><span class="p">:</span> <span class="p">[</span><span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">y_te</span><span class="o">.</span><span class="n">mean</span><span class="p">()]},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Entrenamiento (primer 80 %)"</span><span class="p">,</span> <span class="s2">"Prueba (último 20 %)"</span><span class="p">])</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">resumen_part</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Validación anidada: TimeSeriesSplit de </span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">K_EXTERNO</span><span class="si">}</span><span class="s2"> pliegues externos y </span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">K_INTERNO</span><span class="si">}</span><span class="s2"> internos, "</span>
+      <span class="sa">f</span><span class="s2">"separación de </span><span class="si">{</span><span class="n">GAP</span><span class="si">}</span><span class="s2"> registros (un día de contactos), </span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">PRESUPUESTO</span><span class="si">}</span><span class="s2"> configuraciones por optimizador."</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_a7ee6">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_a7ee6_level0_col0" class="col_heading level0 col0" >Registros</th>
+      <th id="T_a7ee6_level0_col1" class="col_heading level0 col1" >Desde</th>
+      <th id="T_a7ee6_level0_col2" class="col_heading level0 col2" >Hasta</th>
+      <th id="T_a7ee6_level0_col3" class="col_heading level0 col3" >Días de contacto</th>
+      <th id="T_a7ee6_level0_col4" class="col_heading level0 col4" >Positivos</th>
+      <th id="T_a7ee6_level0_col5" class="col_heading level0 col5" >Prevalencia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_a7ee6_level0_row0" class="row_heading level0 row0" >Entrenamiento (primer 80 %)</th>
+      <td id="T_a7ee6_row0_col0" class="data row0 col0" >32 940</td>
+      <td id="T_a7ee6_row0_col1" class="data row0 col1" >2008-05</td>
+      <td id="T_a7ee6_row0_col2" class="data row0 col2" >2009-05</td>
+      <td id="T_a7ee6_row0_col3" class="data row0 col3" >166</td>
+      <td id="T_a7ee6_row0_col4" class="data row0 col4" >2 100</td>
+      <td id="T_a7ee6_row0_col5" class="data row0 col5" >0,064</td>
+    </tr>
+    <tr>
+      <th id="T_a7ee6_level0_row1" class="row_heading level0 row1" >Prueba (último 20 %)</th>
+      <td id="T_a7ee6_row1_col0" class="data row1 col0" >8 236</td>
+      <td id="T_a7ee6_row1_col1" class="data row1 col1" >2009-05</td>
+      <td id="T_a7ee6_row1_col2" class="data row1 col2" >2010-11</td>
+      <td id="T_a7ee6_row1_col3" class="data row1 col3" >323</td>
+      <td id="T_a7ee6_row1_col4" class="data row1 col4" >2 539</td>
+      <td id="T_a7ee6_row1_col5" class="data row1 col5" >0,308</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validación anidada: TimeSeriesSplit de 5 pliegues externos y 3 internos, separación de 507 registros (un día de contactos), 20 configuraciones por optimizador.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nuevo-hallazgo-la-tasa-diaria-de-suscripcion-es-un-nivel-latente-persistente">
+<span id="sec-2-2"></span><h2>2.2 Nuevo hallazgo: la tasa diaria de suscripción es un nivel latente persistente<a class="headerlink" href="#nuevo-hallazgo-la-tasa-diaria-de-suscripcion-es-un-nivel-latente-persistente" title="Link to this heading">#</a></h2>
+<p>Si la información que falta está en el momento de la llamada (sección <a class="reference internal" href="01_correcciones.html#sec-1-1"><span class="std std-ref">1.1</span></a>), debe aparecer como <strong>dependencia temporal en la tasa de suscripción de cada día</strong>. Se calcula, solo con el entrenamiento, el logit empírico diario <span class="math notranslate nohighlight">\(\ell_t = \log\{(s_t + 0{,}5)/(n_t - s_t + 0{,}5)\}\)</span>, donde <span class="math notranslate nohighlight">\(s_t\)</span> son las suscripciones y <span class="math notranslate nohighlight">\(n_t\)</span> las llamadas del día <span class="math notranslate nohighlight">\(t\)</span>, y su autocorrelación. Luego se construye un puntaje que <strong>no usa ninguna variable del cliente</strong>: la tasa de los días ya cerrados, promediada con un suavizado exponencial, y se evalúa en los mismos cinco pliegues externos de los benchmarks.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.tsa.stattools</span><span class="w"> </span><span class="kn">import</span> <span class="n">acf</span>
+
+<span class="n">d_tr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"dia"</span><span class="p">:</span> <span class="n">dia_tr</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="n">y_tr</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="s2">"periodo"</span><span class="p">:</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()})</span>
+<span class="n">g_tr</span> <span class="o">=</span> <span class="n">d_tr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"dia"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">),</span> <span class="n">periodo</span><span class="o">=</span><span class="p">(</span><span class="s2">"periodo"</span><span class="p">,</span> <span class="s2">"first"</span><span class="p">))</span>
+<span class="n">g_tr</span><span class="p">[</span><span class="s2">"logit"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">g_tr</span><span class="p">[</span><span class="s2">"s"</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">g_tr</span><span class="p">[</span><span class="s2">"n"</span><span class="p">]</span> <span class="o">-</span> <span class="n">g_tr</span><span class="p">[</span><span class="s2">"s"</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="n">acf</span><span class="p">(</span><span class="n">g_tr</span><span class="p">[</span><span class="s2">"logit"</span><span class="p">],</span> <span class="n">nlags</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fft</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">banda</span> <span class="o">=</span> <span class="mf">1.96</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g_tr</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">puntaje_nivel</span><span class="p">(</span><span class="n">semivida</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Tasa suavizada de los días anteriores (sin información del cliente), por registro de entrenamiento."""</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">semivida</span><span class="p">)</span>
+    <span class="n">tasa</span> <span class="o">=</span> <span class="p">(</span><span class="n">g_tr</span><span class="p">[</span><span class="s2">"s"</span><span class="p">]</span><span class="o">.</span><span class="n">ewm</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">g_tr</span><span class="p">[</span><span class="s2">"n"</span><span class="p">]</span><span class="o">.</span><span class="n">ewm</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tasa</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">dia_tr</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">sv</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">s_</span> <span class="o">=</span> <span class="n">puntaje_nivel</span><span class="p">(</span><span class="n">sv</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k_</span><span class="p">,</span> <span class="p">(</span><span class="n">i_e</span><span class="p">,</span> <span class="n">i_v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv_externa</span><span class="p">(</span><span class="n">GAP</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_tr</span><span class="p">)):</span>
+        <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"Puntaje"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Solo nivel, semivida de </span><span class="si">{</span><span class="n">sv</span><span class="si">}</span><span class="s2"> día</span><span class="si">{</span><span class="s1">'s'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">sv</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">''</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"pliegue"</span><span class="p">:</span> <span class="n">k_</span><span class="p">,</span>
+                      <span class="s2">"auc_pr"</span><span class="p">:</span> <span class="n">average_precision_score</span><span class="p">(</span><span class="n">y_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_v</span><span class="p">],</span> <span class="n">s_</span><span class="p">[</span><span class="n">i_v</span><span class="p">])})</span>
+<span class="n">solo_nivel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"Puntaje"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"pliegue"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"auc_pr"</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">solo_nivel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="sa">f</span><span class="s2">"Mejor benchmark: </span><span class="si">{</span><span class="n">NOMBRE</span><span class="p">[</span><span class="n">MEJOR</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ap_fold</span><span class="p">[</span><span class="n">MEJOR</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">solo_nivel</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"Pliegue </span><span class="si">{</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">K_EXTERNO</span><span class="p">)]</span>
+<span class="n">solo_nivel</span><span class="p">[</span><span class="s2">"Media"</span><span class="p">]</span> <span class="o">=</span> <span class="n">solo_nivel</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">solo_nivel</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Proporción de la variabilidad latente que es diaria, con el nivel suavizado del L2E ajustado al entrenamiento</span>
+<span class="n">nivel_tr</span> <span class="o">=</span> <span class="n">L2E</span><span class="p">[</span><span class="s2">"pipeline"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">nivel_</span>
+<span class="n">icc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">nivel_tr</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">nivel_tr</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">"width_ratios"</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+<span class="n">d_te</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"dia"</span><span class="p">:</span> <span class="n">dia_te</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="n">yte</span><span class="p">})</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"dia"</span><span class="p">)[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"size"</span><span class="p">,</span> <span class="s2">"mean"</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">g_tr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">g_tr</span><span class="p">[</span><span class="s2">"s"</span><span class="p">]</span> <span class="o">/</span> <span class="n">g_tr</span><span class="p">[</span><span class="s2">"n"</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">g_tr</span><span class="p">[</span><span class="s2">"n"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">AZUL</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s2">"entrenamiento (tamaño ∝ llamadas del día)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">d_te</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">d_te</span><span class="p">[</span><span class="s2">"mean"</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">d_te</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">NARANJA</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"prueba (solo descriptivo)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Tasa diaria de suscripción por día de contacto"</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Día de contacto (orden temporal)"</span><span class="p">,</span>
+           <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Proporción que suscribe"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span> <span class="n">fac</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">color</span><span class="o">=</span><span class="n">AZUL</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhspan</span><span class="p">(</span><span class="o">-</span><span class="n">banda</span><span class="p">,</span> <span class="n">banda</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">REJILLA</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"banda de ruido blanco al 95 %"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Autocorrelación del logit diario (entrenamiento)"</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Rezago (días de contacto)"</span><span class="p">,</span>
+           <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Autocorrelación"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">mejor_nivel</span> <span class="o">=</span> <span class="n">solo_nivel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">][</span><span class="s2">"Media"</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<span class="n">para_guion</span><span class="p">(</span><span class="s2">"solo_nivel"</span><span class="p">,</span> <span class="n">solo_nivel</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+<span class="n">para_guion</span><span class="p">(</span><span class="s2">"eda"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"dias_tr"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">g_tr</span><span class="p">),</span> <span class="s2">"acf1"</span><span class="p">:</span> <span class="n">fac</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">"acf5"</span><span class="p">:</span> <span class="n">fac</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="s2">"acf10"</span><span class="p">:</span> <span class="n">fac</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="s2">"banda"</span><span class="p">:</span> <span class="n">banda</span><span class="p">,</span> <span class="s2">"icc"</span><span class="p">:</span> <span class="n">icc</span><span class="p">,</span>
+                   <span class="s2">"solo_nivel"</span><span class="p">:</span> <span class="n">solo_nivel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mejor_nivel</span><span class="p">,</span> <span class="s2">"Media"</span><span class="p">],</span> <span class="s2">"mejor_140"</span><span class="p">:</span> <span class="n">solo_nivel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"Media"</span><span class="p">],</span>
+                   <span class="s2">"n_tr"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_tr</span><span class="p">),</span> <span class="s2">"n_te"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_te</span><span class="p">),</span> <span class="s2">"prev_tr"</span><span class="p">:</span> <span class="n">y_tr</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">"prev_te"</span><span class="p">:</span> <span class="n">y_te</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+                   <span class="s2">"desde_tr"</span><span class="p">:</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"hasta_tr"</span><span class="p">:</span> <span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">"desde_te"</span><span class="p">:</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                   <span class="s2">"hasta_te"</span><span class="p">:</span> <span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">"dias_te"</span><span class="p">:</span> <span class="n">n_dias_te</span><span class="p">,</span> <span class="s2">"gap"</span><span class="p">:</span> <span class="n">GAP</span><span class="p">})</span>
+<span class="n">interpretar</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"En los </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">g_tr</span><span class="p">)</span><span class="si">}</span><span class="s2"> días de contacto del entrenamiento, la autocorrelación del logit diario es de "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">fac</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> al primer rezago y todavía de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">fac</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> al quinto y de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">fac</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> al décimo, "</span>
+    <span class="sa">f</span><span class="s2">"muy por encima de la banda de ruido blanco (±</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">banda</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">). Un puntaje que solo conoce la tasa de los días "</span>
+    <span class="sa">f</span><span class="s2">"cerrados, sin ninguna variable del cliente, alcanza un AUC-PR externo medio de "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">solo_nivel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mejor_nivel</span><span class="p">,</span><span class="w"> </span><span class="s1">'Media'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">mejor_nivel</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">', '</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">), frente a "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">solo_nivel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">'Media'</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> de la mejor de las 140 combinaciones. Con el nivel suavizado del modelo "</span>
+    <span class="sa">f</span><span class="s2">"ajustado al entrenamiento, la proporción de la varianza latente que corresponde al día es de </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">icc</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span><span class="p">,</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Esto quiere decir que"</span><span class="p">,</span> <span class="s2">"La tasa de conversión no es una constante del periodo con ruido alrededor: es un "</span>
+             <span class="s2">"proceso que se mueve con memoria larga, de modo que el día de ayer informa sobre el de hoy. Esa sola "</span>
+             <span class="s2">"estructura, que ningún benchmark modela, vale casi tanto como todo lo que los 140 modelos aprendieron de "</span>
+             <span class="s2">"las variables del cliente; por eso los modelos estáticos se empatan entre sí y por eso la recalibración "</span>
+             <span class="s2">"mensual funcionó. Hay que tener en cuenta que el hallazgo describe asociación temporal, no causa: el nivel "</span>
+             <span class="s2">"resume el contexto de cada día (la lista de clientes llamada, la campaña, la economía), que no está en "</span>
+             <span class="s2">"los datos."</span><span class="p">),</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"En consecuencia, se decide"</span><span class="p">,</span> <span class="s2">"Construir un modelo con dos componentes que se combinan en el logit: un "</span>
+             <span class="s2">"nivel diario latente, que se estima de forma conjunta en el entrenamiento y se actualiza con las "</span>
+             <span class="s2">"etiquetas de los días cerrados, y el efecto de las variables del cliente, que es el que ordena a los "</span>
+             <span class="s2">"clientes de un mismo día. Toda la evidencia de esta sección proviene del entrenamiento y del bucle "</span>
+             <span class="s2">"externo; la prueba se usa una sola vez en la sección 6."</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_968d9">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_968d9_level0_col0" class="col_heading level0 col0" >Pliegue 1</th>
+      <th id="T_968d9_level0_col1" class="col_heading level0 col1" >Pliegue 2</th>
+      <th id="T_968d9_level0_col2" class="col_heading level0 col2" >Pliegue 3</th>
+      <th id="T_968d9_level0_col3" class="col_heading level0 col3" >Pliegue 4</th>
+      <th id="T_968d9_level0_col4" class="col_heading level0 col4" >Pliegue 5</th>
+      <th id="T_968d9_level0_col5" class="col_heading level0 col5" >Media</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >Puntaje</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+      <th class="blank col2" >&nbsp;</th>
+      <th class="blank col3" >&nbsp;</th>
+      <th class="blank col4" >&nbsp;</th>
+      <th class="blank col5" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_968d9_level0_row0" class="row_heading level0 row0" >Solo nivel, semivida de 1 día</th>
+      <td id="T_968d9_row0_col0" class="data row0 col0" >0,040</td>
+      <td id="T_968d9_row0_col1" class="data row0 col1" >0,067</td>
+      <td id="T_968d9_row0_col2" class="data row0 col2" >0,063</td>
+      <td id="T_968d9_row0_col3" class="data row0 col3" >0,103</td>
+      <td id="T_968d9_row0_col4" class="data row0 col4" >0,241</td>
+      <td id="T_968d9_row0_col5" class="data row0 col5" >0,103</td>
+    </tr>
+    <tr>
+      <th id="T_968d9_level0_row1" class="row_heading level0 row1" >Solo nivel, semivida de 3 días</th>
+      <td id="T_968d9_row1_col0" class="data row1 col0" >0,039</td>
+      <td id="T_968d9_row1_col1" class="data row1 col1" >0,066</td>
+      <td id="T_968d9_row1_col2" class="data row1 col2" >0,059</td>
+      <td id="T_968d9_row1_col3" class="data row1 col3" >0,060</td>
+      <td id="T_968d9_row1_col4" class="data row1 col4" >0,202</td>
+      <td id="T_968d9_row1_col5" class="data row1 col5" >0,085</td>
+    </tr>
+    <tr>
+      <th id="T_968d9_level0_row2" class="row_heading level0 row2" >Solo nivel, semivida de 10 días</th>
+      <td id="T_968d9_row2_col0" class="data row2 col0" >0,039</td>
+      <td id="T_968d9_row2_col1" class="data row2 col1" >0,066</td>
+      <td id="T_968d9_row2_col2" class="data row2 col2" >0,054</td>
+      <td id="T_968d9_row2_col3" class="data row2 col3" >0,051</td>
+      <td id="T_968d9_row2_col4" class="data row2 col4" >0,125</td>
+      <td id="T_968d9_row2_col5" class="data row2 col5" >0,067</td>
+    </tr>
+    <tr>
+      <th id="T_968d9_level0_row3" class="row_heading level0 row3" >Mejor benchmark: Naive Bayes · class_weight · Bayesiana (Optuna TPE)</th>
+      <td id="T_968d9_row3_col0" class="data row3 col0" >0,044</td>
+      <td id="T_968d9_row3_col1" class="data row3 col1" >0,060</td>
+      <td id="T_968d9_row3_col2" class="data row3 col2" >0,062</td>
+      <td id="T_968d9_row3_col3" class="data row3 col3" >0,052</td>
+      <td id="T_968d9_row3_col4" class="data row3 col4" >0,296</td>
+      <td id="T_968d9_row3_col5" class="data row3 col5" >0,103</td>
+    </tr>
+  </tbody>
+</table>
+</div><img alt="_images/1b567b77886e3527888e935b230ec1d8848bf581b08d7effdaae6b56e4deefd9.png" src="_images/1b567b77886e3527888e935b230ec1d8848bf581b08d7effdaae6b56e4deefd9.png" />
+<p><strong>Interpretación.</strong> En los 166 días de contacto del entrenamiento, la autocorrelación del logit diario es de 0,76 al primer rezago y todavía de 0,57 al quinto y de 0,38 al décimo, muy por encima de la banda de ruido blanco (±0,15). Un puntaje que solo conoce la tasa de los días cerrados, sin ninguna variable del cliente, alcanza un AUC-PR externo medio de 0,103 (semivida de 1 día), frente a 0,103 de la mejor de las 140 combinaciones. Con el nivel suavizado del modelo ajustado al entrenamiento, la proporción de la varianza latente que corresponde al día es de 27,8 %.</p>
+<p>Esto quiere decir que la tasa de conversión no es una constante del periodo con ruido alrededor: es un proceso que se mueve con memoria larga, de modo que el día de ayer informa sobre el de hoy. Esa sola estructura, que ningún benchmark modela, vale casi tanto como todo lo que los 140 modelos aprendieron de las variables del cliente; por eso los modelos estáticos se empatan entre sí y por eso la recalibración mensual funcionó. Hay que tener en cuenta que el hallazgo describe asociación temporal, no causa: el nivel resume el contexto de cada día (la lista de clientes llamada, la campaña, la economía), que no está en los datos.</p>
+<p>En consecuencia, se decide construir un modelo con dos componentes que se combinan en el logit: un nivel diario latente, que se estima de forma conjunta en el entrenamiento y se actualiza con las etiquetas de los días cerrados, y el efecto de las variables del cliente, que es el que ordena a los clientes de un mismo día. Toda la evidencia de esta sección proviene del entrenamiento y del bucle externo; la prueba se usa una sola vez en la sección 6.</p>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_correcciones.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">1. Trazabilidad de correcciones</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_benchmarks.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">3. Modelos benchmark</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particion-y-protocolo-heredados">2.1 Partición y protocolo heredados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nuevo-hallazgo-la-tasa-diaria-de-suscripcion-es-un-nivel-latente-persistente">2.2 Nuevo hallazgo: la tasa diaria de suscripción es un nivel latente persistente</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

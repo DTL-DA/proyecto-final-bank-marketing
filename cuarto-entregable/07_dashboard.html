@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Dashboard y despliegue &#8212; Proyecto final · Cuarto entregable · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07_dashboard';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="8. Conclusiones y limitaciones" href="08_conclusiones.html" />
+    <link rel="prev" title="6. Validación estadística" href="06_validacion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_introduccion.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Cuarto entregable · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_introduccion.html">
+                    Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_correcciones.html">1. Trazabilidad de correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_datos.html">2. Datos: ETL y EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_benchmarks.html">3. Modelos benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_literatura.html">4. Revisión de literatura y novedad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_modelo_original.html">5. Modelo original: logística de estado latente en dos escalas (L2E)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_validacion.html">6. Validación estadística</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Dashboard y despliegue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_conclusiones.html">8. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_reproducibilidad.html">9. Reproducibilidad y bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/07_dashboard.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>7. Dashboard y despliegue</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artefacto-del-modelo-original-y-prueba-de-ida-y-vuelta">7.1 Artefacto del modelo original y prueba de ida y vuelta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion-en-vivo-con-explicacion-local">7.2 Predicción en vivo con explicación local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboard-desplegado-arquitectura-decisiones-de-diseno-y-despliegue">7.3 Dashboard desplegado: arquitectura, decisiones de diseño y despliegue</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dashboard-y-despliegue">
+<span id="sec-7"></span><h1>7. Dashboard y despliegue<a class="headerlink" href="#dashboard-y-despliegue" title="Link to this heading">#</a></h1>
+<section id="artefacto-del-modelo-original-y-prueba-de-ida-y-vuelta">
+<span id="sec-7-1"></span><h2>7.1 Artefacto del modelo original y prueba de ida y vuelta<a class="headerlink" href="#artefacto-del-modelo-original-y-prueba-de-ida-y-vuelta" title="Link to this heading">#</a></h2>
+<p>El dashboard nunca entrena modelos (guía, sección 4.2): carga artefactos ya ajustados. El L2E se serializa con <code class="docutils literal notranslate"><span class="pre">joblib</span></code> (compresión 3) en dos versiones: <code class="docutils literal notranslate"><span class="pre">modelo.joblib</span></code>, con el estado al cierre del entrenamiento, que es el que se evaluó en la prueba, y <code class="docutils literal notranslate"><span class="pre">modelo_vigente.joblib</span></code>, que además asimiló con <code class="docutils literal notranslate"><span class="pre">actualizar</span></code> las etiquetas de todos los días de la prueba y es el que el dashboard debe usar para predecir un día nuevo. Junto a ellos, <code class="docutils literal notranslate"><span class="pre">metadata.json</span></code> registra las versiones de las librerías, la semilla, los hiperparámetros, el esquema de entrada y las métricas del bucle externo y de la prueba. La prueba de ida y vuelta verifica que el modelo leído de disco produce exactamente las mismas predicciones que el modelo en memoria. Estos artefactos referencian el paquete de investigación <code class="docutils literal notranslate"><span class="pre">bm</span></code>; la versión que carga el dashboard la genera <code class="docutils literal notranslate"><span class="pre">scripts/exportar_dashboard_l2e.py</span></code> con la copia de producción de la clase y repite la misma verificación (sección <a class="reference internal" href="#sec-7-3"><span class="std std-ref">7.3</span></a>).</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<span class="n">DEST</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"artifacts"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"l2e"</span>
+<span class="n">DEST</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">L2E</span><span class="p">[</span><span class="s2">"pipeline"</span><span class="p">]</span>
+<span class="n">X_te_d</span> <span class="o">=</span> <span class="n">con_dia</span><span class="p">(</span><span class="n">X_te</span><span class="p">,</span> <span class="n">tiempo_te</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">DEST</span> <span class="o">/</span> <span class="s2">"modelo.joblib"</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">vigente</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">pipe</span><span class="p">)</span>
+<span class="n">vigente</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">actualizar</span><span class="p">(</span><span class="n">vigente</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_te_d</span><span class="p">),</span> <span class="n">yte</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">vigente</span><span class="p">,</span> <span class="n">DEST</span> <span class="o">/</span> <span class="s2">"modelo_vigente.joblib"</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">esquema</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">X_tr</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">VARS_NUM</span><span class="p">:</span>
+        <span class="n">esquema</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"tipo"</span><span class="p">:</span> <span class="s2">"numérica"</span><span class="p">,</span> <span class="s2">"min"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">X_tr</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="s2">"max"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">X_tr</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())}</span>
+    <span class="k">elif</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">VARS_CAT</span><span class="p">:</span>
+        <span class="n">esquema</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"tipo"</span><span class="p">:</span> <span class="s2">"categórica"</span><span class="p">,</span> <span class="s2">"valores"</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">X_tr</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))}</span>
+<span class="n">esquema</span><span class="p">[</span><span class="s2">"dia"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"tipo"</span><span class="p">:</span> <span class="s2">"entero"</span><span class="p">,</span> <span class="s2">"descripcion"</span><span class="p">:</span> <span class="s2">"día de contacto reconstruido (bm.datos.reconstruir_tiempo)"</span><span class="p">}</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"modelo"</span><span class="p">:</span> <span class="s2">"LogisticaDosEscalas (L2E)"</span><span class="p">,</span> <span class="s2">"clase"</span><span class="p">:</span> <span class="s2">"bm.modelo_original.LogisticaDosEscalas"</span><span class="p">,</span> <span class="s2">"semilla"</span><span class="p">:</span> <span class="n">SEED</span><span class="p">,</span>
+    <span class="s2">"versiones"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"python"</span><span class="p">:</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">(),</span> <span class="s2">"numpy"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="s2">"scipy"</span><span class="p">:</span> <span class="n">scipy</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+                  <span class="s2">"scikit-learn"</span><span class="p">:</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="s2">"pandas"</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="s2">"joblib"</span><span class="p">:</span> <span class="n">joblib</span><span class="o">.</span><span class="n">__version__</span><span class="p">},</span>
+    <span class="s2">"hiperparametros"</span><span class="p">:</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"__"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">L2E</span><span class="p">[</span><span class="s2">"params"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()},</span>
+    <span class="s2">"parametros_fijos"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"retardo"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"nivel_latente"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"actualizar_nivel"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"actualizar_pendientes"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                         <span class="s2">"integrar_incertidumbre"</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="s2">"esquema_entrada"</span><span class="p">:</span> <span class="n">esquema</span><span class="p">,</span>
+    <span class="s2">"metricas_bucle_externo"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"auc_pr_media"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">ext</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="s2">"auc_pr_de"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">ext</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
+                               <span class="s2">"auc_media"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ext_auc</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]))},</span>
+    <span class="s2">"metricas_prueba"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"auc_pr"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">ap_te</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]),</span> <span class="s2">"auc"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">auc_te</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]),</span>
+                        <span class="s2">"brier"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">brier_score_loss</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">PUNTAJE_TE</span><span class="p">[</span><span class="s2">"L2E"</span><span class="p">]))},</span>
+    <span class="s2">"estado"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"modelo.joblib"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"ultimo_dia"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">pipe</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dia_final_</span><span class="p">),</span> <span class="s2">"periodo"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">periodo_tr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])},</span>
+               <span class="s2">"modelo_vigente.joblib"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"ultimo_dia"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">vigente</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dia_final_</span><span class="p">),</span> <span class="s2">"periodo"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])}},</span>
+<span class="p">}</span>
+<span class="p">(</span><span class="n">DEST</span> <span class="o">/</span> <span class="s2">"metadata.json"</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+
+<span class="n">leido</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">DEST</span> <span class="o">/</span> <span class="s2">"modelo.joblib"</span><span class="p">)</span>
+<span class="n">s_leido</span> <span class="o">=</span> <span class="n">puntaje_secuencial</span><span class="p">(</span><span class="n">leido</span><span class="p">,</span> <span class="n">X_te_d</span><span class="p">,</span> <span class="n">y_te</span><span class="p">)</span>
+<span class="n">dif_script</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s_leido</span> <span class="o">-</span> <span class="n">L2E</span><span class="p">[</span><span class="s2">"puntaje_te"</span><span class="p">])))</span>
+<span class="n">ida_vuelta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span><span class="s2">"Verificación"</span><span class="p">:</span> <span class="s2">"predict_proba (estático): memoria frente a disco"</span><span class="p">,</span> <span class="s2">"Criterio"</span><span class="p">:</span> <span class="s2">"igualdad exacta"</span><span class="p">,</span>
+     <span class="s2">"Resultado"</span><span class="p">:</span> <span class="s2">"idénticas"</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">leido</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_te_d</span><span class="p">),</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_te_d</span><span class="p">))</span> <span class="k">else</span> <span class="s2">"DIFERENTES"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"Verificación"</span><span class="p">:</span> <span class="s2">"predict_proba_secuencial: memoria frente a disco"</span><span class="p">,</span> <span class="s2">"Criterio"</span><span class="p">:</span> <span class="s2">"igualdad exacta"</span><span class="p">,</span>
+     <span class="s2">"Resultado"</span><span class="p">:</span> <span class="s2">"idénticas"</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">s_leido</span><span class="p">,</span> <span class="n">puntaje_secuencial</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X_te_d</span><span class="p">,</span> <span class="n">y_te</span><span class="p">))</span> <span class="k">else</span> <span class="s2">"DIFERENTES"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"Verificación"</span><span class="p">:</span> <span class="s2">"frente al puntaje evaluado en la prueba (otro proceso)"</span><span class="p">,</span> <span class="s2">"Criterio"</span><span class="p">:</span> <span class="s2">"diferencia máxima &lt; 1e−10"</span><span class="p">,</span>
+     <span class="s2">"Resultado"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"diferencia máxima </span><span class="si">{</span><span class="n">dif_script</span><span class="si">:</span><span class="s2">.1e</span><span class="si">}</span><span class="s2">"</span> <span class="o">+</span> <span class="p">(</span><span class="s2">" (coinciden)"</span> <span class="k">if</span> <span class="n">dif_script</span> <span class="o">&lt;</span> <span class="mf">1e-10</span> <span class="k">else</span> <span class="s2">" (DIFERENTES)"</span><span class="p">)}])</span>
+<span class="n">tamanos</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span> <span class="o">/</span> <span class="mi">1024</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">DEST</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()}</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">ida_vuelta</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tamanos</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Tamaño (KB)"</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(),</span> <span class="n">dec</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ida_vuelta</span><span class="p">[</span><span class="s2">"Resultado"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"idénticas"</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="ow">and</span> <span class="n">dif_script</span> <span class="o">&lt;</span> <span class="mf">1e-10</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"La comparación con el puntaje de la prueba se hace con tolerancia porque ese puntaje se calculó en otro proceso, "</span>
+      <span class="s2">"con BLAS de un solo hilo; el orden de las sumas de punto flotante cambia en el último dígito."</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_4f7a4">
+  <thead>
+    <tr>
+      <th id="T_4f7a4_level0_col0" class="col_heading level0 col0" >Verificación</th>
+      <th id="T_4f7a4_level0_col1" class="col_heading level0 col1" >Criterio</th>
+      <th id="T_4f7a4_level0_col2" class="col_heading level0 col2" >Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_4f7a4_row0_col0" class="data row0 col0" >predict_proba (estático): memoria frente a disco</td>
+      <td id="T_4f7a4_row0_col1" class="data row0 col1" >igualdad exacta</td>
+      <td id="T_4f7a4_row0_col2" class="data row0 col2" >idénticas</td>
+    </tr>
+    <tr>
+      <td id="T_4f7a4_row1_col0" class="data row1 col0" >predict_proba_secuencial: memoria frente a disco</td>
+      <td id="T_4f7a4_row1_col1" class="data row1 col1" >igualdad exacta</td>
+      <td id="T_4f7a4_row1_col2" class="data row1 col2" >idénticas</td>
+    </tr>
+    <tr>
+      <td id="T_4f7a4_row2_col0" class="data row2 col0" >frente al puntaje evaluado en la prueba (otro proceso)</td>
+      <td id="T_4f7a4_row2_col1" class="data row2 col1" >diferencia máxima < 1e−10</td>
+      <td id="T_4f7a4_row2_col2" class="data row2 col2" >diferencia máxima 4.4e-16 (coinciden)</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"><style type="text/css">
+</style>
+<table id="T_6233f">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_6233f_level0_col0" class="col_heading level0 col0" >Tamaño (KB)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_6233f_level0_row0" class="row_heading level0 row0" >metadata.json</th>
+      <td id="T_6233f_row0_col0" class="data row0 col0" >3,2</td>
+    </tr>
+    <tr>
+      <th id="T_6233f_level0_row1" class="row_heading level0 row1" >modelo.joblib</th>
+      <td id="T_6233f_row1_col0" class="data row1 col0" >18,2</td>
+    </tr>
+    <tr>
+      <th id="T_6233f_level0_row2" class="row_heading level0 row2" >modelo_vigente.joblib</th>
+      <td id="T_6233f_row2_col0" class="data row2 col0" >18,6</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La comparación con el puntaje de la prueba se hace con tolerancia porque ese puntaje se calculó en otro proceso, con BLAS de un solo hilo; el orden de las sumas de punto flotante cambia en el último dígito.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prediccion-en-vivo-con-explicacion-local">
+<span id="sec-7-2"></span><h2>7.2 Predicción en vivo con explicación local<a class="headerlink" href="#prediccion-en-vivo-con-explicacion-local" title="Link to this heading">#</a></h2>
+<p>Así se usa el modelo en el dashboard: se toma un cliente con sus variables previas a la llamada, se le asigna el día siguiente al último asimilado y el modelo vigente devuelve la probabilidad y su descomposición exacta en el logit: el nivel del día y la contribución de cada variable del cliente.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cliente</span> <span class="o">=</span> <span class="n">X_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dia_nuevo</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">vigente</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dia_final_</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">fila</span> <span class="o">=</span> <span class="n">cliente</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">dia</span><span class="o">=</span><span class="n">dia_nuevo</span><span class="p">)</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">vigente</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">fila</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">vigente</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">fila</span><span class="p">)[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">m_v</span> <span class="o">=</span> <span class="n">vigente</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">estado_media_</span>
+<span class="n">xbar</span> <span class="o">=</span> <span class="n">vigente</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">con_dia</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">tiempo_tr</span><span class="p">))[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">contrib</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">m_v</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">*</span> <span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">xbar</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">nombres</span><span class="p">)</span>
+<span class="n">nivel_dia</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">m_v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">m_v</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">@</span> <span class="n">xbar</span><span class="p">)</span>
+<span class="n">top_c</span> <span class="o">=</span> <span class="n">contrib</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">contrib</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">([</span><span class="s2">"nivel del día (logit esperado)"</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">top_c</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="p">[</span><span class="n">nivel_dia</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">top_c</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">TINTA</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">NARANJA</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">AZUL</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">top_c</span><span class="o">.</span><span class="n">values</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GRIS</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Explicación local del L2E · probabilidad estimada = </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Contribución al logit"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">cliente</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">VARS_NUM</span> <span class="o">+</span> <span class="n">cfg</span><span class="o">.</span><span class="n">VARS_CAT</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cliente</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="s2">"Valor"</span><span class="p">}),</span> <span class="n">indice</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">interpretar</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Para este cliente, con el estado vigente al cierre de </span><span class="si">{</span><span class="n">periodo_te</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, el L2E estima una probabilidad de "</span>
+    <span class="sa">f</span><span class="s2">"suscripción de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">. El nivel del día aporta </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">nivel_dia</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> al logit y la variable con mayor "</span>
+    <span class="sa">f</span><span class="s2">"contribución es `</span><span class="si">{</span><span class="n">top_c</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">` (</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">top_c</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">)."</span><span class="p">,</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"De esta forma,"</span><span class="p">,</span> <span class="s2">"La explicación local separa lo que se debe al momento (el nivel del día, común a todos "</span>
+             <span class="s2">"los clientes que se llamen ese día) de lo que se debe al cliente, y responde a la pregunta que se hace un "</span>
+             <span class="s2">"asesor: si conviene llamarlo hoy y por qué."</span><span class="p">),</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Por tanto, corresponde"</span><span class="p">,</span> <span class="s2">"Incorporar esta salida, la trayectoria del nivel y la tabla de pruebas de la "</span>
+             <span class="s2">"sección 6.7 a la subsección del modelo original de la página Modelos del dashboard (sección 7.3)."</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/511b5c0f37e4635e68f9684b201ac6d8e263e64087148c2f2e135348e306115a.png" src="_images/511b5c0f37e4635e68f9684b201ac6d8e263e64087148c2f2e135348e306115a.png" />
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_0d2e9">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_0d2e9_level0_col0" class="col_heading level0 col0" >Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_0d2e9_level0_row0" class="row_heading level0 row0" >age</th>
+      <td id="T_0d2e9_row0_col0" class="data row0 col0" >74</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row1" class="row_heading level0 row1" >campaign</th>
+      <td id="T_0d2e9_row1_col0" class="data row1 col0" >3</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row2" class="row_heading level0 row2" >pdays</th>
+      <td id="T_0d2e9_row2_col0" class="data row2 col0" >999</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row3" class="row_heading level0 row3" >previous</th>
+      <td id="T_0d2e9_row3_col0" class="data row3 col0" >1</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row4" class="row_heading level0 row4" >cons.price.idx</th>
+      <td id="T_0d2e9_row4_col0" class="data row4 col0" >94,767</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row5" class="row_heading level0 row5" >cons.conf.idx</th>
+      <td id="T_0d2e9_row5_col0" class="data row5 col0" >-50,800</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row6" class="row_heading level0 row6" >nr.employed</th>
+      <td id="T_0d2e9_row6_col0" class="data row6 col0" >4 963,600</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row7" class="row_heading level0 row7" >job</th>
+      <td id="T_0d2e9_row7_col0" class="data row7 col0" >retired</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row8" class="row_heading level0 row8" >marital</th>
+      <td id="T_0d2e9_row8_col0" class="data row8 col0" >married</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row9" class="row_heading level0 row9" >education</th>
+      <td id="T_0d2e9_row9_col0" class="data row9 col0" >professional.course</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row10" class="row_heading level0 row10" >default</th>
+      <td id="T_0d2e9_row10_col0" class="data row10 col0" >no</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row11" class="row_heading level0 row11" >housing</th>
+      <td id="T_0d2e9_row11_col0" class="data row11 col0" >yes</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row12" class="row_heading level0 row12" >loan</th>
+      <td id="T_0d2e9_row12_col0" class="data row12 col0" >no</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row13" class="row_heading level0 row13" >contact</th>
+      <td id="T_0d2e9_row13_col0" class="data row13 col0" >cellular</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row14" class="row_heading level0 row14" >month</th>
+      <td id="T_0d2e9_row14_col0" class="data row14 col0" >nov</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row15" class="row_heading level0 row15" >day_of_week</th>
+      <td id="T_0d2e9_row15_col0" class="data row15 col0" >fri</td>
+    </tr>
+    <tr>
+      <th id="T_0d2e9_level0_row16" class="row_heading level0 row16" >poutcome</th>
+      <td id="T_0d2e9_row16_col0" class="data row16 col0" >failure</td>
+    </tr>
+  </tbody>
+</table>
+</div><p><strong>Interpretación.</strong> Para este cliente, con el estado vigente al cierre de 2010-11, el L2E estima una probabilidad de suscripción de 0,323. El nivel del día aporta -1,23 al logit y la variable con mayor contribución es <code class="docutils literal notranslate"><span class="pre">nr.employed</span></code> (0,50).</p>
+<p>De esta forma, la explicación local separa lo que se debe al momento (el nivel del día, común a todos los clientes que se llamen ese día) de lo que se debe al cliente, y responde a la pregunta que se hace un asesor: si conviene llamarlo hoy y por qué.</p>
+<p>Por tanto, corresponde incorporar esta salida, la trayectoria del nivel y la tabla de pruebas de la sección <a class="reference internal" href="06_validacion.html#sec-6-7"><span class="std std-ref">6.7</span></a> a la subsección del modelo original de la página Modelos del dashboard (sección <a class="reference internal" href="#sec-7-3"><span class="std std-ref">7.3</span></a>).</p>
+</div>
+</div>
+</section>
+<section id="dashboard-desplegado-arquitectura-decisiones-de-diseno-y-despliegue">
+<span id="sec-7-3"></span><h2>7.3 Dashboard desplegado: arquitectura, decisiones de diseño y despliegue<a class="headerlink" href="#dashboard-desplegado-arquitectura-decisiones-de-diseno-y-despliegue" title="Link to this heading">#</a></h2>
+<p>El dashboard está en línea en Render: <strong><a class="reference external" href="https://proyecto-final-bank-marketing.onrender.com">https://proyecto-final-bank-marketing.onrender.com</a></strong>. Tiene las tres páginas que pide la guía (Contexto, EDA y Modelos) y, desde este entregable, el L2E es un modelo más del dashboard: encabeza la tabla de líderes, se puede elegir en la predicción en vivo, tiene su diagnóstico y su SHAP global, entra al diagrama de diferencia crítica y cuenta con su propia subsección.</p>
+<p><strong>Arquitectura.</strong> El repositorio (<a class="github reference external" href="https://github.com/DTL-DA/proyecto-final-bank-marketing">DTL-DA/proyecto-final-bank-marketing</a>) sigue la estructura de la sección 7.2 de la guía; este cuaderno y su código de investigación están en <code class="docutils literal notranslate"><span class="pre">cuarto_entregable/</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>proyecto-final-bank-marketing/
+├── app.py                  punto de entrada: crea la aplicación multipágina y expone server (gunicorn)
+├── pages/                  contexto.py, eda.py y modelos.py (una página por sección, con sus callbacks)
+├── src/
+│   ├── original_model.py   clase del modelo original (copia de producción de bm.modelo_original)
+│   ├── data.py             carga y caché de datos, artefactos y resultados precalculados
+│   ├── plots.py            funciones que construyen las figuras, con una plantilla común de Plotly
+│   ├── explicaciones.py    valores SHAP por permutaciones (sin cargar la librería shap en el servidor)
+│   └── componentes.py      componentes propios de los pipelines de los benchmarks
+├── artifacts/              un directorio por modelo con modelo.joblib y metadata.json (l2e incluido)
+├── data/                   datos livianos para el EDA y resultados precalculados (data/resultados)
+├── assets/                 hoja de estilos
+├── tests/                  pruebas con pytest: aplicación, artefactos, explicaciones y modelo original
+├── book/                   fuentes del Jupyter Book (_config.yml, _toc.yml, references.bib)
+├── cuarto_entregable/      este cuaderno, src/bm, scripts, pruebas y resultados del modelo original
+├── requirements.txt        versiones exactas
+└── render.yaml             configuración del despliegue
+</pre></div>
+</div>
+<p><strong>Integración del modelo original.</strong> <code class="docutils literal notranslate"><span class="pre">scripts/exportar_dashboard_l2e.py</span></code> toma el modelo final de la sección <a class="reference internal" href="#sec-7-1"><span class="std std-ref">7.1</span></a>, reemplaza las referencias al paquete de investigación <code class="docutils literal notranslate"><span class="pre">bm</span></code> por la copia de producción <code class="docutils literal notranslate"><span class="pre">src/original_model.py</span></code> (el algoritmo es idéntico línea por línea, y <code class="docutils literal notranslate"><span class="pre">tests/test_original_model.py</span></code> lo verifica junto con las 25 pruebas unitarias del modelo), repite la prueba de ida y vuelta, guarda los dos artefactos en <code class="docutils literal notranslate"><span class="pre">artifacts/l2e/</span></code> y agrega el L2E a las tablas precalculadas del dashboard. Como el dashboard nunca entrena ni optimiza, todo lo que muestra sale de esos artefactos y de esas tablas. Para predecir, el dashboard carga <code class="docutils literal notranslate"><span class="pre">modelo_vigente.joblib</span></code> y le asigna al cliente el día siguiente al último cerrado (sección <a class="reference internal" href="#sec-7-2"><span class="std std-ref">7.2</span></a>).</p>
+<p><strong>Decisiones de diseño.</strong></p>
+<ul class="simple">
+<li><p><em>Un producto, no una colección de gráficos:</em> cada tarjeta responde una pregunta del usuario (a quién llamar primero, qué tan confiable es la probabilidad, qué modelo es mejor y por qué) y termina con una frase de interpretación.</p></li>
+<li><p><em>Tema y color:</em> <code class="docutils literal notranslate"><span class="pre">dash-bootstrap-components</span></code> con el tema FLATLY, barra de navegación fija y una paleta de dos colores más grises, validada para visión normal y para las tres formas de daltonismo. El color sigue a la entidad: el L2E es siempre naranja y los benchmarks, azules, y la identidad nunca depende solo del color, porque cada serie tiene su etiqueta.</p></li>
+<li><p><em>Rendimiento en el plan gratuito:</em> los datos y los ocho modelos se cargan una sola vez con <code class="docutils literal notranslate"><span class="pre">functools.lru_cache</span></code>; los valores SHAP se estiman con un estimador por permutaciones propio, porque la librería <code class="docutils literal notranslate"><span class="pre">shap</span></code> no cabe en la memoria junto con los modelos, y el L2E solo suma 37 KB de artefactos.</p></li>
+<li><p><em>Robustez y accesibilidad:</em> el formulario de predicción se genera desde el esquema de variables y valida tipos y rangos; un error se informa con <code class="docutils literal notranslate"><span class="pre">dbc.Alert</span></code> sin detener la aplicación. Las tablas y las figuras usan la rejilla de <code class="docutils literal notranslate"><span class="pre">dbc.Row</span></code> y <code class="docutils literal notranslate"><span class="pre">dbc.Col</span></code> para escritorio y tableta, con etiquetas descriptivas y contraste suficiente.</p></li>
+</ul>
+<p><strong>Guía de despliegue.</strong> (1) <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">app.py</span></code> levanta el dashboard en local en <a class="reference external" href="http://127.0.0.1:8050">http://127.0.0.1:8050</a>. (2) <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> fija las versiones exactas, incluido <code class="docutils literal notranslate"><span class="pre">gunicorn</span></code>, y <code class="docutils literal notranslate"><span class="pre">render.yaml</span></code> fija Python 3.12.10. (3) Render construye con <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> y arranca con <code class="docutils literal notranslate"><span class="pre">gunicorn</span> <span class="pre">app:server</span> <span class="pre">--workers</span> <span class="pre">1</span> <span class="pre">--threads</span> <span class="pre">4</span> <span class="pre">--timeout</span> <span class="pre">120</span></code>; cada <em>push</em> a la rama <code class="docutils literal notranslate"><span class="pre">main</span></code> del repositorio dispara un despliegue nuevo. (4) Después de cada despliegue se revisan los registros de construcción y se recorren las tres páginas en la URL pública. En el plan gratuito el servicio se suspende tras 15 minutos sin visitas y la primera carga tarda cerca de un minuto, por lo que conviene abrirlo unos minutos antes de la sustentación.</p>
+<p><strong>Capturas.</strong> Las capturas se tomaron con <code class="docutils literal notranslate"><span class="pre">scripts/capturas_dashboard.py</span></code> sobre el dashboard local, con los mismos artefactos y datos que la versión en línea.</p>
+<p><img alt="Página Contexto del dashboard: problema, pregunta de investigación, datos, metodología y limitaciones" src="_images/dashboard_contexto.png" /></p>
+<p><img alt="Página EDA del dashboard: filtros globales, distribución del objetivo, explorador bivariado, correlación, faltantes y atípicos" src="_images/dashboard_eda.png" /></p>
+<p><img alt="Página Modelos, primera parte: tabla de líderes con el L2E, predicción en vivo con su explicación SHAP local y diagnóstico del modelo seleccionado" src="_images/dashboard_modelos_1.png" /></p>
+<p><img alt="Página Modelos, segunda parte: SHAP global, diagrama de diferencia crítica con el modelo original y subsección del L2E con su veredicto" src="_images/dashboard_modelos_2.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="06_validacion.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">6. Validación estadística</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08_conclusiones.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">8. Conclusiones y limitaciones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artefacto-del-modelo-original-y-prueba-de-ida-y-vuelta">7.1 Artefacto del modelo original y prueba de ida y vuelta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion-en-vivo-con-explicacion-local">7.2 Predicción en vivo con explicación local</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboard-desplegado-arquitectura-decisiones-de-diseno-y-despliegue">7.3 Dashboard desplegado: arquitectura, decisiones de diseño y despliegue</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

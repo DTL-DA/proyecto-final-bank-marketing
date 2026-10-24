@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Revisión de literatura y novedad &#8212; Proyecto final · Cuarto entregable · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_literatura';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="5. Modelo original: logística de estado latente en dos escalas (L2E)" href="05_modelo_original.html" />
+    <link rel="prev" title="3. Modelos benchmark" href="03_benchmarks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_introduccion.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Cuarto entregable · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_introduccion.html">
+                    Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_correcciones.html">1. Trazabilidad de correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_datos.html">2. Datos: ETL y EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_benchmarks.html">3. Modelos benchmark</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Revisión de literatura y novedad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_modelo_original.html">5. Modelo original: logística de estado latente en dos escalas (L2E)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_validacion.html">6. Validación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dashboard.html">7. Dashboard y despliegue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_conclusiones.html">8. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_reproducibilidad.html">9. Reproducibilidad y bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/04_literatura.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>4. Revisión de literatura y novedad</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protocolo">4.1 Protocolo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-novedad">4.2 Matriz de novedad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trabajos-cercanos-por-familia-algoritmica">4.3 Trabajos cercanos por familia algorítmica</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="revision-de-literatura-y-novedad">
+<span id="sec-4"></span><h1>4. Revisión de literatura y novedad<a class="headerlink" href="#revision-de-literatura-y-novedad" title="Link to this heading">#</a></h1>
+<p>La guía es explícita: la novedad no se declara, se demuestra con una revisión documentada. Esta sección sigue su protocolo (sección <a class="reference internal" href="05_modelo_original.html#sec-5-2"><span class="std std-ref">5.2</span></a>) con tres decisiones de diseño: las cadenas combinan la familia del modelo, el problema de aplicación y sinónimos en inglés y español; se agregan dos <strong>cadenas de control</strong> (solo la aplicación y solo la familia del modelo) que verifican que la sintaxis devuelve resultados y dimensionan cada literatura, de modo que un cero en las intersecciones no se confunda con una consulta mal escrita; y todo queda registrado por <code class="docutils literal notranslate"><span class="pre">scripts/revision_literatura.py</span></code> en <code class="docutils literal notranslate"><span class="pre">resultados/literatura/consultas.json</span></code>, con la fecha de cada consulta y los registros revisados, para que la revisión sea reproducible.</p>
+<section id="protocolo">
+<span id="sec-4-1"></span><h2>4.1 Protocolo<a class="headerlink" href="#protocolo" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Bases consultadas:</strong> OpenAlex (más de 250 millones de trabajos; búsqueda booleana en título y resumen), arXiv (preimpresiones de estadística y <em>machine learning</em>; búsqueda booleana en todos los campos), Crossref (registro de DOI de las editoriales; búsqueda por relevancia, sin operadores booleanos) y Semantic Scholar (búsqueda por relevancia en título y resumen). Scopus y Web of Science requieren acceso institucional y no tienen API pública; la misma lista de cadenas puede repetirse en ellas desde la biblioteca de la universidad.</p></li>
+<li><p><strong>Cadenas:</strong> 2 de control y 8 de intersección (familia × aplicación), de las cuales una está en español.</p></li>
+<li><p><strong>Revisión:</strong> se leen los primeros 25 registros de cada consulta (todos, si son menos). El tamizaje automático marca como <strong>candidato</strong> un registro cuyo título o resumen menciona a la vez el problema (telemercadeo bancario, depósito a término) y un mecanismo temporal (estado latente, Kalman, logística dinámica, deriva, cambio de prevalencia, flujo de datos, etiquetas diferidas); cada candidato se lee completo y se clasifica a mano como <strong>relevante</strong> si aplica un modelo de la misma familia al mismo problema.</p></li>
+<li><p><strong>Criterio de exclusión de la novedad:</strong> existiría un antecedente si un trabajo aplicara a la predicción de la suscripción en telemercadeo bancario un modelo logístico con estado latente dinámico (intercepto o coeficientes que evolucionan en el tiempo y se actualizan con etiquetas nuevas).</p></li>
+</ul>
+</section>
+<section id="matriz-de-novedad">
+<span id="sec-4-2"></span><h2>4.2 Matriz de novedad<a class="headerlink" href="#matriz-de-novedad" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clasificación manual de los candidatos del tamizaje, tras leer título, resumen y, cuando existe, el texto completo</span>
+<span class="n">CLASIFICACION</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"https://doi.org/10.1109/icscsa66339.2025.11170856"</span><span class="p">:</span> <span class="p">(</span>
+        <span class="kc">True</span><span class="p">,</span> <span class="s2">"Chowdary et al. (2025): Gradient Boosting, Random Forest y XGBoost con SMOTE/ADASYN y actualización "</span>
+              <span class="s2">"incremental sobre Bank Marketing; no modela un estado latente ni etiquetas diferidas"</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="n">filas</span><span class="p">,</span> <span class="n">candidatos</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">literatura</span><span class="p">:</span>
+    <span class="n">regs</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="s2">"registros"</span><span class="p">]</span>
+    <span class="n">rel</span> <span class="o">=</span> <span class="p">[</span><span class="n">CLASIFICACION</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">"doi"</span><span class="p">],</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s2">""</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">regs</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">"candidato"</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">regs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">"candidato"</span><span class="p">]:</span>
+            <span class="n">candidatos</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">"doi"</span><span class="p">]</span> <span class="ow">or</span> <span class="n">r</span><span class="p">[</span><span class="s2">"titulo"</span><span class="p">],</span> <span class="p">{</span><span class="o">**</span><span class="n">r</span><span class="p">,</span> <span class="s2">"base"</span><span class="p">:</span> <span class="n">q</span><span class="p">[</span><span class="s2">"base"</span><span class="p">]})</span>
+    <span class="k">if</span> <span class="n">q</span><span class="p">[</span><span class="s2">"error"</span><span class="p">]:</span>
+        <span class="n">obs</span> <span class="o">=</span> <span class="s2">"Consulta fallida: "</span> <span class="o">+</span> <span class="n">q</span><span class="p">[</span><span class="s2">"error"</span><span class="p">][:</span><span class="mi">60</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"control"</span><span class="p">):</span>
+        <span class="n">obs</span> <span class="o">=</span> <span class="s2">"Cadena de control: la sintaxis devuelve resultados"</span>
+    <span class="k">elif</span> <span class="n">q</span><span class="p">[</span><span class="s2">"base"</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"Crossref"</span><span class="p">,</span> <span class="s2">"Semantic Scholar"</span><span class="p">):</span>
+        <span class="n">obs</span> <span class="o">=</span> <span class="s2">"Búsqueda por relevancia: el total no filtra la intersección"</span>
+    <span class="k">elif</span> <span class="n">q</span><span class="p">[</span><span class="s2">"resultados"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">obs</span> <span class="o">=</span> <span class="s2">"Sin resultados para la intersección"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">obs</span> <span class="o">=</span> <span class="s2">"Ver candidatos"</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"Base"</span><span class="p">:</span> <span class="n">q</span><span class="p">[</span><span class="s2">"base"</span><span class="p">],</span> <span class="s2">"Tipo"</span><span class="p">:</span> <span class="s2">"Control"</span> <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"control"</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"Intersección"</span><span class="p">,</span>
+                  <span class="s2">"Cadena de búsqueda"</span><span class="p">:</span> <span class="n">q</span><span class="p">[</span><span class="s2">"cadena"</span><span class="p">],</span> <span class="s2">"Fecha (UTC)"</span><span class="p">:</span> <span class="n">q</span><span class="p">[</span><span class="s2">"fecha_utc"</span><span class="p">][:</span><span class="mi">10</span><span class="p">],</span>
+                  <span class="s2">"Result."</span><span class="p">:</span> <span class="n">q</span><span class="p">[</span><span class="s2">"resultados"</span><span class="p">],</span> <span class="s2">"Revis."</span><span class="p">:</span> <span class="n">q</span><span class="p">[</span><span class="s2">"revisados"</span><span class="p">],</span> <span class="s2">"Cand."</span><span class="p">:</span> <span class="n">q</span><span class="p">[</span><span class="s2">"candidatos"</span><span class="p">],</span> <span class="s2">"Relev."</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">rel</span><span class="p">),</span>
+                  <span class="s2">"Observación"</span><span class="p">:</span> <span class="n">obs</span><span class="p">})</span>
+<span class="n">matriz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">matriz</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">cand</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">"Base"</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">"base"</span><span class="p">],</span> <span class="s2">"Año"</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">"anio"</span><span class="p">],</span> <span class="s2">"Título"</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">"titulo"</span><span class="p">],</span> <span class="s2">"DOI o enlace"</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span>
+                      <span class="s2">"Relevante"</span><span class="p">:</span> <span class="s2">"sí"</span> <span class="k">if</span> <span class="n">CLASIFICACION</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="kc">False</span><span class="p">,))[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="s2">"no"</span><span class="p">,</span>
+                      <span class="s2">"Clasificación"</span><span class="p">:</span> <span class="n">CLASIFICACION</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s2">"Revisado: no aplica un modelo de estado latente "</span>
+                                                                    <span class="s2">"al problema"</span><span class="p">))[</span><span class="mi">1</span><span class="p">]}</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">candidatos</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cand</span><span class="p">):</span>
+    <span class="n">tabla</span><span class="p">(</span><span class="n">cand</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">inter</span> <span class="o">=</span> <span class="n">matriz</span><span class="p">[</span><span class="n">matriz</span><span class="p">[</span><span class="s2">"Tipo"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Intersección"</span><span class="p">]</span>
+<span class="n">bool_</span> <span class="o">=</span> <span class="n">inter</span><span class="p">[</span><span class="n">inter</span><span class="p">[</span><span class="s2">"Base"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"OpenAlex"</span><span class="p">,</span> <span class="s2">"arXiv"</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">inter</span><span class="p">[</span><span class="s2">"Result."</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+<span class="n">ctrl</span> <span class="o">=</span> <span class="n">matriz</span><span class="p">[(</span><span class="n">matriz</span><span class="p">[</span><span class="s2">"Tipo"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Control"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">matriz</span><span class="p">[</span><span class="s2">"Base"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"OpenAlex"</span><span class="p">,</span> <span class="s2">"arXiv"</span><span class="p">])]</span>
+<span class="n">n_rev</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">matriz</span><span class="p">[</span><span class="s2">"Revis."</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">para_guion</span><span class="p">(</span><span class="s2">"literatura"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"consultas"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">matriz</span><span class="p">),</span> <span class="s2">"bases"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">matriz</span><span class="p">[</span><span class="s2">"Base"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()),</span> <span class="s2">"revisados"</span><span class="p">:</span> <span class="n">n_rev</span><span class="p">,</span>
+                          <span class="s2">"candidatos"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cand</span><span class="p">)),</span> <span class="s2">"relevantes"</span><span class="p">:</span> <span class="nb">int</span><span class="p">((</span><span class="n">cand</span><span class="p">[</span><span class="s2">"Relevante"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"sí"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+                          <span class="s2">"fallidas"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">matriz</span><span class="p">[</span><span class="s2">"Observación"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Consulta fallida"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())})</span>
+<span class="n">n_fallidas</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">matriz</span><span class="p">[</span><span class="s2">"Observación"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Consulta fallida"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">interpretar</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Se hicieron </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">matriz</span><span class="p">)</span><span class="si">}</span><span class="s2"> consultas en </span><span class="si">{</span><span class="n">matriz</span><span class="p">[</span><span class="s1">'Base'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> bases (</span><span class="si">{</span><span class="n">n_fallidas</span><span class="si">}</span><span class="s2"> fallidas) y se revisaron "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">n_rev</span><span class="p">)</span><span class="si">}</span><span class="s2"> registros. Las cadenas de control devuelven resultados en las bases booleanas (entre "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">ctrl</span><span class="p">[</span><span class="s1">'Result.'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">}</span><span class="s2"> y </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">ctrl</span><span class="p">[</span><span class="s1">'Result.'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">}</span><span class="s2"> trabajos), mientras que las "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bool_</span><span class="p">)</span><span class="si">}</span><span class="s2"> intersecciones en OpenAlex y arXiv suman </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">bool_</span><span class="p">[</span><span class="s1">'Result.'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> "</span>
+    <span class="sa">f</span><span class="s2">"resultado</span><span class="si">{</span><span class="s1">''</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">bool_</span><span class="p">[</span><span class="s1">'Result.'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'s'</span><span class="si">}</span><span class="s2">. El tamizaje "</span>
+    <span class="sa">f</span><span class="s2">"marcó </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span><span class="si">}</span><span class="s2"> candidato</span><span class="si">{</span><span class="s1">'s'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">''</span><span class="si">}</span><span class="s2"> único</span><span class="si">{</span><span class="s1">'s'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">''</span><span class="si">}</span><span class="s2">, de los "</span>
+    <span class="sa">f</span><span class="s2">"cuales </span><span class="si">{</span><span class="nb">int</span><span class="p">((</span><span class="n">cand</span><span class="p">[</span><span class="s1">'Relevante'</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'sí'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="si">}</span><span class="s2"> trata el mismo problema con un mecanismo "</span>
+    <span class="s2">"temporal."</span><span class="p">,</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Lo anterior indica que"</span><span class="p">,</span> <span class="s2">"Cada componente tiene su propia literatura (hay trabajos sobre telemercadeo "</span>
+             <span class="s2">"bancario y sobre regresión logística dinámica), pero su intersección está prácticamente vacía. El único "</span>
+             <span class="s2">"antecedente cercano en la aplicación adapta ensambles de árboles de forma incremental, que es una familia "</span>
+             <span class="s2">"algorítmica distinta: no estima un nivel latente, no separa escalas de tiempo ni trata la demora de las "</span>
+             <span class="s2">"etiquetas. Las búsquedas por relevancia (Crossref y Semantic Scholar) no permiten intersecciones "</span>
+             <span class="s2">"booleanas, así que su aporte es la lectura de sus primeros registros, no el conteo."</span><span class="p">),</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Por tanto, corresponde"</span><span class="p">,</span> <span class="s2">"Delimitar la novedad con precisión: no se reclama haber inventado los modelos "</span>
+             <span class="s2">"de espacio de estados, sino una configuración algorítmica concreta (dos escalas, ajuste por bloques y "</span>
+             <span class="s2">"filtro con etiquetas diferidas) y su primera aplicación a este problema, y diferenciarla de cada método "</span>
+             <span class="s2">"afín en la sección 4.3."</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_6c121">
+  <thead>
+    <tr>
+      <th id="T_6c121_level0_col0" class="col_heading level0 col0" >Base</th>
+      <th id="T_6c121_level0_col1" class="col_heading level0 col1" >Tipo</th>
+      <th id="T_6c121_level0_col2" class="col_heading level0 col2" >Cadena de búsqueda</th>
+      <th id="T_6c121_level0_col3" class="col_heading level0 col3" >Fecha (UTC)</th>
+      <th id="T_6c121_level0_col4" class="col_heading level0 col4" >Result.</th>
+      <th id="T_6c121_level0_col5" class="col_heading level0 col5" >Revis.</th>
+      <th id="T_6c121_level0_col6" class="col_heading level0 col6" >Cand.</th>
+      <th id="T_6c121_level0_col7" class="col_heading level0 col7" >Relev.</th>
+      <th id="T_6c121_level0_col8" class="col_heading level0 col8" >Observación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_6c121_row0_col0" class="data row0 col0" >OpenAlex</td>
+      <td id="T_6c121_row0_col1" class="data row0 col1" >Control</td>
+      <td id="T_6c121_row0_col2" class="data row0 col2" >"bank telemarketing" OR ("bank marketing" AND "term deposit")</td>
+      <td id="T_6c121_row0_col3" class="data row0 col3" >2026-10-24</td>
+      <td id="T_6c121_row0_col4" class="data row0 col4" >141</td>
+      <td id="T_6c121_row0_col5" class="data row0 col5" >25</td>
+      <td id="T_6c121_row0_col6" class="data row0 col6" >0</td>
+      <td id="T_6c121_row0_col7" class="data row0 col7" >0</td>
+      <td id="T_6c121_row0_col8" class="data row0 col8" >Cadena de control: la sintaxis devuelve resultados</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row1_col0" class="data row1 col0" >OpenAlex</td>
+      <td id="T_6c121_row1_col1" class="data row1 col1" >Control</td>
+      <td id="T_6c121_row1_col2" class="data row1 col2" >"dynamic logistic regression" OR ("state space" AND "logistic regression" AND "time-varying")</td>
+      <td id="T_6c121_row1_col3" class="data row1 col3" >2026-10-24</td>
+      <td id="T_6c121_row1_col4" class="data row1 col4" >56</td>
+      <td id="T_6c121_row1_col5" class="data row1 col5" >25</td>
+      <td id="T_6c121_row1_col6" class="data row1 col6" >0</td>
+      <td id="T_6c121_row1_col7" class="data row1 col7" >0</td>
+      <td id="T_6c121_row1_col8" class="data row1 col8" >Cadena de control: la sintaxis devuelve resultados</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row2_col0" class="data row2 col0" >OpenAlex</td>
+      <td id="T_6c121_row2_col1" class="data row2 col1" >Intersección</td>
+      <td id="T_6c121_row2_col2" class="data row2 col2" >"bank telemarketing" AND ("state space" OR "Kalman")</td>
+      <td id="T_6c121_row2_col3" class="data row2 col3" >2026-10-24</td>
+      <td id="T_6c121_row2_col4" class="data row2 col4" >0</td>
+      <td id="T_6c121_row2_col5" class="data row2 col5" >0</td>
+      <td id="T_6c121_row2_col6" class="data row2 col6" >0</td>
+      <td id="T_6c121_row2_col7" class="data row2 col7" >0</td>
+      <td id="T_6c121_row2_col8" class="data row2 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row3_col0" class="data row3 col0" >OpenAlex</td>
+      <td id="T_6c121_row3_col1" class="data row3 col1" >Intersección</td>
+      <td id="T_6c121_row3_col2" class="data row3 col2" >"bank marketing" AND "dynamic logistic regression"</td>
+      <td id="T_6c121_row3_col3" class="data row3 col3" >2026-10-24</td>
+      <td id="T_6c121_row3_col4" class="data row3 col4" >0</td>
+      <td id="T_6c121_row3_col5" class="data row3 col5" >0</td>
+      <td id="T_6c121_row3_col6" class="data row3 col6" >0</td>
+      <td id="T_6c121_row3_col7" class="data row3 col7" >0</td>
+      <td id="T_6c121_row3_col8" class="data row3 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row4_col0" class="data row4 col0" >OpenAlex</td>
+      <td id="T_6c121_row4_col1" class="data row4 col1" >Intersección</td>
+      <td id="T_6c121_row4_col2" class="data row4 col2" >"term deposit" AND ("concept drift" OR "prior shift" OR "label shift")</td>
+      <td id="T_6c121_row4_col3" class="data row4 col3" >2026-10-24</td>
+      <td id="T_6c121_row4_col4" class="data row4 col4" >0</td>
+      <td id="T_6c121_row4_col5" class="data row4 col5" >0</td>
+      <td id="T_6c121_row4_col6" class="data row4 col6" >0</td>
+      <td id="T_6c121_row4_col7" class="data row4 col7" >0</td>
+      <td id="T_6c121_row4_col8" class="data row4 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row5_col0" class="data row5 col0" >OpenAlex</td>
+      <td id="T_6c121_row5_col1" class="data row5 col1" >Intersección</td>
+      <td id="T_6c121_row5_col2" class="data row5 col2" >"bank telemarketing" AND ("time-varying" OR "random walk") AND logistic</td>
+      <td id="T_6c121_row5_col3" class="data row5 col3" >2026-10-24</td>
+      <td id="T_6c121_row5_col4" class="data row5 col4" >0</td>
+      <td id="T_6c121_row5_col5" class="data row5 col5" >0</td>
+      <td id="T_6c121_row5_col6" class="data row5 col6" >0</td>
+      <td id="T_6c121_row5_col7" class="data row5 col7" >0</td>
+      <td id="T_6c121_row5_col8" class="data row5 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row6_col0" class="data row6 col0" >OpenAlex</td>
+      <td id="T_6c121_row6_col1" class="data row6 col1" >Intersección</td>
+      <td id="T_6c121_row6_col2" class="data row6 col2" >"bank marketing" AND ("online learning" OR "delayed labels" OR "data stream")</td>
+      <td id="T_6c121_row6_col3" class="data row6 col3" >2026-10-24</td>
+      <td id="T_6c121_row6_col4" class="data row6 col4" >1</td>
+      <td id="T_6c121_row6_col5" class="data row6 col5" >1</td>
+      <td id="T_6c121_row6_col6" class="data row6 col6" >1</td>
+      <td id="T_6c121_row6_col7" class="data row6 col7" >1</td>
+      <td id="T_6c121_row6_col8" class="data row6 col8" >Ver candidatos</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row7_col0" class="data row7 col0" >OpenAlex</td>
+      <td id="T_6c121_row7_col1" class="data row7 col1" >Intersección</td>
+      <td id="T_6c121_row7_col2" class="data row7 col2" >("telemercadeo" OR "telemarketing") AND ("depósito a plazo" OR "depósito a término") AND ("Kalman" OR "modelo dinámico")</td>
+      <td id="T_6c121_row7_col3" class="data row7 col3" >2026-10-24</td>
+      <td id="T_6c121_row7_col4" class="data row7 col4" >0</td>
+      <td id="T_6c121_row7_col5" class="data row7 col5" >0</td>
+      <td id="T_6c121_row7_col6" class="data row7 col6" >0</td>
+      <td id="T_6c121_row7_col7" class="data row7 col7" >0</td>
+      <td id="T_6c121_row7_col8" class="data row7 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row8_col0" class="data row8 col0" >OpenAlex</td>
+      <td id="T_6c121_row8_col1" class="data row8 col1" >Intersección</td>
+      <td id="T_6c121_row8_col2" class="data row8 col2" >"direct marketing" AND "dynamic logistic regression"</td>
+      <td id="T_6c121_row8_col3" class="data row8 col3" >2026-10-24</td>
+      <td id="T_6c121_row8_col4" class="data row8 col4" >0</td>
+      <td id="T_6c121_row8_col5" class="data row8 col5" >0</td>
+      <td id="T_6c121_row8_col6" class="data row8 col6" >0</td>
+      <td id="T_6c121_row8_col7" class="data row8 col7" >0</td>
+      <td id="T_6c121_row8_col8" class="data row8 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row9_col0" class="data row9 col0" >OpenAlex</td>
+      <td id="T_6c121_row9_col1" class="data row9 col1" >Intersección</td>
+      <td id="T_6c121_row9_col2" class="data row9 col2" >"dynamic logistic regression" AND ("delayed labels" OR "label delay" OR "verification latency")</td>
+      <td id="T_6c121_row9_col3" class="data row9 col3" >2026-10-24</td>
+      <td id="T_6c121_row9_col4" class="data row9 col4" >0</td>
+      <td id="T_6c121_row9_col5" class="data row9 col5" >0</td>
+      <td id="T_6c121_row9_col6" class="data row9 col6" >0</td>
+      <td id="T_6c121_row9_col7" class="data row9 col7" >0</td>
+      <td id="T_6c121_row9_col8" class="data row9 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row10_col0" class="data row10 col0" >arXiv</td>
+      <td id="T_6c121_row10_col1" class="data row10 col1" >Control</td>
+      <td id="T_6c121_row10_col2" class="data row10 col2" >"bank telemarketing" OR ("bank marketing" AND "term deposit")</td>
+      <td id="T_6c121_row10_col3" class="data row10 col3" >2026-10-24</td>
+      <td id="T_6c121_row10_col4" class="data row10 col4" >3</td>
+      <td id="T_6c121_row10_col5" class="data row10 col5" >3</td>
+      <td id="T_6c121_row10_col6" class="data row10 col6" >0</td>
+      <td id="T_6c121_row10_col7" class="data row10 col7" >0</td>
+      <td id="T_6c121_row10_col8" class="data row10 col8" >Cadena de control: la sintaxis devuelve resultados</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row11_col0" class="data row11 col0" >arXiv</td>
+      <td id="T_6c121_row11_col1" class="data row11 col1" >Control</td>
+      <td id="T_6c121_row11_col2" class="data row11 col2" >"dynamic logistic regression" OR ("state space" AND "logistic regression" AND "time-varying")</td>
+      <td id="T_6c121_row11_col3" class="data row11 col3" >2026-10-24</td>
+      <td id="T_6c121_row11_col4" class="data row11 col4" >3</td>
+      <td id="T_6c121_row11_col5" class="data row11 col5" >3</td>
+      <td id="T_6c121_row11_col6" class="data row11 col6" >0</td>
+      <td id="T_6c121_row11_col7" class="data row11 col7" >0</td>
+      <td id="T_6c121_row11_col8" class="data row11 col8" >Cadena de control: la sintaxis devuelve resultados</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row12_col0" class="data row12 col0" >arXiv</td>
+      <td id="T_6c121_row12_col1" class="data row12 col1" >Intersección</td>
+      <td id="T_6c121_row12_col2" class="data row12 col2" >"bank telemarketing" AND ("state space" OR "Kalman")</td>
+      <td id="T_6c121_row12_col3" class="data row12 col3" >2026-10-24</td>
+      <td id="T_6c121_row12_col4" class="data row12 col4" >0</td>
+      <td id="T_6c121_row12_col5" class="data row12 col5" >0</td>
+      <td id="T_6c121_row12_col6" class="data row12 col6" >0</td>
+      <td id="T_6c121_row12_col7" class="data row12 col7" >0</td>
+      <td id="T_6c121_row12_col8" class="data row12 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row13_col0" class="data row13 col0" >arXiv</td>
+      <td id="T_6c121_row13_col1" class="data row13 col1" >Intersección</td>
+      <td id="T_6c121_row13_col2" class="data row13 col2" >"bank marketing" AND "dynamic logistic regression"</td>
+      <td id="T_6c121_row13_col3" class="data row13 col3" >2026-10-24</td>
+      <td id="T_6c121_row13_col4" class="data row13 col4" >0</td>
+      <td id="T_6c121_row13_col5" class="data row13 col5" >0</td>
+      <td id="T_6c121_row13_col6" class="data row13 col6" >0</td>
+      <td id="T_6c121_row13_col7" class="data row13 col7" >0</td>
+      <td id="T_6c121_row13_col8" class="data row13 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row14_col0" class="data row14 col0" >arXiv</td>
+      <td id="T_6c121_row14_col1" class="data row14 col1" >Intersección</td>
+      <td id="T_6c121_row14_col2" class="data row14 col2" >"term deposit" AND ("concept drift" OR "prior shift" OR "label shift")</td>
+      <td id="T_6c121_row14_col3" class="data row14 col3" >2026-10-24</td>
+      <td id="T_6c121_row14_col4" class="data row14 col4" >0</td>
+      <td id="T_6c121_row14_col5" class="data row14 col5" >0</td>
+      <td id="T_6c121_row14_col6" class="data row14 col6" >0</td>
+      <td id="T_6c121_row14_col7" class="data row14 col7" >0</td>
+      <td id="T_6c121_row14_col8" class="data row14 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row15_col0" class="data row15 col0" >arXiv</td>
+      <td id="T_6c121_row15_col1" class="data row15 col1" >Intersección</td>
+      <td id="T_6c121_row15_col2" class="data row15 col2" >"bank telemarketing" AND ("time-varying" OR "random walk") AND "logistic"</td>
+      <td id="T_6c121_row15_col3" class="data row15 col3" >2026-10-24</td>
+      <td id="T_6c121_row15_col4" class="data row15 col4" >0</td>
+      <td id="T_6c121_row15_col5" class="data row15 col5" >0</td>
+      <td id="T_6c121_row15_col6" class="data row15 col6" >0</td>
+      <td id="T_6c121_row15_col7" class="data row15 col7" >0</td>
+      <td id="T_6c121_row15_col8" class="data row15 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row16_col0" class="data row16 col0" >arXiv</td>
+      <td id="T_6c121_row16_col1" class="data row16 col1" >Intersección</td>
+      <td id="T_6c121_row16_col2" class="data row16 col2" >"bank marketing" AND ("online learning" OR "delayed labels" OR "data stream")</td>
+      <td id="T_6c121_row16_col3" class="data row16 col3" >2026-10-24</td>
+      <td id="T_6c121_row16_col4" class="data row16 col4" >0</td>
+      <td id="T_6c121_row16_col5" class="data row16 col5" >0</td>
+      <td id="T_6c121_row16_col6" class="data row16 col6" >0</td>
+      <td id="T_6c121_row16_col7" class="data row16 col7" >0</td>
+      <td id="T_6c121_row16_col8" class="data row16 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row17_col0" class="data row17 col0" >arXiv</td>
+      <td id="T_6c121_row17_col1" class="data row17 col1" >Intersección</td>
+      <td id="T_6c121_row17_col2" class="data row17 col2" >("telemercadeo" OR "telemarketing") AND ("depósito a plazo" OR "depósito a término") AND ("Kalman" OR "modelo dinámico")</td>
+      <td id="T_6c121_row17_col3" class="data row17 col3" >2026-10-24</td>
+      <td id="T_6c121_row17_col4" class="data row17 col4" >0</td>
+      <td id="T_6c121_row17_col5" class="data row17 col5" >0</td>
+      <td id="T_6c121_row17_col6" class="data row17 col6" >0</td>
+      <td id="T_6c121_row17_col7" class="data row17 col7" >0</td>
+      <td id="T_6c121_row17_col8" class="data row17 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row18_col0" class="data row18 col0" >arXiv</td>
+      <td id="T_6c121_row18_col1" class="data row18 col1" >Intersección</td>
+      <td id="T_6c121_row18_col2" class="data row18 col2" >"direct marketing" AND "dynamic logistic regression"</td>
+      <td id="T_6c121_row18_col3" class="data row18 col3" >2026-10-24</td>
+      <td id="T_6c121_row18_col4" class="data row18 col4" >0</td>
+      <td id="T_6c121_row18_col5" class="data row18 col5" >0</td>
+      <td id="T_6c121_row18_col6" class="data row18 col6" >0</td>
+      <td id="T_6c121_row18_col7" class="data row18 col7" >0</td>
+      <td id="T_6c121_row18_col8" class="data row18 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row19_col0" class="data row19 col0" >arXiv</td>
+      <td id="T_6c121_row19_col1" class="data row19 col1" >Intersección</td>
+      <td id="T_6c121_row19_col2" class="data row19 col2" >"dynamic logistic regression" AND ("delayed labels" OR "label delay" OR "verification latency")</td>
+      <td id="T_6c121_row19_col3" class="data row19 col3" >2026-10-24</td>
+      <td id="T_6c121_row19_col4" class="data row19 col4" >0</td>
+      <td id="T_6c121_row19_col5" class="data row19 col5" >0</td>
+      <td id="T_6c121_row19_col6" class="data row19 col6" >0</td>
+      <td id="T_6c121_row19_col7" class="data row19 col7" >0</td>
+      <td id="T_6c121_row19_col8" class="data row19 col8" >Sin resultados para la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row20_col0" class="data row20 col0" >Crossref</td>
+      <td id="T_6c121_row20_col1" class="data row20 col1" >Control</td>
+      <td id="T_6c121_row20_col2" class="data row20 col2" >bank telemarketing term deposit</td>
+      <td id="T_6c121_row20_col3" class="data row20 col3" >2026-10-24</td>
+      <td id="T_6c121_row20_col4" class="data row20 col4" >1 263 188</td>
+      <td id="T_6c121_row20_col5" class="data row20 col5" >25</td>
+      <td id="T_6c121_row20_col6" class="data row20 col6" >0</td>
+      <td id="T_6c121_row20_col7" class="data row20 col7" >0</td>
+      <td id="T_6c121_row20_col8" class="data row20 col8" >Cadena de control: la sintaxis devuelve resultados</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row21_col0" class="data row21 col0" >Crossref</td>
+      <td id="T_6c121_row21_col1" class="data row21 col1" >Control</td>
+      <td id="T_6c121_row21_col2" class="data row21 col2" >dynamic logistic regression state space time-varying</td>
+      <td id="T_6c121_row21_col3" class="data row21 col3" >2026-10-24</td>
+      <td id="T_6c121_row21_col4" class="data row21 col4" >5 931 810</td>
+      <td id="T_6c121_row21_col5" class="data row21 col5" >25</td>
+      <td id="T_6c121_row21_col6" class="data row21 col6" >0</td>
+      <td id="T_6c121_row21_col7" class="data row21 col7" >0</td>
+      <td id="T_6c121_row21_col8" class="data row21 col8" >Cadena de control: la sintaxis devuelve resultados</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row22_col0" class="data row22 col0" >Crossref</td>
+      <td id="T_6c121_row22_col1" class="data row22 col1" >Intersección</td>
+      <td id="T_6c121_row22_col2" class="data row22 col2" >bank telemarketing state space Kalman filter</td>
+      <td id="T_6c121_row22_col3" class="data row22 col3" >2026-10-24</td>
+      <td id="T_6c121_row22_col4" class="data row22 col4" >3 754 253</td>
+      <td id="T_6c121_row22_col5" class="data row22 col5" >25</td>
+      <td id="T_6c121_row22_col6" class="data row22 col6" >0</td>
+      <td id="T_6c121_row22_col7" class="data row22 col7" >0</td>
+      <td id="T_6c121_row22_col8" class="data row22 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row23_col0" class="data row23 col0" >Crossref</td>
+      <td id="T_6c121_row23_col1" class="data row23 col1" >Intersección</td>
+      <td id="T_6c121_row23_col2" class="data row23 col2" >bank marketing dynamic logistic regression</td>
+      <td id="T_6c121_row23_col3" class="data row23 col3" >2026-10-24</td>
+      <td id="T_6c121_row23_col4" class="data row23 col4" >1 930 479</td>
+      <td id="T_6c121_row23_col5" class="data row23 col5" >25</td>
+      <td id="T_6c121_row23_col6" class="data row23 col6" >0</td>
+      <td id="T_6c121_row23_col7" class="data row23 col7" >0</td>
+      <td id="T_6c121_row23_col8" class="data row23 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row24_col0" class="data row24 col0" >Crossref</td>
+      <td id="T_6c121_row24_col1" class="data row24 col1" >Intersección</td>
+      <td id="T_6c121_row24_col2" class="data row24 col2" >term deposit subscription concept drift prior shift</td>
+      <td id="T_6c121_row24_col3" class="data row24 col3" >2026-10-24</td>
+      <td id="T_6c121_row24_col4" class="data row24 col4" >1 452 664</td>
+      <td id="T_6c121_row24_col5" class="data row24 col5" >25</td>
+      <td id="T_6c121_row24_col6" class="data row24 col6" >0</td>
+      <td id="T_6c121_row24_col7" class="data row24 col7" >0</td>
+      <td id="T_6c121_row24_col8" class="data row24 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row25_col0" class="data row25 col0" >Crossref</td>
+      <td id="T_6c121_row25_col1" class="data row25 col1" >Intersección</td>
+      <td id="T_6c121_row25_col2" class="data row25 col2" >bank telemarketing time-varying random walk logistic</td>
+      <td id="T_6c121_row25_col3" class="data row25 col3" >2026-10-24</td>
+      <td id="T_6c121_row25_col4" class="data row25 col4" >2 642 502</td>
+      <td id="T_6c121_row25_col5" class="data row25 col5" >25</td>
+      <td id="T_6c121_row25_col6" class="data row25 col6" >0</td>
+      <td id="T_6c121_row25_col7" class="data row25 col7" >0</td>
+      <td id="T_6c121_row25_col8" class="data row25 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row26_col0" class="data row26 col0" >Crossref</td>
+      <td id="T_6c121_row26_col1" class="data row26 col1" >Intersección</td>
+      <td id="T_6c121_row26_col2" class="data row26 col2" >bank marketing online learning delayed labels data stream</td>
+      <td id="T_6c121_row26_col3" class="data row26 col3" >2026-10-24</td>
+      <td id="T_6c121_row26_col4" class="data row26 col4" >8 001 678</td>
+      <td id="T_6c121_row26_col5" class="data row26 col5" >25</td>
+      <td id="T_6c121_row26_col6" class="data row26 col6" >0</td>
+      <td id="T_6c121_row26_col7" class="data row26 col7" >0</td>
+      <td id="T_6c121_row26_col8" class="data row26 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row27_col0" class="data row27 col0" >Crossref</td>
+      <td id="T_6c121_row27_col1" class="data row27 col1" >Intersección</td>
+      <td id="T_6c121_row27_col2" class="data row27 col2" >telemercadeo depósito a plazo modelo dinámico filtro de Kalman</td>
+      <td id="T_6c121_row27_col3" class="data row27 col3" >2026-10-24</td>
+      <td id="T_6c121_row27_col4" class="data row27 col4" >10 381 468</td>
+      <td id="T_6c121_row27_col5" class="data row27 col5" >25</td>
+      <td id="T_6c121_row27_col6" class="data row27 col6" >0</td>
+      <td id="T_6c121_row27_col7" class="data row27 col7" >0</td>
+      <td id="T_6c121_row27_col8" class="data row27 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row28_col0" class="data row28 col0" >Crossref</td>
+      <td id="T_6c121_row28_col1" class="data row28 col1" >Intersección</td>
+      <td id="T_6c121_row28_col2" class="data row28 col2" >direct marketing dynamic logistic regression</td>
+      <td id="T_6c121_row28_col3" class="data row28 col3" >2026-10-24</td>
+      <td id="T_6c121_row28_col4" class="data row28 col4" >1 947 694</td>
+      <td id="T_6c121_row28_col5" class="data row28 col5" >25</td>
+      <td id="T_6c121_row28_col6" class="data row28 col6" >0</td>
+      <td id="T_6c121_row28_col7" class="data row28 col7" >0</td>
+      <td id="T_6c121_row28_col8" class="data row28 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row29_col0" class="data row29 col0" >Crossref</td>
+      <td id="T_6c121_row29_col1" class="data row29 col1" >Intersección</td>
+      <td id="T_6c121_row29_col2" class="data row29 col2" >dynamic logistic regression delayed labels verification latency</td>
+      <td id="T_6c121_row29_col3" class="data row29 col3" >2026-10-24</td>
+      <td id="T_6c121_row29_col4" class="data row29 col4" >1 398 687</td>
+      <td id="T_6c121_row29_col5" class="data row29 col5" >25</td>
+      <td id="T_6c121_row29_col6" class="data row29 col6" >0</td>
+      <td id="T_6c121_row29_col7" class="data row29 col7" >0</td>
+      <td id="T_6c121_row29_col8" class="data row29 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row30_col0" class="data row30 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row30_col1" class="data row30 col1" >Control</td>
+      <td id="T_6c121_row30_col2" class="data row30 col2" >bank telemarketing term deposit</td>
+      <td id="T_6c121_row30_col3" class="data row30 col3" >2026-10-24</td>
+      <td id="T_6c121_row30_col4" class="data row30 col4" >—</td>
+      <td id="T_6c121_row30_col5" class="data row30 col5" >0</td>
+      <td id="T_6c121_row30_col6" class="data row30 col6" >0</td>
+      <td id="T_6c121_row30_col7" class="data row30 col7" >0</td>
+      <td id="T_6c121_row30_col8" class="data row30 col8" >Consulta fallida: HTTPError: HTTP Error 429:  (también en el reintento)</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row31_col0" class="data row31 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row31_col1" class="data row31 col1" >Control</td>
+      <td id="T_6c121_row31_col2" class="data row31 col2" >dynamic logistic regression state space time-varying</td>
+      <td id="T_6c121_row31_col3" class="data row31 col3" >2026-10-24</td>
+      <td id="T_6c121_row31_col4" class="data row31 col4" >—</td>
+      <td id="T_6c121_row31_col5" class="data row31 col5" >0</td>
+      <td id="T_6c121_row31_col6" class="data row31 col6" >0</td>
+      <td id="T_6c121_row31_col7" class="data row31 col7" >0</td>
+      <td id="T_6c121_row31_col8" class="data row31 col8" >Consulta fallida: HTTPError: HTTP Error 429:  (también en el reintento)</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row32_col0" class="data row32 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row32_col1" class="data row32 col1" >Intersección</td>
+      <td id="T_6c121_row32_col2" class="data row32 col2" >bank telemarketing state space Kalman filter</td>
+      <td id="T_6c121_row32_col3" class="data row32 col3" >2026-10-24</td>
+      <td id="T_6c121_row32_col4" class="data row32 col4" >10 362</td>
+      <td id="T_6c121_row32_col5" class="data row32 col5" >25</td>
+      <td id="T_6c121_row32_col6" class="data row32 col6" >0</td>
+      <td id="T_6c121_row32_col7" class="data row32 col7" >0</td>
+      <td id="T_6c121_row32_col8" class="data row32 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row33_col0" class="data row33 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row33_col1" class="data row33 col1" >Intersección</td>
+      <td id="T_6c121_row33_col2" class="data row33 col2" >bank marketing dynamic logistic regression</td>
+      <td id="T_6c121_row33_col3" class="data row33 col3" >2026-10-24</td>
+      <td id="T_6c121_row33_col4" class="data row33 col4" >392</td>
+      <td id="T_6c121_row33_col5" class="data row33 col5" >25</td>
+      <td id="T_6c121_row33_col6" class="data row33 col6" >0</td>
+      <td id="T_6c121_row33_col7" class="data row33 col7" >0</td>
+      <td id="T_6c121_row33_col8" class="data row33 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row34_col0" class="data row34 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row34_col1" class="data row34 col1" >Intersección</td>
+      <td id="T_6c121_row34_col2" class="data row34 col2" >term deposit subscription concept drift prior shift</td>
+      <td id="T_6c121_row34_col3" class="data row34 col3" >2026-10-24</td>
+      <td id="T_6c121_row34_col4" class="data row34 col4" >—</td>
+      <td id="T_6c121_row34_col5" class="data row34 col5" >0</td>
+      <td id="T_6c121_row34_col6" class="data row34 col6" >0</td>
+      <td id="T_6c121_row34_col7" class="data row34 col7" >0</td>
+      <td id="T_6c121_row34_col8" class="data row34 col8" >Consulta fallida: HTTPError: HTTP Error 429:  (también en el reintento)</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row35_col0" class="data row35 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row35_col1" class="data row35 col1" >Intersección</td>
+      <td id="T_6c121_row35_col2" class="data row35 col2" >bank telemarketing time-varying random walk logistic</td>
+      <td id="T_6c121_row35_col3" class="data row35 col3" >2026-10-24</td>
+      <td id="T_6c121_row35_col4" class="data row35 col4" >—</td>
+      <td id="T_6c121_row35_col5" class="data row35 col5" >0</td>
+      <td id="T_6c121_row35_col6" class="data row35 col6" >0</td>
+      <td id="T_6c121_row35_col7" class="data row35 col7" >0</td>
+      <td id="T_6c121_row35_col8" class="data row35 col8" >Consulta fallida: HTTPError: HTTP Error 429:  (también en el reintento)</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row36_col0" class="data row36 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row36_col1" class="data row36 col1" >Intersección</td>
+      <td id="T_6c121_row36_col2" class="data row36 col2" >bank marketing online learning delayed labels data stream</td>
+      <td id="T_6c121_row36_col3" class="data row36 col3" >2026-10-24</td>
+      <td id="T_6c121_row36_col4" class="data row36 col4" >70</td>
+      <td id="T_6c121_row36_col5" class="data row36 col5" >25</td>
+      <td id="T_6c121_row36_col6" class="data row36 col6" >0</td>
+      <td id="T_6c121_row36_col7" class="data row36 col7" >0</td>
+      <td id="T_6c121_row36_col8" class="data row36 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row37_col0" class="data row37 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row37_col1" class="data row37 col1" >Intersección</td>
+      <td id="T_6c121_row37_col2" class="data row37 col2" >telemercadeo depósito a plazo modelo dinámico filtro de Kalman</td>
+      <td id="T_6c121_row37_col3" class="data row37 col3" >2026-10-24</td>
+      <td id="T_6c121_row37_col4" class="data row37 col4" >0</td>
+      <td id="T_6c121_row37_col5" class="data row37 col5" >0</td>
+      <td id="T_6c121_row37_col6" class="data row37 col6" >0</td>
+      <td id="T_6c121_row37_col7" class="data row37 col7" >0</td>
+      <td id="T_6c121_row37_col8" class="data row37 col8" >Búsqueda por relevancia: el total no filtra la intersección</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row38_col0" class="data row38 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row38_col1" class="data row38 col1" >Intersección</td>
+      <td id="T_6c121_row38_col2" class="data row38 col2" >direct marketing dynamic logistic regression</td>
+      <td id="T_6c121_row38_col3" class="data row38 col3" >2026-10-24</td>
+      <td id="T_6c121_row38_col4" class="data row38 col4" >—</td>
+      <td id="T_6c121_row38_col5" class="data row38 col5" >0</td>
+      <td id="T_6c121_row38_col6" class="data row38 col6" >0</td>
+      <td id="T_6c121_row38_col7" class="data row38 col7" >0</td>
+      <td id="T_6c121_row38_col8" class="data row38 col8" >Consulta fallida: HTTPError: HTTP Error 429:  (también en el reintento)</td>
+    </tr>
+    <tr>
+      <td id="T_6c121_row39_col0" class="data row39 col0" >Semantic Scholar</td>
+      <td id="T_6c121_row39_col1" class="data row39 col1" >Intersección</td>
+      <td id="T_6c121_row39_col2" class="data row39 col2" >dynamic logistic regression delayed labels verification latency</td>
+      <td id="T_6c121_row39_col3" class="data row39 col3" >2026-10-24</td>
+      <td id="T_6c121_row39_col4" class="data row39 col4" >—</td>
+      <td id="T_6c121_row39_col5" class="data row39 col5" >0</td>
+      <td id="T_6c121_row39_col6" class="data row39 col6" >0</td>
+      <td id="T_6c121_row39_col7" class="data row39 col7" >0</td>
+      <td id="T_6c121_row39_col8" class="data row39 col8" >Consulta fallida: HTTPError: HTTP Error 429:  (también en el reintento)</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"><style type="text/css">
+</style>
+<table id="T_da82e">
+  <thead>
+    <tr>
+      <th id="T_da82e_level0_col0" class="col_heading level0 col0" >Base</th>
+      <th id="T_da82e_level0_col1" class="col_heading level0 col1" >Año</th>
+      <th id="T_da82e_level0_col2" class="col_heading level0 col2" >Título</th>
+      <th id="T_da82e_level0_col3" class="col_heading level0 col3" >DOI o enlace</th>
+      <th id="T_da82e_level0_col4" class="col_heading level0 col4" >Relevante</th>
+      <th id="T_da82e_level0_col5" class="col_heading level0 col5" >Clasificación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_da82e_row0_col0" class="data row0 col0" >OpenAlex</td>
+      <td id="T_da82e_row0_col1" class="data row0 col1" >2 025</td>
+      <td id="T_da82e_row0_col2" class="data row0 col2" >Advancing Telemarketing Success using Ensemble-Driven Online Machine Learning</td>
+      <td id="T_da82e_row0_col3" class="data row0 col3" >https://doi.org/10.1109/icscsa66339.2025.11170856</td>
+      <td id="T_da82e_row0_col4" class="data row0 col4" >sí</td>
+      <td id="T_da82e_row0_col5" class="data row0 col5" >Chowdary et al. (2025): Gradient Boosting, Random Forest y XGBoost con SMOTE/ADASYN y actualización incremental sobre Bank Marketing; no modela un estado latente ni etiquetas diferidas</td>
+    </tr>
+  </tbody>
+</table>
+</div><p><strong>Interpretación.</strong> Se hicieron 40 consultas en 4 bases (6 fallidas) y se revisaron 382 registros. Las cadenas de control devuelven resultados en las bases booleanas (entre 3 y 141 trabajos), mientras que las 16 intersecciones en OpenAlex y arXiv suman 1 resultado. El tamizaje marcó 1 candidato único, de los cuales 1 trata el mismo problema con un mecanismo temporal.</p>
+<p>Lo anterior indica que cada componente tiene su propia literatura (hay trabajos sobre telemercadeo bancario y sobre regresión logística dinámica), pero su intersección está prácticamente vacía. El único antecedente cercano en la aplicación adapta ensambles de árboles de forma incremental, que es una familia algorítmica distinta: no estima un nivel latente, no separa escalas de tiempo ni trata la demora de las etiquetas. Las búsquedas por relevancia (Crossref y Semantic Scholar) no permiten intersecciones booleanas, así que su aporte es la lectura de sus primeros registros, no el conteo.</p>
+<p>Por tanto, corresponde delimitar la novedad con precisión: no se reclama haber inventado los modelos de espacio de estados, sino una configuración algorítmica concreta (dos escalas, ajuste por bloques y filtro con etiquetas diferidas) y su primera aplicación a este problema, y diferenciarla de cada método afín en la sección <a class="reference internal" href="#sec-4-3"><span class="std std-ref">4.3</span></a>.</p>
+</div>
+</div>
+</section>
+<section id="trabajos-cercanos-por-familia-algoritmica">
+<span id="sec-4-3"></span><h2>4.3 Trabajos cercanos por familia algorítmica<a class="headerlink" href="#trabajos-cercanos-por-familia-algoritmica" title="Link to this heading">#</a></h2>
+<p>La guía pide diferenciar la propuesta de métodos afines por familia, no solo por aplicación. La tabla compara el L2E con diez trabajos: dos de la misma aplicación y ocho de la misma familia (modelos lineales generalizados dinámicos, corrección del cambio de prevalencia y aprendizaje con deriva o etiquetas diferidas). Todas las referencias se verificaron por DOI o en sus actas (<code class="docutils literal notranslate"><span class="pre">scripts/verificar_referencias.py</span></code>).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Trabajo</p></th>
+<th class="head"><p>Familia</p></th>
+<th class="head"><p>Qué conserva el L2E</p></th>
+<th class="head"><p>Qué es nuevo en el L2E o qué limitación no resuelve el trabajo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Moro, Cortez y Rita (<span class="bibtex-citation" id="id1"><a class="reference internal" href="09_reproducibilidad.html#id2" title="Sérgio Moro, Paulo Cortez, and Paulo Rita. A data-driven approach to predict the success of bank telemarketing. Decision Support Systems, 62:22–31, June 2014. URL: http://dx.doi.org/10.1016/j.dss.2014.03.001, doi:10.1016/j.dss.2014.03.001.">2014</a></span>)</p></td>
+<td><p>Modelos estáticos (red neuronal, SVM, árbol, logística) con ventana móvil, sobre telemercadeo bancario</p></td>
+<td><p>El problema, las variables de contexto y la evaluación en orden temporal</p></td>
+<td><p>La ventana móvil reajusta el modelo cada cierto tiempo y descarta el pasado; no estima el nivel de conversión ni lo actualiza día a día con etiquetas</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chowdary et al. (<span class="bibtex-citation" id="id2"><a class="reference internal" href="09_reproducibilidad.html#id12" title="B.V. Chowdary, K. Likitha Keerthi, D. Sandhya, Ch. Sunny, and M. Dilip Reddy. Advancing telemarketing success using ensemble-driven online machine learning. In 2025 5th International Conference on Soft Computing for Security Applications (ICSCSA), 974–978. IEEE, Aug 2025. URL: http://dx.doi.org/10.1109/icscsa66339.2025.11170856, doi:10.1109/icscsa66339.2025.11170856.">2025</a></span>)</p></td>
+<td><p>Ensambles de árboles con SMOTE y actualización incremental, sobre Bank Marketing</p></td>
+<td><p>El uso de etiquetas nuevas para actualizar el modelo</p></td>
+<td><p>Familia distinta (árboles, sin estado latente); no separa nivel y pendientes, no trata la demora de las etiquetas y su exactitud del 98 % sugiere el uso de <code class="docutils literal notranslate"><span class="pre">duration</span></code>, que aquí se excluye por fuga</p></td>
+</tr>
+<tr class="row-even"><td><p>West, Harrison y Migon (<span class="bibtex-citation" id="id3"><a class="reference internal" href="09_reproducibilidad.html#id6" title="Mike West, P. Jeff Harrison, and Helio S. Migon. Dynamic generalized linear models and bayesian forecasting. Journal of the American Statistical Association, 80(389):73–83, Mar 1985. URL: http://dx.doi.org/10.1080/01621459.1985.10477131, doi:10.1080/01621459.1985.10477131.">1985</a></span>)</p></td>
+<td><p>Modelos lineales generalizados dinámicos bayesianos</p></td>
+<td><p>La idea de un estado que evoluciona y se actualiza con cada observación</p></td>
+<td><p>Actualización conjugada aproximada observación por observación; el L2E usa Laplace por lote diario, dos escalas y un ajuste inicial por moda posterior</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fahrmeir (<span class="bibtex-citation" id="id4"><a class="reference internal" href="09_reproducibilidad.html#id5" title="Ludwig Fahrmeir. Posterior mode estimation by extended kalman filtering for multivariate dynamic generalized linear models. Journal of the American Statistical Association, 87(418):501–509, June 1992. URL: http://dx.doi.org/10.1080/01621459.1992.10475232, doi:10.1080/01621459.1992.10475232.">1992</a></span>)</p></td>
+<td><p>Moda posterior de MLG dinámicos con filtro de Kalman extendido</p></td>
+<td><p>La estimación por moda posterior penalizada</p></td>
+<td><p>Todos los coeficientes son dinámicos y el suavizado es O(T·p³); el L2E fija las pendientes en el ajuste y elimina el nivel con el complemento de Schur en O(T·p²)</p></td>
+</tr>
+<tr class="row-even"><td><p>McCormick et al. (<span class="bibtex-citation" id="id5"><a class="reference internal" href="09_reproducibilidad.html#id4" title="Tyler H. McCormick, Adrian E. Raftery, David Madigan, and Randall S. Burd. Dynamic logistic regression and dynamic model averaging for binary classification. Biometrics, 68(1):23–30, Aug 2012. URL: http://dx.doi.org/10.1111/j.1541-0420.2011.01645.x, doi:10.1111/j.1541-0420.2011.01645.x.">2012</a></span>)</p></td>
+<td><p>Regresión logística dinámica con factor de olvido, una sola escala</p></td>
+<td><p>El filtro de Laplace sobre los coeficientes de una logística</p></td>
+<td><p>Una sola tasa de olvido para todos los coeficientes y etiquetas inmediatas; el L2E separa el nivel (rápido) de las pendientes (lentas), y la ablación de la sección <a class="reference internal" href="05_modelo_original.html#sec-5-9"><span class="std std-ref">5.9</span></a> mide el costo de usar una sola escala</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kalman (<span class="bibtex-citation" id="id6"><a class="reference internal" href="09_reproducibilidad.html#id13" title="R. E. Kalman. A new approach to linear filtering and prediction problems. Journal of Basic Engineering, 82(1):35–45, Mar 1960. URL: http://dx.doi.org/10.1115/1.3662552, doi:10.1115/1.3662552.">1960</a></span>); Durbin y Koopman (<span class="bibtex-citation" id="id7"><a class="reference internal" href="09_reproducibilidad.html#id11" title="James Durbin and Siem Jan Koopman. Time Series Analysis by State Space Methods: Second Edition. Oxford University Press, May 2012. ISBN 9780199641178. URL: http://dx.doi.org/10.1093/acprof:oso/9780199641178.001.0001, doi:10.1093/acprof:oso/9780199641178.001.0001.">2012</a></span>)</p></td>
+<td><p>Filtrado y suavizado en espacio de estados</p></td>
+<td><p>La recursión predicción-actualización</p></td>
+<td><p>Formulados para observaciones gaussianas; el L2E trata observaciones de Bernoulli con aproximación de Laplace y probabilidad predictiva integrada (MacKay, <span class="bibtex-citation" id="id8"><a class="reference internal" href="09_reproducibilidad.html#id10" title="David J. C. MacKay. The evidence framework applied to classification networks. Neural Computation, 4(5):720–736, Sept 1992. URL: http://dx.doi.org/10.1162/neco.1992.4.5.720, doi:10.1162/neco.1992.4.5.720.">1992</a></span>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Saerens, Latinne y Decaestecker (<span class="bibtex-citation" id="id9"><a class="reference internal" href="09_reproducibilidad.html#id7" title="Marco Saerens, Patrice Latinne, and Christine Decaestecker. Adjusting the outputs of a classifier to new a &lt;i&gt;priori&lt;/i&gt; probabilities: a simple procedure. Neural Computation, 14(1):21–41, Jan 2002. URL: http://dx.doi.org/10.1162/089976602753284446, doi:10.1162/089976602753284446.">2002</a></span>)</p></td>
+<td><p>Corrección del cambio de prevalencia sin etiquetas (EM)</p></td>
+<td><p>La corrección del intercepto ante un cambio de la tasa base</p></td>
+<td><p>Supone que p(x | y) no cambia y no usa etiquetas; el L2E usa las etiquetas diferidas y además adapta las pendientes (deriva de concepto, sección 3.6.5 del tercer entregable)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lipton, Wang y Smola (<span class="bibtex-citation" id="id10"><a class="reference internal" href="09_reproducibilidad.html#id27" title="Zachary C. Lipton, Yu-Xiang Wang, and Alexander J. Smola. Detecting and correcting for label shift with black box predictors. In Proceedings of the 35th International Conference on Machine Learning, volume 80 of PMLR, 3122–3130. 2018. arXiv:1802.03916.">2018</a></span>); Garg et al. (<span class="bibtex-citation" id="id11"><a class="reference internal" href="09_reproducibilidad.html#id28" title="Saurabh Garg, Yifan Wu, Sivaraman Balakrishnan, and Zachary C. Lipton. A unified view of label shift estimation. In Advances in Neural Information Processing Systems, volume 33. 2020. arXiv:2003.07554.">2020</a></span>)</p></td>
+<td><p>Estimación del cambio de prevalencia (BBSE, MLLS)</p></td>
+<td><p>El enfoque de corregir la prevalencia del lote</p></td>
+<td><p>Estiman una prevalencia fija por lote sin etiquetas; no hay dinámica entre lotes ni actualización de pendientes. MLLS se incluye como control en la sección <a class="reference internal" href="06_validacion.html#sec-6-8"><span class="std std-ref">6.8</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Gama et al. (<span class="bibtex-citation" id="id12"><a class="reference internal" href="09_reproducibilidad.html#id8" title="João Gama, Indrė Žliobaitė, Albert Bifet, Mykola Pechenizkiy, and Abdelhamid Bouchachia. A survey on concept drift adaptation. ACM Computing Surveys, 46(4):1–37, Mar 2014. URL: http://dx.doi.org/10.1145/2523813, doi:10.1145/2523813.">2014</a></span>)</p></td>
+<td><p>Adaptación a la deriva de concepto (ventanas, olvido, detectores)</p></td>
+<td><p>La necesidad de olvidar el pasado de forma controlada</p></td>
+<td><p>Las ventanas y los detectores son heurísticos; en el L2E el olvido sale de un modelo probabilístico, cuyas varianzas q_u y q_β se optimizan en la validación anidada</p></td>
+</tr>
+<tr class="row-odd"><td><p>Grzenda, Gomes y Bifet (<span class="bibtex-citation" id="id13"><a class="reference internal" href="09_reproducibilidad.html#id9" title="Maciej Grzenda, Heitor Murilo Gomes, and Albert Bifet. Delayed labelling evaluation for data streams. Data Mining and Knowledge Discovery, 34(5):1237–1266, Nov 2020. URL: http://dx.doi.org/10.1007/s10618-019-00654-y, doi:10.1007/s10618-019-00654-y.">2020</a></span>)</p></td>
+<td><p>Evaluación con etiquetas diferidas en flujos de datos</p></td>
+<td><p>El protocolo precuencial con demora de etiquetas</p></td>
+<td><p>Es un protocolo de evaluación, no un modelo; el L2E lo incorpora en su regla de predicción (<code class="docutils literal notranslate"><span class="pre">retardo</span></code>) y en su prueba de ausencia de fuga</p></td>
+</tr>
+<tr class="row-even"><td><p>Recalibración mensual del intercepto (entregables 2 y 3)</p></td>
+<td><p>Desplazamiento del logit para igualar la tasa del mes cerrado</p></td>
+<td><p>La corrección del intercepto con datos recientes que sugirió el docente</p></td>
+<td><p>Es el caso límite del filtro del L2E con varianza a priori infinita, lote mensual y retardo de un mes (propiedad P5, sección <a class="reference internal" href="05_modelo_original.html#sec-5-4"><span class="std std-ref">5.4</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_bases</span> <span class="o">=</span> <span class="n">matriz</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">matriz</span><span class="p">[</span><span class="s2">"Observación"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Consulta fallida"</span><span class="p">),</span> <span class="s2">"Base"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<span class="n">n_cadenas</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matriz</span><span class="p">)</span> <span class="o">//</span> <span class="n">matriz</span><span class="p">[</span><span class="s2">"Base"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<span class="n">MESES_ES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"enero"</span><span class="p">,</span> <span class="s2">"febrero"</span><span class="p">,</span> <span class="s2">"marzo"</span><span class="p">,</span> <span class="s2">"abril"</span><span class="p">,</span> <span class="s2">"mayo"</span><span class="p">,</span> <span class="s2">"junio"</span><span class="p">,</span> <span class="s2">"julio"</span><span class="p">,</span> <span class="s2">"agosto"</span><span class="p">,</span> <span class="s2">"septiembre"</span><span class="p">,</span> <span class="s2">"octubre"</span><span class="p">,</span>
+            <span class="s2">"noviembre"</span><span class="p">,</span> <span class="s2">"diciembre"</span><span class="p">]</span>
+<span class="n">_f</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">matriz</span><span class="p">[</span><span class="s2">"Fecha (UTC)"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">fecha_rev</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_f</span><span class="o">.</span><span class="n">day</span><span class="si">}</span><span class="s2"> de </span><span class="si">{</span><span class="n">MESES_ES</span><span class="p">[</span><span class="n">_f</span><span class="o">.</span><span class="n">month</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> de </span><span class="si">{</span><span class="n">_f</span><span class="o">.</span><span class="n">year</span><span class="si">}</span><span class="s2"> (UTC)"</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""### 4.4 Declaración de novedad</span>
+
+<span class="s2">Al mejor de nuestro conocimiento y según la búsqueda descrita (</span><span class="si">{</span><span class="n">n_bases</span><span class="si">}</span><span class="s2"> bases bibliográficas, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">matriz</span><span class="p">)</span><span class="si">}</span><span class="s2"> consultas con </span><span class="si">{</span><span class="n">n_cadenas</span><span class="si">}</span><span class="s2"> cadenas en inglés y español, consulta del </span><span class="si">{</span><span class="n">fecha_rev</span><span class="si">}</span><span class="s2">), **no se encontraron estudios que apliquen a la predicción de la suscripción a depósitos a término en campañas de telemercadeo bancario una regresión logística de estado latente con un nivel diario en paseo aleatorio, pendientes de deriva lenta y un filtro de Laplace con etiquetas diferidas**. Los trabajos más cercanos son, en la aplicación, Moro, Cortez y Rita (2014), que usan modelos estáticos con ventana móvil, y Chowdary et al. (2025), que actualizan ensambles de árboles de forma incremental; y, en la familia del modelo, McCormick et al. (2012), cuya regresión logística dinámica usa una sola escala de olvido y etiquetas inmediatas, y Fahrmeir (1992), cuya moda posterior trata todos los coeficientes como dinámicos sin la eliminación por bloques del nivel. La propuesta se diferencia de cada uno en la separación del nivel y las pendientes en dos escalas de tiempo, en el ajuste por bloques en O(T) y en la regla de predicción con etiquetas diferidas, cuya contribución medible se verifica con la ablación de la sección 5.9."""</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<h2 class="rubric" id="declaracion-de-novedad"><span id="sec-4-4"></span>4.4 Declaración de novedad</h2>
+<p>Al mejor de nuestro conocimiento y según la búsqueda descrita (4 bases bibliográficas, 40 consultas con 10 cadenas en inglés y español, consulta del 24 de octubre de 2026 (UTC)), <strong>no se encontraron estudios que apliquen a la predicción de la suscripción a depósitos a término en campañas de telemercadeo bancario una regresión logística de estado latente con un nivel diario en paseo aleatorio, pendientes de deriva lenta y un filtro de Laplace con etiquetas diferidas</strong>. Los trabajos más cercanos son, en la aplicación, Moro, Cortez y Rita (<span class="bibtex-citation" id="id14"><a class="reference internal" href="09_reproducibilidad.html#id2" title="Sérgio Moro, Paulo Cortez, and Paulo Rita. A data-driven approach to predict the success of bank telemarketing. Decision Support Systems, 62:22–31, June 2014. URL: http://dx.doi.org/10.1016/j.dss.2014.03.001, doi:10.1016/j.dss.2014.03.001.">2014</a></span>), que usan modelos estáticos con ventana móvil, y Chowdary et al. (<span class="bibtex-citation" id="id15"><a class="reference internal" href="09_reproducibilidad.html#id12" title="B.V. Chowdary, K. Likitha Keerthi, D. Sandhya, Ch. Sunny, and M. Dilip Reddy. Advancing telemarketing success using ensemble-driven online machine learning. In 2025 5th International Conference on Soft Computing for Security Applications (ICSCSA), 974–978. IEEE, Aug 2025. URL: http://dx.doi.org/10.1109/icscsa66339.2025.11170856, doi:10.1109/icscsa66339.2025.11170856.">2025</a></span>), que actualizan ensambles de árboles de forma incremental; y, en la familia del modelo, McCormick et al. (<span class="bibtex-citation" id="id16"><a class="reference internal" href="09_reproducibilidad.html#id4" title="Tyler H. McCormick, Adrian E. Raftery, David Madigan, and Randall S. Burd. Dynamic logistic regression and dynamic model averaging for binary classification. Biometrics, 68(1):23–30, Aug 2012. URL: http://dx.doi.org/10.1111/j.1541-0420.2011.01645.x, doi:10.1111/j.1541-0420.2011.01645.x.">2012</a></span>), cuya regresión logística dinámica usa una sola escala de olvido y etiquetas inmediatas, y Fahrmeir (<span class="bibtex-citation" id="id17"><a class="reference internal" href="09_reproducibilidad.html#id5" title="Ludwig Fahrmeir. Posterior mode estimation by extended kalman filtering for multivariate dynamic generalized linear models. Journal of the American Statistical Association, 87(418):501–509, June 1992. URL: http://dx.doi.org/10.1080/01621459.1992.10475232, doi:10.1080/01621459.1992.10475232.">1992</a></span>), cuya moda posterior trata todos los coeficientes como dinámicos sin la eliminación por bloques del nivel. La propuesta se diferencia de cada uno en la separación del nivel y las pendientes en dos escalas de tiempo, en el ajuste por bloques en O(T) y en la regla de predicción con etiquetas diferidas, cuya contribución medible se verifica con la ablación de la sección <a class="reference internal" href="05_modelo_original.html#sec-5-9"><span class="std std-ref">5.9</span></a>.</p>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_benchmarks.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">3. Modelos benchmark</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="05_modelo_original.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">5. Modelo original: logística de estado latente en dos escalas (L2E)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protocolo">4.1 Protocolo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-novedad">4.2 Matriz de novedad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trabajos-cercanos-por-familia-algoritmica">4.3 Trabajos cercanos por familia algorítmica</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

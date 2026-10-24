@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Modelos benchmark &#8212; Proyecto final · Cuarto entregable · Bank Marketing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_benchmarks';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="4. Revisión de literatura y novedad" href="04_literatura.html" />
+    <link rel="prev" title="2. Datos: ETL y EDA" href="02_datos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_introduccion.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Proyecto final · Cuarto entregable · Bank Marketing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_introduccion.html">
+                    Proyecto Final · Cuarto entregable · Modelo original para predecir la suscripción a depósitos a término (Bank Marketing, UCI)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_correcciones.html">1. Trazabilidad de correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_datos.html">2. Datos: ETL y EDA</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Modelos benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_literatura.html">4. Revisión de literatura y novedad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_modelo_original.html">5. Modelo original: logística de estado latente en dos escalas (L2E)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_validacion.html">6. Validación estadística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dashboard.html">7. Dashboard y despliegue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_conclusiones.html">8. Conclusiones y limitaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_reproducibilidad.html">9. Reproducibilidad y bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03_benchmarks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3. Modelos benchmark</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-combinaciones-por-modelo-y-mejor-combinacion-global">3.1 Mejores combinaciones por modelo y mejor combinación global</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modelos-benchmark">
+<span id="sec-3"></span><h1>3. Modelos benchmark<a class="headerlink" href="#modelos-benchmark" title="Link to this heading">#</a></h1>
+<section id="mejores-combinaciones-por-modelo-y-mejor-combinacion-global">
+<span id="sec-3-1"></span><h2>3.1 Mejores combinaciones por modelo y mejor combinación global<a class="headerlink" href="#mejores-combinaciones-por-modelo-y-mejor-combinacion-global" title="Link to this heading">#</a></h2>
+<p>Del universo de 140 combinaciones del tercer entregable, el criterio de la guía (sección <a class="reference internal" href="04_literatura.html#sec-4-1"><span class="std std-ref">4.1</span></a>) es estadístico y no visual: para cada uno de los 7 modelos base se toma la combinación de balanceo y optimizador con la mayor <strong>métrica media del bucle externo</strong> (AUC-PR), y la mejor de ellas es la mejor combinación global. Estos siete finalistas, más el modelo base del Entregable 2 como referencia, son los <em>benchmarks</em> del modelo original; están serializados con su <code class="docutils literal notranslate"><span class="pre">metadata.json</span></code> y su prueba de ida y vuelta en <code class="docutils literal notranslate"><span class="pre">artifacts/</span></code> del repositorio del dashboard, que es el que los carga en producción.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Mostrar el código de la celda</p>
+<p class="expanded admonition-title">Ocultar el código de la celda</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">r_</span> <span class="ow">in</span> <span class="n">fin_ext</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+    <span class="n">pl_</span> <span class="o">=</span> <span class="n">pl_fin</span><span class="p">[</span><span class="n">pl_fin</span><span class="p">[</span><span class="s2">"modelo"</span><span class="p">]</span> <span class="o">==</span> <span class="n">r_</span><span class="o">.</span><span class="n">modelo</span><span class="p">]</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"Modelo"</span><span class="p">:</span> <span class="n">cfg</span><span class="o">.</span><span class="n">NOMBRE_MODELO</span><span class="p">[</span><span class="n">r_</span><span class="o">.</span><span class="n">modelo</span><span class="p">],</span> <span class="s2">"Balanceo"</span><span class="p">:</span> <span class="n">cfg</span><span class="o">.</span><span class="n">NOMBRE_BALANCEO</span><span class="p">[</span><span class="n">r_</span><span class="o">.</span><span class="n">balanceo</span><span class="p">],</span>
+                  <span class="s2">"Optimizador"</span><span class="p">:</span> <span class="n">cfg</span><span class="o">.</span><span class="n">NOMBRE_OPTIMIZADOR</span><span class="p">[</span><span class="n">r_</span><span class="o">.</span><span class="n">optimizador</span><span class="p">],</span> <span class="s2">"AUC-PR externo"</span><span class="p">:</span> <span class="n">ms</span><span class="p">(</span><span class="n">pl_</span><span class="p">[</span><span class="s2">"auc_pr"</span><span class="p">]),</span>
+                  <span class="s2">"AUC externo"</span><span class="p">:</span> <span class="n">ms</span><span class="p">(</span><span class="n">pl_</span><span class="p">[</span><span class="s2">"auc"</span><span class="p">]),</span> <span class="s2">"Ajuste medio (s)"</span><span class="p">:</span> <span class="n">r_</span><span class="o">.</span><span class="n">t_fit_medio</span><span class="p">,</span>
+                  <span class="s2">"Inferencia media (s)"</span><span class="p">:</span> <span class="n">r_</span><span class="o">.</span><span class="n">t_pred_medio</span><span class="p">})</span>
+<span class="n">benchmarks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span>
+<span class="n">tabla</span><span class="p">(</span><span class="n">benchmarks</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Pertenencia de la mejor combinación global al conjunto de finalistas de Friedman → Nemenyi del E3</span>
+<span class="n">mat_fin</span> <span class="o">=</span> <span class="n">pl_fin</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"pliegue"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"modelo"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"auc_pr"</span><span class="p">)[</span><span class="n">MODELOS</span><span class="p">]</span>
+<span class="n">fr_e3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">friedman</span><span class="p">(</span><span class="n">mat_fin</span><span class="p">)</span>
+<span class="n">nem_e3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">posthoc_nemenyi_friedman</span><span class="p">(</span><span class="n">mat_fin</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+<span class="n">nem_e3</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">nem_e3</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">MODELOS</span>
+<span class="n">cd_e3</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">diferencia_critica</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MODELOS</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">mat_fin</span><span class="p">))</span>
+<span class="n">interpretar</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"La mejor combinación global es </span><span class="si">{</span><span class="n">NOMBRE</span><span class="p">[</span><span class="n">MEJOR</span><span class="p">]</span><span class="si">}</span><span class="s2">, con un AUC-PR externo de "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">benchmarks</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'AUC-PR externo'</span><span class="p">]</span><span class="si">}</span><span class="s2">; la última de los siete finalistas, </span><span class="si">{</span><span class="n">NOMBRE</span><span class="p">[</span><span class="n">MODELOS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="si">}</span><span class="s2">, obtiene "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">benchmarks</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">'AUC-PR externo'</span><span class="p">]</span><span class="si">}</span><span class="s2">. Entre los finalistas, Friedman da χ² = </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">fr_e3</span><span class="p">[</span><span class="s1">'chi2'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
+    <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">p_txt</span><span class="p">(</span><span class="n">fr_e3</span><span class="p">[</span><span class="s1">'p'</span><span class="p">])</span><span class="si">}</span><span class="s2">) y la menor p de Nemenyi frente a la mejor combinación es de "</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">nem_e3</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">MEJOR</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">MEJOR</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, con una diferencia crítica de </span><span class="si">{</span><span class="n">num</span><span class="p">(</span><span class="n">cd_e3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> rangos."</span><span class="p">,</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Así mismo,"</span><span class="p">,</span> <span class="s2">"La mejor combinación global pertenece al conjunto de modelos estadísticamente equivalentes: "</span>
+             <span class="s2">"ninguno de los siete se separa de los demás y las desviaciones estándar entre pliegues son del mismo orden "</span>
+             <span class="s2">"que las medias, porque un solo pliegue concentra la señal (sección 1.1). Superar a estos benchmarks no "</span>
+             <span class="s2">"exige un clasificador más flexible, sino capturar la estructura que todos dejan sin modelar."</span><span class="p">),</span>
+    <span class="n">conectar</span><span class="p">(</span><span class="s2">"Por ello, se recomienda"</span><span class="p">,</span> <span class="s2">"Comparar el modelo original contra los siete finalistas y contra la "</span>
+             <span class="s2">"referencia del Entregable 2, con la mejor combinación global como contraste principal, tal como define "</span>
+             <span class="s2">"la guía la condición R3 (sección 6.1), y sin descartar a ninguno de la comparación global de la "</span>
+             <span class="s2">"sección 6.3."</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_21197">
+  <thead>
+    <tr>
+      <th id="T_21197_level0_col0" class="col_heading level0 col0" >Modelo</th>
+      <th id="T_21197_level0_col1" class="col_heading level0 col1" >Balanceo</th>
+      <th id="T_21197_level0_col2" class="col_heading level0 col2" >Optimizador</th>
+      <th id="T_21197_level0_col3" class="col_heading level0 col3" >AUC-PR externo</th>
+      <th id="T_21197_level0_col4" class="col_heading level0 col4" >AUC externo</th>
+      <th id="T_21197_level0_col5" class="col_heading level0 col5" >Ajuste medio (s)</th>
+      <th id="T_21197_level0_col6" class="col_heading level0 col6" >Inferencia media (s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_21197_row0_col0" class="data row0 col0" >Naive Bayes</td>
+      <td id="T_21197_row0_col1" class="data row0 col1" >class_weight</td>
+      <td id="T_21197_row0_col2" class="data row0 col2" >Bayesiana (Optuna TPE)</td>
+      <td id="T_21197_row0_col3" class="data row0 col3" >0,103 ± 0,108</td>
+      <td id="T_21197_row0_col4" class="data row0 col4" >0,537 ± 0,102</td>
+      <td id="T_21197_row0_col5" class="data row0 col5" >0,662</td>
+      <td id="T_21197_row0_col6" class="data row0 col6" >0,342</td>
+    </tr>
+    <tr>
+      <td id="T_21197_row1_col0" class="data row1 col0" >Logística L1/L2</td>
+      <td id="T_21197_row1_col1" class="data row1 col1" >SMOTE</td>
+      <td id="T_21197_row1_col2" class="data row1 col2" >Random Search</td>
+      <td id="T_21197_row1_col3" class="data row1 col3" >0,096 ± 0,096</td>
+      <td id="T_21197_row1_col4" class="data row1 col4" >0,521 ± 0,083</td>
+      <td id="T_21197_row1_col5" class="data row1 col5" >2,963</td>
+      <td id="T_21197_row1_col6" class="data row1 col6" >0,278</td>
+    </tr>
+    <tr>
+      <td id="T_21197_row2_col0" class="data row2 col0" >Random Forest</td>
+      <td id="T_21197_row2_col1" class="data row2 col1" >Sin balanceo</td>
+      <td id="T_21197_row2_col2" class="data row2 col2" >Bayesiana (Optuna TPE)</td>
+      <td id="T_21197_row2_col3" class="data row2 col3" >0,095 ± 0,092</td>
+      <td id="T_21197_row2_col4" class="data row2 col4" >0,538 ± 0,079</td>
+      <td id="T_21197_row2_col5" class="data row2 col5" >9,144</td>
+      <td id="T_21197_row2_col6" class="data row2 col6" >0,769</td>
+    </tr>
+    <tr>
+      <td id="T_21197_row3_col0" class="data row3 col0" >SVM</td>
+      <td id="T_21197_row3_col1" class="data row3 col1" >class_weight</td>
+      <td id="T_21197_row3_col2" class="data row3 col2" >Grid Search</td>
+      <td id="T_21197_row3_col3" class="data row3 col3" >0,092 ± 0,091</td>
+      <td id="T_21197_row3_col4" class="data row3 col4" >0,512 ± 0,098</td>
+      <td id="T_21197_row3_col5" class="data row3 col5" >4,623</td>
+      <td id="T_21197_row3_col6" class="data row3 col6" >0,835</td>
+    </tr>
+    <tr>
+      <td id="T_21197_row4_col0" class="data row4 col0" >XGBoost</td>
+      <td id="T_21197_row4_col1" class="data row4 col1" >class_weight</td>
+      <td id="T_21197_row4_col2" class="data row4 col2" >Genético (DEAP)</td>
+      <td id="T_21197_row4_col3" class="data row4 col3" >0,091 ± 0,077</td>
+      <td id="T_21197_row4_col4" class="data row4 col4" >0,525 ± 0,054</td>
+      <td id="T_21197_row4_col5" class="data row4 col5" >2,826</td>
+      <td id="T_21197_row4_col6" class="data row4 col6" >0,406</td>
+    </tr>
+    <tr>
+      <td id="T_21197_row5_col0" class="data row5 col0" >Árbol de decisión</td>
+      <td id="T_21197_row5_col1" class="data row5 col1" >SMOTE</td>
+      <td id="T_21197_row5_col2" class="data row5 col2" >Bayesiana (Optuna TPE)</td>
+      <td id="T_21197_row5_col3" class="data row5 col3" >0,086 ± 0,073</td>
+      <td id="T_21197_row5_col4" class="data row5 col4" >0,530 ± 0,073</td>
+      <td id="T_21197_row5_col5" class="data row5 col5" >1,186</td>
+      <td id="T_21197_row5_col6" class="data row5 col6" >0,256</td>
+    </tr>
+    <tr>
+      <td id="T_21197_row6_col0" class="data row6 col0" >KNN</td>
+      <td id="T_21197_row6_col1" class="data row6 col1" >class_weight</td>
+      <td id="T_21197_row6_col2" class="data row6 col2" >Grid Search</td>
+      <td id="T_21197_row6_col3" class="data row6 col3" >0,084 ± 0,067</td>
+      <td id="T_21197_row6_col4" class="data row6 col4" >0,517 ± 0,067</td>
+      <td id="T_21197_row6_col5" class="data row6 col5" >0,515</td>
+      <td id="T_21197_row6_col6" class="data row6 col6" >5,896</td>
+    </tr>
+  </tbody>
+</table>
+</div><p><strong>Interpretación.</strong> La mejor combinación global es Naive Bayes · class_weight · Bayesiana (Optuna TPE), con un AUC-PR externo de 0,103 ± 0,108; la última de los siete finalistas, KNN · class_weight · Grid Search, obtiene 0,084 ± 0,067. Entre los finalistas, Friedman da χ² = 3,17 (p = 0,787) y la menor p de Nemenyi frente a la mejor combinación es de 0,905, con una diferencia crítica de 4,03 rangos.</p>
+<p>Así mismo, la mejor combinación global pertenece al conjunto de modelos estadísticamente equivalentes: ninguno de los siete se separa de los demás y las desviaciones estándar entre pliegues son del mismo orden que las medias, porque un solo pliegue concentra la señal (sección <a class="reference internal" href="01_correcciones.html#sec-1-1"><span class="std std-ref">1.1</span></a>). Superar a estos benchmarks no exige un clasificador más flexible, sino capturar la estructura que todos dejan sin modelar.</p>
+<p>Por ello, se recomienda comparar el modelo original contra los siete finalistas y contra la referencia del Entregable 2, con la mejor combinación global como contraste principal, tal como define la guía la condición R3 (sección <a class="reference internal" href="06_validacion.html#sec-6-1"><span class="std std-ref">6.1</span></a>), y sin descartar a ninguno de la comparación global de la sección <a class="reference internal" href="06_validacion.html#sec-6-3"><span class="std std-ref">6.3</span></a>.</p>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bm_e3"
+        },
+        kernelOptions: {
+            name: "bm_e3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bm_e3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_datos.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">2. Datos: ETL y EDA</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_literatura.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">4. Revisión de literatura y novedad</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-combinaciones-por-modelo-y-mejor-combinacion-global">3.1 Mejores combinaciones por modelo y mejor combinación global</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Donny Torres · Maestría en Analítica de Datos, Universidad del Norte
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
