@@ -21,6 +21,7 @@ Proyecto final de Machine Learning. El repositorio reúne el dashboard predictiv
 | Artefactos de los modelos con `metadata.json` | `artifacts/<modelo>/` (los 7 finalistas y `l2e`) |
 | Declaración de autoría y uso de herramientas de IA | Capítulo 8 del libro (sección 8.5) |
 | Guion de la sustentación | `Guion de sustentación - Rúbrica - Bank Marketing.docx` |
+| ZIP de soporte (cuaderno, guion, código, pruebas, artefactos, tabla maestra y configuración del libro) | `Soporte - Proyecto Final - Cuarto Entregable - Bank Marketing.zip` |
 
 ## Secciones del dashboard
 
