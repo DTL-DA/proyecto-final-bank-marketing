@@ -301,8 +301,10 @@ def nivel_l2e(df: pd.DataFrame) -> go.Figure:
                        yanchor="top", font=dict(size=12, color=TINTA_2))
     fig.update_yaxes(title_text="Clientes que suscriben (%)", rangemode="tozero")
     fig.update_xaxes(title_text="Día de contacto (orden temporal)")
+    # Leyenda al pie del contenedor: con tres entradas largas se parte en varias filas en pantallas angostas, y arriba
+    # se montaba sobre el título; anclada al contenedor, Plotly le reserva su espacio debajo del eje
     return fig.update_layout(title="El nivel diario que sigue el L2E", height=400, hovermode="closest",
-                             margin=dict(l=10, r=10, t=84, b=10))
+                             margin=dict(l=10, r=10, t=56, b=10), legend=dict(yref="container", y=0, yanchor="bottom"))
 
 
 def convergencia(df: pd.DataFrame) -> go.Figure:
