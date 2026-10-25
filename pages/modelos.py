@@ -18,6 +18,7 @@ dash.register_page(__name__, path="/modelos", name="Modelos", order=2, title="Mo
 VARIABLES = [v["variable"] for v in esquema()["variables"]]
 ETIQUETAS = {v["variable"]: v["etiqueta"] for v in esquema()["variables"]}
 GRUPOS = ["Cliente", "Contacto", "Historial", "Contexto económico"]
+REPO = "https://github.com/DTL-DA/proyecto-final-bank-marketing/blob/main"
 
 
 def num(x, d=1):
@@ -156,10 +157,12 @@ def modelo_original():
         "El ajuste maximiza una log-posterior estrictamente cóncava con Newton por bloques (el nivel se elimina con el "
         "complemento de Schur sobre una matriz tridiagonal, en tiempo lineal en el número de días), y la predicción usa un "
         "filtro de Laplace con un día de demora en las etiquetas. Está programado desde cero con numpy y scipy en "
-        f"`src/original_model.py`, con {r['pruebas_unitarias']['total']} pruebas unitarias. Hiperparámetros elegidos por "
+        f"[`src/original_model.py`]({REPO}/src/original_model.py), con "
+        f"[{r['pruebas_unitarias']['total']} pruebas unitarias]({REPO}/cuarto_entregable/tests/test_modelo_original.py) "
+        "(código en GitHub). Hiperparámetros elegidos por "
         rf"Optuna en la validación anidada: $\lambda$ = {num(hp['lam'], 1)}, $q_u$ = {num(hp['q_nivel'], 3)} y "
         rf"$q_\beta$ = {q_b}.",
-        mathjax=True, className="mb-0")
+        mathjax=True, link_target="_blank", className="mb-0")
     pruebas = resultado("l2e_pruebas")[["Prueba", "H0", "Supuestos verificados", "Estadístico", "p crudo", "p ajustado",
                                          "Efecto", "Conclusión"]]
     conteo = resultado("l2e_conteo")
