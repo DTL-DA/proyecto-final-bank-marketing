@@ -165,6 +165,11 @@ def modelo_original():
     conteo = resultado("l2e_conteo")
     ablacion = resultado("l2e_ablacion")[["Variante", "AUC-PR externo", "DE externo", "AUC-PR prueba", "Brier prueba"]]
     f3 = lambda x: num(x, 3)  # noqa: E731
+    prueba = resultado("l2e_prueba")
+    l2e, bms = prueba.iloc[0], prueba.iloc[1:]
+    nb = prueba.set_index("clave").loc["naive_bayes"]
+    sin_solape = bms.loc[bms["_sup"] < l2e["_inf"], "Modelo"].str.split(" · ").str[0].tolist()
+    tabla_prueba = prueba[["Modelo", "AUC-PR prueba", "IC 95 % AUC-PR", "AUC prueba", "IC 95 % AUC", "Brier prueba"]]
     sig = r3["sig_meses"]
     veredicto = dbc.Alert([
         html.H3([html.I(className="bi bi-check2-circle me-2 text-success"), "Veredicto: superior a los benchmarks"],
@@ -218,6 +223,21 @@ def modelo_original():
                "tamaño del entrenamiento.", className="insight"),
         html.H3("Diferencias frente a la literatura", className="h6 mt-4"),
         tabla_simple(resultado("l2e_literatura"), clase="tabla-texto"),
+        html.H3("Comparación en la prueba frente a los benchmarks", className="h6 mt-4"),
+        tabla_simple(tabla_prueba, {"AUC-PR prueba": f3, "AUC prueba": f3,
+                                    "Brier prueba": lambda x: "—" if np.isnan(x) else f3(x)}),
+        html.P("Prueba de 2009-05 a 2010-11 (8 236 clientes). Intervalos del 95 % por bootstrap estacionario por días "
+               "(1 000 réplicas), porque los clientes de un mismo día comparten el nivel. La SVM no tiene Brier porque su "
+               "puntaje no es una probabilidad; el diagnóstico del modelo seleccionado la muestra con escalado de Platt.",
+               className="nota mt-2"),
+        html.P(f"El L2E tiene el mayor AUC-PR ({f3(l2e['AUC-PR prueba'])}) y el mayor AUC ({f3(l2e['AUC prueba'])}) de "
+               f"la prueba, y su Brier de {f3(l2e['Brier prueba'])} es el más bajo, frente a {f3(nb['Brier prueba'])} de "
+               "Naive Bayes; es decir, además de ordenar mejor a los clientes, sus probabilidades son las más precisas. "
+               f"Sin embargo, el intervalo de su AUC-PR, {l2e['IC 95 % AUC-PR']}, se solapa con el de Naive Bayes, "
+               f"{nb['IC 95 % AUC-PR']}, y solo se separa del de {len(sin_solape)} de los {len(bms)} benchmarks "
+               f"({' y '.join(sin_solape)}). Por tal motivo, la superioridad se verifica con las pruebas pareadas de la "
+               "tabla siguiente, que comparan los modelos sobre los mismos días, y no con el solape de los intervalos.",
+               className="insight"),
         html.H3("Pruebas de hipótesis frente a la mejor combinación benchmark (Naive Bayes)", className="h6 mt-4"),
         tabla_simple(pruebas, {"p crudo": pv, "p ajustado": pv}, clase="tabla-texto"),
         html.P("p ajustado por Holm sobre las 8 comparaciones del L2E. Las cuatro primeras son las pruebas declaradas para "

@@ -102,6 +102,13 @@ def tabla_markdown(texto):
     return pd.DataFrame(celdas[2:], columns=celdas[0])
 
 
+def exportar_prueba(r):
+    """Tabla 6.2 del cuaderno restringida a la prueba (AUC-PR, AUC, IC 95 % por días y Brier), sin los tiempos."""
+    columnas = ["clave", "Modelo", "AUC-PR prueba", "IC 95 % AUC-PR", "AUC prueba", "IC 95 % AUC", "Brier prueba",
+                "_inf", "_sup"]
+    pd.read_parquet(RES / "guion" / "resumen.parquet")[columnas].to_parquet(r / "l2e_prueba.parquet", index=False)
+
+
 def reemplazar(r, nombre, nuevo, clave="modelo"):
     """Quita las filas del L2E de una tabla precalculada (si las hay) y agrega las nuevas."""
     ruta = r / f"{nombre}.parquet"
@@ -300,6 +307,7 @@ def main():
     pr.to_parquet(r / "l2e_pruebas.parquet", index=False)
     pd.read_parquet(RES / "guion" / "conteo_r3.parquet").to_parquet(r / "l2e_conteo.parquet", index=False)
     pd.read_parquet(RES / "guion" / "ablacion.parquet").to_parquet(r / "l2e_ablacion.parquet", index=False)
+    exportar_prueba(r)
 
     g = RES / "guion"
     r3 = json.loads((RES / "mejoras" / "resumen_r3.json").read_text(encoding="utf-8"))
